@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>regiones-ppal</ion-title>
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Regiones</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -17,7 +17,8 @@
     <ion-button (click)="saltaAInsertarRegion()" color="success">Insertar Región</ion-button>
   </p>
 
-  <ion-list>
+  
+  <!--ion-list>
     @if (regiones) {
     @for (region of regiones; track $index) {
     <ion-item>
@@ -34,6 +35,36 @@
 
     }
 
-  </ion-list>
+  </!--ion-list-->
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID Region</th>
+          <th>Nombre Region</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (regiones){
+          @for (region of regiones; track $index) {
+        <tr>
+          <td>{{region.idRegion}}</td>
+          <td>{{region.nombreRegion}}</td>
+          <td>      
+            <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
+          </td>
+          <td>
+            <ion-button>Editar</ion-button> <br>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+    
+    </table>
+  </div>
+
 
 </ion-content>
