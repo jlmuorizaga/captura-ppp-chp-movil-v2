@@ -68,7 +68,51 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
       }
     })
   }
+  borraRegion(id:string){
+    console.log('Voy a borrar esta región='+id);
 
+    this.regionesSvc.borraRegion(id).subscribe({
+      next:(res:any)=>{
+        console.log('Región borrada de forma exitosa')
+        console.log(res);
+        this.leerRegiones();
+        
+
+      },
+      error:(error:any)=>{
+        console.log('Error en el borrado de la región')
+        console.log(error)
+
+      }
+    })
+
+  }
+  async confirmaBorrar(region:Region){
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar la región '+region.nombreRegion+' ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Operación confirmada');
+            this.borraRegion(region.idRegion);
+            // Aquí puedes agregar la lógica para la operación a realizar
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+  }  
   saltaAInsertarRegion() {
     this.router.navigateByUrl('/insertar-region');
   }  
