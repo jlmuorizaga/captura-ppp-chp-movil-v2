@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>regiones-ppal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">regiones-ppal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarRegion()" color="success">Insertar Región</ion-button>
+  </p>
+
+  <ion-list>
+    @if (regiones) {
+    @for (region of regiones; track $index) {
+    <ion-item>
+      <ion-label>
+        {{region.idRegion}}
+      </ion-label>
+      <ion-label>
+        {{region.nombreRegion}}
+      </ion-label>
+      <!--ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</!--ion-button-->
+      <ion-button>Editar</ion-button> <br>
+    </ion-item>
+    }
+
+    }
+
+  </ion-list>
+
+</ion-content>
