@@ -8,7 +8,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <br>
+
+  <!--br>
   <form [formGroup]="formularioRegion" (ngSubmit)="insertaRegion()">
     <ion-grid fixed>
 
@@ -29,5 +30,28 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </form>
+  </form-->
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Insertar Región</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="formularioRegion" (ngSubmit)="insertaRegion()">
+      <ion-item>
+        <ion-input label="ID" label-placement="floating" formControlName="idRegion"></ion-input>
+        <!--fill="outline"-->       
+      </ion-item>
+      <ion-item>
+        <ion-input label="Nombre Región" label-placement="floating" formControlName="nombreRegion"></ion-input>
+      </ion-item>
+      <div class="button-container">
+        <ion-button type="submit" class="centered-button" [disabled]="!formularioRegion.valid" color="success">
+          Inserta Región
+        </ion-button>
+      </div>
+    </form>
+  </ion-card-content>
+
+</ion-card>
 </ion-content>

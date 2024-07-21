@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol, 
-  IonRow, IonGrid, IonButton, IonInput } from '@ionic/angular/standalone';
+  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem } from '@ionic/angular/standalone';
   import { Region } from 'src/app/model/dto/region';
   import { RegionService } from 'src/app/services/region.service';
   import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
   templateUrl: './insertar-region.page.html',
   styleUrls: ['./insertar-region.page.scss'],
   standalone: true,
-  imports: [IonInput, ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton, 
+  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput, ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton, 
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
 export class InsertarRegionPage {
