@@ -18,4 +18,8 @@ export const routes: Routes = [
     path: 'insertar-region',
     loadComponent: () => import('./catalogos/regiones/insertar-region/insertar-region.page').then( m => m.InsertarRegionPage)
   },
+  {
+    path: 'editar-region',
+    loadComponent: () => import('./catalogos/regiones/editar-region/editar-region.page').then( m => m.EditarRegionPage)
+  },
 ];

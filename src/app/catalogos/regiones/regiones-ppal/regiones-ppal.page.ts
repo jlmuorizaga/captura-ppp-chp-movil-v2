@@ -76,8 +76,6 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
         console.log('Región borrada de forma exitosa')
         console.log(res);
         this.leerRegiones();
-        
-
       },
       error:(error:any)=>{
         console.log('Error en el borrado de la región')
@@ -116,5 +114,21 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
   saltaAInsertarRegion() {
     this.router.navigateByUrl('/insertar-region');
   }  
+  saltaAEditarRegion(idRegion:string){
+    console.log('Estoy en editar region id='+idRegion)
+    this.regionesSvc.dameRegion(idRegion).subscribe({
+      next:(res:any)=>{
+        console.log('Región regresada de forma exitosa')
+        console.log(res);
+        this.leerRegiones();
+      },
+      error:(error:any)=>{
+        console.log('Error en la solicitud de la región')
+        console.log(error)
+
+      }
+    })
+
+  }
 
 }
