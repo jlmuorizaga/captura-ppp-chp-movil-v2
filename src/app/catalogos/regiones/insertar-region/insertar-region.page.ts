@@ -13,7 +13,8 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
   templateUrl: './insertar-region.page.html',
   styleUrls: ['./insertar-region.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput, ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton, 
+  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput, 
+    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton, 
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
 export class InsertarRegionPage {

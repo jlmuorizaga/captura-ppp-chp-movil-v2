@@ -114,13 +114,17 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
   saltaAInsertarRegion() {
     this.router.navigateByUrl('/insertar-region');
   }  
-  saltaAEditarRegion(idRegion:string){
+  async saltaAEditarRegion(idRegion:string){
     console.log('Estoy en editar region id='+idRegion)
     this.regionesSvc.dameRegion(idRegion).subscribe({
       next:(res:any)=>{
         console.log('Región regresada de forma exitosa')
         console.log(res);
-        this.leerRegiones();
+        //this.leerRegiones();
+        //this.router.navigateByUrl('/editar-region');
+        this.router.navigate(['/editar-region'],{state:{data:res}});
+
+
       },
       error:(error:any)=>{
         console.log('Error en la solicitud de la región')

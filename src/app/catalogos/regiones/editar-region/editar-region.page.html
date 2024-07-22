@@ -1,13 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>editar-region</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editar-region</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Editar Región</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formularioRegion" (ngSubmit)="editaRegion()">
+      <!--form-->
+
+
+        <ion-item>
+          <ion-input label="ID" label-placement="floating" formControlName="idRegion" [ngModel]="idRegion"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Nombre Región" label-placement="floating" formControlName="nombreRegion" [ngModel]="nombreRegion"></ion-input>
+        </ion-item>
+
+
+        <div class="button-container">
+          <!--ion-button type="submit" class="centered-button" [disabled]="!formularioRegion.valid" color="success"-->
+          <ion-button type="submit" class="centered-button" [disabled]="!formularioRegion.valid">
+            Edita Región
+          </ion-button>
+        </div>
+      </form>
+
+    </ion-card-content>
+
+  </ion-card>
 </ion-content>
