@@ -64,7 +64,7 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
       region.idRegion=this.formularioRegion.value.idRegion;
       region.nombreRegion=this.formularioRegion.value.nombreRegion;
       //this.regionesSvc.insertaRegion(region).subscribe({
-      this.regionesSvc.editarRegion(region).subscribe({  
+      this.regionesSvc.editaRegion(region).subscribe({  
         next:(res:any)=>{
           console.log('Región editada de forma exitosa')
           console.log(res);

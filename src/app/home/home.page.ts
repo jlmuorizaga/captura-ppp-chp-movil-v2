@@ -19,4 +19,7 @@ export class HomePage {
   saltaARegiones() {
     this.router.navigateByUrl('/regiones-ppal');
   }
+  saltaAEspecialidades() {
+    this.router.navigateByUrl('/especialidades-ppal');
+  }
 }

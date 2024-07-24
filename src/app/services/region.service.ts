@@ -30,7 +30,7 @@ export class RegionService {
     return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones,region);
   }  
 
-  editarRegion(region: Region) {
+  editaRegion(region: Region) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
     return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones + '/' + region.idRegion,region);
   }

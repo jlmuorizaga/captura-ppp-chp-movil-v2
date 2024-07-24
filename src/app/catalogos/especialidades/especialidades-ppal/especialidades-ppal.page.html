@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Especialidades</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">especialidades-ppal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarEspecialidad()" color="success">Insertar Especialidad</ion-button>
+  </p>
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID Especialidad</th>
+          <th>Nombre Especialidad</th>
+          <th>Ingredientes</th>
+          <th>Aplica 2x1</th>
+          <th>Aplica P1</th>
+          <th>Img Url</th>
+          <th></th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (especialidades){
+          @for (especialidad of especialidades; track $index) {
+        <tr>
+          <td>{{especialidad.id}}</td>
+          <td>{{especialidad.nombre}}</td>
+          <td>{{especialidad.ingredientes}}</td>
+          <td>{{especialidad.aplica_2x1}}</td>
+          <td>{{especialidad.aplica_p1}}</td>
+          <td>{{especialidad.img_url}}</td>
+          <td>      
+            <ion-button (click)="confirmaBorrar(especialidad)" color="danger">Borrar</ion-button>
+          </td>
+          <td>
+            <ion-button (click)="saltaAEditarEspecialidad(especialidad.id)">Editar</ion-button> <br>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+    
+    </table>
+  </div>
+
+</ion-content>

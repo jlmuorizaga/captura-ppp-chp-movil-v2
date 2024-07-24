@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>especialidades-ppal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Insertar Región</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formularioEspecialidad" (ngSubmit)="insertaEspecialidad()">
+        <ion-item>
+          <ion-input label="ID" label-placement="floating" formControlName="id"></ion-input>    
+        </ion-item>
+        <ion-item>
+          <ion-input label="Nombre Especialidad" label-placement="floating" formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Aplica 2x1" label-placement="floating" formControlName="aplica_2x1"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Aplica P1" label-placement="floating" formControlName="aplica_p1"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Img Url" label-placement="floating" formControlName="img_url"></ion-input>
+        </ion-item>
+        <div class="button-container">
+          <ion-button type="submit" class="centered-button" [disabled]="!formularioEspecialidad.valid" color="success">
+            Inserta Especialidad
+          </ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  
+  </ion-card>
+</ion-content>
