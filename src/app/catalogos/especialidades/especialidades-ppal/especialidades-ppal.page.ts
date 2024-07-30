@@ -48,6 +48,7 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
   }
 
   leerEspecialidades(){
+    debugger
     this.especialidadesSvc.dameListaEspecialidades().subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
