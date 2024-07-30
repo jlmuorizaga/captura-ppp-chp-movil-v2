@@ -22,4 +22,12 @@ export class HomePage {
   saltaAEspecialidades() {
     this.router.navigateByUrl('/especialidades-ppal');
   }
+  saltaAProductos() {
+    this.router.navigateByUrl('/especialidades-ppal');
+  }  
+  saltaASucursales() {
+    this.router.navigateByUrl('/sucursales-ppal');
+  }  
+
 }
+

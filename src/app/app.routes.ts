@@ -33,5 +33,9 @@ export const routes: Routes = [
   {
     path: 'editar-especialidad',
     loadComponent: () => import('./catalogos/especialidades/editar-especialidad/editar-especialidad.page').then( m => m.EditarEspecialidadPage)
+  },  {
+    path: 'sucursales-ppal',
+    loadComponent: () => import('./catalogos/sucursales/sucursales-ppal/sucursales-ppal.page').then( m => m.SucursalesPpalPage)
   },
+
 ];
