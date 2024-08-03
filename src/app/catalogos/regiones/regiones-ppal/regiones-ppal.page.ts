@@ -38,6 +38,12 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('Entré a regiones en OnInit');
+    debugger
+    let x=0;
+    x=x+1;
+    x=x+3;
+    x=x*4;
+    x=x-10;
   }
   
   ngOnDestroy(): void {
