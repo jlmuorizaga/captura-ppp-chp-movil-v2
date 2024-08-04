@@ -1,28 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol, 
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
   IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem } from '@ionic/angular/standalone';
   import { Region } from 'src/app/model/dto/region';
   import { RegionService } from 'src/app/services/region.service';
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { Utilerias } from 'src/app/utilerias/utilerias';
 
 @Component({
   selector: 'app-insertar-region',
   templateUrl: './insertar-region.page.html',
   styleUrls: ['./insertar-region.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput, 
-    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton, 
+  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
+    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
 export class InsertarRegionPage {
   formularioRegion: FormGroup;
 
-  constructor(private fb: FormBuilder,private regionesSvc:RegionService,private router: Router) { 
+  constructor(private fb: FormBuilder,private regionesSvc:RegionService,private router: Router) {
     this.formularioRegion = this.fb.group({
-      idRegion: ['', Validators.required],
+      //idRegion: ['', Validators.required],
       nombreRegion: ['', Validators.required]
     })
   }
@@ -32,19 +33,20 @@ export class InsertarRegionPage {
     if (this.formularioRegion.valid) {
       console.log(this.formularioRegion.value)
       let region:Region=new Region();
-      region.idRegion=this.formularioRegion.value.idRegion;
+      //region.idRegion=this.formularioRegion.value.idRegion;
+      region.idRegion=Utilerias.generaId();
       region.nombreRegion=this.formularioRegion.value.nombreRegion;
       this.regionesSvc.insertaRegion(region).subscribe({
         next:(res:any)=>{
           console.log('Región insertada de forma exitosa')
           console.log(res);
           this.saltaARegiones();
-  
+
         },
         error:(error:any)=>{
           console.log('Error en la inserción de la región')
           console.log(error)
-  
+
         }
       })
 
@@ -53,5 +55,5 @@ export class InsertarRegionPage {
   }
   saltaARegiones() {
     this.router.navigateByUrl('/regiones-ppal');
-  }  
+  }
 }

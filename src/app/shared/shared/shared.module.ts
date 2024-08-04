@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegionService } from 'src/app/services/region.service';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
+import { SucursalService } from 'src/app/services/sucursal.service';
 
 
 
@@ -11,6 +12,6 @@ import { EspecialidadService } from 'src/app/services/especialidad.service';
   imports: [
     CommonModule,HttpClientModule
   ],
-  providers:[RegionService,EspecialidadService]
+  providers:[RegionService,EspecialidadService,SucursalService]
 })
 export class SharedModule { }

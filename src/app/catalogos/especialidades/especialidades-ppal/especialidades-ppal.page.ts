@@ -2,7 +2,7 @@ import { SharedModule } from './../../../shared/shared/shared.module';
 import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton, 
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton,
   IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
@@ -15,7 +15,7 @@ import { NavigationEnd, Router } from '@angular/router';
   templateUrl: './especialidades-ppal.page.html',
   styleUrls: ['./especialidades-ppal.page.scss'],
   standalone: true,
-  imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon, 
+  imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class EspecialidadesPpalPage implements OnInit, OnDestroy {
@@ -23,11 +23,11 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
   especialidades!:Especialidad[];
   mensaje:string;
 
-  
+
   constructor(private especialidadesSvc:EspecialidadService,
     private alertController:AlertController,
-    private router: Router,private cdr: ChangeDetectorRef 
-  ) { 
+    private router: Router,private cdr: ChangeDetectorRef
+  ) {
     this.mensaje = 'Estoy en el constructor';
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -48,14 +48,13 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
   }
 
   leerEspecialidades(){
-    debugger
     this.especialidadesSvc.dameListaEspecialidades().subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
         console.log(res);
         this.especialidades=res;
         console.log(this.especialidades);
-        this.especialidades 
+        this.especialidades
         this.cdr.detectChanges();
 
       },
@@ -108,7 +107,7 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
     });
 
     await alert.present();
-  }  
+  }
 
   saltaAInsertarEspecialidad() {
     this.router.navigateByUrl('/insertar-especialidad');

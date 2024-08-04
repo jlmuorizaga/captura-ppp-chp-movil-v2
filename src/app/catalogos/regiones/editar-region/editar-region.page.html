@@ -13,13 +13,16 @@
       <ion-card-title>Editar Región</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <h1>
+        ID:  {{idRegion}}
+      </h1>
       <form [formGroup]="formularioRegion" (ngSubmit)="editaRegion()">
       <!--form-->
 
 
-        <ion-item>
+        <!--ion-item>
           <ion-input label="ID" label-placement="floating" formControlName="idRegion" [ngModel]="idRegion"></ion-input>
-        </ion-item>
+        </ion-item-->
 
         <ion-item>
           <ion-input label="Nombre Región" label-placement="floating" formControlName="nombreRegion" [ngModel]="nombreRegion"></ion-input>

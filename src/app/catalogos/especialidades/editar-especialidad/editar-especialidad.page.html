@@ -13,13 +13,17 @@
       <ion-card-title>Editar Especialidad</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <h1>
+        ID:  {{id}}
+      </h1>
       <form [formGroup]="formularioEspecialidad" (ngSubmit)="editaEspecialidad()">
       <!--form-->
 
 
-        <ion-item>
+        <!--ion-item>
           <ion-input label="ID" label-placement="floating" formControlName="id" [ngModel]="id"></ion-input>
-        </ion-item>
+        </!--ion-item-->
+
 
         <ion-item>
           <ion-input label="Nombre" label-placement="floating" formControlName="nombre" [ngModel]="nombre"></ion-input>

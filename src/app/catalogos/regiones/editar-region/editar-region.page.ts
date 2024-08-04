@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol, 
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
   IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem } from '@ionic/angular/standalone';
   import { Region } from 'src/app/model/dto/region';
   import { RegionService } from 'src/app/services/region.service';
@@ -14,8 +14,8 @@ import { ActivatedRoute,Route } from '@angular/router';
   templateUrl: './editar-region.page.html',
   styleUrls: ['./editar-region.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput, 
-    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton, 
+  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
+    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule,
   ]
 })
@@ -27,7 +27,7 @@ export class EditarRegionPage  implements OnInit {
   nombreRegion!:string;
   //mensaje:string;
 /*
-  constructor(private fb: FormBuilder,private regionesSvc:RegionService,private router: Router) { 
+  constructor(private fb: FormBuilder,private regionesSvc:RegionService,private router: Router) {
     this.formularioRegion = this.fb.group({
       idRegion: ['', Validators.required],
       nombreRegion: ['', Validators.required]
@@ -50,7 +50,7 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
 
   }
   this.formularioRegion = this.fb.group({
-    idRegion: ['', Validators.required],
+    //idRegion: ['', Validators.required],
     nombreRegion: ['', Validators.required]
   })
 }
@@ -61,20 +61,21 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
    if (this.formularioRegion.valid) {
       console.log(this.formularioRegion.value)
       let region:Region=new Region();
-      region.idRegion=this.formularioRegion.value.idRegion;
+      //region.idRegion=this.formularioRegion.value.idRegion;
+      region.idRegion=this.idRegion;
       region.nombreRegion=this.formularioRegion.value.nombreRegion;
       //this.regionesSvc.insertaRegion(region).subscribe({
-      this.regionesSvc.editaRegion(region).subscribe({  
+      this.regionesSvc.editaRegion(region).subscribe({
         next:(res:any)=>{
           console.log('Región editada de forma exitosa')
           console.log(res);
           this.saltaARegiones();
-  
+
         },
         error:(error:any)=>{
           console.log('Error en la edición de la región')
           console.log(error)
-  
+
         }
       })
 
@@ -83,6 +84,6 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
 
   saltaARegiones() {
     this.router.navigateByUrl('/regiones-ppal');
-  }  
+  }
 
 }

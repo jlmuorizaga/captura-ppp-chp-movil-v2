@@ -14,9 +14,9 @@
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="formularioEspecialidad" (ngSubmit)="insertaEspecialidad()">
-        <ion-item>
-          <ion-input label="ID" label-placement="floating" formControlName="id"></ion-input>    
-        </ion-item>
+        <!--ion-item>
+          <ion-input label="ID" label-placement="floating" formControlName="id"></ion-input>
+        </ion-item-->
         <ion-item>
           <ion-input label="Nombre Especialidad" label-placement="floating" formControlName="nombre"></ion-input>
         </ion-item>
@@ -39,6 +39,6 @@
         </div>
       </form>
     </ion-card-content>
-  
+
   </ion-card>
 </ion-content>

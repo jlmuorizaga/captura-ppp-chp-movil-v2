@@ -14,30 +14,11 @@
     </ion-toolbar>
   </ion-header>
 
-  
+
   <p style="text-align: center">
     <ion-button (click)="saltaAInsertarRegion()" color="success">Insertar Región</ion-button>
   </p>
 
-  
-  <!--ion-list>
-    @if (regiones) {
-    @for (region of regiones; track $index) {
-    <ion-item>
-      <ion-label>
-        {{region.idRegion}}
-      </ion-label>
-      <ion-label>
-        {{region.nombreRegion}}
-      </ion-label>
-      <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
-      <ion-button>Editar</ion-button> <br>
-    </ion-item>
-    }
-
-    }
-
-  </!--ion-list-->
 
   <div class="table-container">
     <table class="data-table">
@@ -54,7 +35,7 @@
         <tr>
           <td>{{region.idRegion}}</td>
           <td>{{region.nombreRegion}}</td>
-          <td>      
+          <td>
             <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
           </td>
           <td>
@@ -64,7 +45,7 @@
       }
       }
       </tbody>
-    
+
     </table>
   </div>
 
