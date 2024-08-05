@@ -15,7 +15,7 @@
   </ion-header>
 
   <p style="text-align: center">
-    <ion-button  color="success">Insertar Sucursal</ion-button>
+    <ion-button color="success">Insertar Sucursal</ion-button>
   </p>
 
   <div class="table-container">
@@ -25,27 +25,52 @@
           <th>ID Sucursal</th>
           <th>Clave Sucursal</th>
           <th>Nombre Sucursal</th>
+          <th>RFC</th>
+          <th>Domicilio</th>
+          <th>Teléfono</th>
+          <th>Hora Inicio</th>
+          <th>Hora Fin</th>
+          <th>Latitud</th>
+          <th>Longitud</th>
+          <th>ID Región</th>
+          <th>Venta Activa</th>
+          <th>PK</th>
+          <th>SK</th>
+          <th>Monto Mínimo Entrega Sucursal</th>
+          <th>Monto Mínimo Entrega Domicilio</th>
           <th colspan="2">Acciones</th>
         </tr>
       </thead>
-      <tbody>
-        @if (sucursales){
-          @for (sucursal of sucursales; track $index) {
-        <tr>
-          <td>{{sucursal.id}}</td>
-          <td>{{sucursal.clave}}</td>
-          <td>{{sucursal.nombre_sucursal}}</td>
-          <td>
-            <ion-button color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button >Editar</ion-button> <br>
-          </td>
-        </tr>
-      }
-      }
-      </tbody>
-
     </table>
+    <div class="table-body">
+      <table>
+        <tbody>
+          @if (sucursales){ @for (sucursal of sucursales; track $index) {
+          <tr>
+            <td>{{sucursal.id}}</td>
+            <td>{{sucursal.clave}}</td>
+            <td>{{sucursal.nombre_sucursal}}</td>
+            <td>{{sucursal.rfc}}</td>
+            <td>{{sucursal.domicilio}}</td>
+            <td>{{sucursal.telefono}}</td>
+            <td>{{sucursal.hora_inicio}}</td>
+            <td>{{sucursal.hora_fin}}</td>
+            <td>{{sucursal.latitud}}</td>
+            <td>{{sucursal.longitud}}</td>
+            <td>{{sucursal.id_region}}</td>
+            <td>{{sucursal.venta_activa}}</td>
+            <td>{{sucursal.pk}}</td>
+            <td>{{sucursal.sk}}</td>
+            <td>{{sucursal.monto_minimo_entrega_sucursal}}</td>
+            <td>{{sucursal.monto_minimo_entrega_domicilio}}</td>
+            <td>
+              <ion-button color="danger">Borrar</ion-button>
+            </td>
+            <td><ion-button>Editar</ion-button> <br /></td>
+          </tr>
+          } }
+        </tbody>
+      </table>
+    </div>
   </div>
 </ion-content>
