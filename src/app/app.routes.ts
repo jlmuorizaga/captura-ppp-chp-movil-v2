@@ -37,5 +37,9 @@ export const routes: Routes = [
     path: 'sucursales-ppal',
     loadComponent: () => import('./catalogos/sucursales/sucursales-ppal/sucursales-ppal.page').then( m => m.SucursalesPpalPage)
   },
+  {
+    path: 'productos-ppal',
+    loadComponent: () => import('./catalogos/productos/productos-ppal/productos-ppal.page').then( m => m.ProductosPpalPage)
+  },
 
 ];

@@ -23,7 +23,7 @@ export class HomePage {
     this.router.navigateByUrl('/especialidades-ppal');
   }
   saltaAProductos() {
-    this.router.navigateByUrl('/especialidades-ppal');
+    this.router.navigateByUrl('/productos-ppal');
   }  
   saltaASucursales() {
     this.router.navigateByUrl('/sucursales-ppal');
