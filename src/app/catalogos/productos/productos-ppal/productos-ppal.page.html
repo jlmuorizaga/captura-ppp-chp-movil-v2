@@ -8,9 +8,35 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Catalogo Productos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarProducto()" color="success">Insertar Producto</ion-button>
+  </p>
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID Región</th>
+          <th>Nombre Región</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (productos){
+          @for (producto of productos; track $index) {
+        <tr>
+          <td>{{producto.id}}</td>
+          <td>{{producto.descripcion}}</td>
+          <td>
+            <ion-button (click)="confirmaBorrar(producto)" color="danger">Borrar</ion-button>
+          </td>
+          <td>
+            <ion-button (click)="saltaAEditarProducto(producto.id)">Editar</ion-button> <br>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+
+    </table>
+  </div>  
 </ion-content>
