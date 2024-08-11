@@ -1,29 +1,29 @@
-import { SharedModule } from './../../../shared/shared/shared.module';
+import { TipoProducto } from '../../../model/dto/tipo-producto';
+import { SharedModule } from '../../../shared/shared/shared.module';
 import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton,
   IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
-import { ProductoService } from 'src/app/services/producto.service';
-import { Producto } from 'src/app/model/dto/producto';
+import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-productos-ppal',
-  templateUrl: './productos-ppal.page.html',
-  styleUrls: ['./productos-ppal.page.scss'],
+  selector: 'app-tipo-producto-ppal',
+  templateUrl: './tipo-producto-ppal.page.html',
+  styleUrls: ['./tipo-producto-ppal.page.scss'],
   standalone: true,
   imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class ProductosPpalPage implements OnInit, OnDestroy {
+export class TipoProductoPpalPage implements OnInit, OnDestroy{
   navigationSubscription:Subscription;
-  productos!:Producto[];
+  tipoProductos!:TipoProducto[];
   mensaje:string;
 
-  constructor(private productosSvc:ProductoService,
+  constructor(private tipoProductosSvc:TipoProductoService,
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
@@ -31,30 +31,30 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.leerProductos();
+        this.leerTipoProductos();
       });
 
   }
 
   ngOnInit() {
-    console.log('Entré a products en OnInit');
+    console.log('Entré a tipoProductos en OnInit');
   }
 
   ngOnDestroy(): void {
-    if (this.navigationSubscription){
+    if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
   }
 
-  leerProductos(){
-    this.productosSvc.dameListaProductos().subscribe({
+  leerTipoProductos(){
+    this.tipoProductosSvc.dameListaTipoProductos().subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
         console.log(res);
-        this.productos=res;
+        this.tipoProductos=res;
 
-        console.log(this.productos);
-        this.productos
+        console.log(this.tipoProductos);
+        this.tipoProductos
         this.cdr.detectChanges();
 
       },
@@ -65,27 +65,27 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
       }
     })
   }
-  borraProducto(id:string){
-    console.log('Voy a borrar este producto='+id);
+  borraTipoProducto(id:string){
+    console.log('Voy a borrar este tipo de producto='+id);
 
-    this.productosSvc.borraProducto(id).subscribe({
+    this.tipoProductosSvc.borraTipoProducto(id).subscribe({
       next:(res:any)=>{
-        console.log('Producto borrado de forma exitosa')
+        console.log('Tipo de Producto borrado de forma exitosa')
         console.log(res);
-        this.leerProductos();
+        this.leerTipoProductos();
       },
       error:(error:any)=>{
-        console.log('Error en el borrado de la región')
+        console.log('Error en el borrado del tipo de producto')
         console.log(error)
 
       }
     })
 
   }
-  async confirmaBorrar(producto:Producto){
+  async confirmaBorrar(tipoProducto:TipoProducto){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar el producto '+producto.id+' ?',
+      message: '¿Estás seguro de que deseas borrar el tipo de producto '+tipoProducto.descripcion+' ?',
       buttons: [
         {
           text: 'Cancelar',
@@ -98,7 +98,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
           text: 'Aceptar',
           handler: () => {
             console.log('Operación confirmada');
-            this.borraProducto(producto.id);
+            this.borraTipoProducto(tipoProducto.id);
             // Aquí puedes agregar la lógica para la operación a realizar
           }
         }
@@ -108,23 +108,23 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
     await alert.present();
 
   }
-  saltaAInsertarProducto() {
-    this.router.navigateByUrl('/insertar-producto');
+  saltaAInsertarTipoProducto() {
+    this.router.navigateByUrl('/insertar-tipo-producto');
   }
-  async saltaAEditarProducto(id:string){
-    console.log('Estoy en editar producto id='+id)
-    this.productosSvc.dameProducto(id).subscribe({
+  async saltaAEditarTipoProducto(id:string){
+    console.log('Estoy en editar tipo de producto id='+id)
+    this.tipoProductosSvc.dameTipoProducto(id).subscribe({
       next:(res:any)=>{
-        console.log('Región regresada de forma exitosa')
+        console.log('Tipo de producto regresado de forma exitosa')
         console.log(res);
         //this.leerRegiones();
         //this.router.navigateByUrl('/editar-region');
-        this.router.navigate(['/editar-producto'],{state:{data:res}});
+        this.router.navigate(['/editar-tipo-producto'],{state:{data:res}});
 
 
       },
       error:(error:any)=>{
-        console.log('Error en la solicitud de la región')
+        console.log('Error en la solicitud del tipo de producto')
         console.log(error)
 
       }

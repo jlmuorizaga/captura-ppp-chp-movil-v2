@@ -24,10 +24,13 @@ export class HomePage {
   }
   saltaAProductos() {
     this.router.navigateByUrl('/productos-ppal');
-  }  
+  }
   saltaASucursales() {
     this.router.navigateByUrl('/sucursales-ppal');
-  }  
+  }
+  saltaATipoProductos() {
+    this.router.navigateByUrl('/tipo-producto-ppal');
+  }
 
 }
 

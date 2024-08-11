@@ -7,5 +7,5 @@ export const environment = {
   especialidades:'/especialidades',
   sucursales:'/sucursales',
   productos:'/productos',
-
+  tiposProducto:'/tipos-producto',
 };

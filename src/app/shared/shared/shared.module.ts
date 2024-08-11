@@ -5,6 +5,7 @@ import { RegionService } from 'src/app/services/region.service';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
 import { SucursalService } from 'src/app/services/sucursal.service';
 import { ProductoService } from 'src/app/services/producto.service';
+import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 
 
 
@@ -13,6 +14,6 @@ import { ProductoService } from 'src/app/services/producto.service';
   imports: [
     CommonModule,HttpClientModule
   ],
-  providers:[RegionService,EspecialidadService,SucursalService,ProductoService]
+  providers:[RegionService,EspecialidadService,SucursalService,ProductoService,TipoProductoService]
 })
 export class SharedModule { }

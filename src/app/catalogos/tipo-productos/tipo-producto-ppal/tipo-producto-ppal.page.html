@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Tipo de Productos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarTipoProducto()" color="success">Insertar Tipo de Producto</ion-button>
+  </p>
+
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Descripción</th>
+          <th>Img URL</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (tipoProductos){
+          @for (tipoProducto of tipoProductos; track $index) {
+        <tr>
+          <td>{{tipoProducto.id}}</td>
+          <td>{{tipoProducto.descripcion}}</td>
+          <td>{{tipoProducto.img_url}}</td>
+          <td>
+            <ion-button (click)="confirmaBorrar(tipoProducto)" color="danger">Borrar</ion-button>
+          </td>
+          <td>
+            <ion-button (click)="saltaAEditarTipoProducto(tipoProducto.id)">Editar</ion-button> <br>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+
+    </table>
+  </div>
+
+
+</ion-content>
