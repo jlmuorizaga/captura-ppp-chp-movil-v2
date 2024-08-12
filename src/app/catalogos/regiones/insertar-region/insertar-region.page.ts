@@ -51,7 +51,6 @@ export class InsertarRegionPage {
       })
 
     }
-
   }
   saltaARegiones() {
     this.router.navigateByUrl('/regiones-ppal');
