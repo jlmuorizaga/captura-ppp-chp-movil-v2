@@ -22,7 +22,7 @@ export class InsertarProductoPage{
 
   constructor(private fb: FormBuilder,private productosSvc:ProductoService,private router: Router) {
     this.formularioProducto = this.fb.group({
-      descripcion: ['', Validators.required],
+      descripcion_p: ['', Validators.required],
       tamanio: ['', Validators.required],
       usa_salsa: ['', Validators.required],
       id_tipo_producto: ['', Validators.required],
@@ -38,7 +38,7 @@ export class InsertarProductoPage{
       console.log(this.formularioProducto.value)
       let producto:Producto=new Producto();
       producto.id=Utilerias.generaId();
-      producto.descripcion=this.formularioProducto.value.descripcion;
+      producto.descripcion_p=this.formularioProducto.value.descripcion_p;
       producto.tamanio=this.formularioProducto.value.tamanio;
       producto.usa_salsa=this.formularioProducto.value.usa_salsa;
       producto.id_tipo_producto=this.formularioProducto.value.id_tipo_producto;

@@ -7,5 +7,6 @@ export const environment = {
   especialidades:'/especialidades',
   sucursales:'/sucursales',
   productos:'/productos',
+  productos2:'/productos2',
   tiposProducto:'/tipos-producto',
 };

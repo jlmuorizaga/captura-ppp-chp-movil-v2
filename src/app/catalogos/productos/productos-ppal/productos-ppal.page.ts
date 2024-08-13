@@ -47,7 +47,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
   }
 
   leerProductos(){
-    this.productosSvc.dameListaProductos().subscribe({
+    this.productosSvc.dameListaProductos2().subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
         console.log(res);
