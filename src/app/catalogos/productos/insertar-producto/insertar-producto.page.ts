@@ -2,34 +2,72 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
-  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem } from '@ionic/angular/standalone';
+  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem, IonList,IonSelect,IonSelectOption } from '@ionic/angular/standalone';
   import { Producto } from 'src/app/model/dto/producto';
   import { ProductoService } from 'src/app/services/producto.service';
-  import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
+import { TipoProducto } from 'src/app/model/dto/tipo-producto';
+import {filter} from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
+import { TipoProductoService } from 'src/app/services/tipo-producto.service';
+import { Subscription } from 'rxjs';
+import { ChangeDetectorRef } from '@angular/core';
+
 @Component({
   selector: 'app-insertar-producto',
   templateUrl: './insertar-producto.page.html',
   styleUrls: ['./insertar-producto.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
+  imports: [IonList, IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,IonSelect,IonSelectOption,
     ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
 export class InsertarProductoPage{
-  formularioProducto:FormGroup
+  formularioProducto:FormGroup;
+  navigationSubscription:Subscription;
+  tipoProductos!:TipoProducto[];
+  mensaje:string;
 
-  constructor(private fb: FormBuilder,private productosSvc:ProductoService,private router: Router) {
+  constructor(private tipoProductosSvc:TipoProductoService,private fb: FormBuilder,private productosSvc:ProductoService,
+    private router: Router,private cdr: ChangeDetectorRef) {
     this.formularioProducto = this.fb.group({
       descripcion_p: ['', Validators.required],
       tamanio: ['', Validators.required],
       usa_salsa: ['', Validators.required],
-      id_tipo_producto: ['', Validators.required],
+     id_tipo_producto: ['', Validators.required],
       ruta_imagen: ['', Validators.required],
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
+    })
+
+    this.mensaje = 'Estoy en el constructor';
+    this.navigationSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerTipoProductos();
+      });
+  }
+
+  
+  leerTipoProductos(){
+    this.tipoProductosSvc.dameListaTipoProductos().subscribe({
+      next:(res:any)=>{
+        console.log('Servicio leido de forma exitosa')
+        console.log(res);
+        this.tipoProductos=res;
+
+        console.log(this.tipoProductos);
+        this.tipoProductos
+        this.cdr.detectChanges();
+
+      },
+      error:(error:any)=>{
+        console.log('Error en la lectura del servicio')
+        console.log(error)
+
+      }
     })
   }
 
