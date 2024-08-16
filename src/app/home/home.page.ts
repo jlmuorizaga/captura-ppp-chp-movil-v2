@@ -31,6 +31,9 @@ export class HomePage {
   saltaATipoProductos() {
     this.router.navigateByUrl('/tipo-producto-ppal');
   }
+  saltaASalsas() {
+    this.router.navigateByUrl('/salsas-ppal');
+  }
 
 }
 

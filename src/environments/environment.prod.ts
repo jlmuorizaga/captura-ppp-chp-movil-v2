@@ -9,4 +9,5 @@ export const environment = {
   productos:'/productos',
   productos2:'/productos2',
   tiposProducto:'/tipos-producto',
+  salsas:'/salsas',
 };

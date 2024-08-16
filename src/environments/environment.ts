@@ -8,4 +8,5 @@ export const environment = {
   sucursales:'/sucursales',
   productos:'/productos',
   tiposProducto:'/tipos-producto',
+  salsas:'/salsas',
 };

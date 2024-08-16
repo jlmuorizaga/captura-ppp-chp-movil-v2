@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Salsas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarSalsa()" color="success">Insertar Salsa</ion-button>
+  </p>
+
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Descripción</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (salsas){
+          @for (salsa of salsas; track $index) {
+        <tr>
+          <td>{{salsa.id}}</td>
+          <td>{{salsa.descripcion}}</td>
+          <td>
+            <ion-button (click)="confirmaBorrar(salsa)" color="danger">Borrar</ion-button>
+          </td>
+          <td>
+            <ion-button (click)="saltaAEditarSalsa(salsa.id)">Editar</ion-button> <br>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+
+    </table>
+  </div>
+
+
+</ion-content>
