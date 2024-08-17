@@ -61,6 +61,14 @@ export const routes: Routes = [
     path: 'salsas-ppal',
     loadComponent: () => import('./catalogos/salsas/salsas-ppal/salsas-ppal.page').then( m => m.SalsasPpalPage)
   },
+  {
+    path: 'insertar-salsa',
+    loadComponent: () => import('./catalogos/salsas/insertar-salsa/insertar-salsa.page').then( m => m.InsertarSalsaPage)
+  },
+  {
+    path: 'editar-salsa',
+    loadComponent: () => import('./catalogos/salsas/editar-salsa/editar-salsa.page').then( m => m.EditarSalsaPage)
+  },
 
 
 ];

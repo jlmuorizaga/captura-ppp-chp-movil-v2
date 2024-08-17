@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>editar-salsa</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Editar Salsa</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>
+        ID:  {{id}}
+      </h1>
+      <form [formGroup]="formularioSalsa" (ngSubmit)="editaSalsa()">
+       <ion-item>
+          <ion-input label="Descripción" label-placement="floating" formControlName="descripcion" [ngModel]="descripcion"></ion-input>
+        </ion-item>
+
+
+        <div class="button-container">
+          <!--ion-button type="submit" class="centered-button" [disabled]="!formularioRegion.valid" color="success"-->
+          <ion-button type="submit" class="centered-button" [disabled]="!formularioSalsa.valid">
+            Edita Salsa
+          </ion-button>
+        </div>
+      </form>
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
