@@ -1,22 +1,40 @@
-
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar color="custom">
-      <ion-title class="ion-text-center" style="font-size: 24px;">Sistema de Captura de Precios, Productos y Promociones CheesePizza</ion-title>
+      <ion-title class="ion-text-center" style="font-size: 24px"
+        >Sistema de Captura de Precios, Productos y Promociones
+        CheesePizza</ion-title
+      >
+
+
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-list>
-      <ion-item>
-        <!--ion-select aria-label="Food" [compareWith]="compareWith" placeholder="Select food" (ionChange)="handleChange($event)"-->
-          <ion-select aria-label="Food"  placeholder="Selecciona Sucursal">
-          <ion-select-option *ngFor="let sucursal of sucursales" [value]="sucursal.clave">
-            {{ sucursal.clave}} {{sucursal.nombre_sucursal}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-
-
-    <ion-button (click)="saltaAMenuCatalogos()">Ingresar</ion-button>
+    <form [formGroup]="formulario" (ngSubmit)="saltaAMenuCatalogos()">
+      <div style="display: flex; justify-content: center; gap: 10px">
+        <ion-list>
+          <ion-item>
+            <!--ion-select aria-label="Food" [compareWith]="compareWith" placeholder="Select food" (ionChange)="handleChange($event)"-->
+            <ion-select
+              aria-label="Food"
+              placeholder="Selecciona Sucursal"
+              formControlName="cve_sucursal"
+            >
+              <ion-select-option
+                *ngFor="let sucursal of sucursales"
+                [value]="sucursal.clave"
+              >
+                {{ sucursal.clave}}
+                {{sucursal.nombre_sucursal}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
+      <!--ion-button type="submit" (click)="saltaAMenuCatalogos()">Ingresar</!--ion-button-->
+      <div style="display: flex; justify-content: center; gap: 10px">
+        <ion-button type="submit" color="success">Ingresar</ion-button>
+      </div>
+    </form>
   </ion-content>
 </div>

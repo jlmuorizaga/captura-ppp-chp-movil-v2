@@ -9,6 +9,7 @@ import { EspecialidadService } from 'src/app/services/especialidad.service';
 import { Especialidad } from 'src/app/model/dto/especialidad';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-especialidades-ppal',
@@ -26,9 +27,11 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
 
   constructor(private especialidadesSvc:EspecialidadService,
     private alertController:AlertController,
-    private router: Router,private cdr: ChangeDetectorRef
+    private router: Router,private cdr: ChangeDetectorRef,
+    private globalService: GlobalService
   ) {
-    this.mensaje = 'Estoy en el constructor';
+    this.mensaje = 'Estoy en el constructor de especialidades-ppal';
+    console.log('Sucursal leido desde especialidades-ppal==>',this.globalService.sucursalGlobal);
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {

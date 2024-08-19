@@ -1,15 +1,31 @@
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar color="custom">
-      <ion-title class="ion-text-center" style="font-size: 24px;">Sistema de Captura de Precios, Productos y Promociones CheesePizza</ion-title>
+      <ion-title class="ion-text-center" style="font-size: 24px">
+        <div style="display: flex; justify-content: space-between; width: 100%;">
+          <div style="text-align: left;">Sucursal: {{sucursal}}</div>
+          <div style="text-align: center;">Sistema de Captura de Precios, Productos y Promociones
+            CheesePizza</div>
+          <div style="text-align: right;">Usuario: paco.oliva</div>
+        </div>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-button (click)="saltaAEspecialidades()">Especialidades</ion-button>
-    <ion-button (click)="saltaARegiones()">Regiones</ion-button>
-    <ion-button (click)="saltaAProductos()">Productos</ion-button>
-    <ion-button (click)="saltaASucursales()">Sucursales</ion-button>
-    <ion-button (click)="saltaATipoProductos()">Tipos de Producto</ion-button>
-    <ion-button (click)="saltaASalsas()">Salsas</ion-button><br>
+    <div style="display: flex; justify-content: center; gap: 10px">
+      <ion-button (click)="saltaAEspecialidades()">Especialidades</ion-button>
+      <ion-button (click)="saltaARegiones()">Regiones</ion-button>
+      <ion-button (click)="saltaAProductos()">Productos</ion-button>
+      <ion-button (click)="saltaASucursales()">Sucursales</ion-button>
+      <ion-button (click)="saltaATipoProductos()">Tipos de Producto</ion-button>
+      <ion-button (click)="saltaASalsas()">Salsas</ion-button>
+    </div>
+    <ion-content class="ion-padding">
+      <div style="display: flex; justify-content: center; gap: 10px">
+        <ion-button (click)="saltaAHomePage()" color="warning"
+          >Cambiar de Sucursal</ion-button
+        >
+      </div>
+    </ion-content>
   </ion-content>
 </div>

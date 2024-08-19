@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
-  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem, IonList,IonSelect,IonSelectOption } from '@ionic/angular/standalone';
+  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel,
+  IonItem, IonList,IonSelect,IonSelectOption } from '@ionic/angular/standalone';
   import { Producto } from 'src/app/model/dto/producto';
   import { ProductoService } from 'src/app/services/producto.service';
 import { SharedModule } from 'src/app/shared/shared/shared.module';

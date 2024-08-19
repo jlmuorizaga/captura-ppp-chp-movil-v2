@@ -1,7 +1,7 @@
 import { SharedModule } from '../shared/shared/shared.module';
 import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar,
   IonButtons, IonBackButton, IonButton,AlertController, IonList, IonItem,IonSelect,IonSelectOption } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,7 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { SucursalService } from 'src/app/services/sucursal.service';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-home',
@@ -17,16 +18,19 @@ import { SucursalService } from 'src/app/services/sucursal.service';
   standalone: true,
   imports: [IonItem, IonList, IonButton, SharedModule,IonBackButton, IonButtons, IonContent,
     IonHeader, IonTitle, IonToolbar,IonSelect,IonSelectOption,
-    CommonModule, FormsModule]
+    CommonModule, FormsModule,ReactiveFormsModule]
 })
 export class HomePage implements OnInit,OnDestroy {
+  formulario:FormGroup;
   navigationSubscription:Subscription;
   sucursales!:Sucursal[];
   mensaje:string;
 
   constructor(private sucursalesSvc:SucursalService,
     private alertController:AlertController,
-    private router: Router,private cdr: ChangeDetectorRef
+    private router: Router,private cdr: ChangeDetectorRef,
+    private globalService: GlobalService,
+    private fb:FormBuilder
   ) {
     this.mensaje = 'Estoy en el constructor';
     this.navigationSubscription = this.router.events
@@ -34,6 +38,10 @@ export class HomePage implements OnInit,OnDestroy {
       .subscribe(() => {
         this.leerSucursales();
       });
+      this.formulario=this.fb.group({
+        cve_sucursal: ['', Validators.required],
+
+      })
   }
 
   ngOnInit() {
@@ -46,6 +54,7 @@ export class HomePage implements OnInit,OnDestroy {
   }
 
   saltaAMenuCatalogos() {
+    this.globalService.sucursalGlobal = this.formulario.value.cve_sucursal;
     this.router.navigateByUrl('/menu-catalogos');
   }
 

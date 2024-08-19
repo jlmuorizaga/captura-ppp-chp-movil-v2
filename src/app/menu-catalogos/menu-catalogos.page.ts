@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-menu-catalogos',
@@ -11,8 +12,12 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/a
 })
 export class MenuCatalogosPage{
   mensaje:string;
-  constructor(private router:Router) {
+  sucursal:string;
+  constructor(private router:Router,private globalService: GlobalService) {
     this.mensaje='Estoy en el constructor';
+    console.log('Sucursal==>',this.globalService.sucursalGlobal);
+    this.sucursal=this.globalService.sucursalGlobal;
+
   }
 
   saltaARegiones() {
@@ -32,6 +37,10 @@ export class MenuCatalogosPage{
   }
   saltaASalsas() {
     this.router.navigateByUrl('/salsas-ppal');
+  }
+
+    saltaAHomePage() {
+    this.router.navigateByUrl('/home');
   }
 
 
