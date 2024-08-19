@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar,
   IonButtons, IonBackButton, IonButton,AlertController } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
-import { RegionService } from 'src/app/services/region.service';
 import { Sucursal } from 'src/app/model/dto/sucursal';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';

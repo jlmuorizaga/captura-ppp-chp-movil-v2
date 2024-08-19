@@ -6,11 +6,17 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-button (click)="saltaAEspecialidades()">Especialidades</ion-button>
-    <ion-button (click)="saltaARegiones()">Regiones</ion-button>
-    <ion-button (click)="saltaAProductos()">Productos</ion-button>
-    <ion-button (click)="saltaASucursales()">Sucursales</ion-button>
-    <ion-button (click)="saltaATipoProductos()">Tipos de Producto</ion-button>
-    <ion-button (click)="saltaASalsas()">Salsas</ion-button><br>
+    <ion-list>
+      <ion-item>
+        <!--ion-select aria-label="Food" [compareWith]="compareWith" placeholder="Select food" (ionChange)="handleChange($event)"-->
+          <ion-select aria-label="Food"  placeholder="Selecciona Sucursal">
+          <ion-select-option *ngFor="let sucursal of sucursales" [value]="sucursal.clave">
+            {{ sucursal.clave}} {{sucursal.nombre_sucursal}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-button (click)="saltaAMenuCatalogos()">Ingresar</ion-button>
   </ion-content>
 </div>

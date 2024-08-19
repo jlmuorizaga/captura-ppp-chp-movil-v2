@@ -1,39 +1,75 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
-
+import { SharedModule } from '../shared/shared/shared.module';
+import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar,
+  IonButtons, IonBackButton, IonButton,AlertController, IonList, IonItem,IonSelect,IonSelectOption } from '@ionic/angular/standalone';
+import { Subscription } from 'rxjs';
+import { Sucursal } from 'src/app/model/dto/sucursal';
+import {filter} from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
+import { SucursalService } from 'src/app/services/sucursal.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonButton, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonItem, IonList, IonButton, SharedModule,IonBackButton, IonButtons, IonContent,
+    IonHeader, IonTitle, IonToolbar,IonSelect,IonSelectOption,
+    CommonModule, FormsModule]
 })
-export class HomePage {
+export class HomePage implements OnInit,OnDestroy {
+  navigationSubscription:Subscription;
+  sucursales!:Sucursal[];
   mensaje:string;
-  constructor(private router:Router) {
-    this.mensaje='Estoy en el constructor';
+
+  constructor(private sucursalesSvc:SucursalService,
+    private alertController:AlertController,
+    private router: Router,private cdr: ChangeDetectorRef
+  ) {
+    this.mensaje = 'Estoy en el constructor';
+    this.navigationSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerSucursales();
+      });
   }
 
-  saltaARegiones() {
-    this.router.navigateByUrl('/regiones-ppal');
+  ngOnInit() {
+    console.log('Entré a sucursales en OnInit()');
   }
-  saltaAEspecialidades() {
-    this.router.navigateByUrl('/especialidades-ppal');
+  ngOnDestroy(): void {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
   }
-  saltaAProductos() {
-    this.router.navigateByUrl('/productos-ppal');
+
+  saltaAMenuCatalogos() {
+    this.router.navigateByUrl('/menu-catalogos');
   }
-  saltaASucursales() {
-    this.router.navigateByUrl('/sucursales-ppal');
+
+  leerSucursales(){
+    this.sucursalesSvc.dameListaSucursales().subscribe({
+      next:(res:any)=>{
+        console.log('Servicio leido de forma exitosa')
+        console.log(res);
+        this.sucursales=res;
+
+
+        console.log(this.sucursales);
+        this.sucursales
+        this.cdr.detectChanges();
+
+      },
+      error:(error:any)=>{
+        console.log('Error en la lectura del servicio')
+        console.log(error)
+
+      }
+    })
   }
-  saltaATipoProductos() {
-    this.router.navigateByUrl('/tipo-producto-ppal');
-  }
-  saltaASalsas() {
-    this.router.navigateByUrl('/salsas-ppal');
-  }
+
 
 }
 

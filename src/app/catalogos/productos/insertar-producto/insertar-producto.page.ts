@@ -50,7 +50,7 @@ export class InsertarProductoPage{
       });
   }
 
-  
+
   leerTipoProductos(){
     this.tipoProductosSvc.dameListaTipoProductos().subscribe({
       next:(res:any)=>{

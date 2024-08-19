@@ -69,6 +69,10 @@ export const routes: Routes = [
     path: 'editar-salsa',
     loadComponent: () => import('./catalogos/salsas/editar-salsa/editar-salsa.page').then( m => m.EditarSalsaPage)
   },
+  {
+    path: 'menu-catalogos',
+    loadComponent: () => import('./menu-catalogos/menu-catalogos.page').then( m => m.MenuCatalogosPage)
+  },
 
 
 ];
