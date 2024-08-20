@@ -73,6 +73,10 @@ export const routes: Routes = [
     path: 'menu-catalogos',
     loadComponent: () => import('./menu-catalogos/menu-catalogos.page').then( m => m.MenuCatalogosPage)
   },
+  {
+    path: 'relacion-etps-ppal',
+    loadComponent: () => import('./catalogos/relacion-etps/relacion-etps-ppal/relacion-etps-ppal.page').then( m => m.RelacionEtpsPpalPage)
+  },
 
 
 ];

@@ -9,4 +9,5 @@ export const environment = {
   productos:'/productos',
   tiposProducto:'/tipos-producto',
   salsas:'/salsas',
+  relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',
 };

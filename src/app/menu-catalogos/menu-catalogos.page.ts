@@ -38,6 +38,10 @@ export class MenuCatalogosPage{
   saltaASalsas() {
     this.router.navigateByUrl('/salsas-ppal');
   }
+  saltaARelacionETPS() {
+    console.log('Entré a saltaARelacionETPS()')
+    this.router.navigateByUrl('/relacion-etps-ppal');
+  }
 
     saltaAHomePage() {
     this.router.navigateByUrl('/home');

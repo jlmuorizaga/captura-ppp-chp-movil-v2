@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Relación, Especialidad, Tamaño, Precio, Sucursal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button color="success">Insertar Registro en Relacion Especialidad, Tamaño, Precio, Sucursal</ion-button>
+  </p>
+
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID Especialidad</th>
+          <th>Nombre Región</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (registrosRelacionEtps){
+          @for (registro of registrosRelacionEtps; track $index) {
+        <tr>
+          <td>{{registro.idEspecialidad}}</td>
+          <td>{{registro.pizzaNombre}}</td>
+          <td>
+            <ion-button color="danger">Borrar</ion-button>
+          </td>
+          <td>
+            <ion-button>Editar</ion-button> <br>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+
+    </table>
+  </div>
+
+
+</ion-content>

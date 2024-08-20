@@ -56,12 +56,8 @@ td{
 }
 
 .ion-color-custom {
-  --ion-color-base: #ff8b06f9;
-  //--ion-color-base-rgb: 255, 87, 51;
-  --ion-color-contrast: #ffffff;
-  //--ion-color-contrast-rgb: 255, 255, 255;
-  //--ion-color-shade: #ed4908;
-  //--ion-color-tint: #ed4908;
+  //--ion-color-base: #ff8b06f9;  
+  --ion-color-contrast: #5d0909;  
 }
 ion-toolbar {
   height: 100px; /* Ajusta esta altura según tus necesidades */
@@ -77,4 +73,10 @@ ion-title {
 ion-button {
   width: 250px;
   height: 80px;
+  --background: linear-gradient(135deg, #ff6600, #ff9d00);
+  //--background: #ff6600e1;
+  --color: white; /* Color del texto */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
 }
