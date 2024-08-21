@@ -15,8 +15,8 @@ export class MenuCatalogosPage{
   sucursal:string;
   constructor(private router:Router,private globalService: GlobalService) {
     this.mensaje='Estoy en el constructor';
-    console.log('Sucursal==>',this.globalService.sucursalGlobal);
-    this.sucursal=this.globalService.sucursalGlobal;
+    console.log('Sucursal==>',this.globalService.cveSucursalGlobal);
+    this.sucursal=this.globalService.cveSucursalGlobal;
 
   }
 

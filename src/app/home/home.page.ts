@@ -54,7 +54,7 @@ export class HomePage implements OnInit,OnDestroy {
   }
 
   saltaAMenuCatalogos() {
-    this.globalService.sucursalGlobal = this.formulario.value.cve_sucursal;
+    this.globalService.cveSucursalGlobal = this.formulario.value.cve_sucursal;
     this.router.navigateByUrl('/menu-catalogos');
   }
 

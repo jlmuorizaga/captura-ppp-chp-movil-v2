@@ -9,6 +9,9 @@ import { RelacionETPS } from 'src/app/model/dto/relacion-etps';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { RelacionEtpsService } from 'src/app/services/relacion-etps.service';
+import { GlobalService } from 'src/app/services/global.service';
+
+
 @Component({
   selector: 'app-relacion-etps-ppal',
   templateUrl: './relacion-etps-ppal.page.html',
@@ -21,16 +24,21 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   registrosRelacionEtps!:RelacionETPS[];
   mensaje:string;
+  cveSucursal:string;
 
   constructor(private registrosRelacionEtpsSvc:RelacionEtpsService,
     private alertController:AlertController,
-    private router: Router,private cdr: ChangeDetectorRef
+    private router: Router,private cdr: ChangeDetectorRef,
+    private globalService: GlobalService
   ) {
+    console.log('globalService=',this.globalService.cveSucursalGlobal);
+    this.cveSucursal=this.globalService.cveSucursalGlobal;
     this.mensaje = 'Estoy en el constructor';
+    
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.leerRegistrosRelacionEtps('00CHP20201201191758267208241');
+        this.leerRegistrosRelacionEtps(this.globalService.cveSucursalGlobal);
       });
   }
 
