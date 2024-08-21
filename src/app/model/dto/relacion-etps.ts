@@ -4,6 +4,7 @@ export class RelacionETPS{
     idTamanioPizza!:string;
     pizzaTamanio!:string;
     idSucursal!:string;
+    nombreSucursal!:string;
     precio!:string;
     precio_p1!:string;
     precioP1!:string;

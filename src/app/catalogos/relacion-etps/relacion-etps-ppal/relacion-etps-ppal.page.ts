@@ -30,7 +30,7 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.leerRegistrosRelacionEtps('00CHP20201201183424889721458');
+        this.leerRegistrosRelacionEtps('00CHP20201201191758267208241');
       });
   }
 
