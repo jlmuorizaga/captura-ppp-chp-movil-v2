@@ -32,10 +32,10 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
       .subscribe(() => {
         this.leerRegistrosRelacionEtps('00CHP20201201183424889721458');
       });
-
   }
 
   ngOnInit() {
+    console.log('Entré a relacion-etps-ppal en OnInit');
   }
 
   ngOnDestroy(): void {
@@ -46,11 +46,11 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
   leerRegistrosRelacionEtps(id:string){
     this.registrosRelacionEtpsSvc.dameListaRelacionEspecialidadTamanioPrecioSucursal(id).subscribe({
       next:(res:any)=>{
-        console.log('Servicio leido de forma exitosa')
+        console.log('Servicio leido de forma exitosa en relacion-etps')
         console.log(res);
         this.registrosRelacionEtps=res;
 
-  
+
         console.log(this.registrosRelacionEtps);
         this.registrosRelacionEtps
         this.cdr.detectChanges();

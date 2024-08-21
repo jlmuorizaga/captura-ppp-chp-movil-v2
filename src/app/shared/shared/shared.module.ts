@@ -7,6 +7,7 @@ import { SucursalService } from 'src/app/services/sucursal.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import { SalsaService } from 'src/app/services/salsa.service';
+import { RelacionEtpsService } from 'src/app/services/relacion-etps.service';
 
 
 
@@ -16,6 +17,6 @@ import { SalsaService } from 'src/app/services/salsa.service';
     CommonModule,HttpClientModule
   ],
   providers:[RegionService,EspecialidadService,SucursalService,ProductoService,
-    TipoProductoService,SalsaService]
+    TipoProductoService,SalsaService,RelacionEtpsService]
 })
 export class SharedModule { }
