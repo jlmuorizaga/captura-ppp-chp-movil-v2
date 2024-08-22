@@ -39,7 +39,7 @@ export class HomePage implements OnInit,OnDestroy {
         this.leerSucursales();
       });
       this.formulario=this.fb.group({
-        cve_sucursal: ['', Validators.required],
+        id_sucursal: ['', Validators.required],
 
       })
   }
@@ -54,7 +54,7 @@ export class HomePage implements OnInit,OnDestroy {
   }
 
   saltaAMenuCatalogos() {
-    this.globalService.cveSucursalGlobal = this.formulario.value.cve_sucursal;
+    this.globalService.idSucursalGlobal = this.formulario.value.id_sucursal;
     this.router.navigateByUrl('/menu-catalogos');
   }
 
@@ -64,8 +64,6 @@ export class HomePage implements OnInit,OnDestroy {
         console.log('Servicio leido de forma exitosa')
         console.log(res);
         this.sucursales=res;
-
-
         console.log(this.sucursales);
         this.sucursales
         this.cdr.detectChanges();

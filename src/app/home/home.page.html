@@ -18,11 +18,11 @@
             <ion-select
               aria-label="Food"
               placeholder="Selecciona Sucursal"
-              formControlName="cve_sucursal"
+              formControlName="id_sucursal"
             >
               <ion-select-option
                 *ngFor="let sucursal of sucursales"
-                [value]="sucursal.clave"
+                [value]="sucursal.id"
               >
                 {{ sucursal.clave}}
                 {{sucursal.nombre_sucursal}}</ion-select-option

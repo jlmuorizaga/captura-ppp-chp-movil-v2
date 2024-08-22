@@ -10,6 +10,8 @@ import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { RelacionEtpsService } from 'src/app/services/relacion-etps.service';
 import { GlobalService } from 'src/app/services/global.service';
+import { SucursalService } from 'src/app/services/sucursal.service';
+import { Sucursal } from 'src/app/model/dto/sucursal';
 
 
 @Component({
@@ -24,22 +26,25 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   registrosRelacionEtps!:RelacionETPS[];
   mensaje:string;
-  cveSucursal:string;
+  idSucursal:string;
+  sucursal!:Sucursal;
 
   constructor(private registrosRelacionEtpsSvc:RelacionEtpsService,
+    private sucursalesSvc:SucursalService,
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef,
     private globalService: GlobalService
   ) {
-    console.log('globalService=',this.globalService.cveSucursalGlobal);
-    this.cveSucursal=this.globalService.cveSucursalGlobal;
+    console.log('globalService=',this.globalService.idSucursalGlobal);
+    this.idSucursal=this.globalService.idSucursalGlobal;
     this.mensaje = 'Estoy en el constructor';
-    
+
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.leerRegistrosRelacionEtps(this.globalService.cveSucursalGlobal);
+        this.leerRegistrosRelacionEtps(this.globalService.idSucursalGlobal);
       });
+      this.dameSucursal(this.idSucursal);
   }
 
   ngOnInit() {
@@ -51,8 +56,8 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
       this.navigationSubscription.unsubscribe();
     }
   }
-  leerRegistrosRelacionEtps(id:string){
-    this.registrosRelacionEtpsSvc.dameListaRelacionEspecialidadTamanioPrecioSucursal(id).subscribe({
+  leerRegistrosRelacionEtps(idSucursal:string){
+    this.registrosRelacionEtpsSvc.dameListaRelacionEspecialidadTamanioPrecioSucursal(idSucursal).subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa en relacion-etps')
         console.log(res);
@@ -61,6 +66,26 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
 
         console.log(this.registrosRelacionEtps);
         this.registrosRelacionEtps
+        this.cdr.detectChanges();
+
+      },
+      error:(error:any)=>{
+        console.log('Error en la lectura del servicio')
+        console.log(error)
+
+      }
+    })
+  }
+
+  dameSucursal(idSucursal:string){
+    this.sucursalesSvc.dameSucursal(idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Entré a dameSucursal')
+       // console.log(res);
+        this.sucursal=res;
+
+
+        console.log(this.sucursal);
         this.cdr.detectChanges();
 
       },

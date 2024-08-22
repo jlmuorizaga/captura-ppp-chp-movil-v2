@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
 import { GlobalService } from '../services/global.service';
+import { SucursalService } from '../services/sucursal.service';
+import { Sucursal } from '../model/dto/sucursal';
 
 @Component({
   selector: 'app-menu-catalogos',
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonButton, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonButton, SharedModule,IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class MenuCatalogosPage{
   mensaje:string;
-  sucursal:string;
-  constructor(private router:Router,private globalService: GlobalService) {
+  idSucursal:string;
+  sucursal!:Sucursal;
+  constructor(private router:Router,private globalService: GlobalService,
+    private sucursalesSvc:SucursalService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.mensaje='Estoy en el constructor';
-    console.log('Sucursal==>',this.globalService.cveSucursalGlobal);
-    this.sucursal=this.globalService.cveSucursalGlobal;
+    console.log('Sucursal==>',this.globalService.idSucursalGlobal);
+    this.idSucursal=this.globalService.idSucursalGlobal;
+    this.dameSucursal(this.idSucursal);
 
   }
 
@@ -47,6 +55,24 @@ export class MenuCatalogosPage{
     this.router.navigateByUrl('/home');
   }
 
+  dameSucursal(idSucursal:string){
+    this.sucursalesSvc.dameSucursal(idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Entré a dameSucursal')
+       // console.log(res);
+        this.sucursal=res;
 
+
+        console.log(this.sucursal);
+        this.cdr.detectChanges();
+
+      },
+      error:(error:any)=>{
+        console.log('Error en la lectura del servicio')
+        console.log(error)
+
+      }
+    })
+  }
 
 }

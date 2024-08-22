@@ -31,7 +31,7 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
     private globalService: GlobalService
   ) {
     this.mensaje = 'Estoy en el constructor de especialidades-ppal';
-    console.log('Sucursal leido desde especialidades-ppal==>',this.globalService.cveSucursalGlobal);
+    console.log('Sucursal leido desde especialidades-ppal==>',this.globalService.idSucursalGlobal);
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
