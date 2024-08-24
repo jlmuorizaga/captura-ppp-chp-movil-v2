@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>insertar-promocion-especial</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Insertar Promoción Especial</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="insertaPromocionEspecial()">
+      <ion-item>
+        <ion-input label="Nombre" label-placement="floating" formControlName="nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Descripcion" label-placement="floating" formControlName="descripcion"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Tipo" label-placement="floating" formControlName="tipo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Definición" label-placement="floating" formControlName="definicion"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Precio" label-placement="floating" formControlName="precio"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Activa" label-placement="floating" formControlName="activa"></ion-input>
+      </ion-item>
+      <div class="button-container">
+        <ion-button type="submit" class="centered-button" [disabled]="!formularioPromocionEspecial.valid" color="success">
+          Inserta Promoción Especial
+        </ion-button>
+      </div>
+    </form>
+  </ion-card-content>
+</ion-card>
+</ion-content>

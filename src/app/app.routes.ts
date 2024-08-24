@@ -57,7 +57,8 @@ export const routes: Routes = [
   {
     path: 'insertar-tipo-producto',
     loadComponent: () => import('./catalogos/tipo-productos/insertar-tipo-producto/insertar-tipo-producto.page').then( m => m.InsertarTipoProductoPage)
-  },  {
+  },
+  {
     path: 'salsas-ppal',
     loadComponent: () => import('./catalogos/salsas/salsas-ppal/salsas-ppal.page').then( m => m.SalsasPpalPage)
   },
@@ -76,6 +77,18 @@ export const routes: Routes = [
   {
     path: 'relacion-etps-ppal',
     loadComponent: () => import('./catalogos/relacion-etps/relacion-etps-ppal/relacion-etps-ppal.page').then( m => m.RelacionEtpsPpalPage)
+  },
+  {
+    path: 'promocion-especial-ppal',
+    loadComponent: () => import('./catalogos/promocion-especial/promocion-especial-ppal/promocion-especial-ppal.page').then( m => m.PromocionEspecialPpalPage)
+  },
+  {
+    path: 'insertar-promocion-especial',
+    loadComponent: () => import('./catalogos/promocion-especial/insertar-promocion-especial/insertar-promocion-especial.page').then( m => m.InsertarPromocionEspecialPage)
+  },
+  {
+    path: 'editar-promocion-especial',
+    loadComponent: () => import('./catalogos/promocion-especial/editar-promocion-especial/editar-promocion-especial.page').then( m => m.EditarPromocionEspecialPage)
   },
 
 

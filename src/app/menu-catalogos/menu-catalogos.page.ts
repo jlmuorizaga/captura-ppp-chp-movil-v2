@@ -51,6 +51,10 @@ export class MenuCatalogosPage{
     this.router.navigateByUrl('/relacion-etps-ppal');
   }
 
+  saltaAPromocionEspecial() {
+    this.router.navigateByUrl('/promocion-especial-ppal');
+  }
+
     saltaAHomePage() {
     this.router.navigateByUrl('/home');
   }

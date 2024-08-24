@@ -24,11 +24,10 @@ export class RegionService {
   borraRegion(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
     return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones + '/' + id);
-
   }
   insertaRegion(region:Region) {
     return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones,region);
-  }  
+  }
 
   editaRegion(region: Region) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
