@@ -23,7 +23,8 @@ export class PromocionEspecialService {
   insertaPromocionEspecial(promocionEspecial:PromocionEspecial) {
     return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales,promocionEspecial);
   }
-  editaRegion(promocionEspecial: PromocionEspecial) {
+  editaPromocionEspecial(promocionEspecial: PromocionEspecial) {
+    console.log(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales + '/' + promocionEspecial.idPromocion,promocionEspecial);
     return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales + '/' + promocionEspecial.idPromocion,promocionEspecial);
   }
 }
