@@ -17,14 +17,17 @@ export class MenuCatalogosPage{
   mensaje:string;
   idSucursal:string;
   sucursal!:Sucursal;
+  cveSucursal!:string;
+
   constructor(private router:Router,private globalService: GlobalService,
     private sucursalesSvc:SucursalService,
     private cdr: ChangeDetectorRef
   ) {
     this.mensaje='Estoy en el constructor';
-    console.log('Sucursal==>',this.globalService.idSucursalGlobal);
+
     this.idSucursal=this.globalService.idSucursalGlobal;
     this.dameSucursal(this.idSucursal);
+    console.log('Sucursal==>',this.globalService.idSucursalGlobal);
 
   }
 
@@ -67,7 +70,9 @@ export class MenuCatalogosPage{
         this.sucursal=res;
 
 
+        console.log('this.sucursal==>>');
         console.log(this.sucursal);
+        this.cveSucursal=this.sucursal.clave;
         this.cdr.detectChanges();
 
       },
