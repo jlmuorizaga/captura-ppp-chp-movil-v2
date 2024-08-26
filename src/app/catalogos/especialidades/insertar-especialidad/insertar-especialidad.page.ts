@@ -26,8 +26,6 @@ export class InsertarEspecialidadPage{
       //id: ['', Validators.required],
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
-      aplica_2x1: ['', Validators.required],
-      aplica_p1: ['', Validators.required],
       img_url: ['', Validators.required],
     })
   }
@@ -40,8 +38,6 @@ export class InsertarEspecialidadPage{
       especialidad.id=Utilerias.generaId();
       especialidad.nombre=this.formularioEspecialidad.value.nombre;
       especialidad.ingredientes=this.formularioEspecialidad.value.ingredientes;
-      especialidad.aplica_2x1=this.formularioEspecialidad.value.aplica_2x1;
-      especialidad.aplica_p1=this.formularioEspecialidad.value.aplica_p1;
       especialidad.img_url=this.formularioEspecialidad.value.img_url;
       this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
         next:(res:any)=>{
