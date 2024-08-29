@@ -1,7 +1,7 @@
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
 import { GlobalService } from '../services/global.service';
 import { SucursalService } from '../services/sucursal.service';
 import { Sucursal } from '../model/dto/sucursal';
@@ -11,7 +11,7 @@ import { Sucursal } from '../model/dto/sucursal';
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonButton, SharedModule,IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [IonRow, IonCol, IonGrid, IonButton, SharedModule,IonHeader, IonToolbar, IonTitle, IonContent],
 })
 export class MenuCatalogosPage{
   mensaje:string;

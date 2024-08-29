@@ -2,27 +2,71 @@
   <ion-header>
     <ion-toolbar color="custom">
       <ion-title class="ion-text-center" style="font-size: 24px">
-        <div style="display: flex; justify-content: space-between; width: 100%;">
-
-          <div style="text-align: left;">Sucursal: {{cveSucursal}}</div>
-
-          <div style="text-align: center;">Sistema de Captura de Precios, Productos y Promociones
-            CheesePizza</div>
-          <div style="text-align: right;">Usuario: paco.oliva</div>
+        <div style="display: flex; justify-content: space-between; width: 100%">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div style="text-align: left">Sucursal: {{cveSucursal}}</div>
+              </ion-col>
+              <ion-col>
+                <div style="display: flex; justify-content: stretch; width: 100%">
+                  Sistema de Captura de Precios, Productos y Promociones CheesePizza
+                </div>
+              </ion-col>
+              <ion-col>
+                <div style="text-align: right">Usuario: paco.oliva</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
       </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
     <div style="display: flex; justify-content: center; gap: 10px">
-      <ion-button (click)="saltaAEspecialidades()">Catálogo Especialidades</ion-button>
-      <ion-button (click)="saltaARegiones()">Catálogo Regiones</ion-button>
-      <ion-button (click)="saltaAProductos()">Catálogo Productos</ion-button>
-      <ion-button (click)="saltaASucursales()">Catálogo Sucursales</ion-button>
-      <ion-button (click)="saltaATipoProductos()">Catálogo Tipos de Producto</ion-button>
-      <ion-button (click)="saltaASalsas()">Catálogo Salsas</ion-button>
-      <ion-button (click)="saltaARelacionETPS()">Catálogo Relación Especialidad, Tamaño, Precio, Sucursal</ion-button>
-      <ion-button (click)="saltaAPromocionEspecial()">Catálogo Promoción Especial</ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaAEspecialidades()"
+              >Catálogo Especialidades</ion-button
+            >
+          </ion-col>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaARegiones()"
+              >Catálogo Regiones</ion-button
+            >
+          </ion-col>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaAProductos()"
+              >Catálogo Productos</ion-button
+            >
+          </ion-col>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaASucursales()"
+              >Catálogo Sucursales</ion-button
+            >
+          </ion-col>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaATipoProductos()"
+              >Catálogo Tipos de Producto</ion-button
+            >
+          </ion-col>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaASalsas()">Catálogo Salsas</ion-button>
+          </ion-col>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaARelacionETPS()"
+              >Catálogo Relación Especialidad, Tamaño, Precio,
+              Sucursal</ion-button
+            >
+          </ion-col>
+          <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <ion-button (click)="saltaAPromocionEspecial()"
+              >Catálogo Promoción Especial</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
     <ion-content class="ion-padding">
       <div style="display: flex; justify-content: center; gap: 10px">
