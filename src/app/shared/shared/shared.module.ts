@@ -9,6 +9,8 @@ import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import { SalsaService } from 'src/app/services/salsa.service';
 import { RelacionEtpsService } from 'src/app/services/relacion-etps.service';
 import { PromocionEspecialService } from 'src/app/services/promocion-especial.service';
+import { RelacionPromocionEspecialSucursalPpalPage } from 'src/app/catalogos/relacion-promocion-especial-sucursal/relacion-promocion-especial-sucursal-ppal/relacion-promocion-especial-sucursal-ppal.page';
+import { RelacionPromocionEspecialSucursalService } from 'src/app/services/relacion-promocion-especial-sucursal.service';
 
 
 
@@ -18,6 +20,6 @@ import { PromocionEspecialService } from 'src/app/services/promocion-especial.se
     CommonModule,HttpClientModule
   ],
   providers:[RegionService,EspecialidadService,SucursalService,ProductoService,
-    TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService]
+    TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,RelacionPromocionEspecialSucursalService]
 })
 export class SharedModule { }

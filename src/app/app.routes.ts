@@ -89,7 +89,19 @@ export const routes: Routes = [
   {
     path: 'editar-promocion-especial',
     loadComponent: () => import('./catalogos/promocion-especial/editar-promocion-especial/editar-promocion-especial.page').then( m => m.EditarPromocionEspecialPage)
+  },  {
+    path: 'relacion-promocion-especial-sucursal-ppal',
+    loadComponent: () => import('./catalogos/relacion-promocion-especial-sucursal/relacion-promocion-especial-sucursal-ppal/relacion-promocion-especial-sucursal-ppal.page').then( m => m.RelacionPromocionEspecialSucursalPpalPage)
   },
+  {
+    path: 'editar-relacion-promocion-especial-sucursal',
+    loadComponent: () => import('./catalogos/relacion-promocion-especial-sucursal/editar-relacion-promocion-especial-sucursal/editar-relacion-promocion-especial-sucursal.page').then( m => m.EditarRelacionPromocionEspecialSucursalPage)
+  },
+  {
+    path: 'insertar-relacion-promocion-especial-sucursal',
+    loadComponent: () => import('./catalogos/relacion-promocion-especial-sucursal/insertar-relacion-promocion-especial-sucursal/insertar-relacion-promocion-especial-sucursal.page').then( m => m.InsertarRelacionPromocionEspecialSucursalPage)
+  },
+
 
 
 ];

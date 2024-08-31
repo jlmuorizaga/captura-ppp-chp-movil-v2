@@ -58,6 +58,10 @@ export class MenuCatalogosPage{
     this.router.navigateByUrl('/promocion-especial-ppal');
   }
 
+    saltaARelacionPES() {
+    this.router.navigateByUrl('/relacion-promocion-especial-sucursal-ppal');
+  }
+
     saltaAHomePage() {
     this.router.navigateByUrl('/home');
   }

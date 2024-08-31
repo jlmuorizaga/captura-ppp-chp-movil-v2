@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Relación Promoción Especial Sucursal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button color="success">Insertar Registro en Relacion Promoción Especial Sucursal</ion-button>
+  </p>
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID Promocion</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>ID Sucursal</th>
+          <th>Clave Sucursal</th>
+          <th>Nombre Sucursal</th>
+          <th>Activa</th>
+          <th colspan="2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (registrosRelacionEpes){
+          @for (registro of registrosRelacionEpes; track $index) {
+        <tr>
+          <td>{{registro.idPromocion}}</td>
+          <td>{{registro.nombre}}</td>
+          <td>{{registro.descripcion}}</td>
+          <td>{{registro.idSucursal}}</td>
+          <td>{{registro.claveSucursal}}</td>
+          <td>{{registro.nombreSucursal}}</td>
+          <td>{{registro.activa}}</td>
+          <td>
+            <ion-button color="danger">Borrar</ion-button>
+          </td>
+          <td>
+            <ion-button>Editar</ion-button> <br>
+          </td>
+        </tr>
+      }
+      }
+      </tbody>
+
+    </table>
+  </div>
+</ion-content>
