@@ -62,6 +62,7 @@ export class RelacionPromocionEspecialSucursalPpalPage implements OnInit,OnDestr
   }
 
   leerRegistrosRelacionPes(idSucursal:string){
+    debugger
     this.registrosRelacionPesSvc.dameListaRelacionPromocionEspecialSucursal(idSucursal).subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa en relacion-etps')

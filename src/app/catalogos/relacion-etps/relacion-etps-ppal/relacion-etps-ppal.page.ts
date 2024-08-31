@@ -35,7 +35,6 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
     private router: Router,private cdr: ChangeDetectorRef,
     private globalService: GlobalService
   ) {
-    debugger;
     console.log('globalService=',this.globalService.idSucursalGlobal);
     this.idSucursal=this.globalService.idSucursalGlobal;
     this.mensaje = 'Estoy en el constructor';

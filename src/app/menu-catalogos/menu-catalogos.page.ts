@@ -50,7 +50,7 @@ export class MenuCatalogosPage{
     this.router.navigateByUrl('/salsas-ppal');
   }
   saltaARelacionETPS() {
-    console.log('Entré a saltaARelacionETPS()')
+
     this.router.navigateByUrl('/relacion-etps-ppal');
   }
 
@@ -59,6 +59,7 @@ export class MenuCatalogosPage{
   }
 
     saltaARelacionPES() {
+      console.log('***************************Entré a saltaARelacionETPS()')
     this.router.navigateByUrl('/relacion-promocion-especial-sucursal-ppal');
   }
 
