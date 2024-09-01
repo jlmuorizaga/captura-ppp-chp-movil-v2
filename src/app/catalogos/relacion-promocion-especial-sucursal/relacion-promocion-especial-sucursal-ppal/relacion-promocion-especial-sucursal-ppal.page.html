@@ -16,10 +16,10 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th>ID Promocion</th>
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>ID Sucursal</th>
+          <!--th>ID Promocion</th-->
+          <th>Nombre de la Promoción</th>
+          <th>Descripcion de la Promoción</th>
+          <!--th>ID Sucursal</!--th-->
           <th>Clave Sucursal</th>
           <th>Nombre Sucursal</th>
           <th>Activa</th>
@@ -27,13 +27,13 @@
         </tr>
       </thead>
       <tbody>
-        @if (registrosRelacionEpes){
-          @for (registro of registrosRelacionEpes; track $index) {
+        @if (registrosRelacionPES){
+          @for (registro of registrosRelacionPES; track $index) {
         <tr>
-          <td>{{registro.idPromocion}}</td>
+          <!--td>{{registro.idPromocion}}</!--td-->
           <td>{{registro.nombre}}</td>
           <td>{{registro.descripcion}}</td>
-          <td>{{registro.idSucursal}}</td>
+          <!--td>{{registro.idSucursal}}</!--td-->
           <td>{{registro.claveSucursal}}</td>
           <td>{{registro.nombreSucursal}}</td>
           <td>{{registro.activa}}</td>

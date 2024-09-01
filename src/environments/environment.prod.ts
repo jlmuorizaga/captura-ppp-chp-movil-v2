@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  baseUrl:'http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com',
-  //baseUrl:'http://localhost',
+  //baseUrl:'http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com',
+  baseUrl:'http://localhost',
   puertoApiAdmonCatalogos:'3005',
   regiones:'/regiones',
   especialidades:'/especialidades',
@@ -12,5 +12,5 @@ export const environment = {
   salsas:'/salsas',
   relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',
   promociones_especiales:'/promociones_especiales',
-  relacion_promocion_especial_sucursal:'/relacion_promociones_especiales_sucursal',
+  relacion_pes:'/relacion_promociones_especiales_sucursal',
 };

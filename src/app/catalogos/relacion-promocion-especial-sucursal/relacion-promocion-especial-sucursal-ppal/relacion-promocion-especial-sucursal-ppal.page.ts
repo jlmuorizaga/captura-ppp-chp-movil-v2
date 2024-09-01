@@ -1,4 +1,4 @@
-import { RelacionPromocionEspecialSucursalService } from './../../../services/relacion-promocion-especial-sucursal.service';
+import { RelacionPromocionEspecialSucursalService } from 'src/app/services/relacion-promocion-especial-sucursal.service';
 import { RelacionPES } from './../../../model/dto/relacion-promocion-especial-sucursal';
 import { SharedModule } from './../../../shared/shared/shared.module';
 import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
@@ -20,11 +20,12 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
   templateUrl: './relacion-promocion-especial-sucursal-ppal.page.html',
   styleUrls: ['./relacion-promocion-especial-sucursal-ppal.page.scss'],
   standalone: true,
-  imports: [IonButton, IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
+    IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class RelacionPromocionEspecialSucursalPpalPage implements OnInit,OnDestroy {
   navigationSubscription:Subscription;
-  registrosRelacionEpes!:RelacionPES[];
+  registrosRelacionPES!:RelacionPES[];
   idPromocion!:string;
   nombre!:string;
   descripcion!:string;
@@ -33,7 +34,7 @@ export class RelacionPromocionEspecialSucursalPpalPage implements OnInit,OnDestr
   nombreSucursal!:string;
   activa!:string;
 
-  constructor(private registrosRelacionPesSvc:RelacionPromocionEspecialSucursalService,
+  constructor(private registrosRelacionPESSvc:RelacionPromocionEspecialSucursalService,
     private sucursalesSvc:SucursalService,
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef,
@@ -63,15 +64,15 @@ export class RelacionPromocionEspecialSucursalPpalPage implements OnInit,OnDestr
 
   leerRegistrosRelacionPes(idSucursal:string){
     debugger
-    this.registrosRelacionPesSvc.dameListaRelacionPromocionEspecialSucursal(idSucursal).subscribe({
+    this.registrosRelacionPESSvc.dameListaRelacionPromocionEspecialSucursal(idSucursal).subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa en relacion-etps')
         console.log(res);
-        this.registrosRelacionEpes=res;
+        this.registrosRelacionPES=res;
 
 
-        console.log(this.registrosRelacionEpes);
-        this.registrosRelacionEpes
+        console.log(this.registrosRelacionPES);
+        this.registrosRelacionPES
         this.cdr.detectChanges();
 
       },

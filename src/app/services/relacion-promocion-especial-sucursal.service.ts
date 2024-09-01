@@ -14,6 +14,6 @@ export class RelacionPromocionEspecialSucursalService {
 
   dameListaRelacionPromocionEspecialSucursal(id:string){
     console.log('id====>>',id)
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_promocion_especial_sucursal+'/'+id);
+    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes+'/'+id);
   }
 }
