@@ -22,12 +22,12 @@ import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
   styleUrls: ['./insertar-relacion-promocion-especial-sucursal.page.scss'],
   standalone: true,
   imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,ReactiveFormsModule,
-        IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonSelectOption]
+      IonCardHeader, IonCard, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonSelectOption]
 })
 export class InsertarRelacionPromocionEspecialSucursalPage{
   formularioPromocionEspecial:FormGroup;
   idSucursal:string;
- navigationSubscription:Subscription;
+ //navigationSubscription:Subscription;
   promocionesEspecial!:PromocionEspecial[];
 
 
@@ -38,11 +38,11 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
   ) {
     this.idSucursal=this.globalService.idSucursalGlobal;
     console.log('Mu==idSucursal==>>',this.idSucursal)
-    this.navigationSubscription = this.router.events
+   /* this.navigationSubscription = this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
       this.leerPromocionesEspecialesNo();
-    });
+    });*/
     this.formularioPromocionEspecial = this.fb.group({
       idPromocion:['', Validators.required],
       nombre: ['', Validators.required],
@@ -54,13 +54,13 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
     })
   }
   leerPromocionesEspecialesNo(){
+    console.log('Entré a leerPromocionesEspecialesNo()')
     this.promocionesEspecialesSvc.dameListaPromocionesEspecialesQueNoEstanEnRPES(this.idSucursal).subscribe({
       next:(res:any)=>{
-        debugger
-        console.log('Servicio leido de forma exitosa')
+        console.log('Servicio leido de forma exitosa en leerPromocionesEspecialesNo');
         console.log(res);
         this.promocionesEspecial=res;
-        console.log(this.promocionesEspecial);
+        //console.log(this.promocionesEspecial);
         this.promocionesEspecial
         this.cdr.detectChanges();
 
@@ -71,5 +71,8 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
 
       }
     })
+  }
+  insertaRegistroRelacionPES(){
+    
   }
 }

@@ -61,10 +61,10 @@ export class HomePage implements OnInit,OnDestroy {
   leerSucursales(){
     this.sucursalesSvc.dameListaSucursales().subscribe({
       next:(res:any)=>{
-        console.log('Servicio leido de forma exitosa')
-        console.log(res);
+        console.log('Servicio dameListaSucursales() leido de forma exitosa')
+       // console.log(res);
         this.sucursales=res;
-        console.log(this.sucursales);
+       // console.log(this.sucursales);
         this.sucursales
         this.cdr.detectChanges();
 

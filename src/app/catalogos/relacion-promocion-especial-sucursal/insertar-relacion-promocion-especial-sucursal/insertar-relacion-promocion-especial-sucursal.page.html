@@ -7,26 +7,23 @@
   </ion-toolbar>
 </ion-header>
 
+<!--ion-content class="ion-padding"-->
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">insertar-relacion-promocion-especial-sucursal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
-
-<ion-content class="ion-padding">
-  <!--form [formGroup]="formularioPromocionEspecial" (ngSubmit)="saltaAMenuCatalogos()"-->
-  <form [formGroup]="formularioPromocionEspecial">
+  <ion-card>    
+    <ion-card-header>
+      <ion-title size="large">Insertar Relación Promoción Especial Sucursal</ion-title>
+    </ion-card-header>
+  <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="insertaRegistroRelacionPES()">
+  <!--form [formGroup]="formularioPromocionEspecial" (ngSubmit)="leerPromocionesEspecialesNo()"-->
     <div style="display: flex; justify-content: center; gap: 10px">
       <ion-list>
         <ion-item>
           <!--ion-select aria-label="Food" [compareWith]="compareWith" placeholder="Select food" (ionChange)="handleChange($event)"-->
           <ion-select aria-label="Food" placeholder="Selecciona Promoción Especial" formControlName="idPromocion">
-            <ion-select-option *ngFor="let promocionEspecial of promocionesEspecial" [value]="promocionEspecial.idPromocion">
+            <ion-select-option *ngFor="let promocionEspecial of promocionesEspecial"
+              [value]="promocionEspecial.idPromocion">
               {{ promocionEspecial.nombre}}
-              {{promocionEspecial.descripcion}}</ion-select-option
-            >
+              {{promocionEspecial.descripcion}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
@@ -35,5 +32,5 @@
       <ion-button type="submit" color="success">Ingresar</ion-button>
     </div>
   </form>
-
+</ion-card>
 </ion-content>
