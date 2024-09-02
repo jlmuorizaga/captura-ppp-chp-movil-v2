@@ -11,5 +11,6 @@ export const environment = {
   salsas:'/salsas',
   relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',
   promocion_especial:'/promociones_especiales',
+  promociones_especiales_no:'/promociones_especiales_no',
   relacion_pes:'/relacion_promociones_especiales_sucursal',
 };

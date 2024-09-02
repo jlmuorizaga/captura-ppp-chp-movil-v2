@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>insertar-relacion-promocion-especial-sucursal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +13,27 @@
       <ion-title size="large">insertar-relacion-promocion-especial-sucursal</ion-title>
     </ion-toolbar>
   </ion-header>
+</ion-content>
+
+<ion-content class="ion-padding">
+  <!--form [formGroup]="formularioPromocionEspecial" (ngSubmit)="saltaAMenuCatalogos()"-->
+  <form [formGroup]="formularioPromocionEspecial">
+    <div style="display: flex; justify-content: center; gap: 10px">
+      <ion-list>
+        <ion-item>
+          <!--ion-select aria-label="Food" [compareWith]="compareWith" placeholder="Select food" (ionChange)="handleChange($event)"-->
+          <ion-select aria-label="Food" placeholder="Selecciona Promoción Especial" formControlName="idPromocion">
+            <ion-select-option *ngFor="let promocionEspecial of promocionesEspecial" [value]="promocionEspecial.idPromocion">
+              {{ promocionEspecial.nombre}}
+              {{promocionEspecial.descripcion}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 10px">
+      <ion-button type="submit" color="success">Ingresar</ion-button>
+    </div>
+  </form>
+
 </ion-content>

@@ -22,6 +22,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class PromocionEspecialPpalPage implements OnInit,OnDestroy {
   navigationSubscription:Subscription;
   promocionesEspeciales!:PromocionEspecial[];
+  
   constructor(private promocionesEspecialesSvc:PromocionEspecialService,
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef) {

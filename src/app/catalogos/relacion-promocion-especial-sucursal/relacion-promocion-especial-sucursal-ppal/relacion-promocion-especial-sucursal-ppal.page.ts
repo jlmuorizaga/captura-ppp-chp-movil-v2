@@ -84,6 +84,10 @@ export class RelacionPromocionEspecialSucursalPpalPage implements OnInit,OnDestr
     })
   }
 
+  saltaAInsertarRegistroPromocionEspecialSucursal() {
+    this.router.navigateByUrl('/insertar-relacion-promocion-especial-sucursal');
+  }
+
   /*dameSucursal(idSucursal:string){
     this.sucursalesSvc.dameSucursal(idSucursal).subscribe({
       next:(res:any)=>{

@@ -27,4 +27,9 @@ export class PromocionEspecialService {
     console.log(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales + '/' + promocionEspecial.idPromocion,promocionEspecial);
     return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales + '/' + promocionEspecial.idPromocion,promocionEspecial);
   }
+
+  //dameListaPromocionesEspecialesQueNoEstanEnRelacionPromocionEspecialSucursal
+  dameListaPromocionesEspecialesQueNoEstanEnRPES(idSucursal:string) {
+    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales_no);
+  }
 }
