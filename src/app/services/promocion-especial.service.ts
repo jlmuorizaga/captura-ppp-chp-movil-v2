@@ -29,7 +29,8 @@ export class PromocionEspecialService {
   }
 
   //dameListaPromocionesEspecialesQueNoEstanEnRelacionPromocionEspecialSucursal
+  //http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/promociones_especiales_no/00CHP20201201183424889721458
   dameListaPromocionesEspecialesQueNoEstanEnRPES(idSucursal:string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales_no);
+    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.promociones_especiales_no+'/'+idSucursal);
   }
 }

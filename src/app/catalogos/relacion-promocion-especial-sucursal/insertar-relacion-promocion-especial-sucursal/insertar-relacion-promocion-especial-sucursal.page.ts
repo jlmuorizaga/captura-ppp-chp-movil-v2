@@ -37,10 +37,11 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
     private cdr: ChangeDetectorRef
   ) {
     this.idSucursal=this.globalService.idSucursalGlobal;
+    console.log('Mu==idSucursal==>>',this.idSucursal)
     this.navigationSubscription = this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
-      this.leerPromocionesEspecialesNo(this.idSucursal);
+      this.leerPromocionesEspecialesNo();
     });
     this.formularioPromocionEspecial = this.fb.group({
       idPromocion:['', Validators.required],
@@ -52,9 +53,10 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
       activa: ['', Validators.required],
     })
   }
-  leerPromocionesEspecialesNo(idSucursal:string){
-    this.promocionesEspecialesSvc.dameListaPromocionesEspecialesQueNoEstanEnRPES(idSucursal).subscribe({
+  leerPromocionesEspecialesNo(){
+    this.promocionesEspecialesSvc.dameListaPromocionesEspecialesQueNoEstanEnRPES(this.idSucursal).subscribe({
       next:(res:any)=>{
+        debugger
         console.log('Servicio leido de forma exitosa')
         console.log(res);
         this.promocionesEspecial=res;
