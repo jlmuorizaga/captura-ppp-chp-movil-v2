@@ -22,27 +22,23 @@ import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
   styleUrls: ['./insertar-relacion-promocion-especial-sucursal.page.scss'],
   standalone: true,
   imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,ReactiveFormsModule,
-      IonCardHeader, IonCard, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonSelectOption]
+      IonCardHeader, IonCard, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
+      IonSelectOption]
 })
 export class InsertarRelacionPromocionEspecialSucursalPage{
   formularioPromocionEspecial:FormGroup;
   idSucursal:string;
- //navigationSubscription:Subscription;
+ navigationSubscription:Subscription;
   promocionesEspecial!:PromocionEspecial[];
 
 
   constructor(private fb: FormBuilder,private promocionesEspecialesSvc:PromocionEspecialService,private router: Router,
-    private globalService: GlobalService,
-    //private sucursalesSvc:SucursalService,
-    private cdr: ChangeDetectorRef
-  ) {
+    private globalService: GlobalService,private cdr: ChangeDetectorRef)
+    //private sucursalesSvc:SucursalService,  
+   {
     this.idSucursal=this.globalService.idSucursalGlobal;
     console.log('Mu==idSucursal==>>',this.idSucursal)
-   /* this.navigationSubscription = this.router.events
-    .pipe(filter(event => event instanceof NavigationEnd))
-    .subscribe(() => {
-      this.leerPromocionesEspecialesNo();
-    });*/
+
     this.formularioPromocionEspecial = this.fb.group({
       idPromocion:['', Validators.required],
       nombre: ['', Validators.required],
@@ -52,6 +48,12 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
       precio: ['', Validators.required],
       activa: ['', Validators.required],
     })
+    this.leerPromocionesEspecialesNo();
+    this.navigationSubscription = this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(() => {
+      this.leerPromocionesEspecialesNo();
+    });
   }
   leerPromocionesEspecialesNo(){
     console.log('Entré a leerPromocionesEspecialesNo()')
@@ -61,7 +63,7 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
         console.log(res);
         this.promocionesEspecial=res;
         //console.log(this.promocionesEspecial);
-        this.promocionesEspecial
+        //this.promocionesEspecial
         this.cdr.detectChanges();
 
       },
