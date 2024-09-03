@@ -9,28 +9,35 @@
 
 <!--ion-content class="ion-padding"-->
 <ion-content [fullscreen]="true">
-  <ion-card>    
+  <ion-card>
     <ion-card-header>
       <ion-title size="large">Insertar Relación Promoción Especial Sucursal</ion-title>
     </ion-card-header>
-  <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="insertaRegistroRelacionPES()">
-  <!--form [formGroup]="formularioPromocionEspecial" (ngSubmit)="leerPromocionesEspecialesNo()"-->
-    <div style="display: flex; justify-content: center; gap: 10px">
-      <ion-list>
+    <ion-card-content>
+
+
+      <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="insertaRegistroRelacionPES()">
+        <!--form [formGroup]="formularioPromocionEspecial" (ngSubmit)="leerPromocionesEspecialesNo()"-->
+
         <ion-item>
-          <!--ion-select aria-label="Food" [compareWith]="compareWith" placeholder="Select food" (ionChange)="handleChange($event)"-->
-          <ion-select aria-label="Food" placeholder="Selecciona Promoción Especial" formControlName="idPromocion">
-            <ion-select-option *ngFor="let promocionEspecial of promocionesEspecial"
-              [value]="promocionEspecial.idPromocion">
-              {{ promocionEspecial.nombre}}
-              {{promocionEspecial.descripcion}}</ion-select-option>
-          </ion-select>
+          <div style="display: flex; justify-content: center; gap: 10px">
+            <ion-list>
+
+              <!--ion-select aria-label="Food" [compareWith]="compareWith" placeholder="Select food" (ionChange)="handleChange($event)"-->
+              <ion-select aria-label="Food" placeholder="Selecciona Promoción Especial" formControlName="idPromocion">
+                <ion-select-option *ngFor="let promocionEspecial of promocionesEspecial"
+                  [value]="promocionEspecial.idPromocion">
+                  {{ promocionEspecial.nombre}}
+                  {{promocionEspecial.descripcion}}</ion-select-option>
+              </ion-select>
+            </ion-list>
+          </div>
         </ion-item>
-      </ion-list>
-    </div>
-    <div style="display: flex; justify-content: center; gap: 10px">
-      <ion-button type="submit" color="success">Ingresar</ion-button>
-    </div>
-  </form>
-</ion-card>
+
+        <div style="display: flex; justify-content: center; gap: 10px">
+          <ion-button type="submit" color="success">Ingresar</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

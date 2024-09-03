@@ -22,7 +22,7 @@ import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
   styleUrls: ['./insertar-relacion-promocion-especial-sucursal.page.scss'],
   standalone: true,
   imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,ReactiveFormsModule,
-      IonCardHeader, IonCard, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
+      IonCardHeader, IonCard, IonButtons, IonContent, IonHeader, IonTitle,IonCardContent, IonToolbar, CommonModule, FormsModule,
       IonSelectOption]
 })
 export class InsertarRelacionPromocionEspecialSucursalPage{
@@ -41,11 +41,11 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
 
     this.formularioPromocionEspecial = this.fb.group({
       idPromocion:['', Validators.required],
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      tipo: ['', Validators.required],
-      definicion: ['', Validators.required],
-      precio: ['', Validators.required],
+   //   nombre: ['', Validators.required],
+   //   descripcion: ['', Validators.required],
+   //   tipo: ['', Validators.required],
+  //   definicion: ['', Validators.required],
+  //   precio: ['', Validators.required],
       activa: ['', Validators.required],
     })
     this.leerPromocionesEspecialesNo();
@@ -76,5 +76,9 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
   }
   insertaRegistroRelacionPES(){
     
+  }
+
+  saltaARelacionPESPpal() {
+    this.router.navigateByUrl('/relacion-promocion-especial-sucursal-ppal');
   }
 }
