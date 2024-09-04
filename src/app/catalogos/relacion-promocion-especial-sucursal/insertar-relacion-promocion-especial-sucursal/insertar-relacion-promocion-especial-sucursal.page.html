@@ -11,14 +11,12 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
-      <ion-title size="large">Insertar Relación Promoción Especial Sucursal</ion-title>
+      <ion-card-title>Insertar Relación Promoción Especial Sucursal</ion-card-title>
     </ion-card-header>
     <ion-card-content>
 
 
       <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="insertaRegistroRelacionPES()">
-        <!--form [formGroup]="formularioPromocionEspecial" (ngSubmit)="leerPromocionesEspecialesNo()"-->
-
         <ion-item>
           <div style="display: flex; justify-content: center; gap: 10px">
             <ion-list>
@@ -36,8 +34,10 @@
         <ion-item>
           <ion-input label="Activa" label-placement="floating" formControlName="activa"></ion-input>
         </ion-item>
-        <div style="display: flex; justify-content: center; gap: 10px">
-          <ion-button type="submit" color="success">Ingresar</ion-button>
+        <div class="button-container">
+          <ion-button type="submit" class="centered-button" [disabled]="!formularioPromocionEspecial.valid" color="success">
+            Inserta Promoción Especial Sucursal
+          </ion-button>
         </div>
       </form>
     </ion-card-content>

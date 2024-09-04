@@ -16,4 +16,7 @@ export class RelacionPromocionEspecialSucursalService {
     console.log('id====>>',id)
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes+'/'+id);
   }
+  insertaRelacionPromocionEspecialSucursal(registroRPES:RelacionPES) {
+    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes,registroRPES);
+  }
 }
