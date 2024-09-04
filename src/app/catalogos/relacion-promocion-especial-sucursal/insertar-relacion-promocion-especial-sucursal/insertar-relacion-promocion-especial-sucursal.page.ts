@@ -75,6 +75,31 @@ export class InsertarRelacionPromocionEspecialSucursalPage{
     })
   }
   insertaRegistroRelacionPES(){
+    if (this.formularioPromocionEspecial.valid) {
+      console.log(this.formularioPromocionEspecial.value)
+      let promocionEspecial:PromocionEspecial=new PromocionEspecial();
+      promocionEspecial.idPromocion=Utilerias.generaId();
+      promocionEspecial.nombre=this.formularioPromocionEspecial.value.nombre;
+      promocionEspecial.descripcion=this.formularioPromocionEspecial.value.descripcion;
+      promocionEspecial.tipo=this.formularioPromocionEspecial.value.tipo;
+      promocionEspecial.definicion=this.formularioPromocionEspecial.value.definicion;
+      promocionEspecial.precio=this.formularioPromocionEspecial.value.precio;
+      promocionEspecial.activa=this.formularioPromocionEspecial.value.activa;
+      this.promocionesEspecialesSvc.insertaPromocionEspecial(promocionEspecial).subscribe({
+        next:(res:any)=>{
+          console.log('Promoción Especial insertada de forma exitosa')
+          console.log(res);
+          this.saltaAPromocionesEspeciales();
+
+        },
+        error:(error:any)=>{
+          console.log('Error en la inserción de la Promoción Especial')
+          console.log(error)
+
+        }
+      })
+
+    }
     
   }
 
