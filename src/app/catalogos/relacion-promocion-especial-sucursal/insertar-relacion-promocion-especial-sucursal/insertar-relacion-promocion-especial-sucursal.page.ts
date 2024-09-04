@@ -82,9 +82,14 @@ export class InsertarRelacionPromocionEspecialSucursalPage {
     if (this.formularioPromocionEspecial.valid) {
       console.log(this.formularioPromocionEspecial.value)
       let registroRPES: RelacionPES = new RelacionPES();
+      
       registroRPES.idPromocion = this.formularioPromocionEspecial.value.idPromocion;
       registroRPES.idSucursal = this.idSucursal;
       registroRPES.activa = this.formularioPromocionEspecial.value.activa;
+      console.log('idPromocion=',registroRPES.idPromocion);
+      console.log('idSucursal=',registroRPES.idSucursal);
+      console.log('activa=',registroRPES.activa);
+
       this.relacionPESSvc.insertaRelacionPromocionEspecialSucursal(registroRPES).subscribe({
         next: (res: any) => {
           console.log('Promoción Especial Sucursal insertada de forma exitosa')
