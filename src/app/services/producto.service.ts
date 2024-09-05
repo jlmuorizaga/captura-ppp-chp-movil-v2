@@ -26,7 +26,6 @@ export class ProductoService {
   borraProducto(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
     return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos + '/' + id);
-
   }
   insertaProducto(producto:Producto) {
     return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos,producto);

@@ -84,6 +84,50 @@ export class RelacionPromocionEspecialSucursalPpalPage implements OnInit,OnDestr
     this.router.navigateByUrl('/insertar-relacion-promocion-especial-sucursal');
   }
 
+  borraRegistro(idPromocion:string,idSucursal:string){
+    console.log('Voy a borrar esta relación idPromocion='+idPromocion+' idSucursal='+idSucursal);
+
+    this.registrosRelacionPESSvc.borraRelacionPromocionEspecialSucursal(idPromocion,idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Producto borrado de forma exitosa')
+        console.log(res);
+        this.leerRegistrosRelacionPes(this.globalService.idSucursalGlobal);
+      },
+      error:(error:any)=>{
+        console.log('Error en el borrado de la región')
+        console.log(error)
+
+      }
+    })
+
+  }
+  async confirmaBorrar(relacion:RelacionPES){
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar el registro con idPromocion='+relacion.idPromocion+'?',
+      buttons: [
+        {
+          
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Operación confirmada');
+            this.borraRegistro(relacion.idPromocion,relacion.idSucursal);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+  }
+
   /*dameSucursal(idSucursal:string){
     this.sucursalesSvc.dameSucursal(idSucursal).subscribe({
       next:(res:any)=>{
