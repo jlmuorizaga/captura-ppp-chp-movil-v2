@@ -1,13 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>editar-relacion-promocion-especial-sucursal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editar-relacion-promocion-especial-sucursal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Editar Especialidad</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>
+        ID:  {{idPromocion}}<br>
+        Nombre:  {{nombre}}<br>
+        Descripcion: {{descripcion}}<br>
+        ClaveSucursal:{{claveSucursal}}<br>
+      </h1>
+
+      <form [formGroup]="formularioRelacionPES" (ngSubmit)="editaRelacionPES()">
+
+
+        <ion-item>
+          <ion-input label="Activa" label-placement="floating" formControlName="nombre" [ngModel]="activa"></ion-input>
+        </ion-item>
+
+        <div class="button-container">
+          <!--ion-button type="submit" class="centered-button" [disabled]="!formularioRegion.valid" color="success"-->
+          <ion-button type="submit" class="centered-button" [disabled]="!formularioRelacionPES.valid">
+            Edita Relación Promoción Especial Sucursal
+          </ion-button>
+        </div>
+      </form>
+
+    </ion-card-content>
+
+  </ion-card>
 </ion-content>

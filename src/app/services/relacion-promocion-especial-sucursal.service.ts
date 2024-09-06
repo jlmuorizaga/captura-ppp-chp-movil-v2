@@ -12,6 +12,10 @@ export class RelacionPromocionEspecialSucursalService {
 
   constructor(private http: HttpClient) { }
 
+
+  dameRegistroRelacionPromocionEspecialSucursal(idPromocion:string,idSucursal:string) {
+    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes + '/' + idPromocion+'/'+idSucursal);
+  }
   dameListaRelacionPromocionEspecialSucursal(id:string){
     console.log('id====>>',id)
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes+'/'+id);
@@ -21,5 +25,9 @@ export class RelacionPromocionEspecialSucursalService {
   }
   borraRelacionPromocionEspecialSucursal(idPromocion:string,idSucursal:string) {
     return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes + '/' + idPromocion+'/'+idSucursal);
+  }
+  editaRelacionPromocionEspecialSucursal(registroRPES:RelacionPES) {
+    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes + '/' +
+      registroRPES.idPromocion+'/'+registroRPES.idSucursal,registroRPES);
   }
 }
