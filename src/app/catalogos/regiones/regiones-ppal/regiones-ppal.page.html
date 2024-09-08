@@ -11,36 +11,31 @@
   <p style="text-align: center">
     <ion-button (click)="saltaAInsertarRegion()" color="success">Insertar Región</ion-button>
   </p>
-
-
   <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID Región</th>
-          <th>Nombre Región</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (regiones){
+    @if (regiones){
+      <ion-grid fixed>
+        <ion-row>
           @for (region of regiones; track $index) {
-        <tr>
-          <td>{{region.idRegion}}</td>
-          <td>{{region.nombreRegion}}</td>
-          <td>
-            <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button (click)="saltaAEditarRegion(region.idRegion)">Editar</ion-button> <br>
-          </td>
-        </tr>
-      }
-      }
-      </tbody>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{region.idRegion}}</ion-card-subtitle>
+              <ion-card-title>{{region.nombreRegion}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <!--
+             Nombre de la región: {{region.nombreRegion}}<br><br>
+             !-->
+              <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarRegion(region.idRegion)">Editar</ion-button>
 
-    </table>
+            </ion-card-content>
+          </ion-card>
+          </ion-col>
+        }
+
+        </ion-row>
+      </ion-grid>
+  }
   </div>
-
-
 </ion-content>
