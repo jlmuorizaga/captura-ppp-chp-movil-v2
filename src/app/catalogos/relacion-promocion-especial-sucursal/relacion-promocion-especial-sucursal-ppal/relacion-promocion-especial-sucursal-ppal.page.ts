@@ -93,8 +93,7 @@ export class RelacionPromocionEspecialSucursalPpalPage
   }
 
   leerRegistrosRelacionPes(idSucursal: string) {
-    this.registrosRelacionPESSvc
-      .dameListaRelacionPromocionEspecialSucursal(idSucursal)
+    this.registrosRelacionPESSvc.dameListaRelacionPromocionEspecialSucursal(idSucursal)
       .subscribe({
         next: (res: any) => {
           this.registrosRelacionPES = res;
@@ -112,9 +111,7 @@ export class RelacionPromocionEspecialSucursalPpalPage
       });
   }
 
-  saltaAInsertarRegistroPromocionEspecialSucursal() {
-    this.router.navigateByUrl('/insertar-relacion-promocion-especial-sucursal');
-  }
+
 
   borraRegistro(idPromocion: string, idSucursal: string) {
     console.log(
@@ -166,7 +163,12 @@ export class RelacionPromocionEspecialSucursalPpalPage
     await alert.present();
   }
 
+  saltaAInsertarRegistroPromocionEspecialSucursal() {
+    this.router.navigateByUrl('/insertar-relacion-promocion-especial-sucursal');
+  }
+
   async saltaAEditarRegistroPromocionEspecialSucursal(relacion: RelacionPES) {
+    console.log('Relación: ',relacion)
     this.registrosRelacionPESSvc
       .dameRegistroRelacionPromocionEspecialSucursal(
         relacion.idPromocion,

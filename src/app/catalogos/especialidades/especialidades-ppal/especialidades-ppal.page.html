@@ -14,40 +14,33 @@
     </ion-toolbar>
   </ion-header>
   <p style="text-align: center">
-    <ion-button (click)="saltaAInsertarEspecialidad()" class="custom-button">Insertar Especialidad</ion-button>
+    <ion-button (click)="saltaAInsertarEspecialidad()" class="custom-button"
+      >Insertar Especialidad</ion-button
+    >
   </p>
 
   <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID Especialidad</th>
-          <th>Nombre Especialidad</th>
-          <th>Ingredientes</th>
-          <th>Img Url</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (especialidades){
-          @for (especialidad of especialidades; track $index) {
-        <tr>
-          <td>{{especialidad.id}}</td>
-          <td>{{especialidad.nombre}}</td>
-          <td>{{especialidad.ingredientes}}</td>
-          <td>{{especialidad.img_url}}</td>
-          <td>      
-            <ion-button (click)="confirmaBorrar(especialidad)" color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button (click)="saltaAEditarEspecialidad(especialidad.id)">Editar</ion-button> <br>
-          </td>
-        </tr>
-      }
-      }
-      </tbody>
-    
-    </table>
+    @if (especialidades){
+    <ion-grid fixed>
+      <ion-row>
+        @for (especialidad of especialidades; track $index) {
+        <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{especialidad.id}}</ion-card-subtitle>
+              <ion-card-title>{{especialidad.nombre}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Ingredientes: {{especialidad.ingredientes}}<br>
+              Imagen: {{especialidad.img_url}}<br><br>
+              <ion-button (click)="confirmaBorrar(especialidad)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarEspecialidad(especialidad.id)">Editar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+    }
   </div>
-
 </ion-content>

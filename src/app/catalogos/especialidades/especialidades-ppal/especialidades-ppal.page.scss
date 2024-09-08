@@ -1,22 +1,22 @@
 .table-container {
     overflow-x: auto;
   }
-  
+
   .data-table {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   .data-table th,
   .data-table td {
     border: 1px solid #ddd;
     padding: 8px;
   }
-  
+
   .data-table tr:hover {
     background-color: #eaeaea;
   }
-  
+
   .data-table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -42,4 +42,7 @@
     --background: rgb(103, 173, 91);
     --color: white;
   }
-  
+
+  .subtitle{
+    font-size: 0.7rem;
+  }

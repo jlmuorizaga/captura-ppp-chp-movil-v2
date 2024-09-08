@@ -3,7 +3,7 @@ import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton,
-  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid } from '@ionic/angular/standalone';
+  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid, IonRow, IonCol, IonCard, IonCardTitle, IonCardContent, IonCardSubtitle, IonCardHeader } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
 import { Especialidad } from 'src/app/model/dto/especialidad';
@@ -16,7 +16,7 @@ import { GlobalService } from 'src/app/services/global.service';
   templateUrl: './especialidades-ppal.page.html',
   styleUrls: ['./especialidades-ppal.page.scss'],
   standalone: true,
-  imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
+  imports: [IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle, IonCard, IonCol, IonRow, IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class EspecialidadesPpalPage implements OnInit, OnDestroy {

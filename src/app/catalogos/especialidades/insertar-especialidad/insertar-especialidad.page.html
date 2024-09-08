@@ -8,31 +8,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Insertar Especialidad</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <form [formGroup]="formularioEspecialidad" (ngSubmit)="insertaEspecialidad()">
-        <!--ion-item>
-          <ion-input label="ID" label-placement="floating" formControlName="id"></ion-input>
-        </ion-item-->
-        <ion-item>
-          <ion-input label="Nombre Especialidad" label-placement="floating" formControlName="nombre"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input label="Img Url" label-placement="floating" formControlName="img_url"></ion-input>
-        </ion-item>
-        <div class="button-container">
-          <ion-button type="submit" class="centered-button" [disabled]="!formularioEspecialidad.valid" color="success">
-            Inserta Especialidad
-          </ion-button>
-        </div>
-      </form>
-    </ion-card-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Insertar Especialidad</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="formularioEspecialidad" (ngSubmit)="insertaEspecialidad()">
+              <ion-item>
+                <ion-input label="Nombre Especialidad" label-placement="floating" formControlName="nombre"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Img Url" label-placement="floating" formControlName="img_url"></ion-input>
+              </ion-item>
+              <div class="button-container">
+                <ion-button type="submit" class="centered-button" [disabled]="!formularioEspecialidad.valid" color="success">
+                  Inserta Especialidad
+                </ion-button>
+              </div>
+            </form>
+          </ion-card-content>
 
-  </ion-card>
+        </ion-card>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
