@@ -12,37 +12,28 @@
     <ion-button (click)="saltaAInsertarTipoProducto()" color="success">Insertar Tipo de Producto</ion-button>
   </p>
 
-
   <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Descripción</th>
-          <th>Img URL</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (tipoProductos){
+    @if (tipoProductos){
+      <ion-grid fixed>
+        <ion-row>
           @for (tipoProducto of tipoProductos; track $index) {
-        <tr>
-          <td>{{tipoProducto.id}}</td>
-          <td>{{tipoProducto.descripcion}}</td>
-          <td>{{tipoProducto.img_url}}</td>
-          <td>
-            <ion-button (click)="confirmaBorrar(tipoProducto)" color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button (click)="saltaAEditarTipoProducto(tipoProducto.id)">Editar</ion-button> <br>
-          </td>
-        </tr>
-      }
-      }
-      </tbody>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle class="subtitle">{{tipoProducto.id}}</ion-card-subtitle>
+                  <ion-card-title>{{tipoProducto.descripcion}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  URL: {{tipoProducto.img_url}}<br><br>
+                  <ion-button (click)="confirmaBorrar(tipoProducto)" color="danger">Borrar</ion-button>
+                  <ion-button (click)="saltaAEditarTipoProducto(tipoProducto.id)">Editar</ion-button>
 
-    </table>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+     }
+    </ion-row>
+  </ion-grid>
+    }
   </div>
-
-
 </ion-content>

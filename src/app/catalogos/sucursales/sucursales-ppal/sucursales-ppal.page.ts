@@ -3,7 +3,7 @@ import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar,
-  IonButtons, IonBackButton, IonButton,AlertController } from '@ionic/angular/standalone';
+  IonButtons, IonBackButton, IonButton,AlertController, IonRow, IonGrid, IonCol, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonCard } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import { Sucursal } from 'src/app/model/dto/sucursal';
 import {filter} from 'rxjs/operators';
@@ -15,7 +15,7 @@ import { SucursalService } from 'src/app/services/sucursal.service';
   templateUrl: './sucursales-ppal.page.html',
   styleUrls: ['./sucursales-ppal.page.scss'],
   standalone: true,
-  imports: [IonButton, SharedModule,IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar,
+  imports: [IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCol, IonGrid, IonRow, IonButton, SharedModule,IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar,
     CommonModule, FormsModule]
 })
 export class SucursalesPpalPage implements OnInit,OnDestroy {

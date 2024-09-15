@@ -7,70 +7,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">sucursales-ppal</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
+<ion-content [fullscreen]="true">
   <p style="text-align: center">
     <ion-button color="success">Insertar Sucursal</ion-button>
   </p>
 
   <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID Sucursal</th>
-          <th>Clave Sucursal</th>
-          <th>Nombre Sucursal</th>
-          <th>RFC</th>
-          <th>Domicilio</th>
-          <th>Teléfono</th>
-          <th>Hora Inicio</th>
-          <th>Hora Fin</th>
-          <th>Latitud</th>
-          <th>Longitud</th>
-          <th>ID Región</th>
-          <th>Venta Activa</th>
-          <th>PK</th>
-          <th>SK</th>
-          <th>Monto Mínimo Entrega Sucursal</th>
-          <th>Monto Mínimo Entrega Domicilio</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-    </table>
-    <div class="table-body">
-      <table>
-        <tbody>
-          @if (sucursales){ @for (sucursal of sucursales; track $index) {
-          <tr>
-            <td>{{sucursal.id}}</td>
-            <td>{{sucursal.clave}}</td>
-            <td>{{sucursal.nombre_sucursal}}</td>
-            <td>{{sucursal.rfc}}</td>
-            <td>{{sucursal.domicilio}}</td>
-            <td>{{sucursal.telefono}}</td>
-            <td>{{sucursal.hora_inicio}}</td>
-            <td>{{sucursal.hora_fin}}</td>
-            <td>{{sucursal.latitud}}</td>
-            <td>{{sucursal.longitud}}</td>
-            <td>{{sucursal.id_region}}</td>
-            <td>{{sucursal.venta_activa}}</td>
-            <td>{{sucursal.pk}}</td>
-            <td>{{sucursal.sk}}</td>
-            <td>{{sucursal.monto_minimo_entrega_sucursal}}</td>
-            <td>{{sucursal.monto_minimo_entrega_domicilio}}</td>
-            <td>
+    @if (sucursales){
+    <ion-grid fixed>
+      <ion-row>
+        @for (sucursal of sucursales; track $index) {
+        <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{sucursal.id}}</ion-card-subtitle>
+              <ion-card-title>{{sucursal.clave}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Sucursal: {{sucursal.nombre_sucursal}}<br>
+              RFC: {{sucursal.rfc}}<br>
+              Domicilio: {{sucursal.domicilio}}<br>
+              Teléfono: {{sucursal.telefono}}<br>
+              Hora de Inicio: {{sucursal.hora_inicio}}<br>
+              Hora de cierre: {{sucursal.hora_fin}}<br>
+              Latitud: {{sucursal.latitud}}<br>
+              Longitud: {{sucursal.longitud}}<br>
+              ID Región: {{sucursal.id_region}}<br>
+              Venta Activa: {{sucursal.venta_activa}}<br>
+              PK: {{sucursal.pk}}<br>
+              SK: {{sucursal.sk}}<br>
+              Monto Mínimo Venta Sucursal: {{sucursal.monto_minimo_entrega_sucursal}}<br>
+              Monto Mínimo Entrega a Domicilio: {{sucursal.monto_minimo_entrega_domicilio}}<br><br>
               <ion-button color="danger">Borrar</ion-button>
-            </td>
-            <td><ion-button>Editar</ion-button> <br /></td>
-          </tr>
-          } }
-        </tbody>
-      </table>
-    </div>
+              <ion-button>Editar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+    }
   </div>
+
 </ion-content>
