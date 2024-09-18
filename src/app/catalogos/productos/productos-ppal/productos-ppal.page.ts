@@ -115,7 +115,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
     console.log('Estoy en editar producto id='+id)
     this.productosSvc.dameProducto(id).subscribe({
       next:(res:any)=>{
-        console.log('Región regresada de forma exitosa')
+        console.log('Producto regresada de forma exitosa')
         console.log(res);
         //this.leerRegiones();
         //this.router.navigateByUrl('/editar-region');
