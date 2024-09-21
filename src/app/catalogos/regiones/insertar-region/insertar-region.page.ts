@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
-  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem } from '@ionic/angular/standalone';
-  import { Region } from 'src/app/model/dto/region';
-  import { RegionService } from 'src/app/services/region.service';
-  import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {
+  IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
+  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem
+} from '@ionic/angular/standalone';
+import { Region } from 'src/app/model/dto/region';
+import { RegionService } from 'src/app/services/region.service';
+import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
 
@@ -15,13 +17,13 @@ import { Utilerias } from 'src/app/utilerias/utilerias';
   styleUrls: ['./insertar-region.page.scss'],
   standalone: true,
   imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
-    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
-    IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
+    ReactiveFormsModule, IonButton, IonGrid, IonRow, IonCol, IonBackButton,
+    IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
 export class InsertarRegionPage {
   formularioRegion: FormGroup;
 
-  constructor(private fb: FormBuilder,private regionesSvc:RegionService,private router: Router) {
+  constructor(private fb: FormBuilder, private regionesSvc: RegionService, private router: Router) {
     this.formularioRegion = this.fb.group({
       //idRegion: ['', Validators.required],
       nombreRegion: ['', Validators.required]
@@ -32,18 +34,18 @@ export class InsertarRegionPage {
   insertaRegion() {
     if (this.formularioRegion.valid) {
       console.log(this.formularioRegion.value)
-      let region:Region=new Region();
+      let region: Region = new Region();
       //region.idRegion=this.formularioRegion.value.idRegion;
-      region.idRegion=Utilerias.generaId();
-      region.nombreRegion=this.formularioRegion.value.nombreRegion;
+      region.idRegion = Utilerias.generaId();
+      region.nombreRegion = this.formularioRegion.value.nombreRegion;
       this.regionesSvc.insertaRegion(region).subscribe({
-        next:(res:any)=>{
+        next: (res: any) => {
           console.log('Región insertada de forma exitosa')
           console.log(res);
           this.saltaARegiones();
 
         },
-        error:(error:any)=>{
+        error: (error: any) => {
           console.log('Error en la inserción de la región')
           console.log(error)
 
