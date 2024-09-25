@@ -35,7 +35,8 @@
               <ion-item>
                 <ion-select aria-label="Food" placeholder="Selecciona Tipo de Producto" formControlName="id_tipo_producto2" [(ngModel)]="id_tipo_producto_seleccionado">
                   <ion-select-option *ngFor="let tipoproducto of tipoProductos" [value]="tipoproducto.id">
-                    {{ tipoproducto.id}} {{ tipoproducto.descripcion}}
+                    <!--{{ tipoproducto.id}} {{ tipoproducto.descripcion}}-->
+                    {{ tipoproducto.descripcion}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
