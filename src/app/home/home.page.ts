@@ -3,7 +3,8 @@ import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar,
-  IonButtons, IonBackButton, IonButton,AlertController, IonList, IonItem,IonSelect,IonSelectOption } from '@ionic/angular/standalone';
+  IonButtons, IonBackButton, IonButton,AlertController, IonList, IonItem,IonSelect,
+  IonSelectOption } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import { Sucursal } from 'src/app/model/dto/sucursal';
 import {filter} from 'rxjs/operators';
