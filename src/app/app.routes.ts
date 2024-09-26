@@ -105,7 +105,15 @@ export const routes: Routes = [
   {
     path: 'editar-producto',
     loadComponent: () => import('./catalogos/productos/editar-producto/editar-producto.page').then( m => m.EditarProductoPage)
+  },  {
+    path: 'insertar-sucursal',
+    loadComponent: () => import('./catalogos/sucursales/insertar-sucursal/insertar-sucursal.page').then( m => m.InsertarSucursalPage)
   },
+  {
+    path: 'editar-sucursal',
+    loadComponent: () => import('./catalogos/sucursales/editar-sucursal/editar-sucursal.page').then( m => m.EditarSucursalPage)
+  },
+
 
 
 

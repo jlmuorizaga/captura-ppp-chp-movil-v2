@@ -66,5 +66,68 @@ export class SucursalesPpalPage implements OnInit,OnDestroy {
       }
     })
   }
+  borraSucursal(id:string){
+    console.log('Voy a borrar esta sucursal='+id);
+
+    this.sucursalesSvc.borraSucursal(id).subscribe({
+      next:(res:any)=>{
+        console.log('Sucursal borrada de forma exitosa')
+        console.log(res);
+        this.leerSucursales();
+      },
+      error:(error:any)=>{
+        console.log('Error en el borrado de la sucursal')
+        console.log(error)
+
+      }
+    })
+  }
+  async confirmaBorrar(sucursal:Sucursal){
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar la sucursal  '+sucursal.clave+' ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Operación confirmada');
+            this.borraSucursal(sucursal.id);
+            // Aquí puedes agregar la lógica para la operación a realizar
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  saltaAInsertarSucursal() {
+    this.router.navigateByUrl('/insertar-sucursal');
+  }
+
+  async saltaAEditarSucursal(id:string){
+    console.log('Estoy en editar sucursal id='+id)
+    this.sucursalesSvc.dameSucursal(id).subscribe({
+      next:(res:any)=>{
+        console.log('Sucursal regresada de forma exitosa')
+        console.log(res);
+        this.router.navigate(['/editar-sucursal'],{state:{data:res}});
+
+
+      },
+      error:(error:any)=>{
+        console.log('Error en la solicitud de la sucursal')
+        console.log(error)
+
+      }
+    })
+  }
 
 }

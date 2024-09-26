@@ -14,33 +14,30 @@
 
 
   <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Descripción</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (salsas){
+    @if (salsas){
+      <ion-grid fixed>
+        <ion-row>
           @for (salsa of salsas; track $index) {
-        <tr>
-          <td>{{salsa.id}}</td>
-          <td>{{salsa.descripcion}}</td>
-          <td>
-            <ion-button (click)="confirmaBorrar(salsa)" color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button (click)="saltaAEditarSalsa(salsa.id)">Editar</ion-button> <br>
-          </td>
-        </tr>
-      }
-      }
-      </tbody>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{salsa.id}}</ion-card-subtitle>
+              <ion-card-title>{{salsa.descripcion}}</ion-card-title>
+            </ion-card-header>
 
-    </table>
+            <ion-card-content>
+
+              <ion-button (click)="confirmaBorrar(salsa)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarSalsa(salsa.id)">Editar</ion-button>
+
+            </ion-card-content>
+          </ion-card>
+          </ion-col>
+        }
+
+        </ion-row>
+      </ion-grid>
+  }
   </div>
-
 
 </ion-content>

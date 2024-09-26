@@ -106,7 +106,6 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
     });
 
     await alert.present();
-
   }
   saltaAInsertarProducto() {
     this.router.navigateByUrl('/insertar-producto');

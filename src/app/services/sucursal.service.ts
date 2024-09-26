@@ -19,5 +19,15 @@ export class SucursalService {
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones');
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.sucursales);
   }
+  borraSucursal(id:string){
+    return this.http.delete(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.sucursales+'/'+id);
+  }
+  insertaSucursal(sucursal:Sucursal){
+    return this.http.post(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.sucursales,sucursal);
+  }
+
+  editaSucursal(sucursal:Sucursal){
+    return this.http.put(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.sucursales+'/'+sucursal.id,sucursal);
+  }
 
 }

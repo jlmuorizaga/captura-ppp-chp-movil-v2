@@ -11,6 +11,8 @@
   <p style="text-align: center">
     <ion-button (click)="saltaAInsertarRegion()" color="success">Insertar Región</ion-button>
   </p>
+
+  
   <div class="table-container">
     @if (regiones){
       <ion-grid fixed>
@@ -22,7 +24,7 @@
               <ion-card-subtitle class="subtitle">{{region.idRegion}}</ion-card-subtitle>
               <ion-card-title>{{region.nombreRegion}}</ion-card-title>
             </ion-card-header>
-            
+
             <ion-card-content>
               <!--
              Nombre de la región: {{region.nombreRegion}}<br><br>

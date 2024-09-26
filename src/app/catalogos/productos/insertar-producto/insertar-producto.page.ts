@@ -6,6 +6,7 @@ import {
   IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel,
   IonItem, IonList, IonSelect, IonSelectOption
 } from '@ionic/angular/standalone';
+
 import { Producto } from 'src/app/model/dto/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
@@ -34,7 +35,7 @@ export class InsertarProductoPage {
 
   constructor(private tipoProductosSvc: TipoProductoService, private fb: FormBuilder, private productosSvc: ProductoService,
     private router: Router, private cdr: ChangeDetectorRef) {
-      
+
     this.formularioProducto = this.fb.group({
       descripcion_p: ['', Validators.required],
       tamanio: ['', Validators.required],
@@ -103,11 +104,9 @@ export class InsertarProductoPage {
       })
 
     }
-
   }
   saltaAProductos() {
     this.router.navigateByUrl('/productos-ppal');
   }
-
 
 }

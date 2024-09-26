@@ -10,7 +10,7 @@
 
 <ion-content [fullscreen]="true">
   <p style="text-align: center">
-    <ion-button color="success">Insertar Sucursal</ion-button>
+    <ion-button (click)="saltaAInsertarSucursal()" color="success">Insertar Sucursal</ion-button>
   </p>
 
   <div class="table-container">
@@ -39,8 +39,8 @@
               SK: {{sucursal.sk}}<br>
               Monto Mínimo Venta Sucursal: {{sucursal.monto_minimo_entrega_sucursal}}<br>
               Monto Mínimo Entrega a Domicilio: {{sucursal.monto_minimo_entrega_domicilio}}<br><br>
-              <ion-button color="danger">Borrar</ion-button>
-              <ion-button>Editar</ion-button>
+              <ion-button (click)="confirmaBorrar(sucursal)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarSucursal(sucursal.id)">Editar</ion-button>
             </ion-card-content>
           </ion-card>
         </ion-col>

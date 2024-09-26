@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>insertar-sucursal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-title size="large">Insertar Sucursal</ion-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="formularioSucursal" (ngSubmit)="insertaSucursal()">
+              <ion-item>
+                <ion-input label="Clave" label-placement="floating" formControlName="clave"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Nombre Sucursal" label-placement="floating"
+                  formControlName="nombre_sucursal"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="RFC" label-placement="floating" formControlName="rfc"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Domicilio" label-placement="floating" formControlName="domicilio"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Teléfono" label-placement="floating" formControlName="telefono"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Hora Inicio" label-placement="floating" formControlName="hora_inicio"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Hora Fin" label-placement="floating" formControlName="hora_fin"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Latitud" label-placement="floating" formControlName="latitud"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Longitud" label-placement="floating" formControlName="longitud"></ion-input>
+              </ion-item>
+              <ion-item>
+                @if (regiones){
+                <ion-select label="Nombre Región" label-placement="floating" formControlName="id_region">
+                  @for (region of regiones; track $index) {
+                  <ion-select-option value="{{region.idRegion}}">{{region.nombreRegion}}</ion-select-option>
+                  }
+                </ion-select>
+                }
+              </ion-item>
+              <ion-item>
+                <ion-input label="Venta Activa" label-placement="floating" formControlName="venta_activa"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="PK" label-placement="floating" formControlName="pk"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="SK" label-placement="floating" formControlName="sk"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Monto Minimo Entrega Sucursal" label-placement="floating"
+                  formControlName="monto_minimo_entrega_sucursal"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Monto Minimo Entrega Domicilio" label-placement="floating"
+                  formControlName="monto_minimo_entrega_domicilio"></ion-input>
+              </ion-item>
+
+              <div class="button-container">
+                <ion-button type="submit" class="centered-button" [disabled]="!formularioSucursal.valid"
+                  color="success">
+                  Inserta Sucursal
+                </ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
