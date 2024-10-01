@@ -9,6 +9,7 @@ export const environment = {
   productos:'/productos',
   productos2:'/productos2',
   tiposProducto:'/tipos-producto',
+  tamaniosPizza:'/tamanios-pizza',
   salsas:'/salsas',
   relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',
   promociones_especiales:'/promociones_especiales',

@@ -113,6 +113,18 @@ export const routes: Routes = [
     path: 'editar-sucursal',
     loadComponent: () => import('./catalogos/sucursales/editar-sucursal/editar-sucursal.page').then( m => m.EditarSucursalPage)
   },
+  {
+    path: 'tamanios-pizza-ppal',
+    loadComponent: () => import('./catalogos/tamanios-pizza/tamanios-pizza-ppal/tamanios-pizza-ppal.page').then( m => m.TamaniosPizzaPpalPage)
+  },
+  {
+    path: 'editar-tamanios-pizza',
+    loadComponent: () => import('./catalogos/tamanios-pizza/editar-tamanios-pizza/editar-tamanios-pizza.page').then( m => m.EditarTamaniosPizzaPage)
+  },
+  {
+    path: 'insertar-tamanios-pizza',
+    loadComponent: () => import('./catalogos/tamanios-pizza/insertar-tamanios-pizza/insertar-tamanios-pizza.page').then( m => m.InsertarTamaniosPizzaPage)
+  },
 
 
 

@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Tamaños Pizza</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarTamanioPizza()" color="success">Insertar Región</ion-button>
+  </p>
+
+
+  <div class="table-container">
+    @if (tamaniosPizza){
+      <ion-grid fixed>
+        <ion-row>
+          @for (tamanioPizza of tamaniosPizza; track $index) {
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{tamanioPizza.id}}</ion-card-subtitle>
+              <ion-card-title>{{tamanioPizza.nombre}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <!--
+             Nombre de la región: {{region.nombreRegion}}<br><br>
+             !-->
+              <ion-button (click)="confirmaBorrar(tamanioPizza)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarTamanioPizza(tamanioPizza.id)">Editar</ion-button>
+
+            </ion-card-content>
+          </ion-card>
+          </ion-col>
+        }
+
+        </ion-row>
+      </ion-grid>
+  }
+  </div>
+</ion-content>

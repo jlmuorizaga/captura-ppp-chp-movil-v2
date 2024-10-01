@@ -13,35 +13,28 @@
   </p>
 
   <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID Especialidad</th>
-          <th>Nombre Especialidad</th>
-          <th>Tamaño Pizza</th>
-          <th>Nombre Sucursal</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (registrosRelacionEtps){
+    @if (registrosRelacionEtps){
+      <ion-grid fixed>
+        <ion-row>
           @for (registro of registrosRelacionEtps; track $index) {
-        <tr>
-          <td>{{registro.idEspecialidad}}</td>
-          <td>{{registro.pizzaNombre}}</td>
-          <td>{{registro.pizzaTamanio}}</td>
-          <td>{{sucursal.nombre_sucursal}}</td>
-          <td>
-            <ion-button color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button>Editar</ion-button> <br>
-          </td>
-        </tr>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle class="subtitle">{{registro.idEspecialidad}}</ion-card-subtitle>
+                  <ion-card-title>{{registro.pizzaNombre}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  Tamaño: {{registro.pizzaTamanio}}<br>
+                  Nombre de Sucursal: {{sucursal.nombre_sucursal}} <br>
+                  Precio: {{registro.precio}}<br>
+                  <ion-button color="danger">Borrar</ion-button>
+                  <ion-button>Editar</ion-button>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            }
+          </ion-row>
+        </ion-grid>
       }
-      }
-      </tbody>
-
-    </table>
-  </div>
+    </div>
 </ion-content>
