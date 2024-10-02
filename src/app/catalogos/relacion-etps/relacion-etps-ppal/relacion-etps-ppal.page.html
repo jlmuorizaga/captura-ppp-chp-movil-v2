@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <p style="text-align: center">
-    <ion-button color="success">Insertar Registro en Relacion Especialidad, Tamaño, Precio, Sucursal</ion-button>
+    <ion-button (click)="saltaAInsertarRETPS()" color="success">Insertar Registro en Relacion Especialidad, Tamaño, Precio, Sucursal</ion-button>
   </p>
 
   <div class="table-container">
@@ -27,6 +27,9 @@
                   Tamaño: {{registro.pizzaTamanio}}<br>
                   Nombre de Sucursal: {{sucursal.nombre_sucursal}} <br>
                   Precio: {{registro.precio}}<br>
+                  Categoría1: {{registro.categoria1}}<br>
+                  Categoría2: {{registro.categoria2}}<br>
+                  Categoría3: {{registro.categoria3}}<br>
                   <ion-button color="danger">Borrar</ion-button>
                   <ion-button>Editar</ion-button>
                 </ion-card-content>

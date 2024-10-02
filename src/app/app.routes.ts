@@ -125,6 +125,14 @@ export const routes: Routes = [
     path: 'insertar-tamanios-pizza',
     loadComponent: () => import('./catalogos/tamanios-pizza/insertar-tamanios-pizza/insertar-tamanios-pizza.page').then( m => m.InsertarTamaniosPizzaPage)
   },
+  {
+    path: 'insertar-relacion-etps',
+    loadComponent: () => import('./catalogos/relacion-etps/insertar-relacion-etps/insertar-relacion-etps.page').then( m => m.InsertarRelacionEtpsPage)
+  },
+  {
+    path: 'editar-relacion-etps',
+    loadComponent: () => import('./catalogos/relacion-etps/editar-relacion-etps/editar-relacion-etps.page').then( m => m.EditarRelacionEtpsPage)
+  },
 
 
 

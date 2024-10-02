@@ -77,6 +77,8 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
     })
   }
 
+
+
   dameSucursal(idSucursal:string){
     this.sucursalesSvc.dameSucursal(idSucursal).subscribe({
       next:(res:any)=>{
@@ -95,6 +97,10 @@ export class RelacionEtpsPpalPage implements OnInit, OnDestroy {
 
       }
     })
+  }
+
+  saltaAInsertarRETPS() {
+    this.router.navigateByUrl('/insertar-relacion-etps');
   }
 
 }

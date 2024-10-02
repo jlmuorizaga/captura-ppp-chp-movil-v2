@@ -27,6 +27,7 @@ import { ChangeDetectorRef } from '@angular/core';
     ReactiveFormsModule, IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
+
 export class InsertarProductoPage {
   formularioProducto: FormGroup;
   navigationSubscription: Subscription;
