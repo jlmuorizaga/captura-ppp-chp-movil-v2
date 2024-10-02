@@ -26,14 +26,7 @@ export class EditarRegionPage  implements OnInit {
   idRegion!:string;
   nombreRegion!:string;
   //mensaje:string;
-/*
-  constructor(private fb: FormBuilder,private regionesSvc:RegionService,private router: Router) {
-    this.formularioRegion = this.fb.group({
-      idRegion: ['', Validators.required],
-      nombreRegion: ['', Validators.required]
-    })
-  }
-*/
+
 constructor(private fb: FormBuilder,private regionesSvc:RegionService,
   private router: Router) {
   const navigation = this.router.getCurrentNavigation();
