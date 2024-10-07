@@ -26,7 +26,7 @@ import {
   IonLabel,
   IonItem,
   IonSelect,
-  IonSelectOption
+  IonSelectOption,
 } from '@ionic/angular/standalone';
 
 import { Producto } from 'src/app/model/dto/producto';
@@ -34,11 +34,11 @@ import { Producto } from 'src/app/model/dto/producto';
 import { ProductoService } from 'src/app/services/producto.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
-import { ActivatedRoute,Route } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import { Subscription } from 'rxjs';
 import { TipoProducto } from 'src/app/model/dto/tipo-producto';
-import {filter} from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editar-producto',
@@ -73,27 +73,26 @@ import {filter} from 'rxjs/operators';
 })
 export class EditarProductoPage implements OnInit, OnDestroy {
   formularioProducto: FormGroup;
-  datos!:Producto;
-  id!:string;
-  descripcion_p!:string;
-  tamanio!:string;
-  usa_salsa!:string;
-  id_tipo_producto!:string;
-  descripcion_tp!:string;
-  ruta_imagen!:string;
-  categoria1!:string;
-  categoria2!:string;
-  categoria3!:string;
-  navigationSubscription:Subscription;
-  tipoProductos!:TipoProducto[];
-  id_tipo_producto_seleccionado!:string;
-
+  datos!: Producto;
+  id!: string;
+  descripcion_p!: string;
+  tamanio!: string;
+  usa_salsa!: string;
+  id_tipo_producto!: string;
+  descripcion_tp!: string;
+  ruta_imagen!: string;
+  categoria1!: string;
+  categoria2!: string;
+  categoria3!: string;
+  navigationSubscription: Subscription;
+  tipoProductos!: TipoProducto[];
+  id_tipo_producto_seleccionado!: string;
 
   constructor(
     private fb: FormBuilder,
-    private productosSvc:ProductoService,
-    private router:Router,
-    private tipoProductosSvc:TipoProductoService,
+    private productosSvc: ProductoService,
+    private router: Router,
+    private tipoProductosSvc: TipoProductoService,
     private cdr: ChangeDetectorRef
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -106,33 +105,31 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       this.descripcion_p = data.descripcion;
       this.tamanio = data.tamanio;
       this.usa_salsa = data.usa_salsa;
-      this.id_tipo_producto=data.id_tipo_producto;
-      this.descripcion_tp=data.descripcion_tp;
-      this.ruta_imagen=data.ruta_imagen;
-      this.categoria1=data.categoria1;
-      this.categoria2=data.categoria2;
-      this.categoria3=data.categoria3;
-      this.id_tipo_producto_seleccionado=data.id_tipo_producto;
+      this.id_tipo_producto = data.id_tipo_producto;
+      this.descripcion_tp = data.descripcion_tp;
+      this.ruta_imagen = data.ruta_imagen;
+      this.categoria1 = data.categoria1;
+      this.categoria2 = data.categoria2;
+      this.categoria3 = data.categoria3;
+      this.id_tipo_producto_seleccionado = data.id_tipo_producto;
     }
-    this.formularioProducto=this.fb.group({
+    this.formularioProducto = this.fb.group({
       descripcion_p: ['', Validators.required],
       tamanio: ['', Validators.required],
       usa_salsa: ['', Validators.required],
       //id_tipo_producto: ['', Validators.required],
       id_tipo_producto2: ['', Validators.required],
-     // descripcion_tp: ['', Validators.required],
+      // descripcion_tp: ['', Validators.required],
       ruta_imagen: ['', Validators.required],
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
     });
     this.navigationSubscription = this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerTipoProductos();
       });
-
-
   }
 
   ngOnInit() {
@@ -152,7 +149,8 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       producto.descripcion_p = this.formularioProducto.value.descripcion_p;
       producto.tamanio = this.formularioProducto.value.tamanio;
       producto.usa_salsa = this.formularioProducto.value.usa_salsa;
-      producto.id_tipo_producto = this.formularioProducto.value.id_tipo_producto2;
+      producto.id_tipo_producto =
+        this.formularioProducto.value.id_tipo_producto2;
       producto.descripcion_tp = this.formularioProducto.value.descripcion_tp;
       producto.ruta_imagen = this.formularioProducto.value.ruta_imagen;
       producto.categoria1 = this.formularioProducto.value.categoria1;
@@ -177,24 +175,21 @@ export class EditarProductoPage implements OnInit, OnDestroy {
     this.router.navigateByUrl('/productos-ppal');
   }
 
-  leerTipoProductos(){
+  leerTipoProductos() {
     this.tipoProductosSvc.dameListaTipoProductos().subscribe({
-      next:(res:any)=>{
-        console.log('Servicio leido de forma exitosa')
+      next: (res: any) => {
+        console.log('Servicio leido de forma exitosa');
         console.log(res);
-        this.tipoProductos=res;
+        this.tipoProductos = res;
 
         console.log(this.tipoProductos);
-        this.tipoProductos
+        this.tipoProductos;
         this.cdr.detectChanges();
-
       },
-      error:(error:any)=>{
-        console.log('Error en la lectura del servicio')
-        console.log(error)
-
-      }
-    })
+      error: (error: any) => {
+        console.log('Error en la lectura del servicio');
+        console.log(error);
+      },
+    });
   }
-
 }
