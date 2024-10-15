@@ -90,6 +90,10 @@ export class MenuCatalogosPage {
     this.router.navigateByUrl('/home');
   }
 
+  abrirEnNuevaPestana(url: string) {
+    window.open(url, '_blank', 'noopener');
+  }
+
   dameSucursal(idSucursal: string) {
     this.sucursalesSvc.dameSucursal(idSucursal).subscribe({
       next: (res: any) => {
