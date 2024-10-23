@@ -133,6 +133,18 @@ export const routes: Routes = [
     path: 'editar-relacion-etps',
     loadComponent: () => import('./catalogos/relacion-etps/editar-relacion-etps/editar-relacion-etps.page').then( m => m.EditarRelacionEtpsPage)
   },
+  {
+    path: 'categorias-ppal',
+    loadComponent: () => import('./catalogos/categorias/categorias-ppal/categorias-ppal.page').then( m => m.CategoriasPpalPage)
+  },
+  {
+    path: 'editar-categoria',
+    loadComponent: () => import('./catalogos/categorias/editar-categoria/editar-categoria.page').then( m => m.EditarCategoriaPage)
+  },
+  {
+    path: 'insertar-categoria',
+    loadComponent: () => import('./catalogos/categorias/insertar-categoria/insertar-categoria.page').then( m => m.InsertarCategoriaPage)
+  },
 
 
 
