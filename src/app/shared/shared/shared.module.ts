@@ -12,6 +12,7 @@ import { PromocionEspecialService } from 'src/app/services/promocion-especial.se
 import { RelacionPromocionEspecialSucursalPpalPage } from 'src/app/catalogos/relacion-promocion-especial-sucursal/relacion-promocion-especial-sucursal-ppal/relacion-promocion-especial-sucursal-ppal.page';
 import { RelacionPromocionEspecialSucursalService } from 'src/app/services/relacion-promocion-especial-sucursal.service';
 import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
 
 
 
@@ -21,6 +22,6 @@ import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
     CommonModule,HttpClientModule
   ],
   providers:[RegionService,EspecialidadService,SucursalService,ProductoService,
-    TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,RelacionPromocionEspecialSucursalService,TamanioPizzaService]
+    TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,RelacionPromocionEspecialSucursalService,TamanioPizzaService,CategoriaService]
 })
 export class SharedModule { }

@@ -51,6 +51,9 @@ export class MenuCatalogosPage {
     console.log('Sucursal==>', this.globalService.idSucursalGlobal);
   }
 
+  saltaACategorias() {
+    this.router.navigateByUrl('/categorias-ppal');
+  }
   saltaARegiones() {
     this.router.navigateByUrl('/regiones-ppal');
   }
