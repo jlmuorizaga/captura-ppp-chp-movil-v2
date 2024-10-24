@@ -22,7 +22,7 @@ import { ActivatedRoute,Route } from '@angular/router';
 export class EditarCategoriaPage implements OnInit {
   formularioCategoria: FormGroup;
   sacategorias!:Categoria[];
-  codigo!:Categoria;
+  codigo!:string;
   nombre!:string;
   constructor(private fb: FormBuilder,private categoriasSvc:CategoriaService,
     private router: Router) {
