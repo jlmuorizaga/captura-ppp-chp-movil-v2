@@ -21,7 +21,8 @@ import { ActivatedRoute,Route } from '@angular/router';
 })
 export class EditarCategoriaPage implements OnInit {
   formularioCategoria: FormGroup;
-  sacategorias!:Categoria[];
+  categorias!:Categoria[];
+  datos!:Categoria;
   codigo!:string;
   nombre!:string;
   constructor(private fb: FormBuilder,private categoriasSvc:CategoriaService,
@@ -53,7 +54,7 @@ export class EditarCategoriaPage implements OnInit {
        console.log(this.formularioCategoria.value)
        let categoria:Categoria=new Categoria();
        //region.idRegion=this.formularioRegion.value.idRegion;
-       categoria.codigo=this.codigo;       
+       categoria.codigo=this.codigo;
        categoria.nombre=this.formularioCategoria.value.nombre;
        //this.regionesSvc.insertaRegion(region).subscribe({
        this.categoriasSvc.editaCategoria(categoria).subscribe({
