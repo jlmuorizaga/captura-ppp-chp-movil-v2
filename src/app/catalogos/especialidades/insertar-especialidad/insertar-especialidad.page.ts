@@ -27,6 +27,7 @@ export class InsertarEspecialidadPage{
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
       img_url: ['', Validators.required],
+      orden: ['', Validators.required],
     })
   }
 
@@ -39,6 +40,7 @@ export class InsertarEspecialidadPage{
       especialidad.nombre=this.formularioEspecialidad.value.nombre;
       especialidad.ingredientes=this.formularioEspecialidad.value.ingredientes;
       especialidad.img_url=this.formularioEspecialidad.value.img_url;
+      especialidad.orden=this.formularioEspecialidad.value.orden;
       this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
         next:(res:any)=>{
           console.log('Especialidad insertada de forma exitosa')

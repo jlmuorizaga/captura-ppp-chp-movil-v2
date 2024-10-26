@@ -3,4 +3,5 @@ export class Especialidad{
     nombre!:string;
     ingredientes!:string;
     img_url!:string;
+    orden!:string
 }

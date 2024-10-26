@@ -145,6 +145,18 @@ export const routes: Routes = [
     path: 'insertar-categoria',
     loadComponent: () => import('./catalogos/categorias/insertar-categoria/insertar-categoria.page').then( m => m.InsertarCategoriaPage)
   },
+  {
+    path: 'ingredientes-ppal',
+    loadComponent: () => import('./catalogos/ingredientes/ingredientes-ppal/ingredientes-ppal.page').then( m => m.IngredientesPpalPage)
+  },
+  {
+    path: 'editar-ingrediente',
+    loadComponent: () => import('./catalogos/ingredientes/editar-ingrediente/editar-ingrediente.page').then( m => m.EditarIngredientePage)
+  },
+  {
+    path: 'insertar-ingrediente',
+    loadComponent: () => import('./catalogos/ingredientes/insertar-ingrediente/insertar-ingrediente.page').then( m => m.InsertarIngredientePage)
+  },
 
 
 

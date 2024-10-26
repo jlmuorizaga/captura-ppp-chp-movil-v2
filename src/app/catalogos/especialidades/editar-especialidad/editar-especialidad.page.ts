@@ -70,6 +70,7 @@ export class EditarEspecialidadPage implements OnInit {
   nombre!: string;
   ingredientes!: string;
   img_url!: string;
+  orden!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -86,15 +87,15 @@ export class EditarEspecialidadPage implements OnInit {
       this.nombre = data.nombre;
       this.ingredientes = data.ingredientes;
       this.img_url = data.img_url;
+      this.orden = data.orden;
 
-      console.log('idRegion===>>' + this.id);
-      console.log('nombreRegion===>' + this.nombre);
     }
     this.formularioEspecialidad = this.fb.group({
       //id: ['', Validators.required],
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
       img_url: ['', Validators.required],
+      orden: ['', Validators.required],
     });
   }
 
@@ -112,6 +113,7 @@ export class EditarEspecialidadPage implements OnInit {
       especialidad.ingredientes =
         this.formularioEspecialidad.value.ingredientes;
       especialidad.img_url = this.formularioEspecialidad.value.img_url;
+      especialidad.orden = this.formularioEspecialidad.value.orden;
 
       this.especialidadesSvc.editaEspecialidad(especialidad).subscribe({
         next: (res: any) => {
