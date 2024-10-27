@@ -18,15 +18,15 @@ export class IngredienteService {
   dameListaIngredientes() {
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.ingredientes);
   }
-  borraSalsa(id: string) {
+  borraIngrediente(id: string) {
     return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.ingredientes + '/' + id);
 
   }
-  insertaSalsa(ingrediente:Ingrediente) {
+  insertaIngrediente(ingrediente:Ingrediente) {
     return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.ingredientes,ingrediente);
   }
 
-  editaSalsa(ingrediente: Ingrediente) {
+  editaIngrediente(ingrediente: Ingrediente) {
     return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.ingredientes + '/' + ingrediente.id,ingrediente);
   }
 }

@@ -32,13 +32,13 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.leerSalsas();
+        this.leerIngredientes();
       });
 
   }
 
   ngOnInit() {
-    console.log('Entré a regiones en OnInit');
+    console.log('Entré a ingredientes en OnInit');
   }
   ngOnDestroy(): void {
     if (this.navigationSubscription) {
@@ -46,14 +46,14 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
     }
   }
 
-  leerSalsas(){
-    this.salsasSvc.dameListaSalsas().subscribe({
+  leerIngredientes(){
+    this.ingredientesSvc.dameListaIngredientes().subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
         console.log(res);
-        this.salsas=res;
-        console.log(this.salsas);
-        this.salsas
+        this.ingredientes=res;
+        console.log(this.ingredientes);
+        this.ingredientes
         this.cdr.detectChanges();
 
       },
@@ -64,27 +64,27 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
     })
   }
 
-  borraSalsa(id:string){
-    console.log('Voy a borrar esta salsa='+id);
+  borraIngrediente(id:string){
+    console.log('Voy a borrar este ingrediente='+id);
 
-    this.salsasSvc.borraSalsa(id).subscribe({
+    this.ingredientesSvc.borraIngrediente(id).subscribe({
       next:(res:any)=>{
-        console.log('Salsa borrada de forma exitosa')
+        console.log('Ingrediente borrado de forma exitosa')
         console.log(res);
-        this.leerSalsas();
+        this.leerIngredientes();
       },
       error:(error:any)=>{
-        console.log('Error en el borrado de la salsa')
+        console.log('Error en el borrado del ingrediente')
         console.log(error)
 
       }
     })
   }
 
-  async confirmaBorrar(salsa:Salsa){
+  async confirmaBorrar(ingrediente:Ingrediente){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar la salsa '+salsa.descripcion+' ?',
+      message: '¿Estás seguro de que deseas borrar el ingrediente '+ingrediente.nombre+' ?',
       buttons: [
         {
           text: 'Cancelar',
@@ -97,7 +97,7 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
           text: 'Aceptar',
           handler: () => {
             console.log('Operación confirmada');
-            this.borraSalsa(salsa.id);
+            this.borraIngrediente(ingrediente.id);
             // Aquí puedes agregar la lógica para la operación a realizar
           }
         }
@@ -107,23 +107,23 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  saltaAInsertarSalsa() {
-    this.router.navigateByUrl('/insertar-salsa');
+  saltaAInsertarIngrediente() {
+    this.router.navigateByUrl('/insertar-ingrediente');
   }
-  async saltaAEditarSalsa(id:string){
-    console.log('Estoy en editar salsa id='+id)
-    this.salsasSvc.dameSalsa(id).subscribe({
+  async saltaAEditarIngrediente(id:string){
+    console.log('Estoy en editar ingrediente id='+id)
+    this.ingredientesSvc.dameIngrediente(id).subscribe({
       next:(res:any)=>{
-        console.log('Salsa regresada de forma exitosa')
+        console.log('Ingrediente regresado de forma exitosa')
         console.log(res);
         //this.leerRegiones();
         //this.router.navigateByUrl('/editar-region');
-        this.router.navigate(['/editar-salsa'],{state:{data:res}});
+        this.router.navigate(['/editar-ingrediente'],{state:{data:res}});
 
 
       },
       error:(error:any)=>{
-        console.log('Error en la solicitud de la salsa')
+        console.log('Error en la solicitud del ingrediente')
         console.log(error)
 
       }
