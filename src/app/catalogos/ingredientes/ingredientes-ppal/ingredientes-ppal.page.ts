@@ -24,7 +24,7 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
   ingredientes!:Ingrediente[];
   mensaje:string;
 
-  constructor(private ingredientesSvc:SalsaService,
+  constructor(private ingredientesSvc:IngredienteService,
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
