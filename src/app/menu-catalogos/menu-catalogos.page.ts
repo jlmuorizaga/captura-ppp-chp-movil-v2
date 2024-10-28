@@ -59,6 +59,9 @@ export class MenuCatalogosPage {
   saltaAEspecialidades() {
     this.router.navigateByUrl('/especialidades-ppal');
   }
+  saltaAIngredientes() {
+    this.router.navigateByUrl('/ingredientes-ppal');
+  }
   saltaAProductos() {
     this.router.navigateByUrl('/productos-ppal');
   }
