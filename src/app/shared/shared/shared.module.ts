@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegionService } from 'src/app/services/region.service';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
+import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { SucursalService } from 'src/app/services/sucursal.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { TipoProductoService } from 'src/app/services/tipo-producto.service';
@@ -22,6 +23,7 @@ import { CategoriaService } from 'src/app/services/categoria.service';
     CommonModule,HttpClientModule
   ],
   providers:[RegionService,EspecialidadService,SucursalService,ProductoService,
-    TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,RelacionPromocionEspecialSucursalService,TamanioPizzaService,CategoriaService]
+    TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,RelacionPromocionEspecialSucursalService,TamanioPizzaService,CategoriaService,
+  IngredienteService]
 })
 export class SharedModule { }

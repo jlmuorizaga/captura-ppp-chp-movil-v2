@@ -1,13 +1,43 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>ingredientes-ppal</ion-title>
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Ingredientes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">ingredientes-ppal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarIngrediente()" color="success">Insertar Ingrediente</ion-button>
+  </p>
+
+
+  <div class="table-container">
+    @if (ingredientes){
+      <ion-grid fixed>
+        <ion-row>
+          @for (ingrediente of ingredientes; track $index) {
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{ingrediente.id}}</ion-card-subtitle>
+              <ion-card-title>{{ingrediente.nombre}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+
+              <ion-button (click)="confirmaBorrar(ingrediente)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarIngrediente(ingrediente.id)">Editar</ion-button>
+
+            </ion-card-content>
+          </ion-card>
+          </ion-col>
+        }
+
+        </ion-row>
+      </ion-grid>
+  }
+  </div>
+
 </ion-content>
