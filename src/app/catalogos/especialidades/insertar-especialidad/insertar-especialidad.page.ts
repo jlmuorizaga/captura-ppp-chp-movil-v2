@@ -28,6 +28,8 @@ export class InsertarEspecialidadPage{
       ingredientes: ['', Validators.required],
       img_url: ['', Validators.required],
       orden: ['', Validators.required],
+      cantidad_ingredientes: ['', Validators.required],
+      es_de_un_ingrediente: ['', Validators.required],
     })
   }
 
@@ -41,6 +43,8 @@ export class InsertarEspecialidadPage{
       especialidad.ingredientes=this.formularioEspecialidad.value.ingredientes;
       especialidad.img_url=this.formularioEspecialidad.value.img_url;
       especialidad.orden=this.formularioEspecialidad.value.orden;
+      especialidad.cantidad_ingredientes=this.formularioEspecialidad.value.cantidad_ingredientes;
+      especialidad.es_de_un_ingrediente=this.formularioEspecialidad.value.es_de_un_ingrediente;
       this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
         next:(res:any)=>{
           console.log('Especialidad insertada de forma exitosa')

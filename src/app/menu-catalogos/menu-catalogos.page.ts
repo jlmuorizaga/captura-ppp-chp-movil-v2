@@ -53,14 +53,17 @@ export class MenuCatalogosPage {
   saltaACategorias() {
     this.router.navigateByUrl('/categorias-ppal');
   }
-  saltaARegiones() {
-    this.router.navigateByUrl('/regiones-ppal');
-  }
   saltaAEspecialidades() {
     this.router.navigateByUrl('/especialidades-ppal');
   }
   saltaAIngredientes() {
     this.router.navigateByUrl('/ingredientes-ppal');
+  }
+  saltaAOrillas() {
+    this.router.navigateByUrl('/orillas-ppal');
+  }
+  saltaARegiones() {
+    this.router.navigateByUrl('/regiones-ppal');
   }
   saltaAProductos() {
     this.router.navigateByUrl('/productos-ppal');

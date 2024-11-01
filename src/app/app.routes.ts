@@ -157,6 +157,18 @@ export const routes: Routes = [
     path: 'insertar-ingrediente',
     loadComponent: () => import('./catalogos/ingredientes/insertar-ingrediente/insertar-ingrediente.page').then( m => m.InsertarIngredientePage)
   },
+  {
+    path: 'orillas-ppal',
+    loadComponent: () => import('./catalogos/orillas/orillas-ppal/orillas-ppal.page').then( m => m.OrillasPpalPage)
+  },
+  {
+    path: 'editar-orilla',
+    loadComponent: () => import('./catalogos/orillas/editar-orilla/editar-orilla.page').then( m => m.EditarOrillaPage)
+  },
+  {
+    path: 'insertar-orilla',
+    loadComponent: () => import('./catalogos/orillas/insertar-orilla/insertar-orilla.page').then( m => m.InsertarOrillaPage)
+  },
 
 
 

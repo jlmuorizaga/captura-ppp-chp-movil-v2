@@ -71,6 +71,8 @@ export class EditarEspecialidadPage implements OnInit {
   ingredientes!: string;
   img_url!: string;
   orden!: string;
+  cantidad_ingredientes!:string;
+  es_de_un_ingrediente!:string;
 
   constructor(
     private fb: FormBuilder,
@@ -88,6 +90,8 @@ export class EditarEspecialidadPage implements OnInit {
       this.ingredientes = data.ingredientes;
       this.img_url = data.img_url;
       this.orden = data.orden;
+      this.cantidad_ingredientes = data.cantidad_ingredientes;
+      this.es_de_un_ingrediente = data.es_de_un_ingrediente;
 
     }
     this.formularioEspecialidad = this.fb.group({
@@ -96,6 +100,8 @@ export class EditarEspecialidadPage implements OnInit {
       ingredientes: ['', Validators.required],
       img_url: ['', Validators.required],
       orden: ['', Validators.required],
+      cantidad_ingredientes:['',Validators.required],
+      es_de_un_ingrediente:['',Validators.required],
     });
   }
 
@@ -110,10 +116,11 @@ export class EditarEspecialidadPage implements OnInit {
       //especialidad.id=this.formularioEspecialidad.value.id;
       especialidad.id = this.id;
       especialidad.nombre = this.formularioEspecialidad.value.nombre;
-      especialidad.ingredientes =
-        this.formularioEspecialidad.value.ingredientes;
+      especialidad.ingredientes = this.formularioEspecialidad.value.ingredientes;
       especialidad.img_url = this.formularioEspecialidad.value.img_url;
       especialidad.orden = this.formularioEspecialidad.value.orden;
+      especialidad.cantidad_ingredientes = this.formularioEspecialidad.value.cantidad_ingredientes;
+      especialidad.es_de_un_ingrediente = this.formularioEspecialidad.value.es_de_un_ingrediente;
 
       this.especialidadesSvc.editaEspecialidad(especialidad).subscribe({
         next: (res: any) => {

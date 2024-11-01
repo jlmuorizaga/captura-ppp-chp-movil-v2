@@ -3,5 +3,7 @@ export class Especialidad{
     nombre!:string;
     ingredientes!:string;
     img_url!:string;
-    orden!:string
+    orden!:string;
+    cantidad_ingredientes!:string;
+    es_de_un_ingrediente!:string;
 }

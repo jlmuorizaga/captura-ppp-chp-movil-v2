@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Orillas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarOrilla()" color="success">Insertar Orilla</ion-button>
+  </p>
+
+
+  <div class="table-container">
+    @if (orillas){
+      <ion-grid fixed>
+        <ion-row>
+          @for (orilla of orillas; track $index) {
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{orilla.id}}</ion-card-subtitle>
+              <ion-card-title>{{orilla.descripcion}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              ID Tamaño: {{orilla.idTamanio}}<br>
+              Nombre: {{orilla.nombre}}<br>
+              Orden: {{orilla.orden}}<br><br>
+
+              <ion-button (click)="confirmaBorrar(orilla)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarOrilla(orilla.id)">Editar</ion-button>
+
+            </ion-card-content>
+          </ion-card>
+          </ion-col>
+        }
+
+        </ion-row>
+      </ion-grid>
+  }
+  </div>
+
+</ion-content>
+

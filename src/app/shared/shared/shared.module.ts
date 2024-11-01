@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegionService } from 'src/app/services/region.service';
+import { OrillaService } from 'src/app/services/orilla.service';
 import { EspecialidadService } from 'src/app/services/especialidad.service';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { SucursalService } from 'src/app/services/sucursal.service';
@@ -24,6 +25,6 @@ import { CategoriaService } from 'src/app/services/categoria.service';
   ],
   providers:[RegionService,EspecialidadService,SucursalService,ProductoService,
     TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,RelacionPromocionEspecialSucursalService,TamanioPizzaService,CategoriaService,
-  IngredienteService]
+  IngredienteService,OrillaService]
 })
 export class SharedModule { }
