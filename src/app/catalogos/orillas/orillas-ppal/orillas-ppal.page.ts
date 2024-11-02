@@ -82,7 +82,7 @@ export class OrillasPpalPage implements OnInit, OnDestroy {
   async confirmaBorrar(orilla:Orilla){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar la orilla \"'+orilla.descripcion+' '+orilla.nombre+'\" ?',
+      message: '¿Estás seguro de que deseas borrar la orilla \"'+orilla.descripcion+' '+orilla.nombre+'\"–––––––––––––– ?',
       buttons: [
         {
           text: 'Cancelar',

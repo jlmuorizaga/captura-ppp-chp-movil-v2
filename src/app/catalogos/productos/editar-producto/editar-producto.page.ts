@@ -117,9 +117,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       descripcion_p: ['', Validators.required],
       tamanio: ['', Validators.required],
       usa_salsa: ['', Validators.required],
-      //id_tipo_producto: ['', Validators.required],
       id_tipo_producto2: ['', Validators.required],
-      // descripcion_tp: ['', Validators.required],
       ruta_imagen: ['', Validators.required],
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
@@ -149,8 +147,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       producto.descripcion_p = this.formularioProducto.value.descripcion_p;
       producto.tamanio = this.formularioProducto.value.tamanio;
       producto.usa_salsa = this.formularioProducto.value.usa_salsa;
-      producto.id_tipo_producto =
-        this.formularioProducto.value.id_tipo_producto2;
+      producto.id_tipo_producto = this.formularioProducto.value.id_tipo_producto2;
       producto.descripcion_tp = this.formularioProducto.value.descripcion_tp;
       producto.ruta_imagen = this.formularioProducto.value.ruta_imagen;
       producto.categoria1 = this.formularioProducto.value.categoria1;
