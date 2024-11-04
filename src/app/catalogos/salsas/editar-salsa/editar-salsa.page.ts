@@ -25,6 +25,7 @@ export class EditarSalsaPage implements OnInit {
   datos!:Salsa;
   id!:string;
   descripcion!:string;
+  
   constructor(private fb: FormBuilder,private salsasSvc:SalsaService,
     private router: Router) {
     const navigation = this.router.getCurrentNavigation();

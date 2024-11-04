@@ -37,7 +37,7 @@ export class OrillasPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('Entré a orillas en OnInit');
+    console.log('Entré a orillas-ppal.page.ts en OnInit');
   }
   ngOnDestroy(): void {
     if (this.navigationSubscription) {
@@ -109,13 +109,11 @@ export class OrillasPpalPage implements OnInit, OnDestroy {
   }
 
   async saltaAEditarOrilla(id:string){
-    console.log('Estoy en editar orilla id='+id)
+    console.log('Estoy en orillas-ppal.page.ts id='+id)
     this.orillasSvc.dameOrilla(id).subscribe({
       next:(res:any)=>{
         console.log('Orilla regresada de forma exitosa')
         console.log(res);
-        //this.leerRegiones();
-        //this.router.navigateByUrl('/editar-region');
         this.router.navigate(['/editar-orilla'],{state:{data:res}});
 
 

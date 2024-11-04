@@ -1,42 +1,19 @@
-import { Subscription } from 'rxjs';
-import { Orilla } from 'src/app/model/dto/orilla';
 import { OrillaService } from 'src/app/services/orilla.service';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Orilla } from 'src/app/model/dto/orilla';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationEnd, Router } from '@angular/router';
-
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  ReactiveFormsModule,
-  FormsModule,
-} from '@angular/forms';
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonButtons,
-  IonBackButton,
-  IonCol,
-  IonRow,
-  IonGrid,
-  IonButton,
-  IonInput,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonLabel,
-  IonItem,
-  IonSelectOption,
-} from '@ionic/angular/standalone';
+import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
+  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
+  IonSelectOption, IonLabel, IonItem } from '@ionic/angular/standalone';
+import { NavigationEnd,Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute,Route } from '@angular/router';
 import { TamanioPizza } from 'src/app/model/dto/tamanio-pizza';
 import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-editar-orilla',
@@ -70,16 +47,15 @@ import { filter } from 'rxjs/operators';
 })
 export class EditarOrillaPage implements OnInit,OnDestroy {
   formularioOrilla: FormGroup;
-  orillas!: Orilla[];
   datos!: Orilla;
   id!: string;
   descripcion!: string;
   idTamanio!: string;
   nombre!: string;
   orden!: string;
-  navigationSubscription: Subscription;
   tamaniosPizza!: TamanioPizza[];
   idTamanioSeleccionado!:string;
+  navigationSubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -87,19 +63,18 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
     private router: Router,
     private tamaniosPizzaSvc:TamanioPizzaService,
     private cdr: ChangeDetectorRef
+
   ) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       const data = navigation.extras.state['data'];
-      console.log('Aqui están mis datos==>>');
-      console.log(data); // Aquí tienes tus datos
+      console.log('Estoy en editar-orilla.page.ts. Aqui están mis datos==>>');
+      console.log('data=',data); // Aquí tienes tus datos
 
       this.id = data.id;
       this.descripcion = data.descripcion;
       this.idTamanio = data.idTamanio;
-      this.nombre = data.nombre;
-      this.orden = data.orden;
-      this.idTamanioSeleccionado=data.idTamanio
+  
     }
     this.formularioOrilla = this.fb.group({
       descripcion: ['', Validators.required],
@@ -118,12 +93,12 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
     console.log('Entré a editar-producto en OnInit');
   }
 
-
   ngOnDestroy(): void {
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
   }
+
   editaOrilla() {
     if (this.formularioOrilla.valid) {
       console.log(this.formularioOrilla.value);
