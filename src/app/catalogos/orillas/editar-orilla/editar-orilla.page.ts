@@ -74,13 +74,12 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
       this.id = data.id;
       this.descripcion = data.descripcion;
       this.idTamanio = data.idTamanio;
-  
+
     }
     this.formularioOrilla = this.fb.group({
       descripcion: ['', Validators.required],
       idTamanio: ['', Validators.required],
-      nombre: ['', Validators.required],
-      orden: ['', Validators.required],
+      //idTamanio2 : ['', Validators.required],
     });
     this.navigationSubscription = this.router.events
     .pipe(filter((event) => event instanceof NavigationEnd))
@@ -106,8 +105,8 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
       orilla.id = this.id;
       orilla.descripcion = this.formularioOrilla.value.descripcion;
       orilla.idTamanio = this.formularioOrilla.value.idTamanioSeleccionado;
-      orilla.nombre = this.formularioOrilla.value.nombre;
-      orilla.orden = this.formularioOrilla.value.orden;
+     // orilla.nombre = this.formularioOrilla.value.nombre;
+     // orilla.orden = this.formularioOrilla.value.orden;
 
       this.orillasSvc.editaOrilla(orilla).subscribe({
         next: (res: any) => {
