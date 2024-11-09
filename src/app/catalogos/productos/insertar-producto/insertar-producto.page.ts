@@ -34,7 +34,8 @@ export class InsertarProductoPage {
   tipoProductos!: TipoProducto[];
   mensaje: string;
 
-  constructor(private tipoProductosSvc: TipoProductoService, private fb: FormBuilder, private productosSvc: ProductoService,
+  constructor(private tipoProductosSvc: TipoProductoService, private fb: FormBuilder,
+    private productosSvc: ProductoService,
     private router: Router, private cdr: ChangeDetectorRef) {
 
     this.formularioProducto = this.fb.group({

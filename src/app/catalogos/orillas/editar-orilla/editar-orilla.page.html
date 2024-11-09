@@ -27,13 +27,13 @@
                   [ngModel]="idTamanio"></ion-input>
               </ion-item>
 
-              <!--ion-item>
-                <ion-select aria-label="Food" placeholder="Selecciona Tamaño de Pizza" formControlName="idTamanio2" [(ngModel)]="idTamanioSeleccionado">
+              <ion-item>
+                <ion-select label="Selecciona Tamaño de Pizza" label-placement="floating" formControlName="idTamanio2" [(ngModel)]="idTamanioSeleccionado">
                   <ion-select-option *ngFor="let tamanioPizza of tamaniosPizza" [value]="tamanioPizza.id">
-                    {{ tamanioPizza.nombre}}
+                    {{ tamanioPizza}}
                   </ion-select-option>
                 </ion-select>
-              </ion-item-->
+              </ion-item>
 
 
               <div class="button-container">

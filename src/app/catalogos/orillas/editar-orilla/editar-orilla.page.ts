@@ -56,6 +56,7 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
   tamaniosPizza!: TamanioPizza[];
   idTamanioSeleccionado!:string;
   navigationSubscription: Subscription;
+  idTamanio_seleccionado!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -74,11 +75,12 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
       this.id = data.id;
       this.descripcion = data.descripcion;
       this.idTamanio = data.idTamanio;
+      this.idTamanio_seleccionado = data.idTamanio;
 
     }
     this.formularioOrilla = this.fb.group({
       descripcion: ['', Validators.required],
-      idTamanio: ['', Validators.required],
+      idTamanio2: ['', Validators.required],
       //idTamanio2 : ['', Validators.required],
     });
     this.navigationSubscription = this.router.events
@@ -89,7 +91,7 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
-    console.log('Entré a editar-producto en OnInit');
+    console.log('Entré a editar-orilla en OnInit');
   }
 
   ngOnDestroy(): void {
@@ -104,7 +106,7 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
       let orilla: Orilla = new Orilla();
       orilla.id = this.id;
       orilla.descripcion = this.formularioOrilla.value.descripcion;
-      orilla.idTamanio = this.formularioOrilla.value.idTamanioSeleccionado;
+      orilla.idTamanio = this.formularioOrilla.value.idTamanio2;
      // orilla.nombre = this.formularioOrilla.value.nombre;
      // orilla.orden = this.formularioOrilla.value.orden;
 
