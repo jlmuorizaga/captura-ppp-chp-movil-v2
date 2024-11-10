@@ -25,7 +25,9 @@ export class InsertarTipoProductoPage{
   constructor(private fb: FormBuilder,private tipoProductoSvc:TipoProductoService,private router: Router) {
     this.formularioTipoProducto = this.fb.group({
       descripcion: ['', Validators.required],
-      img_url: ['', Validators.required]
+      imgURL: ['', Validators.required],
+      nombre: ['', Validators.required],
+      orden: ['', Validators.required]
     })
   }
   insertaTipoProducto() {
@@ -34,8 +36,10 @@ export class InsertarTipoProductoPage{
       let tipoProducto:TipoProducto=new TipoProducto();
       //region.idRegion=this.formularioRegion.value.idRegion;
       tipoProducto.id=Utilerias.generaId();
+      tipoProducto.nombre=this.formularioTipoProducto.value.nombre;
       tipoProducto.descripcion=this.formularioTipoProducto.value.descripcion;
-      tipoProducto.img_url=this.formularioTipoProducto.value.img_url;
+      tipoProducto.imgURL=this.formularioTipoProducto.value.imgURL;
+      tipoProducto.orden=this.formularioTipoProducto.value.orden;
       this.tipoProductoSvc.insertaTipoProducto(tipoProducto).subscribe({
         next:(res:any)=>{
           console.log('Tipo de producto insertado de forma exitosa')

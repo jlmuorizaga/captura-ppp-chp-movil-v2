@@ -18,10 +18,16 @@
           <ion-card-content>
             <form [formGroup]="formularioTipoProducto" (ngSubmit)="insertaTipoProducto()">
               <ion-item>
+                <ion-input label="Nombre" label-placement="floating" formControlName="nombre"></ion-input>
+              </ion-item>
+              <ion-item>
                 <ion-input label="Descripción" label-placement="floating" formControlName="descripcion"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input label="Img URL" label-placement="floating" formControlName="img_url"></ion-input>
+                <ion-input label="Img URL" label-placement="floating" formControlName="imgURL"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Orden" label-placement="floating" formControlName="orden"></ion-input>
               </ion-item>
               <div class="button-container">
                 <ion-button type="submit" class="centered-button" [disabled]="!formularioTipoProducto.valid"

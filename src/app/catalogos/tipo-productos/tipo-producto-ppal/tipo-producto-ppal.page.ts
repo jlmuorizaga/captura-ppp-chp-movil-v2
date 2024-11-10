@@ -87,7 +87,7 @@ export class TipoProductoPpalPage implements OnInit, OnDestroy{
   async confirmaBorrar(tipoProducto:TipoProducto){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar el tipo de producto '+tipoProducto.descripcion+' ?',
+      message: '¿Estás seguro de que deseas borrar el tipo de producto '+tipoProducto.nombre+' ?',
       buttons: [
         {
           text: 'Cancelar',

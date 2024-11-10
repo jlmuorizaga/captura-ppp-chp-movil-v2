@@ -26,7 +26,9 @@ export class EditarTipoProductoPage implements OnInit {
   datos!:TipoProducto;
   id!:string;
   descripcion!:string;
-  img_url!:string;
+  imgURL!:string;
+  nombre!:string;
+  orden!:string;
 
   constructor(private fb: FormBuilder,private tipoProductoService:TipoProductoService,
     private router: Router) {
@@ -38,15 +40,19 @@ export class EditarTipoProductoPage implements OnInit {
 
       this.id=data.id;
       this.descripcion=data.descripcion;
-      this.img_url=data.img_url;
+      this.imgURL=data.imgURL;
+      this.nombre=data.nombre;
+      this.orden=data.orden;
 
-      console.log('id===>>'+this.id);
-      console.log('descripcion===>'+this.descripcion);
+ //     console.log('id===>>'+this.id);
+ //     console.log('descripcion===>'+this.descripcion);
 
     }
     this.formularioTipoProducto = this.fb.group({
       descripcion: ['', Validators.required],
-      img_url:['',Validators.required]
+      imgURL:['',Validators.required],
+      nombre:['',Validators.required],
+      orden:['',Validators.required],
     })
   }
 
@@ -60,7 +66,9 @@ export class EditarTipoProductoPage implements OnInit {
        //region.idRegion=this.formularioRegion.value.idRegion;
        tipoProducto.id=this.id;
        tipoProducto.descripcion=this.formularioTipoProducto.value.descripcion;
-       tipoProducto.img_url=this.formularioTipoProducto.value.img_url;
+       tipoProducto.imgURL=this.formularioTipoProducto.value.imgURL;
+       tipoProducto.nombre=this.formularioTipoProducto.value.nombre;
+       tipoProducto.orden=this.formularioTipoProducto.value.orden;
        this.tipoProductoService.editaTipoProducto(tipoProducto).subscribe({
          next:(res:any)=>{
            console.log('Tipo Producto editado de forma exitosa')

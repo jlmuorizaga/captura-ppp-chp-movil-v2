@@ -21,10 +21,12 @@
               <ion-card>
                 <ion-card-header>
                   <ion-card-subtitle class="subtitle">{{tipoProducto.id}}</ion-card-subtitle>
-                  <ion-card-title>{{tipoProducto.descripcion}}</ion-card-title>
+                  <ion-card-title>{{tipoProducto.nombre}}</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                  URL: {{tipoProducto.img_url}}<br><br>
+                  Descripción : {{tipoProducto.descripcion}}<br>
+                  URL: {{tipoProducto.imgURL}}
+                  Orden: {{tipoProducto.orden}}<br><br>
                   <ion-button (click)="confirmaBorrar(tipoProducto)" color="danger">Borrar</ion-button>
                   <ion-button (click)="saltaAEditarTipoProducto(tipoProducto.id)">Editar</ion-button>
 

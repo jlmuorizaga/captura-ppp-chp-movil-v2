@@ -103,15 +103,18 @@ export class EditarOrillaPage implements OnInit, OnDestroy {
       idTamanio2: ['', Validators.required],
       //idTamanio2 : ['', Validators.required],
     });
-    this.navigationSubscription = this.router.events
+
+   this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerTamaniosPizza();
       });
+
   }
 
   ngOnInit() {
     console.log('Entré a editar-orilla en OnInit');
+
   }
 
   ngOnDestroy(): void {

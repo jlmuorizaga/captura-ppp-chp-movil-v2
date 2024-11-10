@@ -1,5 +1,7 @@
 export class TipoProducto {
   id!: string;
   descripcion!: string;
-  img_url!: string;
+  imgURL!: string;
+  nombre!:string;
+  orden!:string;
 }

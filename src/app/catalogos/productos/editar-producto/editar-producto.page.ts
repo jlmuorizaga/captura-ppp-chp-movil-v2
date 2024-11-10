@@ -79,7 +79,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
   tamanio!: string;
   usa_salsa!: string;
   id_tipo_producto!: string;
-  descripcion_tp!: string;
+  nombre_tp!: string;
   ruta_imagen!: string;
   categoria1!: string;
   categoria2!: string;
@@ -106,7 +106,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       this.tamanio = data.tamanio;
       this.usa_salsa = data.usa_salsa;
       this.id_tipo_producto = data.id_tipo_producto;
-      this.descripcion_tp = data.descripcion_tp;
+      this.nombre_tp = data.nombre_tp;
       this.ruta_imagen = data.ruta_imagen;
       this.categoria1 = data.categoria1;
       this.categoria2 = data.categoria2;
@@ -144,11 +144,11 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       console.log(this.formularioProducto.value);
       let producto: Producto = new Producto();
       producto.id = this.id;
-      producto.descripcion_p = this.formularioProducto.value.descripcion_p;
+      producto.nombre_tp = this.formularioProducto.value.nombre_tp;
       producto.tamanio = this.formularioProducto.value.tamanio;
       producto.usa_salsa = this.formularioProducto.value.usa_salsa;
       producto.id_tipo_producto = this.formularioProducto.value.id_tipo_producto2;
-      producto.descripcion_tp = this.formularioProducto.value.descripcion_tp;
+      producto.nombre_tp = this.formularioProducto.value.nombre_tp;
       producto.ruta_imagen = this.formularioProducto.value.ruta_imagen;
       producto.categoria1 = this.formularioProducto.value.categoria1;
       producto.categoria2 = this.formularioProducto.value.categoria2;
