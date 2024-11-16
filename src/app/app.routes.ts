@@ -169,6 +169,10 @@ export const routes: Routes = [
     path: 'insertar-orilla',
     loadComponent: () => import('./catalogos/orillas/insertar-orilla/insertar-orilla.page').then( m => m.InsertarOrillaPage)
   },
+  {
+    path: 'editar-orilla',
+    loadComponent: () => import('./catalogos/orillas/editar-orilla/editar-orilla.page').then( m => m.EditarOrillaPage)
+  },
 
 
 

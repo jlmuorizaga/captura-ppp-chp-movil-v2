@@ -113,7 +113,7 @@ export class OrillasPpalPage implements OnInit, OnDestroy {
     this.orillasSvc.dameOrilla(id).subscribe({
       next:(res:any)=>{
         console.log('Orilla regresada de forma exitosa')
-        console.log(res);
+        console.log('orillas-ppal.page',res);
         this.router.navigate(['/editar-orilla'],{state:{data:res}});
 
 

@@ -15,22 +15,27 @@
           <ion-card-header>
             <ion-card-title>Editar Orilla</ion-card-title>
           </ion-card-header>
+
           <ion-card-content>
             <h1>ID: {{id}}</h1>
+
             <form [formGroup]="formularioOrilla" (ngSubmit)="editaOrilla()">
+
               <ion-item>
                 <ion-input label="Descripción" label-placement="floating" formControlName="descripcion"
                   [ngModel]="descripcion"></ion-input>
               </ion-item>
+
               <ion-item>
-                <ion-input label="ID Tamaño" label-placement="floating" formControlName="idTamanio"
+                <ion-input label="Tamaño" label-placement="floating" formControlName="idTamanio"
                   [ngModel]="idTamanio"></ion-input>
               </ion-item>
 
               <ion-item>
                 <ion-select label="Selecciona Tamaño de Pizza" label-placement="floating" formControlName="idTamanio2" [(ngModel)]="idTamanioSeleccionado">
                   <ion-select-option *ngFor="let tamanioPizza of tamaniosPizza" [value]="tamanioPizza.id">
-                    {{ tamanioPizza}}
+                    <!--{{ tipoproducto.id}} {{ tipoproducto.descripcion}}-->
+                    {{ tamanioPizza.nombre}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
@@ -39,11 +44,15 @@
               <div class="button-container">
                 <!--ion-button type="submit" class="centered-button" [disabled]="!formularioRegion.valid" color="success"-->
                 <ion-button type="submit" class="centered-button" [disabled]="!formularioOrilla.valid">
-                  Edita Producto
+                  Edita Orilla
                 </ion-button>
               </div>
             </form>
+
+
           </ion-card-content>
+
+
         </ion-card>
       </ion-col>
     </ion-row>
