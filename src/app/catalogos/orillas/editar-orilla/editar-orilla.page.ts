@@ -98,13 +98,12 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
       //this.nombre=
    this.idTamanio = data.idTamanio;
     //  this.nombre = data.nombre;
-    //  this.idTamanioSeleccionado = data.idTamanio;
+      this.idTamanioSeleccionado = data.idTamanio;
     }
     this.formularioOrilla = this.fb.group({
       descripcion: ['', Validators.required],
       //idTamanio: ['', Validators.required],
-     // nombre: ['', Validators.required],
-      idTamanio: ['', Validators.required],
+      idTamanio2: ['', Validators.required],
     });
     this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -128,7 +127,7 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
       let orilla: Orilla = new Orilla();
       orilla.id = this.id;
       orilla.descripcion = this.formularioOrilla.value.descripcion;
-      orilla.idTamanio = this.formularioOrilla.value.idTamanio;
+      orilla.idTamanio = this.formularioOrilla.value.idTamanio2;
       orilla.nombre = this.formularioOrilla.value.nombre;
 
       this.orillasSvc.editaOrilla(orilla).subscribe({

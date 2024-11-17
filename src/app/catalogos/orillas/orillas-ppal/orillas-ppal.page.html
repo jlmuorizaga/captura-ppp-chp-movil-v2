@@ -21,12 +21,12 @@
             <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
           <ion-card>
             <ion-card-header>
-              <ion-card-subtitle class="subtitle">{{orilla.id}}</ion-card-subtitle>
               <ion-card-title>{{orilla.descripcion}}</ion-card-title>
+              <ion-card-subtitle class="subtitle">{{orilla.id}}</ion-card-subtitle>
+
             </ion-card-header>
 
             <ion-card-content>
-              ID Tamaño: {{orilla.idTamanio}}<br>
               Tamaño: {{orilla.nombre}}<br>
               <ion-button (click)="confirmaBorrar(orilla)" color="danger">Borrar</ion-button>
               <ion-button (click)="saltaAEditarOrilla(orilla.id)">Editar</ion-button>
