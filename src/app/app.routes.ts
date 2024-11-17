@@ -173,6 +173,18 @@ export const routes: Routes = [
     path: 'editar-orilla',
     loadComponent: () => import('./catalogos/orillas/editar-orilla/editar-orilla.page').then( m => m.EditarOrillaPage)
   },
+  {
+    path: 'pizzas-ppal',
+    loadComponent: () => import('./catalogos/pizzas/pizzas-ppal/pizzas-ppal.page').then( m => m.PizzasPpalPage)
+  },
+  {
+    path: 'editar-pizza',
+    loadComponent: () => import('./catalogos/pizzas/editar-pizza/editar-pizza.page').then( m => m.EditarPizzaPage)
+  },
+  {
+    path: 'insertar-pizza',
+    loadComponent: () => import('./catalogos/pizzas/insertar-pizza/insertar-pizza.page').then( m => m.InsertarPizzaPage)
+  },
 
 
 

@@ -62,6 +62,9 @@ export class MenuCatalogosPage {
   saltaAOrillas() {
     this.router.navigateByUrl('/orillas-ppal');
   }
+  saltaAPizzas() {
+    this.router.navigateByUrl('/pizzas-ppal');
+  }
   saltaARegiones() {
     this.router.navigateByUrl('/regiones-ppal');
   }
