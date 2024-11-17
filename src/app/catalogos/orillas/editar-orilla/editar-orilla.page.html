@@ -18,17 +18,19 @@
 
           <ion-card-content>
             <h1>ID: {{id}}</h1>
+            <h1>Descripcion: {{descripcion}}</h1>
+            <h1>IDTamanio: {{idTamanio}}</h1>
 
             <form [formGroup]="formularioOrilla" (ngSubmit)="editaOrilla()">
 
               <ion-item>
                 <ion-input label="Descripción" label-placement="floating" formControlName="descripcion"
-                  [ngModel]="descripcion"></ion-input>
+                  [(ngModel)]="descripcion"></ion-input>
               </ion-item>
 
               <ion-item>
                 <ion-input label="Tamaño" label-placement="floating" formControlName="idTamanio"
-                  [ngModel]="idTamanio"></ion-input>
+                  [(ngModel)]="idTamanio"></ion-input>
               </ion-item>
 
               <ion-item>

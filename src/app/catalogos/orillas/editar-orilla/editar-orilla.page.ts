@@ -23,7 +23,7 @@ import {
   IonCardContent,
   IonItem,
   IonSelect,
-  IonSelectOption, IonButton } from '@ionic/angular/standalone';
+  IonSelectOption, IonButton,IonInput,IonLabel } from '@ionic/angular/standalone';
 
 import { Orilla } from 'src/app/model/dto/orilla';
 import { OrillaService } from 'src/app/services/orilla.service';
@@ -44,6 +44,7 @@ import { filter } from 'rxjs';
   standalone: true,
   imports: [IonButton,
     IonItem,
+
     IonCardContent,
     IonCardTitle,
     IonCardHeader,
@@ -62,7 +63,8 @@ import { filter } from 'rxjs';
     SharedModule,
     ReactiveFormsModule,
     IonSelectOption,
-    IonSelect
+    IonSelect,
+    IonInput,IonItem,
   ],
 })
 export class EditarOrillaPage implements OnInit,OnDestroy {
@@ -101,8 +103,8 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
     this.formularioOrilla = this.fb.group({
       descripcion: ['', Validators.required],
       //idTamanio: ['', Validators.required],
-      nombre: ['', Validators.required],
-      idTamanio2: ['', Validators.required],
+     // nombre: ['', Validators.required],
+      idTamanio: ['', Validators.required],
     });
     this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
