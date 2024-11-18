@@ -75,7 +75,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
         this.leerProductos();
       },
       error:(error:any)=>{
-        console.log('Error en el borrado de la región')
+        console.log('Error en el borrado del producto')
         console.log(error)
 
       }
@@ -123,7 +123,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
 
       },
       error:(error:any)=>{
-        console.log('Error en la solicitud de la región')
+        console.log('Error en la solicitud del producto')
         console.log(error)
 
       }

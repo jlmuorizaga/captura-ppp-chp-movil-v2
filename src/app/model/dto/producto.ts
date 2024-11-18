@@ -1,5 +1,3 @@
-import { TipoProducto } from "./tipo-producto";
-
 export class Producto{
     id!:string;
     descripcion_p!:string;

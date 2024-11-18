@@ -12,6 +12,7 @@ export const environment = {
   tamaniosPizza:'/tamanios-pizza',
   salsas:'/salsas',
   orillas:'/orillas',
+  pizzas:'/pizzas',
   categorias:'/categorias',
   ingredientes:'/ingredientes',
   relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',

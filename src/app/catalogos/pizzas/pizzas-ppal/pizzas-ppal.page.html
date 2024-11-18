@@ -1,13 +1,42 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>pizzas-ppal</ion-title>
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Pizzas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">pizzas-ppal</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarPizza()" color="success">Insertar Pizza</ion-button>
+  </p>
+
+  <div class="table-container">
+    @if (pizzas){
+      <ion-grid fixed>
+        <ion-row>
+          @for (pizza of pizzas; track $index) {
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle class="subtitle">{{pizza.idPizza}}</ion-card-subtitle>
+                  <ion-card-title>{{pizza.nombreEspecialidad}}</ion-card-title>
+                  <ion-card-title>{{pizza.tamanioPizza}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  Aplica 2x1: {{pizza.aplica2x1}}<br>
+                  Categoria 1: {{pizza.categoria1}}<br>
+                  Categoria 2: {{pizza.categoria2}}<br>
+                  Categoria 3: {{pizza.categoria3}}<br><br>
+                  <ion-button (click)="confirmaBorrar(pizza)" color="danger">Borrar</ion-button>
+                  <ion-button (click)="saltaAEditarPizza(pizza.idPizza)">Editar</ion-button>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            }
+          </ion-row>
+        </ion-grid>
+      }
+    </div>
+  </ion-content>
