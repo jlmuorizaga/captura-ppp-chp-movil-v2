@@ -47,7 +47,6 @@ import { filter } from 'rxjs/operators';
   standalone: true,
   imports: [
     IonItem,
-    IonLabel,
     IonCardContent,
     IonCardTitle,
     IonCardHeader,
