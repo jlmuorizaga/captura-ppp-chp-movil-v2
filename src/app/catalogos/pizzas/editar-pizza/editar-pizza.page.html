@@ -1,13 +1,65 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>editar-pizza</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editar-pizza</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Editar Pizza</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h1>ID: {{idPizza}}</h1>
+            <form [formGroup]="formularioPizza" (ngSubmit)="editaPizza()">
+              <ion-item>
+                <ion-select label="Selecciona Especialidad Pizza" label-placement="floating" formControlName="idEspecialidadFormulario" [(ngModel)]="idEspecialidadSeleccionada">
+                  <ion-select-option *ngFor="let esp of especialidad" [value]="esp.id">
+                    {{ esp.nombre}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-select label="Selecciona Tamaño Pizza" label-placement="floating" formControlName="idTamanioFormulario" [(ngModel)]="idTamanioPizzaSeleccionado">
+                  <ion-select-option *ngFor="let tp of tamanioPizza" [value]="tp.id">
+                    {{ tp.nombre}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1"
+                  [ngModel]="aplica2x1"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Categoria1" label-placement="floating" formControlName="categoria1"
+                  [ngModel]="categoria1"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Categoria2" label-placement="floating" formControlName="categoria2"
+                  [ngModel]="categoria2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Categoria3" label-placement="floating" formControlName="categoria3"
+                  [ngModel]="categoria3"></ion-input>
+              </ion-item>
+
+
+              <div class="button-container">
+                <ion-button type="submit" class="centered-button" [disabled]="!formularioPizza.valid">
+                  Edita Pizza
+                </ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -111,12 +111,100 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
       this.idEspecialidadSeleccionada = data.idEspecialidad;
       this.idTamanioPizzaSeleccionado = data.idTamanioPizza;
     }
+    this.formularioPizza = this.fb.group({
+      idEspecialidadFormulario: ['', Validators.required],
+      idTamanioFormulario: ['', Validators.required],
+      aplica2x1: ['', Validators.required],
+      categoria1: ['', Validators.required],
+      categoria2: ['', Validators.required],
+      categoria3: ['', Validators.required],
+    });
+    this.navigationSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerEspecialidades();
+      });
 
-
+      this.navigationSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerTamanioPizzas();
+      });
 
    }
 
   ngOnInit() {
+    console.log('Entré a editar-pizza en OnInit');
+  }
+  ngOnDestroy(): void {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
+  }
+  editaPizza() {
+    if (this.formularioPizza.valid) {
+      console.log(this.formularioPizza.value);
+      let pizza: Pizza = new Pizza();
+      pizza.idPizza = this.idPizza;
+      pizza.idEspecialidad = this.formularioPizza.value.idEspecialidadFormulario;
+      pizza.idTamanioPizza = this.formularioPizza.value.idTamanioFormulario;
+      pizza.aplica2x1 = this.formularioPizza.value.aplica2x1;
+      pizza.categoria1 = this.formularioPizza.value.categoria1;
+      pizza.categoria2 = this.formularioPizza.value.categoria2;
+      pizza.categoria3 = this.formularioPizza.value.categoria3;
+
+      this.pizzasSvc.editaPizza(pizza).subscribe({
+        next: (res: any) => {
+          console.log('Pizza editada de forma exitosa');
+          console.log(res);
+          this.saltaAPizzas();
+        },
+        error: (error: any) => {
+          console.log('Error en la edición de la pizza');
+          console.log(error);
+        },
+      });
+    }
+  }
+
+  saltaAPizzas() {
+    this.router.navigateByUrl('/pizzas-ppal');
+  }
+
+  leerEspecialidades() {
+    this.especialidadesSvc.dameListaEspecialidades().subscribe({
+      next: (res: any) => {
+        console.log('Servicio leido de forma exitosa');
+        console.log(res);
+        this.especialidad = res;
+
+        console.log(this.especialidad);
+        this.especialidad;
+        this.cdr.detectChanges();
+      },
+      error: (error: any) => {
+        console.log('Error en la lectura del servicio');
+        console.log(error);
+      },
+    });
+  }
+
+  leerTamanioPizzas() {
+    this.tamaniosPizzaSvc.dameListaTamanioPizza().subscribe({
+      next: (res: any) => {
+        console.log('Servicio leido de forma exitosa');
+        console.log(res);
+        this.tamanioPizza = res;
+
+        console.log(this.tamanioPizza);
+        this.tamanioPizza;
+        this.cdr.detectChanges();
+      },
+      error: (error: any) => {
+        console.log('Error en la lectura del servicio');
+        console.log(error);
+      },
+    });
   }
 
 }
