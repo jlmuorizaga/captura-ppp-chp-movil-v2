@@ -28,6 +28,7 @@ export class InsertarPromocionEspecialPage{
       definicion: ['', Validators.required],
       precio: ['', Validators.required],
       activa: ['', Validators.required],
+      imgURL: ['', Validators.required],
     })
   }
   insertaPromocionEspecial() {
@@ -41,6 +42,7 @@ export class InsertarPromocionEspecialPage{
       promocionEspecial.definicion=this.formularioPromocionEspecial.value.definicion;
       promocionEspecial.precio=this.formularioPromocionEspecial.value.precio;
       promocionEspecial.activa=this.formularioPromocionEspecial.value.activa;
+      promocionEspecial.imgURL=this.formularioPromocionEspecial.value.imgURL;
       this.promocionesEspecialesSvc.insertaPromocionEspecial(promocionEspecial).subscribe({
         next:(res:any)=>{
           console.log('Promoción Especial insertada de forma exitosa')

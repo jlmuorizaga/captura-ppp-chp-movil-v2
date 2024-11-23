@@ -185,6 +185,18 @@ export const routes: Routes = [
     path: 'insertar-pizza',
     loadComponent: () => import('./catalogos/pizzas/insertar-pizza/insertar-pizza.page').then( m => m.InsertarPizzaPage)
   },
+  {
+    path: 'relacion-orilla-sucursal-ppal',
+    loadComponent: () => import('./catalogos/relacion-orilla-sucursal/relacion-orilla-sucursal-ppal/relacion-orilla-sucursal-ppal.page').then( m => m.RelacionOrillaSucursalPpalPage)
+  },
+  {
+    path: 'editar-relacion-orilla-sucursal',
+    loadComponent: () => import('./catalogos/relacion-orilla-sucursal/editar-relacion-orilla-sucursal/editar-relacion-orilla-sucursal.page').then( m => m.EditarRelacionOrillaSucursalPage)
+  },
+  {
+    path: 'insertar-relacion-orilla-sucursal',
+    loadComponent: () => import('./catalogos/relacion-orilla-sucursal/insertar-relacion-orilla-sucursal/insertar-relacion-orilla-sucursal.page').then( m => m.InsertarRelacionOrillaSucursalPage)
+  },
 
 
 

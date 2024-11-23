@@ -13,43 +13,36 @@
   </p>
 
 
-  <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>ID Promoción</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Tipo</th>
-          <th>Definición</th>
-          <th>Precio</th>
-          <th>Activa</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (promocionesEspeciales){
-          @for (promocionEspecial of promocionesEspeciales; track $index) {
-        <tr>
-          <td>{{promocionEspecial.idPromocion}}</td>
-          <td>{{promocionEspecial.nombre}}</td>
-          <td>{{promocionEspecial.descripcion}}</td>
-          <td>{{promocionEspecial.tipo}}</td>
-          <td>{{promocionEspecial.definicion}}</td>
-          <td>{{promocionEspecial.precio}}</td>
-          <td>{{promocionEspecial.activa}}</td>
-          <td>
-            <ion-button (click)="confirmaBorrar(promocionEspecial)" color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button (click)="saltaAEditarPromocionEspecial(promocionEspecial.idPromocion)">Editar</ion-button> <br>
-          </td>
-        </tr>
-      }
-      }
-      </tbody>
 
-    </table>
+  <div class="table-container">
+    @if (promocionesEspeciales){
+      <ion-grid fixed>
+        <ion-row>
+          @for (pe of promocionesEspeciales; track $index) {
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{pe.idPromocion}}</ion-card-subtitle>
+              <ion-card-title>{{pe.nombre}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Descripción: {{pe.descripcion}}<br>
+              Tipo: {{pe.tipo}}<br>
+              Definición: {{pe.definicion}}<br>
+              Precio: {{pe.precio}}<br>
+              Activa: {{pe.activa}}<br>
+              Img URL: {{pe.imgURL}}<br><br>
+              <ion-button (click)="confirmaBorrar(pe)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarPromocionEspecial(pe.idPromocion)">Editar</ion-button>
+
+            </ion-card-content>
+          </ion-card>
+          </ion-col>
+        }
+
+        </ion-row>
+      </ion-grid>
+  }
   </div>
 
 

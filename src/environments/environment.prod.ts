@@ -15,6 +15,7 @@ export const environment = {
   pizzas:'/pizzas',
   categorias:'/categorias',
   ingredientes:'/ingredientes',
+  relacion_orilla_sucursal:'/relacion_orilla_sucursal',
   relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',
   promociones_especiales:'/promociones_especiales',
   promociones_especiales_no:'/promociones_especiales_no',

@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonContent,
   IonButton,
   IonGrid,
   IonCol,
-  IonRow, IonButtons, IonBackButton } from '@ionic/angular/standalone';
+  IonRow} from '@ionic/angular/standalone';
 import { GlobalService } from '../services/global.service';
 import { SucursalService } from '../services/sucursal.service';
 import { Sucursal } from '../model/dto/sucursal';
@@ -19,7 +18,7 @@ import { Sucursal } from '../model/dto/sucursal';
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonBackButton, IonButtons,
+  imports: [
     IonRow,
     IonCol,
     IonGrid,
@@ -27,7 +26,6 @@ import { Sucursal } from '../model/dto/sucursal';
     SharedModule,
     IonHeader,
     IonToolbar,
-    IonTitle,
     IonContent,
   ],
 })
@@ -67,6 +65,9 @@ export class MenuCatalogosPage {
   }
   saltaARegiones() {
     this.router.navigateByUrl('/regiones-ppal');
+  }
+    saltaARelacionOrillaSucursal() {
+    this.router.navigateByUrl('/relacion-orilla-sucursal-ppal');
   }
   saltaAProductos() {
     this.router.navigateByUrl('/productos-ppal');

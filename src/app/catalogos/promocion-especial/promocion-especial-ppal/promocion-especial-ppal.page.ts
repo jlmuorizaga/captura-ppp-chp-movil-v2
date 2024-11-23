@@ -5,9 +5,8 @@ import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton,
-  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid } from '@ionic/angular/standalone';
+  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
-import { Region } from 'src/app/model/dto/region';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 
@@ -16,16 +15,17 @@ import { NavigationEnd, Router } from '@angular/router';
   templateUrl: './promocion-especial-ppal.page.html',
   styleUrls: ['./promocion-especial-ppal.page.scss'],
   standalone: true,
-  imports: [IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
+  imports: [IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCard, IonCol, IonRow, IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class PromocionEspecialPpalPage implements OnInit,OnDestroy {
   navigationSubscription:Subscription;
   promocionesEspeciales!:PromocionEspecial[];
-  
+
   constructor(private promocionesEspecialesSvc:PromocionEspecialService,
     private alertController:AlertController,
-    private router: Router,private cdr: ChangeDetectorRef) {
+    private router: Router,private cdr: ChangeDetectorRef)
+    {
       this.navigationSubscription = this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
         .subscribe(() => {
@@ -48,7 +48,6 @@ export class PromocionEspecialPpalPage implements OnInit,OnDestroy {
         console.log('Servicio leido de forma exitosa')
         console.log(res);
         this.promocionesEspeciales=res;
-
         console.log(this.promocionesEspeciales);
         this.cdr.detectChanges();
 

@@ -31,6 +31,7 @@ export class EditarPromocionEspecialPage implements OnInit {
   definicion!:string;
   precio!:number;
   activa!:string;
+  imgURL!:string;
 
   constructor(private fb: FormBuilder,private promocionEspecialSvc:PromocionEspecialService,
     private router: Router) {
@@ -47,6 +48,7 @@ export class EditarPromocionEspecialPage implements OnInit {
       this.definicion=data.definicion;
       this.precio=data.precio;
       this.activa=data.activa;
+      this.imgURL=data.imgURL;
 
       console.log('id===>>'+this.idPromocion);
       console.log('descripcion===>'+this.descripcion);
@@ -59,6 +61,7 @@ export class EditarPromocionEspecialPage implements OnInit {
       definicion:['',Validators.required],
       precio:['',Validators.required],
       activa:['',Validators.required],
+      imgURL:['',Validators.required],
     })
   }
 
@@ -77,6 +80,7 @@ export class EditarPromocionEspecialPage implements OnInit {
        promocionEspecial.definicion=this.formularioPromocionEspecial.value.definicion;
        promocionEspecial.precio=this.formularioPromocionEspecial.value.precio;
        promocionEspecial.activa=this.formularioPromocionEspecial.value.activa;
+       promocionEspecial.imgURL = this.formularioPromocionEspecial.value.imgURL;
        this.promocionEspecialSvc.editaPromocionEspecial(promocionEspecial).subscribe({
          next:(res:any)=>{
            console.log('Promoción Especial editado de forma exitosa')

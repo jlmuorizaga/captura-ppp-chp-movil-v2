@@ -16,6 +16,7 @@ import { RelacionPromocionEspecialSucursalPpalPage } from 'src/app/catalogos/rel
 import { RelacionPromocionEspecialSucursalService } from 'src/app/services/relacion-promocion-especial-sucursal.service';
 import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { RelacionOrillaSucursalService } from 'src/app/services/relacion-orilla-sucursal.service';
 
 
 
@@ -27,6 +28,6 @@ import { CategoriaService } from 'src/app/services/categoria.service';
   providers:[RegionService,EspecialidadService,SucursalService,ProductoService,
     TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,
     RelacionPromocionEspecialSucursalService,TamanioPizzaService,CategoriaService,
-  IngredienteService,OrillaService,PizzaService]
+  IngredienteService,OrillaService,PizzaService,RelacionOrillaSucursalService]
 })
 export class SharedModule { }

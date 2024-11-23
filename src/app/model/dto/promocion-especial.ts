@@ -6,4 +6,5 @@ export class PromocionEspecial {
   definicion!:string;
   precio!:number;
   activa!:string;
+  imgURL!:string;
 }
