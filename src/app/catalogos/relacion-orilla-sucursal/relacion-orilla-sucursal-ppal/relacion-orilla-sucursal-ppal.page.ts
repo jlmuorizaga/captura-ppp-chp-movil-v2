@@ -39,7 +39,9 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
   ) {
     this.mensaje = 'Estoy en el constructor';
     this.idSucursal = this.globalService.idSucursalGlobal;
+    //Error????????????????????
     this.dameSucursal(this.idSucursal);
+
     console.log('Sucursal==>', this.globalService.idSucursalGlobal);
     this.navigationSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -56,10 +58,11 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
       this.navigationSubscription.unsubscribe();
     }
   }
-  leerRelacionOrillaSucursal(cveSucursal:string){
-    this.relacionOrillaSucursalSvc.dameListaRelacionOrillaSucursal(cveSucursal).subscribe({
+  leerRelacionOrillaSucursal(claveSucursal:string){
+    this.relacionOrillaSucursalSvc.dameListaRelacionOrillaSucursal(claveSucursal).subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
+        console.log('claveSucursal=',claveSucursal)
         console.log(res);
         this.relacionOrillaSucursal=res;
         console.log(this.relacionOrillaSucursal);
@@ -73,6 +76,7 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
       }
     })
   }
+
 
   dameSucursal(idSucursal: string) {
     this.sucursalesSvc.dameSucursal(idSucursal).subscribe({
