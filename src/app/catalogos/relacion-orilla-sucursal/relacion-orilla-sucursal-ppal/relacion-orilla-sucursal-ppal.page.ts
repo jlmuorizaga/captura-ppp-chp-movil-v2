@@ -58,11 +58,11 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
       this.navigationSubscription.unsubscribe();
     }
   }
-  leerRelacionOrillaSucursal(claveSucursal:string){
-    this.relacionOrillaSucursalSvc.dameListaRelacionOrillaSucursal(claveSucursal).subscribe({
+  leerRelacionOrillaSucursal(idSucursal:string){
+    this.relacionOrillaSucursalSvc.dameListaRelacionOrillaSucursal(idSucursal).subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
-        console.log('claveSucursal=',claveSucursal)
+        console.log('claveSucursal=',idSucursal)
         console.log(res);
         this.relacionOrillaSucursal=res;
         console.log(this.relacionOrillaSucursal);
@@ -97,5 +97,68 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
     });
   }
 
-  
+  borraRegistroRelacionOrillaSucursal(idOrilla:string,idSucursal:string){
+    console.log('Voy a borrar este registro='+idOrilla+' '+idSucursal);
+
+    this.relacionOrillaSucursalSvc.borraRegistroRelacionOrillaSucursal(idOrilla,this.idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Registro borrado de forma exitosa')
+        console.log(res);
+        this.leerRelacionOrillaSucursal(this.idSucursal);
+      },
+      error:(error:any)=>{
+        console.log('Error en el borrado del producto')
+        console.log(error)
+
+      }
+    })
+
+  }
+
+  async confirmaBorrar(idOrilla:string, idSucursal:string){
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar el registro idOrilla='+idOrilla+' - idSucursal='+idSucursal+' ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Operación confirmada');
+            this.borraRegistroRelacionOrillaSucursal(idOrilla,idSucursal);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  saltaAInsertarRegistroRelacionOrillaSucursal() {
+    this.router.navigateByUrl('/insertar-relacion-orilla-sucursal');
+  }
+
+  async saltaAEditarRegistroOrillaSucursal(idOrilla:string, idSucursal:string){
+    console.log('Estoy en editar registro orilla sucursal id='+idOrilla+' idSucursal='+idSucursal)
+    this.relacionOrillaSucursalSvc.dameRegistroRelacionOrillaSucursal(idOrilla,idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Registro Relacion Orilla Sucursal regresada de forma exitosa')
+        console.log(res);
+        this.router.navigate(['/editar-relacion-orilla-sucursal'],{state:{data:res}});
+
+
+      },
+      error:(error:any)=>{
+        console.log('Error en la solicitud del registro relacion orilla sucursal')
+        console.log(error)
+
+      }
+    })
+
+  }
 }

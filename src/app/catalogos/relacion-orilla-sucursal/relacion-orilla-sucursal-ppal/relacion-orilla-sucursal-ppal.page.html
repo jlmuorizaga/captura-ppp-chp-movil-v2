@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <p style="text-align: center">
-    <!--ion-button (click)="saltaAInsertarOrilla()" color="success">Insertar Orilla</!--ion-button-->
+    <ion-button (click)="saltaAInsertarRegistroRelacionOrillaSucursal()" color="success">Insertar Orilla</ion-button>
   </p>
 
 
@@ -23,15 +23,14 @@
             <ion-card-header>
               <ion-card-subtitle class="subtitle">{{ros.idOrilla}}</ion-card-subtitle>
               <ion-card-title>{{ros.descripcionOrilla}} {{ros.tamanioPizza}}</ion-card-title>
-
             </ion-card-header>
 
             <ion-card-content>
               Tamaño Pizza: {{ros.tamanioPizza}}<br>
               Clave Sucursal: {{ros.claveSucursal}}<br>
-              Precio: {{ros.precio}}
-              <!--ion-button (click)="confirmaBorrar(orilla)" color="danger">Borrar</!--ion-button>
-              <ion-button-- (click)="saltaAEditarOrilla(orilla.id)">Editar</ion-button-->
+              Precio: {{ros.precio}}<br><br>
+              <ion-button (click)="confirmaBorrar(ros.idOrilla,ros.idSucursal)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarRegistroOrillaSucursal(ros.idOrilla,ros.idSucursal)">Editar</ion-button>
             </ion-card-content>
           </ion-card>
           </ion-col>
