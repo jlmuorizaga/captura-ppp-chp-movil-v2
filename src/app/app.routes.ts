@@ -105,7 +105,8 @@ export const routes: Routes = [
   {
     path: 'editar-producto',
     loadComponent: () => import('./catalogos/productos/editar-producto/editar-producto.page').then( m => m.EditarProductoPage)
-  },  {
+  },
+  {
     path: 'insertar-sucursal',
     loadComponent: () => import('./catalogos/sucursales/insertar-sucursal/insertar-sucursal.page').then( m => m.InsertarSucursalPage)
   },
@@ -134,8 +135,8 @@ export const routes: Routes = [
     loadComponent: () => import('./catalogos/relacion-etps/editar-relacion-etps/editar-relacion-etps.page').then( m => m.EditarRelacionEtpsPage)
   },
   {
-    path: 'categorias-ppal',
-    loadComponent: () => import('./catalogos/categorias/categorias-ppal/categorias-ppal.page').then( m => m.CategoriasPpalPage)
+    path: 'ppal-categoria',
+    loadComponent: () => import('./catalogos/categorias/ppal-categoria/ppal-categoria.page').then( m => m.CategoriasPpalPage)
   },
   {
     path: 'editar-categoria',
@@ -196,6 +197,18 @@ export const routes: Routes = [
   {
     path: 'insertar-relacion-orilla-sucursal',
     loadComponent: () => import('./catalogos/relacion-orilla-sucursal/insertar-relacion-orilla-sucursal/insertar-relacion-orilla-sucursal.page').then( m => m.InsertarRelacionOrillaSucursalPage)
+  },
+  {
+    path: 'relacion-pizza-sucursal-ppal',
+    loadComponent: () => import('./catalogos/relacion-pizza-sucursal/relacion-pizza-sucursal-ppal/relacion-pizza-sucursal-ppal.page').then( m => m.RelacionPizzaSucursalPpalPage)
+  },
+  {
+    path: 'editar-relacion-pizza-sucursal',
+    loadComponent: () => import('./catalogos/relacion-pizza-sucursal/editar-relacion-pizza-sucursal/editar-relacion-pizza-sucursal.page').then( m => m.EditarRelacionPizzaSucursalPage)
+  },
+  {
+    path: 'insertar-relacion-pizza-sucursal',
+    loadComponent: () => import('./catalogos/relacion-pizza-sucursal/insertar-relacion-pizza-sucursal/insertar-relacion-pizza-sucursal.page').then( m => m.InsertarRelacionPizzaSucursalPage)
   },
 
 

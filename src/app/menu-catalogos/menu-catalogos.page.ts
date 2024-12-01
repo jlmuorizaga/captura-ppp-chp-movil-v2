@@ -49,7 +49,7 @@ export class MenuCatalogosPage {
   }
 
   saltaACategorias() {
-    this.router.navigateByUrl('/categorias-ppal');
+    this.router.navigateByUrl('/ppal-categoria');
   }
   saltaAEspecialidades() {
     this.router.navigateByUrl('/especialidades-ppal');

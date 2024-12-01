@@ -1,6 +1,6 @@
-import { Categoria } from './../../../model/dto/categoria';
+import { Categoria } from '../../../model/dto/categoria';
 import { CategoriaService } from 'src/app/services/categoria.service';
-import { SharedModule } from './../../../shared/shared/shared.module';
+import { SharedModule } from '../../../shared/shared/shared.module';
 import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,9 +11,9 @@ import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-categorias-ppal',
-  templateUrl: './categorias-ppal.page.html',
-  styleUrls: ['./categorias-ppal.page.scss'],
+  selector: 'app-ppal-categoria',
+  templateUrl: './ppal-categoria.page.html',
+  styleUrls: ['./ppal-categoria.page.scss'],
   standalone: true,
   imports: [IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCard, IonRow, IonCol, IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
