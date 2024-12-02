@@ -69,6 +69,9 @@ export class MenuCatalogosPage {
     saltaARelacionOrillaSucursal() {
     this.router.navigateByUrl('/relacion-orilla-sucursal-ppal');
   }
+  saltaARelacionPizzaSucursal() {
+    this.router.navigateByUrl('/relacion-pizza-sucursal-ppal');
+  }  
   saltaAProductos() {
     this.router.navigateByUrl('/productos-ppal');
   }
