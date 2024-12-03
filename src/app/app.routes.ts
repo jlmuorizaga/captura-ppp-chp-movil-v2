@@ -209,7 +209,19 @@ export const routes: Routes = [
   {
     path: 'insertar-relacion-pizza-sucursal',
     loadComponent: () => import('./catalogos/relacion-pizza-sucursal/insertar-relacion-pizza-sucursal/insertar-relacion-pizza-sucursal.page').then( m => m.InsertarRelacionPizzaSucursalPage)
+  },  {
+    path: 'relacion-producto-sucursal-ppal',
+    loadComponent: () => import('./catalogos/relacion-producto-sucursal/relacion-producto-sucursal-ppal/relacion-producto-sucursal-ppal.page').then( m => m.RelacionProductoSucursalPpalPage)
   },
+  {
+    path: 'editar-relacion-producto-sucursal',
+    loadComponent: () => import('./catalogos/relacion-producto-sucursal/editar-relacion-producto-sucursal/editar-relacion-producto-sucursal.page').then( m => m.EditarRelacionProductoSucursalPage)
+  },
+  {
+    path: 'insertar-relacion-producto-sucursal',
+    loadComponent: () => import('./catalogos/relacion-producto-sucursal/insertar-relacion-producto-sucursal/insertar-relacion-producto-sucursal.page').then( m => m.InsertarRelacionProductoSucursalPage)
+  },
+
 
 
 
