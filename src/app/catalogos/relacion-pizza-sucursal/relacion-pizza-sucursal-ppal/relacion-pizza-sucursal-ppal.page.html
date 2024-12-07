@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="custom">
-    <ion-title class="ion-text-center">Catalogo Relación Pizza Sucursal</ion-title>
+    <ion-title class="ion-text-center">Catalogo Relación Pizza Sucursalll</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,6 +8,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarRelacionPizzaSucursal()" color="success">Insertar Pizza Sucursal</ion-button>
+  </p>
+
     <div class="table-container">
       @if (relacionPizzaSucursal){
         <ion-grid fixed>
@@ -19,17 +23,17 @@
                 <ion-card-subtitle class="subtitle">{{rps.idPizza}}</ion-card-subtitle>
                 <ion-card-title>{{rps.nombreEspecialidad}} {{rps.tamanioPizza}}</ion-card-title>
               </ion-card-header>
-  
+
               <ion-card-content>
                 Precio por una pizza: {{rps.precioX1}}<br>
                 Precio por dos pizzas: {{rps.precioX2}}<br><br>
-                <ion-button color="danger">Borrar</ion-button>
+                <ion-button (click)="confirmaBorrar(rps)" color="danger">Borrar</ion-button>
                 <ion-button>Editar</ion-button>
               </ion-card-content>
             </ion-card>
             </ion-col>
           }
-  
+
           </ion-row>
         </ion-grid>
     }

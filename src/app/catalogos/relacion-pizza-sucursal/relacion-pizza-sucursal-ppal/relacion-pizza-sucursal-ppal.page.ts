@@ -1,3 +1,4 @@
+import { RelacionPizzaSucursalNoEstaEnPizza } from './../../../model/dto/relacion-pizza-sucursal-no-estan-en-pizza';
 import { RelacionPizzaSucursal } from 'src/app/model/dto/relacion-pizza-sucursal';
 import { RelacionPizzaSucursalService } from 'src/app/services/relacion-pizza-sucursal.service';
 
@@ -37,7 +38,7 @@ export class RelacionPizzaSucursalPpalPage implements OnInit,OnDestroy {
     private globalService: GlobalService,
     private sucursalesSvc: SucursalService,
     private cdr: ChangeDetectorRef
-  ) { 
+  ) {
 
     this.mensaje = 'Estoy en el constructor';
     this.idSucursal = this.globalService.idSucursalGlobal;
@@ -98,6 +99,51 @@ export class RelacionPizzaSucursalPpalPage implements OnInit,OnDestroy {
       },
     });
   }
+  saltaAInsertarRelacionPizzaSucursal() {
+    this.router.navigateByUrl('/insertar-relacion-pizza-sucursal');
+  }
 
+  borraRPS(idPizza:string,idSucursal:string){
+    console.log('Voy a borrar este registro='+idPizza+' '+idSucursal);
+
+    this.relacionPizzaSucursalSvc.borraRegistroRPS(idPizza,idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Registro borrado de forma exitosa')
+        console.log(res);
+        this.leerRelacionPizzaSucursal(this.idSucursal);
+      },
+      error:(error:any)=>{
+        console.log('Error en el borrado de la rps')
+        console.log(error)
+
+      }
+    })
+  }
+
+  async confirmaBorrar(rps:RelacionPizzaSucursal){
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar el registro \"'+rps.idPizza+' '+rps.idSucursal+'\"–––––––––––––– ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Operación confirmada');
+            this.borraRPS(rps.idPizza,rps.idSucursal);
+            // Aquí puedes agregar la lógica para la operación a realizar
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
 }
