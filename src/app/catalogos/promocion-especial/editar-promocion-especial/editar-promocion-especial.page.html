@@ -24,8 +24,14 @@
           <ion-input label="Descripción" label-placement="floating" formControlName="descripcion" [ngModel]="descripcion"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Tipo" label-placement="floating" formControlName="tipo" [ngModel]="tipo"></ion-input>
+          <ion-select label="Tipo" label-placement="floating" formControlName="tipo" [ngModel]="tipo">
+            <ion-select-option value="CB">CB - Combo</ion-select-option>
+            <ion-select-option value="PE">PE - Promoción Especial</ion-select-option>
+          </ion-select>
         </ion-item>
+        <!--ion-item>
+          <ion-input label="Tipo" label-placement="floating" formControlName="tipo" [ngModel]="tipo"></ion-input>
+        </!--ion-item-->
         <ion-item>
           <ion-input label="Definición" label-placement="floating" formControlName="definicion" [ngModel]="definicion"></ion-input>
         </ion-item>
@@ -33,7 +39,12 @@
           <ion-input label="Precio" label-placement="floating" formControlName="precio" [ngModel]="precio"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Activa" label-placement="floating" formControlName="activa" [ngModel]="activa"></ion-input>
+
+          <ion-select label="Activa" label-placement="floating" formControlName="activa" [ngModel]="activa">
+            <ion-select-option value="S">Sí</ion-select-option>
+            <ion-select-option value="N">No</ion-select-option>
+          </ion-select>
+
         </ion-item>
         <ion-item>
           <ion-input label="Img URL" label-placement="floating" formControlName="imgURL" [ngModel]="imgURL"></ion-input>

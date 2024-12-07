@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
-  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem } from '@ionic/angular/standalone';
+  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
+  IonLabel, IonItem, IonRadio, IonRadioGroup,IonSelectOption,IonSelect } from '@ionic/angular/standalone';
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute,Route } from '@angular/router';
@@ -14,8 +15,8 @@ import { ActivatedRoute,Route } from '@angular/router';
   templateUrl: './editar-promocion-especial.page.html',
   styleUrls: ['./editar-promocion-especial.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
-    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
+  imports: [IonRadioGroup, IonRadio, IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
+    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,IonSelectOption,IonSelect,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule,
   ]
 })

@@ -7,4 +7,13 @@ export class PromocionEspecial {
   precio!:number;
   activa!:string;
   imgURL!:string;
+
+  public get tipoCompleto():string{
+
+    if (this.tipo==='CB'){
+      return 'Combo';
+    }else{
+      return 'Precio Especial';
+    }
+  }
 }

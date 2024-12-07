@@ -30,6 +30,8 @@ import {
 } from '@ionic/angular/standalone';
 
 import { Producto } from 'src/app/model/dto/producto';
+import { Categoria } from 'src/app/model/dto/categoria';
+import { CategoriaService } from 'src/app/services/categoria.service';
 
 import { ProductoService } from 'src/app/services/producto.service';
 import { NavigationEnd, Router } from '@angular/router';
@@ -83,15 +85,21 @@ export class EditarProductoPage implements OnInit, OnDestroy {
   categoria1!: string;
   categoria2!: string;
   categoria3!: string;
+
+  categoria1_seleccionado!: string;
+  categoria2_seleccionado!: string;
+  categoria3_seleccionado!: string;
   navigationSubscription: Subscription;
   tipoProductos!: TipoProducto[];
   id_tipo_producto_seleccionado!: string;
+  categorias!: Categoria[];
 
   constructor(
     private fb: FormBuilder,
     private productosSvc: ProductoService,
     private router: Router,
     private tipoProductosSvc: TipoProductoService,
+    private categoriasSvc:CategoriaService,
     private cdr: ChangeDetectorRef
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -107,9 +115,9 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       this.id_tipo_producto = data.id_tipo_producto;
       this.nombre_tp = data.nombre_tp;
       this.ruta_imagen = data.ruta_imagen;
-      this.categoria1 = data.categoria1;
-      this.categoria2 = data.categoria2;
-      this.categoria3 = data.categoria3;
+      this.categoria1_seleccionado = data.categoria1;
+      this.categoria2_seleccionado = data.categoria2;
+      this.categoria3_seleccionado = data.categoria3;
       this.id_tipo_producto_seleccionado = data.id_tipo_producto;
     }
     this.formularioProducto = this.fb.group({
@@ -127,6 +135,12 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       .subscribe(() => {
         this.leerTipoProductos();
       });
+
+      this.navigationSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerCategorias();
+      });
   }
 
   ngOnInit() {
@@ -143,7 +157,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       console.log(this.formularioProducto.value);
       let producto: Producto = new Producto();
       producto.id = this.id;
-      producto.nombre_tp = this.formularioProducto.value.nombre_tp;
+      producto.descripcion_p = this.formularioProducto.value.descripcion_p;
       producto.tamanio = this.formularioProducto.value.tamanio;
       producto.usa_salsa = this.formularioProducto.value.usa_salsa;
       producto.id_tipo_producto = this.formularioProducto.value.id_tipo_producto2;
@@ -180,6 +194,24 @@ export class EditarProductoPage implements OnInit, OnDestroy {
 
         console.log(this.tipoProductos);
         this.tipoProductos;
+        this.cdr.detectChanges();
+      },
+      error: (error: any) => {
+        console.log('Error en la lectura del servicio');
+        console.log(error);
+      },
+    });
+  }
+
+
+  leerCategorias() {
+    this.categoriasSvc.dameListaCategorias().subscribe({
+      next: (res: any) => {
+        console.log('Servicio leido de forma exitosa');
+        console.log(res);
+        this.categorias = res;
+
+        console.log(this.categorias);
         this.cdr.detectChanges();
       },
       error: (error: any) => {
