@@ -34,8 +34,14 @@
                 </ion-select>
               </ion-item>
               <ion-item>
-                <ion-input label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1"
-                  [ngModel]="aplica2x1"></ion-input>
+                <!--ion-input label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1"
+                  [ngModel]="aplica2x1"></!--ion-input-->
+
+                  <ion-select label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1" [ngModel]="aplica2x1">
+                    <ion-select-option value="S">Sí</ion-select-option>
+                    <ion-select-option value="N">No</ion-select-option>
+                  </ion-select>
+
               </ion-item>
               <ion-item>
                 <ion-input label="Categoria1" label-placement="floating" formControlName="categoria1"

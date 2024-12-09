@@ -21,4 +21,5 @@ export const environment = {
   promocion_especial:'/promociones_especiales',
   promociones_especiales_no:'/promociones_especiales_no',
   relacion_pes:'/relacion_promociones_especiales_sucursal',
+  dameListadoPromocionesEspecialesNoEstanEnRPE:'dameListadoPromocionesEspecialesNoEstanEnRPE/',
 };

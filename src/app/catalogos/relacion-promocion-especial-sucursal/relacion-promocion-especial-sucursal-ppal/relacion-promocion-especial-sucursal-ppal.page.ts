@@ -17,8 +17,7 @@ import {
   IonItem,
   IonLabel,
   AlertController,
-  IonGrid,
-} from '@ionic/angular/standalone';
+  IonGrid, IonCardHeader, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardContent, IonCardTitle } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
@@ -32,7 +31,7 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
   templateUrl: './relacion-promocion-especial-sucursal-ppal.page.html',
   styleUrls: ['./relacion-promocion-especial-sucursal-ppal.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonCardTitle, IonCardContent, IonCardSubtitle, IonCard, IonCol, IonRow, IonCardHeader,
     IonGrid,
     SharedModule,
     IonLabel,

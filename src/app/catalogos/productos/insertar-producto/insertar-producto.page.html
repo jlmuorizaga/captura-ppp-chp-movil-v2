@@ -31,7 +31,7 @@
                 <ion-select label="Descripción Tipo de Producto" label-placement="floating"
                   formControlName="id_tipo_producto">
                   @for (tipoProducto of tipoProductos; track $index) {
-                  <ion-select-option value="{{tipoProducto.id}}">{{tipoProducto.descripcion}}</ion-select-option>
+                  <ion-select-option value="{{tipoProducto.id}}">{{tipoProducto.nombre}}</ion-select-option>
                   }
                 </ion-select>
                 }

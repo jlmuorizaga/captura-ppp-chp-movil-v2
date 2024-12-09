@@ -13,41 +13,32 @@
   </p>
 
   <div class="table-container">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <!--th>ID Promocion</th-->
-          <th>Nombre de la Promoción</th>
-          <th>Descripcion de la Promoción</th>
-          <!--th>ID Sucursal</!--th-->
-          <th>Clave Sucursal</th>
-          <th>Nombre Sucursal</th>
-          <th>Activa</th>
-          <th colspan="2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @if (registrosRelacionPES){
-          @for (registro of registrosRelacionPES; track $index) {
-        <tr>
-          <!--td>{{registro.idPromocion}}</!--td-->
-          <td>{{registro.nombre}}</td>
-          <td>{{registro.descripcion}}</td>
-          <!--td>{{registro.idSucursal}}</!--td-->
-          <td>{{registro.claveSucursal}}</td>
-          <td>{{registro.nombreSucursal}}</td>
-          <td>{{registro.activa}}</td>
-          <td>
-            <ion-button (click)="confirmaBorrar(registro)" color="danger">Borrar</ion-button>
-          </td>
-          <td>
-            <ion-button (click)="saltaAEditarRegistroPromocionEspecialSucursal(registro)">Editar</ion-button> <br>
-          </td>
-        </tr>
-      }
-      }
-      </tbody>
+    @if (registrosRelacionPES){
+      <ion-grid fixed>
+        <ion-row>
+          @for (rpes of registrosRelacionPES; track $index) {
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">id_promocion: {{rpes.idPromocion}}</ion-card-subtitle>
+              <ion-card-title>{{rpes.nombrePromocion}}</ion-card-title>
 
-    </table>
+            </ion-card-header>
+
+            <ion-card-content>
+              Descripción: {{rpes.descripcionPromocion}} <br>
+              Activa: {{rpes.activa}}<br>
+
+              <ion-button (click)="confirmaBorrar(rpes)" color="danger">Borrar</ion-button>
+              <ion-button>Editar</ion-button>
+            </ion-card-content>
+          </ion-card>
+          </ion-col>
+        }
+
+        </ion-row>
+      </ion-grid>
+  }
   </div>
+
 </ion-content>
