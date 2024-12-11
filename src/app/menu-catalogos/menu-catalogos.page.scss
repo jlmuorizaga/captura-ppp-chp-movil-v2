@@ -101,3 +101,36 @@ ion-button {
   text-align: right;
 }
 
+// Tooltips
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-target {
+  cursor: pointer;
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: #194f6eab; /* Fondo azul */
+  color: #fff;
+  text-align: center;
+  border-radius: 6px; /* Borde redondeado más marcado */
+  padding: 8px 12px; /* Espaciado mayor */
+  font-size: 12px; /* Tamaño de fuente */
+  position: absolute;
+  z-index: 1;
+  bottom: 50%; /* Ubica el tooltip en el centro del botón */
+  left: 50%; /* Centrado horizontal */
+  transform: translate(-50%, 50%); /* Ajusta el tooltip para que esté centrado */
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
+}
+
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}

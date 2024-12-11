@@ -8,7 +8,7 @@ import {
   IonButton,
   IonGrid,
   IonCol,
-  IonRow} from '@ionic/angular/standalone';
+  IonRow, IonIcon } from '@ionic/angular/standalone';
 import { GlobalService } from '../services/global.service';
 import { SucursalService } from '../services/sucursal.service';
 import { Sucursal } from '../model/dto/sucursal';
@@ -18,7 +18,7 @@ import { Sucursal } from '../model/dto/sucursal';
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonIcon, 
     IonRow,
     IonCol,
     IonGrid,
