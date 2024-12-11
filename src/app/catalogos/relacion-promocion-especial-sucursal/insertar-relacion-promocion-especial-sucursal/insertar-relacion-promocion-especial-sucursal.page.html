@@ -25,14 +25,17 @@
               <ion-select aria-label="Food" placeholder="Selecciona Promoción Especial" formControlName="idPromocion">
                 <ion-select-option *ngFor="let promocionEspecial of promocionesEspecial"
                   [value]="promocionEspecial.idPromocion">
-                  {{ promocionEspecial.nombre}}
+                  {{ promocionEspecial.nombre}} -
                   {{promocionEspecial.descripcion}}</ion-select-option>
               </ion-select>
             </ion-list>
           </div>
         </ion-item>
         <ion-item>
-          <ion-input label="Activa" label-placement="floating" formControlName="activa"></ion-input>
+          <ion-select label="Activa" label-placement="floating" formControlName="activa">
+            <ion-select-option value="S">Sí</ion-select-option>
+            <ion-select-option value="N">No</ion-select-option>
+          </ion-select>
         </ion-item>
         <div class="button-container">
           <ion-button type="submit" class="centered-button" [disabled]="!formularioPromocionEspecial.valid" color="success">
