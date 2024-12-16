@@ -134,3 +134,21 @@ ion-button {
   visibility: visible;
   opacity: 1;
 }
+
+
+.btn-3d {
+  --background: linear-gradient(145deg, #e0e0e0, #b3b3b3);
+  --border-radius: 12px;
+  --box-shadow: 4px 4px 6px #9c9c9c, -4px -4px 6px #ffffff;
+  --padding: 10px 20px;
+}
+
+.text-3d {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 2px #aaa, -2px -2px 2px #80acdf;
+  transform: perspective(100px) rotateX(5deg) rotateY(5deg);
+  display: inline-block;
+}
