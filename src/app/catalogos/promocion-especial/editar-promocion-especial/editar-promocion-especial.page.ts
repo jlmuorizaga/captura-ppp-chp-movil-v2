@@ -73,7 +73,19 @@ export class EditarPromocionEspecialPage implements OnInit {
   editaPromocionEspecial() {
     if (this.formularioPromocionEspecial.valid) {
        console.log(this.formularioPromocionEspecial.value)
-       let promocionEspecial:PromocionEspecial=new PromocionEspecial();
+
+        //Mu Se crearon estas variables el 23 dic 2024
+       let promocionEspecial:PromocionEspecial=new PromocionEspecial(
+        this.idPromocion,
+        this.nombre,
+        this.descripcion,
+        this.tipo,
+        this.definicion,
+        this.precio,
+        this.activa,
+        this.imgURL);
+        //Mu Se crearon estas variables el 23 dic 2024
+        
        promocionEspecial.idPromocion=this.idPromocion;
        promocionEspecial.nombre=this.formularioPromocionEspecial.value.nombre;
        promocionEspecial.descripcion=this.formularioPromocionEspecial.value.descripcion;

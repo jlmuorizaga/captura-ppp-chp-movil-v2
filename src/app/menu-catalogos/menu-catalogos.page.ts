@@ -18,7 +18,7 @@ import { Sucursal } from '../model/dto/sucursal';
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonIcon, 
+  imports: [IonIcon,
     IonRow,
     IonCol,
     IonGrid,
@@ -71,7 +71,7 @@ export class MenuCatalogosPage {
   }
   saltaARelacionPizzaSucursal() {
     this.router.navigateByUrl('/relacion-pizza-sucursal-ppal');
-  }  
+  }
   saltaARelacionProductoSucursal(){
     this.router.navigateByUrl('/relacion-producto-sucursal-ppal');
   }
@@ -119,9 +119,10 @@ export class MenuCatalogosPage {
         // console.log(res);
         this.sucursal = res;
 
-        console.log('this.sucursal==>>');
+
         console.log(this.sucursal);
         this.cveSucursal = this.sucursal.clave;
+        console.log('this.sucursal==>>',this.cveSucursal);
         this.cdr.detectChanges();
       },
       error: (error: any) => {

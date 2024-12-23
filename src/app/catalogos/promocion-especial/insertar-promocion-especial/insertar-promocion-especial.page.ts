@@ -19,6 +19,16 @@ import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
 })
 export class InsertarPromocionEspecialPage{
   formularioPromocionEspecial:FormGroup;
+  //Mu Se crearon estas variables el 23 dic 2024
+  idPromocion!: string;
+  nombre!: string;
+  descripcion!: string;
+  tipo!:string;
+  definicion!:string;
+  precio!:number;
+  activa!:string;
+  imgURL!:string;
+  //Mu Se crearon estas variables el 23 dic 2024
 
   constructor(private fb: FormBuilder,private promocionesEspecialesSvc:PromocionEspecialService,private router: Router) {
     this.formularioPromocionEspecial = this.fb.group({
@@ -34,7 +44,18 @@ export class InsertarPromocionEspecialPage{
   insertaPromocionEspecial() {
     if (this.formularioPromocionEspecial.valid) {
       console.log(this.formularioPromocionEspecial.value)
-      let promocionEspecial:PromocionEspecial=new PromocionEspecial();
+
+      //Mu Se crearon estas variables el 23 dic 2024
+      let promocionEspecial:PromocionEspecial=new PromocionEspecial(this.idPromocion,
+      this.nombre,
+      this.descripcion,
+      this.tipo,
+      this.definicion,
+      this.precio,
+      this.activa,
+      this.imgURL)
+      //Mu Se crearon estas variables el 23 dic 2024
+
       promocionEspecial.idPromocion=Utilerias.generaId();
       promocionEspecial.nombre=this.formularioPromocionEspecial.value.nombre;
       promocionEspecial.descripcion=this.formularioPromocionEspecial.value.descripcion;
