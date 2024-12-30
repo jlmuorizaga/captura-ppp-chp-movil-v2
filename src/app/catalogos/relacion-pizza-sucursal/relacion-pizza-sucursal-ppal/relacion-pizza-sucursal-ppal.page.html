@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="custom">
-    <ion-title class="ion-text-center">Catalogo Relación Pizza Sucursalll</ion-title>
+    <ion-title class="ion-text-center">Catalogo Relación Pizza Sucursal</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -25,6 +25,7 @@
               </ion-card-header>
 
               <ion-card-content>
+                Clave de la sucursal: {{rps.claveSucursal}}
                 Precio por una pizza: {{rps.precioX1}}<br>
                 Precio por dos pizzas: {{rps.precioX2}}<br><br>
                 <ion-button (click)="confirmaBorrar(rps)" color="danger">Borrar</ion-button>

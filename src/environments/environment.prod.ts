@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  baseUrl:'http://ec2-54-144-58-67.compute-1.amazonaws.com',
-  //baseUrl:'http://localhost',
+  //baseUrl:'http://ec2-54-144-58-67.compute-1.amazonaws.com',
+  baseUrl:'http://localhost',
   puertoApiAdmonCatalogos:'3005',
   regiones:'/regiones',
   especialidades:'/especialidades',
@@ -17,6 +17,7 @@ export const environment = {
   ingredientes:'/ingredientes',
   relacion_orilla_sucursal:'/relacion_orilla_sucursal',
   relacion_pizza_sucursal:'/relacion_pizza_sucursal',
+  relacion_producto_sucursal:'/relacion_producto_sucursal',
   dameListadoPizzasNoEstanEnRPS:'/dameListadoPizzasNoEstanEnRPS',
   relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',
   promociones_especiales:'/promociones_especiales',

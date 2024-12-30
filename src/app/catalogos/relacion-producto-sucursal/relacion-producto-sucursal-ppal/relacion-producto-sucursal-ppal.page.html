@@ -8,9 +8,36 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">relacion-producto-sucursal-ppal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <p style="text-align: center">
+    <ion-button  color="success">Insertar Producto Sucursal</ion-button>
+  </p>
+
+    <div class="table-container">
+      @if (relacionProductoSucursal){
+        <ion-grid fixed>
+          <ion-row>
+            @for (rps of relacionProductoSucursal; track $index) {
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-subtitle class="subtitle">{{rps.idProducto}}</ion-card-subtitle>
+                <ion-card-title>{{rps.descripcion}}</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                Clave de la sucursal: {{rps.claveSucursal}}<br>
+                Tipo de Producto: {{rps.tipoProductoNombre}}<br>
+                Tamaño: {{rps.tamanio}}<br>
+                Precio: {{rps.precio}}<br><br>
+                <ion-button  color="danger">Borrar</ion-button>
+                <ion-button>Editar</ion-button>
+              </ion-card-content>
+            </ion-card>
+            </ion-col>
+          }
+
+          </ion-row>
+        </ion-grid>
+    }
+    </div>
 </ion-content>

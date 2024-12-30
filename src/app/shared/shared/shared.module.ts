@@ -1,3 +1,4 @@
+import { RelacionProductoSucursalService } from './../../services/relacion-producto-sucursal.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -29,6 +30,7 @@ import { RelacionPizzaSucursalService } from 'src/app/services/relacion-pizza-su
   providers:[RegionService,EspecialidadService,SucursalService,ProductoService,
     TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,
     RelacionPromocionEspecialSucursalService,TamanioPizzaService,CategoriaService,
-  IngredienteService,OrillaService,PizzaService,RelacionOrillaSucursalService,RelacionPizzaSucursalService]
+  IngredienteService,OrillaService,PizzaService,RelacionOrillaSucursalService,
+  RelacionPizzaSucursalService,RelacionProductoSucursalService]
 })
 export class SharedModule { }
