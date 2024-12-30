@@ -44,7 +44,6 @@ export class InsertarRelacionPizzaSucursalPage{
         idPizza: ['', Validators.required],
         precioX2: ['', Validators.required],
         precioX1: ['', Validators.required],
-
       })
       this.mensaje = 'Estoy en el constructor';
       this.idSucursal = this.globalService.idSucursalGlobal;
@@ -97,10 +96,9 @@ export class InsertarRelacionPizzaSucursalPage{
           }
         })
 
-
-
       }
     }
+    
     saltaARPS() {
       this.router.navigateByUrl('/relacion-pizza-sucursal-ppal');
     }

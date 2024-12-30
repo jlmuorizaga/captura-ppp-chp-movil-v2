@@ -1,13 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>insertar-relacion-orilla-sucursal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">insertar-relacion-orilla-sucursal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-title size="large">Insertar Relación Pizza Sucursal</ion-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="formularioROS" (ngSubmit)="insertaROS()">
+              <ion-item>
+                @if (relacionOrillaSucursalNoEstaEnOrilla){
+                <ion-select label="Elige Orilla" label-placement="floating"
+                  formControlName="idOrilla">
+                  @for (ros of relacionOrillaSucursalNoEstaEnOrilla; track $index) {
+                  <ion-select-option value="{{ros.idOrilla}}">{{ros.descripcionOrilla}} - {{ros.nombreTamanio}}</ion-select-option>
+                  }
+                </ion-select>
+                }
+              </ion-item>
+              <ion-item>
+                <ion-input label="Precio" label-placement="floating" formControlName="precio"></ion-input>
+              </ion-item>
+              <div class="button-container">
+                <ion-button type="submit" class="centered-button" [disabled]="!formularioROS.valid"
+                  color="success">
+                  Inserta Relación Orilla Sucursal
+                </ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

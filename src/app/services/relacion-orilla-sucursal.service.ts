@@ -17,9 +17,12 @@ export class RelacionOrillaSucursalService {
   }
 
   dameListaRelacionOrillaSucursal(idSucursal:string) {
-    //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones');
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_orilla_sucursal +'/'+idSucursal);
   }
+  dameListadoOrillasNoEstanEnROS(idSucursal:string) {
+    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.dameListadoOrillasNoEstanEnROS +'/'+idSucursal);
+  }
+
   dameListaProductos2() {
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones');
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos2);
