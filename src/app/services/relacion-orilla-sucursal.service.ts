@@ -28,7 +28,7 @@ export class RelacionOrillaSucursalService {
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos2);
   }
   borraRegistroRelacionOrillaSucursal(idOrilla:string, idSucursal:string) {
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos + '/' + idOrilla+'/'+idSucursal);
+    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_orilla_sucursal + '/' + idOrilla+'/'+idSucursal);
   }
   insertaRegistroRelacionOrillaSucursal(registroRelacionOrillaSucursal:RelacionOrillaSucursal) {
     return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_orilla_sucursal,registroRelacionOrillaSucursal);
