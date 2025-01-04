@@ -32,7 +32,7 @@ export class InsertarRelacionProductoSucursalPage{
   navigationSubscription: Subscription;
   mensaje:string;
   idSucursal:string;
- //// relacionProductoSucursalNoEstaEnProducto!: ReladionProductoSucursalNoEstaEnProducto[];
+//relacionProductoSucursalNoEstaEnProducto!: RelacionProductoSucursalNoEstaEnProducto[];
 
    constructor(private relacionProductoSucursalSvc: RelacionProductoSucursalService, private fb:FormBuilder,
      private router: Router,
@@ -47,10 +47,26 @@ export class InsertarRelacionProductoSucursalPage{
        this.navigationSubscription = this.router.events
          .pipe(filter(event => event instanceof NavigationEnd))
          .subscribe(() => {
-           this.dameListadoPizzasNoEstanEnRPS(this.idSucursal);
+           this.dameListadoProductosNoEstanEnRPS(this.idSucursal);
          });
      }
 
+     dameListadoProductosNoEstanEnRPS(idSucursal:string) {
+      this.relacionProductoSucursalSvc.dameListadoProductosNoEstanEnRPS(idSucursal).subscribe({
+        next: (res: any) => {
+          console.log('Servicio leido de forma exitosa')
+          console.log(res);
+          this.relacionPizzaSucursalNoEstaEnPizza = res;
+          console.log(this.relacionPizzaSucursalNoEstaEnPizza);
+          this.cdr.detectChanges();
 
+        },
+        error: (error: any) => {
+          console.log('Error en la lectura del servicio')
+          console.log(error)
+
+        }
+      })
+    }
 
 }
