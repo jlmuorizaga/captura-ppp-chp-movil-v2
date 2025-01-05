@@ -1,3 +1,4 @@
+import { RelacionProductoSucursalNoEstaEnProducto } from 'src/app/model/dto/relacion-producto-sucursal-no-estan-en-producto';
 import { RelacionProductoSucursalService } from './../../../services/relacion-producto-sucursal.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -32,7 +33,7 @@ export class InsertarRelacionProductoSucursalPage{
   navigationSubscription: Subscription;
   mensaje:string;
   idSucursal:string;
-//relacionProductoSucursalNoEstaEnProducto!: RelacionProductoSucursalNoEstaEnProducto[];
+relacionProductoSucursalNoEstaEnProducto!: RelacionProductoSucursalNoEstaEnProducto[];
 
    constructor(private relacionProductoSucursalSvc: RelacionProductoSucursalService, private fb:FormBuilder,
      private router: Router,
@@ -56,8 +57,8 @@ export class InsertarRelacionProductoSucursalPage{
         next: (res: any) => {
           console.log('Servicio leido de forma exitosa')
           console.log(res);
-          this.relacionPizzaSucursalNoEstaEnPizza = res;
-          console.log(this.relacionPizzaSucursalNoEstaEnPizza);
+          this.relacionProductoSucursalNoEstaEnProducto = res;
+          console.log(this.relacionProductoSucursalNoEstaEnProducto);
           this.cdr.detectChanges();
 
         },
@@ -68,5 +69,31 @@ export class InsertarRelacionProductoSucursalPage{
         }
       })
     }
+    insertaRPS() {
+      if (this.formularioRPS.valid) {
+        console.log(this.formularioRPS.value)
+        let rps: RelacionProductoSucursal = new RelacionProductoSucursal();
+        rps.idProducto=this.formularioRPS.value.idProducto;
+        rps.idSucursal=this.idSucursal;
+        rps.precio=this.formularioRPS.value.precio;
 
+       this.relacionProductoSucursalSvc.insertaRelacionProductoSucursal(rps).subscribe({
+          next: (res: any) => {
+            console.log('Registro RPS insertada de forma exitosa')
+            console.log(res);
+            this.saltaARPS();
+
+          },
+          error: (error: any) => {
+            console.log('Error en la inserción del RPS')
+            console.log(error)
+
+          }
+        })
+
+      }
+    }
+    saltaARPS() {
+      this.router.navigateByUrl('/relacion-producto-sucursal-ppal');
+    }
 }

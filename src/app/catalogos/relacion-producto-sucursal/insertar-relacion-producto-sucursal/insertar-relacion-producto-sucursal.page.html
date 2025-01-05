@@ -1,13 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>insertar-relacion-producto-sucursal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">insertar-relacion-producto-sucursal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-title size="large">Insertar Relación Producto Sucursal</ion-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="formularioRPS" (ngSubmit)="insertaRPS()">
+              <ion-item>
+                @if (relacionProductoSucursalNoEstaEnProducto){
+                <ion-select label="Elige Producto" label-placement="floating"
+                  formControlName="idProducto">
+                  @for (rps of relacionProductoSucursalNoEstaEnProducto; track $index) {
+                  <ion-select-option value="{{rps.idProducto}}">{{rps.descripcion}} {{rps.tamanio}}</ion-select-option>
+                  }
+                </ion-select>
+                }
+              </ion-item>
+              <ion-item>
+                <ion-input label="Precio" label-placement="floating" formControlName="precio"></ion-input>
+              </ion-item>
+              <div class="button-container">
+                <ion-button type="submit" class="centered-button" [disabled]="!formularioRPS.valid"
+                  color="success">
+                  Inserta Relación Producto Sucursal
+                </ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

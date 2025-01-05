@@ -20,6 +20,7 @@ export const environment = {
   relacion_producto_sucursal:'/relacion_producto_sucursal',
   dameListadoPizzasNoEstanEnRPS:'/dameListadoPizzasNoEstanEnRPS',
   dameListadoOrillasNoEstanEnROS:'/dameListadoOrillasNoEstanEnROS',
+  dameListadoProductosNoEstanEnRPS:'dameListadoProductosNoEstanEnRPS',
   relacion_etps:'/relacion_especialidad_tamanio_precio_sucursal',
   promociones_especiales:'/promociones_especiales',
   promociones_especiales_no:'/promociones_especiales_no',
