@@ -100,5 +100,7 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
       },
     });
   }
-
+  saltaAInsertarRelacionProductoSucursal() {
+    this.router.navigateByUrl('/insertar-relacion-producto-sucursal');
+  }
 }
