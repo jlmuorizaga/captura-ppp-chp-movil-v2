@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <p style="text-align: center">
-    <ion-button (click)="saltaAInsertarRelacionProductoSucursal()" color="success">Insertar Pizza Sucursal</ion-button>
+    <ion-button (click)="saltaAInsertarRelacionProductoSucursal()" color="success">Insertar Producto Sucursal</ion-button>
   </p>
 
     <div class="table-container">
@@ -29,7 +29,7 @@
                 Tipo de Producto: {{rps.tipoProductoNombre}}<br>
                 Tamaño: {{rps.tamanio}}<br>
                 Precio: {{rps.precio}}<br><br>
-                <ion-button  color="danger">Borrar</ion-button>
+                <ion-button (click)="confirmaBorrar(rps.idProducto,rps.idSucursal)" color="danger">Borrar</ion-button>
                 <ion-button>Editar</ion-button>
               </ion-card-content>
             </ion-card>

@@ -35,7 +35,7 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
 
 
   constructor(
-        private RelacionProductoSucursalSvc:RelacionProductoSucursalService,
+        private relacionProductoSucursalSvc:RelacionProductoSucursalService,
         private alertController:AlertController,
         private router: Router,
         private globalService: GlobalService,
@@ -64,7 +64,7 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
   }
 
   leerRelacionProductoSucursal(idSucursal:string){
-    this.RelacionProductoSucursalSvc.dameListaRelacionProductoSucursal(idSucursal).subscribe({
+    this.relacionProductoSucursalSvc.dameListaRelacionProductoSucursal(idSucursal).subscribe({
       next:(res:any)=>{
         console.log('Servicio leido de forma exitosa')
         console.log('claveSucursal=',idSucursal)
@@ -102,5 +102,46 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
   }
   saltaAInsertarRelacionProductoSucursal() {
     this.router.navigateByUrl('/insertar-relacion-producto-sucursal');
+  }
+
+  borraRegistroRelacionProductoSucursal(idOrilla:string,idSucursal:string){
+    console.log('Voy a borrar este registro='+idOrilla+' '+idSucursal);
+    this.relacionProductoSucursalSvc.borraRelacionProductoSucursal(idOrilla,this.idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Registro borrado de forma exitosa')
+        console.log(res);
+        this.leerRelacionProductoSucursal(this.idSucursal);
+      },
+      error:(error:any)=>{
+        console.log('Error en el borrado del producto')
+        console.log(error)
+
+      }
+    })
+
+  }
+
+  async confirmaBorrar(idProducto:string, idSucursal:string){
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar el registro idProducto='+idProducto+' - idSucursal='+idSucursal+' ?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Operación confirmada');
+            this.borraRegistroRelacionProductoSucursal(idProducto,idSucursal);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

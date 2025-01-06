@@ -16,7 +16,7 @@ export class RelacionProductoSucursalService {
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.dameListadoProductosNoEstanEnRPS +'/'+idSucursal);
   }
   insertaRelacionProductoSucursal(registroRPS:RelacionProductoSucursal) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes,registroRPS);
+    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_producto_sucursal,registroRPS);
   }
   borraRelacionProductoSucursal(idProducto:string,idSucursal:string) {
     return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_producto_sucursal + '/' + idProducto+'/'+idSucursal);
