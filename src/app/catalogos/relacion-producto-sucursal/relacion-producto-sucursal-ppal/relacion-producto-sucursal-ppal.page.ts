@@ -104,9 +104,9 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
     this.router.navigateByUrl('/insertar-relacion-producto-sucursal');
   }
 
-  borraRegistroRelacionProductoSucursal(idOrilla:string,idSucursal:string){
-    console.log('Voy a borrar este registro='+idOrilla+' '+idSucursal);
-    this.relacionProductoSucursalSvc.borraRelacionProductoSucursal(idOrilla,this.idSucursal).subscribe({
+  borraRegistroRelacionProductoSucursal(idProducto:string,idSucursal:string){
+    console.log('Voy a borrar este registro='+idProducto+' '+idSucursal);
+    this.relacionProductoSucursalSvc.borraRelacionProductoSucursal(idProducto,this.idSucursal).subscribe({
       next:(res:any)=>{
         console.log('Registro borrado de forma exitosa')
         console.log(res);
@@ -121,10 +121,10 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
 
   }
 
-  async confirmaBorrar(idProducto:string, idSucursal:string){
+  async confirmaBorrar(idProducto:string, idSucursal:string, descripcion:string, tamanio:string, precio:string){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar el registro idProducto='+idProducto+' - idSucursal='+idSucursal+' ?',
+      message: '¿Estás seguro de que deseas borrar el producto: '+descripcion+' - '+tamanio+' con un precio de '+precio+'?',
       buttons: [
         {
           text: 'Cancelar',

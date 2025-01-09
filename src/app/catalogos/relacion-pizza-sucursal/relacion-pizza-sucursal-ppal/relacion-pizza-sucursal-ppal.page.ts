@@ -127,7 +127,7 @@ export class RelacionPizzaSucursalPpalPage implements OnInit,OnDestroy {
   async confirmaBorrar(rps:RelacionPizzaSucursal){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar el registro \"'+rps.idPizza+' '+rps.idSucursal+'\"–––––––––––––– ?',
+      message: '¿Estás seguro de que deseas borrar el registro \"'+rps.nombreEspecialidad+' '+rps.tamanioPizza+'?',
       buttons: [
         {
           text: 'Cancelar',

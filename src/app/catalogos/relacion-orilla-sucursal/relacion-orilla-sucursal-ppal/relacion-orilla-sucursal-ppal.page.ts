@@ -115,10 +115,10 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
 
   }
 
-  async confirmaBorrar(idOrilla:string, idSucursal:string){
+  async confirmaBorrar(idOrilla:string, idSucursal:string,descripcion:string, tamanio:string, precio:string){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar el registro idOrilla='+idOrilla+' - idSucursal='+idSucursal+' ?',
+      message: '¿Estás seguro de que deseas borrar el registro: '+descripcion+' '+tamanio+' con un precio de '+precio+'?',
       buttons: [
         {
           text: 'Cancelar',
