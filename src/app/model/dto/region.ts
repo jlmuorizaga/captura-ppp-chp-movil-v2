@@ -1,5 +1,7 @@
 export class Region {
     idRegion!: string;
     nombreRegion!: string;
-    hola!: string;
+    poligono!: string;
+    latitud!:string;
+    longitud!:string;
 }

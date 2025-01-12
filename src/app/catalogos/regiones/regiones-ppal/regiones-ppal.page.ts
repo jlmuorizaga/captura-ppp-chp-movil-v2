@@ -52,10 +52,6 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
         console.log('Servicio leido de forma exitosa')
         console.log(res);
         this.regiones=res;
-
-        for(let region of this.regiones){
-          region.hola='Hola';
-        }
         console.log(this.regiones);
         this.regiones
         this.cdr.detectChanges();

@@ -26,9 +26,9 @@
             </ion-card-header>
 
             <ion-card-content>
-              <!--
-             Nombre de la región: {{region.nombreRegion}}<br><br>
-             !-->
+              Polígono: {{region.poligono}}<br>
+              Latitud: {{region.latitud}}<br>
+              Longitud: {{region.longitud}}<br>
               <ion-button (click)="confirmaBorrar(region)" color="danger">Borrar</ion-button>
               <ion-button (click)="saltaAEditarRegion(region.idRegion)">Editar</ion-button>
 

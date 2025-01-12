@@ -26,7 +26,10 @@ export class InsertarRegionPage {
   constructor(private fb: FormBuilder, private regionesSvc: RegionService, private router: Router) {
     this.formularioRegion = this.fb.group({
       //idRegion: ['', Validators.required],
-      nombreRegion: ['', Validators.required]
+      nombreRegion: ['', Validators.required],
+      poligono: ['', Validators.required],
+      latitud: ['', Validators.required],
+      longitud: ['', Validators.required],
     })
   }
 
@@ -38,6 +41,11 @@ export class InsertarRegionPage {
       //region.idRegion=this.formularioRegion.value.idRegion;
       region.idRegion = Utilerias.generaId();
       region.nombreRegion = this.formularioRegion.value.nombreRegion;
+      region.poligono = this.formularioRegion.value.poligono;
+      region.latitud = this.formularioRegion.value.latitud;
+      region.longitud = this.formularioRegion.value.longitud;
+
+
       this.regionesSvc.insertaRegion(region).subscribe({
         next: (res: any) => {
           console.log('Región insertada de forma exitosa')

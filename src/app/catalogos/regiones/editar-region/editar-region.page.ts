@@ -25,7 +25,9 @@ export class EditarRegionPage  implements OnInit {
   datos!:Region;
   idRegion!:string;
   nombreRegion!:string;
-  //mensaje:string;
+  poligono!:string;
+  latitud!:string;
+  longitud!:string;
 
 constructor(private fb: FormBuilder,private regionesSvc:RegionService,
   private router: Router) {
@@ -37,6 +39,9 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
 
     this.idRegion=data.id;
     this.nombreRegion=data.nombre;
+    this.poligono=data.poligono;
+    this.latitud=data.latitud;
+    this.longitud=data.longitud;
 
     console.log('idRegion===>>'+this.idRegion);
     console.log('nombreRegion===>'+this.nombreRegion);
@@ -44,7 +49,10 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
   }
   this.formularioRegion = this.fb.group({
     //idRegion: ['', Validators.required],
-    nombreRegion: ['', Validators.required]
+    nombreRegion: ['', Validators.required],
+    poligono: ['', Validators.required],
+    latitud: ['', Validators.required],
+    longitud: ['', Validators.required],
   })
 }
   ngOnInit() {
@@ -57,7 +65,9 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
       //region.idRegion=this.formularioRegion.value.idRegion;
       region.idRegion=this.idRegion;
       region.nombreRegion=this.formularioRegion.value.nombreRegion;
-      //this.regionesSvc.insertaRegion(region).subscribe({
+      region.poligono=this.formularioRegion.value.poligono;
+      region.latitud=this.formularioRegion.value.latitud;
+      region.longitud=this.formularioRegion.value.longitud;
       this.regionesSvc.editaRegion(region).subscribe({
         next:(res:any)=>{
           console.log('Región editada de forma exitosa')
