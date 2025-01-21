@@ -8,7 +8,7 @@ import {
   IonButton,
   IonGrid,
   IonCol,
-  IonRow, IonIcon } from '@ionic/angular/standalone';
+  IonRow, IonIcon, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { GlobalService } from '../services/global.service';
 import { SucursalService } from '../services/sucursal.service';
 import { Sucursal } from '../model/dto/sucursal';
@@ -18,7 +18,7 @@ import { Sucursal } from '../model/dto/sucursal';
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonIcon,
+  imports: [IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonIcon,
     IonRow,
     IonCol,
     IonGrid,
@@ -98,6 +98,10 @@ export class MenuCatalogosPage {
   saltaARelacionPES() {
     console.log('***************************Entré a saltaARelacionETPS()');
     this.router.navigateByUrl('/relacion-promocion-especial-sucursal-ppal');
+  }
+  saltaARelacionSS() {
+    console.log('***************************Entré a saltaARelacionETPS()');
+    this.router.navigateByUrl('/relacion-salsa-sucursal-ppal');
   }
 
   saltaATamaniosPizza() {
