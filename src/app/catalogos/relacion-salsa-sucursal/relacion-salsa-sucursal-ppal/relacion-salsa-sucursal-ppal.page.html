@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="custom">
+    <ion-title class="ion-text-center">Catalogo Relación Salsa Sucursal</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p style="text-align: center">
+    <ion-button (click)="saltaAInsertarRelacionSalsaSucursal()" color="success">Insertar Salsa Sucursal</ion-button>
+  </p>
+
+    <div class="table-container">
+      @if (relacionSalsaSucursal){
+        <ion-grid fixed>
+          <ion-row>
+            @for (rss of relacionSalsaSucursal; track $index) {
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-subtitle class="subtitle">{{rss.idSalsa}}</ion-card-subtitle>
+                <ion-card-title>{{rss.descripcionSalsa}}</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                ID de la sucursal: {{rss.idSucursal}}<br>
+                Clave de la sucursal: {{rss.claveSucursal}}<br>
+                <ion-button (click)="confirmaBorrar(rss)" color="danger">Borrar</ion-button>
+                <ion-button>Editar</ion-button>
+              </ion-card-content>
+            </ion-card>
+            </ion-col>
+          }
+
+          </ion-row>
+        </ion-grid>
+    }
+    </div>
+</ion-content>

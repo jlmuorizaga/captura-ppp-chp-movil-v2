@@ -221,6 +221,18 @@ export const routes: Routes = [
     path: 'insertar-relacion-producto-sucursal',
     loadComponent: () => import('./catalogos/relacion-producto-sucursal/insertar-relacion-producto-sucursal/insertar-relacion-producto-sucursal.page').then( m => m.InsertarRelacionProductoSucursalPage)
   },
+  {
+    path: 'relacion-salsa-sucursal-ppal',
+    loadComponent: () => import('./catalogos/relacion-salsa-sucursal/relacion-salsa-sucursal-ppal/relacion-salsa-sucursal-ppal.page').then( m => m.RelacionSalsaSucursalPpalPage)
+  },
+  {
+    path: 'insertar-relacion-salsa-sucursal',
+    loadComponent: () => import('./catalogos/relacion-salsa-sucursal/insertar-relacion-salsa-sucursal/insertar-relacion-salsa-sucursal.page').then( m => m.InsertarRelacionSalsaSucursalPage)
+  },
+  {
+    path: 'editar-relacion-salsa-sucursal',
+    loadComponent: () => import('./catalogos/relacion-salsa-sucursal/editar-relacion-salsa-sucursal/editar-relacion-salsa-sucursal.page').then( m => m.EditarRelacionSalsaSucursalPage)
+  },
 
 
 

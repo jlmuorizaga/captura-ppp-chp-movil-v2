@@ -19,6 +19,7 @@ import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { RelacionOrillaSucursalService } from 'src/app/services/relacion-orilla-sucursal.service';
 import { RelacionPizzaSucursalService } from 'src/app/services/relacion-pizza-sucursal.service';
+import { RelacionSalsaSucursalService } from 'src/app/services/relacion-salsa-sucursal.service';
 
 
 
@@ -31,6 +32,6 @@ import { RelacionPizzaSucursalService } from 'src/app/services/relacion-pizza-su
     TipoProductoService,SalsaService,RelacionEtpsService,PromocionEspecialService,
     RelacionPromocionEspecialSucursalService,TamanioPizzaService,CategoriaService,
   IngredienteService,OrillaService,PizzaService,RelacionOrillaSucursalService,
-  RelacionPizzaSucursalService,RelacionProductoSucursalService]
+  RelacionPizzaSucursalService,RelacionProductoSucursalService,RelacionSalsaSucursalService]
 })
 export class SharedModule { }
