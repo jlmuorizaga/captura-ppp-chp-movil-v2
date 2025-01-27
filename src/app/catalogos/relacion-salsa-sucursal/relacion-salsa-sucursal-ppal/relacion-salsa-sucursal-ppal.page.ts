@@ -1,6 +1,6 @@
 
 import { RelacionSalsaSucursal } from 'src/app/model/dto/relacion-salsa-sucursal';
-import { RelacionSalsaSucursalNoEstaEnSucursal } from 'src/app/model/dto/relacion-salsa-sucursal-no-esta-en-sucursal';
+import { RelacionSalsaSucursalNoEstaEnSalsa } from 'src/app/model/dto/relacion-salsa-sucursal-no-esta-en-salsa';
 import { RelacionSalsaSucursalService } from 'src/app/services/relacion-salsa-sucursal.service';
 
 import { SharedModule } from './../../../shared/shared/shared.module';
@@ -8,8 +8,8 @@ import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton,
-  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid, IonCol, IonRow, 
-  IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } 
+  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid, IonCol, IonRow,
+  IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent }
   from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
@@ -24,8 +24,8 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
   styleUrls: ['./relacion-salsa-sucursal-ppal.page.scss'],
   standalone: true,
   imports: [IonContent,IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader,
-    IonCard, IonRow, IonCol, IonGrid, SharedModule,IonLabel, IonItem, IonList, 
-    IonBackButton, IonButton, IonIcon, IonButtons, IonContent, IonHeader, 
+    IonCard, IonRow, IonCol, IonGrid, SharedModule,IonLabel, IonItem, IonList,
+    IonBackButton, IonButton, IonIcon, IonButtons, IonContent, IonHeader,
     IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
@@ -42,7 +42,7 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
         private globalService: GlobalService,
         private sucursalesSvc: SucursalService,
         private cdr: ChangeDetectorRef
-  ) { 
+  ) {
     this.mensaje = 'Estoy en el constructor';
     this.idSucursal = this.globalService.idSucursalGlobal;
     //Error????????????????????
@@ -64,7 +64,7 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
-  }  
+  }
   leerRelacionSalsaSucursal(idSucursal:string){
     this.relacionSalsaSucursalSvc.dameListaRelacionSalsaSucursal(idSucursal).subscribe({
       next:(res:any)=>{
@@ -103,11 +103,11 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
   }
   saltaAInsertarRelacionSalsaSucursal() {
     this.router.navigateByUrl('/insertar-relacion-salsa-sucursal');
-  }  
+  }
 
     borraRPS(idSalsa:string,idSucursal:string){
       console.log('Voy a borrar este registro='+idSalsa+' '+idSucursal);
-  
+
       this.relacionSalsaSucursalSvc.borraRegistroRSS(idSalsa,idSucursal).subscribe({
         next:(res:any)=>{
           console.log('Registro borrado de forma exitosa')
@@ -117,11 +117,11 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
         error:(error:any)=>{
           console.log('Error en el borrado de la rss')
           console.log(error)
-  
+
         }
       })
     }
-  
+
     async confirmaBorrar(rss:RelacionSalsaSucursal){
       const alert = await this.alertController.create({
         header: 'Confirmación',
@@ -144,7 +144,7 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
           }
         ]
       });
-  
+
       await alert.present();
     }
 
