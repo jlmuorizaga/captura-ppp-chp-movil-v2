@@ -19,153 +19,45 @@
 
 
   <ion-content class="ion-padding">
-    <!--ion-button class="btn-3d">
-      <span class="text-3d">Botón 3D</span>
-    </!--ion-button-->
-
-    <!--div class="tooltip-container">
-      <ion-button class="tooltip-target">
-        Hover me
-      </ion-button>
-      <div class="tooltip">
-        Este es un tooltip personalizado.
+      <div style="display: flex; justify-content: center; gap: 10px">
+        <ion-button (click)="saltaAHomePage()" color="warning">Cambiar de Sucursal</ion-button>
       </div>
-    </!--div-->
+  <!-- Sección 1: Primeros 12 botones -->
+  <ion-card class="card-principales">
+    <ion-card-header>
+      <ion-card-title class="card-title-green-shadow">Catálogos Comunes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let item of catalogosPrincipales" size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <div style="display: flex; justify-content: center; gap: 10px">
+              <ion-button (click)="item.accion()">{{ item.nombre }}</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
-  <!-- Otro ejemplo con iconos -->
-  <div class="tooltip-container">
-    <ion-icon name="information-circle-outline" class="tooltip-target"></ion-icon>
-    <div class="tooltip">
-      Información adicional sobre este ícono.
-    </div>
-  </div>
+  <!-- Sección 2: Siguientes 5 botones -->
+  <ion-card class="card-relaciones">
+    <ion-card-header>
+      <ion-card-title class="card-title-red-shadow">Catálogos de la Sucursal</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let item of catalogosRelacionados" size="12" size-lg="3" sizeMd="4" sizeSm="6">
+            <div style="display: flex; justify-content: center; gap: 10px">
+              <ion-button (click)="item.accion()">{{ item.nombre }}</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
-
-  <ion-button color="primary">Primary</ion-button>
-  <ion-button color="secondary">Secondary</ion-button>
-  <ion-button color="tertiary">Tertiary</ion-button>
-  <ion-button color="success">Success</ion-button>
-  <ion-button color="warning">Warning</ion-button>
-  <ion-button color="danger">Danger</ion-button>
-  <ion-button color="light">Light</ion-button>
-  <ion-button color="medium">Medium</ion-button>
-  <ion-button color="dark">Dark</ion-button>
-    <ion-grid>
-
-
-
-      <ion-row>
-        
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaACategorias()" color="primary">Catálogo Categorias</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaAEspecialidades()">Catálogo Especialidades</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaAIngredientes()">Catálogo Ingredientes</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaAOrillas()">Catálogo Orillas</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaAPizzas()">Catálogo Pizzas</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaAProductos()">Catálogo Productos</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaATipoProductos()">Catálogo Tipos de Producto</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaAPromocionEspecial()">Catálogo Promoción Especial</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaARegiones()">Catálogo Regiones</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaARelacionOrillaSucursal()">Catálogo Relación Orilla Sucursal</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaARelacionPizzaSucursal()">Catálogo Relación Pizza Sucursal</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaARelacionProductoSucursal()">Catálogo Relación Producto Sucursal</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaARelacionPES()">Catálogo Relación Promoción Especial Sucursal</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaARelacionSS()">Catálogo Relación Salsa Sucursal</ion-button>
-          </div>
-        </ion-col>
-
-
-
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaASalsas()">Catálogo Salsas</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaASucursales()">Catálogo Sucursales</ion-button>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaATamaniosPizza()">Catálogo Tamaños Pizza</ion-button>
-          </div>
-        </ion-col>
-
-
-
-
-
-        <!--ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="saltaARelacionETPS()">Catálogo Relación Especialidad, Tamaño, Precio,
-              Sucursal</ion-button>
-          </div>
-        </ion-col-->
-
-
-        <!--ion-col size="12" size-lg="3" sizeMd="4" sizeSm="6">
-          <div style="display: flex; justify-content: center; gap: 10px">
-            <ion-button (click)="abrirEnNuevaPestana('https://www.google.com.mx')">Abrir en una nueva
-              pestaña</ion-button>
-          </div>
-        </ion-col-->
-
-      </ion-row>
-    </ion-grid>
 
 
 

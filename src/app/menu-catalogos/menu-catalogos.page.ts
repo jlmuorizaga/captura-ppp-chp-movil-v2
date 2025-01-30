@@ -12,13 +12,14 @@ import {
 import { GlobalService } from '../services/global.service';
 import { SucursalService } from '../services/sucursal.service';
 import { Sucursal } from '../model/dto/sucursal';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-menu-catalogos',
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonIcon,
+  imports: [IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonIcon,NgFor,
     IonRow,
     IonCol,
     IonGrid,
@@ -47,7 +48,28 @@ export class MenuCatalogosPage {
     this.dameSucursal(this.idSucursal);
     console.log('Sucursal==>', this.globalService.idSucursalGlobal);
   }
+  catalogosPrincipales = [
+    { nombre: 'Catálogo Categorías', accion: () => this.saltaACategorias() },
+    { nombre: 'Catálogo Especialidades', accion: () => this.saltaAEspecialidades() },
+    { nombre: 'Catálogo Ingredientes', accion: () => this.saltaAIngredientes() },
+    { nombre: 'Catálogo Orillas', accion: () => this.saltaAOrillas() },
+    { nombre: 'Catálogo Pizzas', accion: () => this.saltaAPizzas() },
+    { nombre: 'Catálogo Productos', accion: () => this.saltaAProductos() },
+    { nombre: 'Catálogo Tipos de Producto', accion: () => this.saltaATipoProductos() },
+    { nombre: 'Catálogo Promoción Especial', accion: () => this.saltaAPromocionEspecial() },
+    { nombre: 'Catálogo Regiones', accion: () => this.saltaARegiones() },
+    { nombre: 'Catálogo Salsas', accion: () => this.saltaASalsas() },
+    { nombre: 'Catálogo Sucursales', accion: () => this.saltaASucursales() },
+    { nombre: 'Catálogo Tamaños Pizza', accion: () => this.saltaATamaniosPizza() }
+  ];
 
+  catalogosRelacionados = [
+    { nombre: 'Relación Orilla Sucursal', accion: () => this.saltaARelacionOrillaSucursal() },
+    { nombre: 'Relación Pizza Sucursal', accion: () => this.saltaARelacionPizzaSucursal() },
+    { nombre: 'Relación Producto Sucursal', accion: () => this.saltaARelacionProductoSucursal() },
+    { nombre: 'Relación Promoción Especial Sucursal', accion: () => this.saltaARelacionPES() },
+    { nombre: 'Relación Salsa Sucursal', accion: () => this.saltaARelacionSS() }
+  ];
   saltaACategorias() {
     this.router.navigateByUrl('/ppal-categoria');
   }

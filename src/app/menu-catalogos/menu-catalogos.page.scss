@@ -79,7 +79,6 @@ ion-button {
   --color: white; /* Color del texto */
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
 }
 
 .header-row {
@@ -151,4 +150,47 @@ ion-button {
   text-shadow: 2px 2px 2px #aaa, -2px -2px 2px #80acdf;
   transform: perspective(100px) rotateX(5deg) rotateY(5deg);
   display: inline-block;
+}
+.card-principales {
+  //background-color: #18f160d4; /* Naranja claro */
+  background-color: #ffffffff; /* Naranja claro */
+  box-shadow: 4px 4px 10px rgba(126, 113, 113, 0.895); /* Sombra suave */
+  border-radius: 30px; /* Bordes redondeados opcionales */
+}
+
+.card-relaciones {
+  //background-color: #dc3d3d; /* Azul claro */
+  background-color: #ffffff; /* Azul claro */
+  box-shadow: 4px 4px 10px rgba(126, 113, 113, 0.895); /* Sombra suave */
+  border-radius: 30px; /* Bordes redondeados opcionales */
+}
+.card-principales ion-card-title,
+.card-relaciones ion-card-title {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-shadow {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+}
+
+.card-title-green-shadow {
+  color: green !important; /* Cambia el color del texto a verde */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra del texto */
+  font-weight: bold; /* Opcional, si también quieres el texto en negrita */
+  font-size: 24px; /* Aumentar el tamaño de la fuente */
+}
+
+.card-title-red-shadow {
+  color: rgb(128, 0, 0) !important; /* Cambia el color del texto a verde */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra del texto */
+  font-weight: bold; /* Opcional, si también quieres el texto en negrita */
+  font-size: 24px; /* Aumentar el tamaño de la fuente */
+}
+
+
+ion-button[color="warning"] {
+  --color: white !important; /* Color del texto */
 }
