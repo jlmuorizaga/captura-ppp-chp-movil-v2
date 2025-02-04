@@ -85,7 +85,7 @@ export class SucursalesPpalPage implements OnInit,OnDestroy {
   async confirmaBorrar(sucursal:Sucursal){
     const alert = await this.alertController.create({
       header: 'Confirmación',
-      message: '¿Estás seguro de que deseas borrar la sucursal  '+sucursal.clave+' ?',
+      message: '¿Estás seguro de que deseas borrar la sucursal  '+sucursal.claveSucursal+' ?',
       buttons: [
         {
           text: 'Cancelar',
@@ -98,7 +98,7 @@ export class SucursalesPpalPage implements OnInit,OnDestroy {
           text: 'Aceptar',
           handler: () => {
             console.log('Operación confirmada');
-            this.borraSucursal(sucursal.id);
+            this.borraSucursal(sucursal.idSucursal);
             // Aquí puedes agregar la lógica para la operación a realizar
           }
         }

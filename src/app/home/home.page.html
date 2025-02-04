@@ -7,7 +7,7 @@
       >
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content class="ion-padding">
     <form [formGroup]="formulario" (ngSubmit)="saltaAMenuCatalogos()">
       <div style="display: flex; justify-content: center; gap: 10px">
@@ -21,10 +21,10 @@
             >
               <ion-select-option
                 *ngFor="let sucursal of sucursales"
-                [value]="sucursal.id"
+                [value]="sucursal.idSucursal"
               >
-                {{ sucursal.clave}}
-                {{sucursal.nombre_sucursal}}</ion-select-option
+                {{sucursal.claveSucursal}}
+                {{sucursal.nombreSucursal}}</ion-select-option
               >
             </ion-select>
           </ion-item>

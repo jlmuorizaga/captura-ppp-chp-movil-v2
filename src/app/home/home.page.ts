@@ -65,7 +65,7 @@ export class HomePage implements OnInit,OnDestroy {
         console.log('Servicio dameListaSucursales() leido de forma exitosa')
        // console.log(res);
         this.sucursales=res;
-       // console.log(this.sucursales);
+       console.log(this.sucursales);
         this.sucursales
         this.cdr.detectChanges();
 

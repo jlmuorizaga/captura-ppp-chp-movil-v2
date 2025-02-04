@@ -21,26 +21,27 @@
         <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
           <ion-card>
             <ion-card-header>
-              <ion-card-subtitle class="subtitle">{{sucursal.id}}</ion-card-subtitle>
-              <ion-card-title>{{sucursal.clave}}</ion-card-title>
+              <ion-card-subtitle class="subtitle">{{sucursal.idSucursal}}</ion-card-subtitle>
+              <ion-card-title>{{sucursal.claveSucursal}}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              Sucursal: {{sucursal.nombre_sucursal}}<br>
+              Sucursal: {{sucursal.nombreSucursal}}<br>
               RFC: {{sucursal.rfc}}<br>
               Domicilio: {{sucursal.domicilio}}<br>
               Teléfono: {{sucursal.telefono}}<br>
-              Hora de Inicio: {{sucursal.hora_inicio}}<br>
-              Hora de cierre: {{sucursal.hora_fin}}<br>
+              Hora de Inicio: {{sucursal.horaInicio}}<br>
+              Hora de cierre: {{sucursal.horaFin}}<br>
               Latitud: {{sucursal.latitud}}<br>
               Longitud: {{sucursal.longitud}}<br>
-              ID Región: {{sucursal.id_region}}<br>
-              Venta Activa: {{sucursal.venta_activa}}<br>
+              ID Región: {{sucursal.idRegion}}<br>
+              Nombre Región: {{sucursal.nombreRegion}}<br>
+              Venta Activa: {{sucursal.ventaActiva}}<br>
               PK: {{sucursal.pk}}<br>
               SK: {{sucursal.sk}}<br>
-              Monto Mínimo Venta Sucursal: {{sucursal.monto_minimo_entrega_sucursal}}<br>
-              Monto Mínimo Entrega a Domicilio: {{sucursal.monto_minimo_entrega_domicilio}}<br><br>
+              Monto Mínimo Venta Sucursal: {{sucursal.montoMinimoEntregaSucursal}}<br>
+              Monto Mínimo Entrega a Domicilio: {{sucursal.montoMinimoEntregaDomicilio}}<br><br>
               <ion-button (click)="confirmaBorrar(sucursal)" color="danger">Borrar</ion-button>
-              <ion-button (click)="saltaAEditarSucursal(sucursal.id)">Editar</ion-button>
+              <ion-button (click)="saltaAEditarSucursal(sucursal.idSucursal)">Editar</ion-button>
             </ion-card-content>
           </ion-card>
         </ion-col>

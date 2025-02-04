@@ -6,8 +6,8 @@ import { ChangeDetectorRef,Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonButton,
-  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid, IonCol, IonRow, IonCard, 
-  IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent } 
+  IonBackButton, IonList, IonItem, IonLabel,AlertController, IonGrid, IonCol, IonRow, IonCard,
+  IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent }
   from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
@@ -21,7 +21,7 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
   templateUrl: './relacion-producto-sucursal-ppal.page.html',
   styleUrls: ['./relacion-producto-sucursal-ppal.page.scss'],
   standalone: true,
-  imports: [IonContent,IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCard, IonRow, IonCol, 
+  imports: [IonContent,IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCard, IonRow, IonCol,
     IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
@@ -91,7 +91,7 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
 
         console.log('this.sucursal==>>');
         console.log(this.sucursal);
-        this.cveSucursal = this.sucursal.clave;
+        this.cveSucursal = this.sucursal.claveSucursal;
         this.cdr.detectChanges();
       },
       error: (error: any) => {

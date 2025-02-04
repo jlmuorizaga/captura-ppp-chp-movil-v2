@@ -84,23 +84,23 @@ export class InsertarSucursalPage{
       if (this.formularioSucursal.valid) {
         console.log(this.formularioSucursal.value)
         let sucursal: Sucursal = new Sucursal();
-        sucursal.id = Utilerias.generaId();
-        sucursal.clave = this.formularioSucursal.value.clave;
-        sucursal.nombre_sucursal = this.formularioSucursal.value.nombre_sucursal;
+        sucursal.idSucursal = Utilerias.generaId();
+        sucursal.claveSucursal = this.formularioSucursal.value.clave;
+        sucursal.nombreSucursal = this.formularioSucursal.value.nombre_sucursal;
         sucursal.rfc = this.formularioSucursal.value.rfc;
         sucursal.domicilio = this.formularioSucursal.value.domicilio;
         sucursal.telefono = this.formularioSucursal.value.telefono;
-        sucursal.hora_inicio = this.formularioSucursal.value.hora_inicio;
-        sucursal.hora_fin = this.formularioSucursal.value.hora_fin;
+        sucursal.horaInicio = this.formularioSucursal.value.hora_inicio;
+        sucursal.horaFin = this.formularioSucursal.value.hora_fin;
         sucursal.latitud = this.formularioSucursal.value.latitud;
 
         sucursal.longitud = this.formularioSucursal.value.longitud;
-        sucursal.id_region = this.formularioSucursal.value.id_region;
-        sucursal.venta_activa = this.formularioSucursal.value.venta_activa;
+        sucursal.idRegion = this.formularioSucursal.value.id_region;
+        sucursal.ventaActiva = this.formularioSucursal.value.venta_activa;
         sucursal.pk = this.formularioSucursal.value.pk;
         sucursal.sk = this.formularioSucursal.value.sk;
-        sucursal.monto_minimo_entrega_sucursal = this.formularioSucursal.value.monto_minimo_entrega_sucursal;
-        sucursal.monto_minimo_entrega_domicilio = this.formularioSucursal.value.monto_minimo_entrega_domicilio;
+        sucursal.montoMinimoEntregaSucursal = this.formularioSucursal.value.monto_minimo_entrega_sucursal;
+        sucursal.montoMinimoEntregaDomicilio = this.formularioSucursal.value.monto_minimo_entrega_domicilio;
         this.sucursalesSvc.insertaSucursal(sucursal).subscribe({
           next: (res: any) => {
             console.log('Sucursal insertada de forma exitosa')

@@ -92,7 +92,7 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
 
         console.log('this.sucursal==>>');
         console.log(this.sucursal);
-        this.cveSucursal = this.sucursal.clave;
+        this.cveSucursal = this.sucursal.claveSucursal;
         this.cdr.detectChanges();
       },
       error: (error: any) => {

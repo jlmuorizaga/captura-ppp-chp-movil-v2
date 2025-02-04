@@ -1,18 +1,19 @@
 export class Sucursal {
-  id!: string;
-  clave!: string;
-  nombre_sucursal!: string;
+  idSucursal!: string;
+  claveSucursal!:string;
+  nombreSucursal!: string;
   rfc!: string;
   domicilio!: string;
   telefono!: string;
-  hora_inicio!: string;
-  hora_fin!: string;
+  horaInicio!: string;
+  horaFin!: string;
   latitud!: number;
   longitud!: number;
-  id_region!: string;
-  venta_activa!: string;
+  idRegion!: string;
+  nombreRegion!:string;
+  ventaActiva!: string;
   pk!: string;
   sk!: string;
-  monto_minimo_entrega_sucursal!: number;
-  monto_minimo_entrega_domicilio!: number;
+  montoMinimoEntregaSucursal!: number;
+  montoMinimoEntregaDomicilio!: number;
 }

@@ -16,16 +16,16 @@
             <ion-card-title>Editar Sucursal</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <h1>ID: {{id}}</h1>
+            <h1>ID: {{idSucursal}}</h1>
             <form [formGroup]="formularioSucursal" (ngSubmit)="editaSucursal()">
               <ion-item>
-                <ion-input label="Clave" label-placement="floating" formControlName="clave"
-                  [ngModel]="clave"></ion-input>
+                <ion-input label="Clave" label-placement="floating" formControlName="claveSucursal"
+                  [ngModel]="claveSucursal"></ion-input>
               </ion-item>
 
               <ion-item>
-                <ion-input label="Nombre Sucursal" label-placement="floating" formControlName="nombre_sucursal"
-                  [ngModel]="nombre_sucursal"></ion-input>
+                <ion-input label="Nombre Sucursal" label-placement="floating" formControlName="nombreSucursal"
+                  [ngModel]="nombreSucursal"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input label="RFC" label-placement="floating" formControlName="rfc"
@@ -41,12 +41,12 @@
                   [ngModel]="telefono"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input label="Hora Inicio" label-placement="floating" formControlName="hora_inicio"
-                  [ngModel]="hora_inicio"></ion-input>
+                <ion-input label="Hora Inicio" label-placement="floating" formControlName="horaInicio"
+                  [ngModel]="horaInicio"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input label="Hora Fin" label-placement="floating" formControlName="hora_fin"
-                  [ngModel]="hora_fin"></ion-input>
+                <ion-input label="Hora Fin" label-placement="floating" formControlName="horaFin"
+                  [ngModel]="horaFin"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input label="Latitud" label-placement="floating" formControlName="latitud"
@@ -67,8 +67,8 @@
               </ion-item>
 
               <ion-item>
-                <ion-input label="Venta Activa" label-placement="floating" formControlName="venta_activa"
-                  [ngModel]="venta_activa"></ion-input>
+                <ion-input label="Venta Activa" label-placement="floating" formControlName="ventaActiva"
+                  [ngModel]="ventaActiva"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-input label="PK" label-placement="floating" formControlName="pk"
@@ -79,12 +79,12 @@
                   [ngModel]="sk"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input label="Monto Minimo Entrega Sucursal" label-placement="floating" formControlName="monto_minimo_entrega_sucursal"
-                  [ngModel]="monto_minimo_entrega_sucursal"></ion-input>
+                <ion-input label="Monto Minimo Entrega Sucursal" label-placement="floating" formControlName="montoMinimoEntregaSucursal"
+                  [ngModel]="montoMinimoEntregaSucursal"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input label="Monto Minimo Entrega Domicilio" label-placement="floating" formControlName="monto_minimo_entrega_domicilio"
-                  [ngModel]="monto_minimo_entrega_domicilio"></ion-input>
+                <ion-input label="Monto Minimo Entrega Domicilio" label-placement="floating" formControlName="montoMinimoEntregaDomicilio"
+                  [ngModel]="montoMinimoEntregaDomicilio"></ion-input>
               </ion-item>
 
               <div class="button-container">

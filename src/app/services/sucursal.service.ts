@@ -27,7 +27,7 @@ export class SucursalService {
   }
 
   editaSucursal(sucursal:Sucursal){
-    return this.http.put(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.sucursales+'/'+sucursal.id,sucursal);
+    return this.http.put(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.sucursales+'/'+sucursal.idSucursal,sucursal);
   }
 
 }
