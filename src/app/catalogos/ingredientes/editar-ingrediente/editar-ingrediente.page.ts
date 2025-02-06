@@ -14,11 +14,11 @@ import { ActivatedRoute,Route } from '@angular/router';
   templateUrl: './editar-ingrediente.page.html',
   styleUrls: ['./editar-ingrediente.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
-    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
-    IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule,
-  ]
+  imports: [IonItem, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
+    ReactiveFormsModule, IonButton, IonGrid, IonRow, IonCol, IonBackButton,
+    IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
+
 export class EditarIngredientePage implements OnInit {
   formularioIngrediente: FormGroup;
   ingredientes!:Ingrediente[];
