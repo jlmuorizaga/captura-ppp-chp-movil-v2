@@ -1,5 +1,5 @@
 import { Orilla } from 'src/app/model/dto/orilla';
-import { RelacionOrillaSucursal } from 'src/app/model/dto/relacion-orilla-sucursal'; 
+import { RelacionOrillaSucursal } from 'src/app/model/dto/relacion-orilla-sucursal';
 import { OrillaService } from 'src/app/services/orilla.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -37,7 +37,7 @@ export class EditarRelacionOrillaSucursalPage implements OnInit {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       const data = navigation.extras.state['data'];
-      console.log('Aqui están mis datos==>>')
+      console.log('Aqui están mis datos 7 feb 2025==>>')
       console.log(data); // Aquí tienes tus datos
 
       this.idOrilla=data.idOrilla;

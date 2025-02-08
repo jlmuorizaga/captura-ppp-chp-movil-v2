@@ -34,8 +34,8 @@ export class RelacionOrillaSucursalService {
     return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_orilla_sucursal,registroRelacionOrillaSucursal);
   }
 
-  editaRegistroRelacionOrillaSucursal(registroRelacionOrillaSucursal:RelacionOrillaSucursal) {
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_orilla_sucursal + '/' + registroRelacionOrillaSucursal.idOrilla+'/'+registroRelacionOrillaSucursal.idSucursal,registroRelacionOrillaSucursal);
+  editaRegistroRelacionOrillaSucursal(relacion:RelacionOrillaSucursal) {
+    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_orilla_sucursal + '/' + relacion.idOrilla,relacion);
   }
 
 }

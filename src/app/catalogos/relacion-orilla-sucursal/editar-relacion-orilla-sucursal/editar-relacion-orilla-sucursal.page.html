@@ -16,9 +16,20 @@
             <ion-card-title>Editar Relación Orilla Sucursal</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <h1>
+            <h2>
               ID: {{idOrilla}}
-            </h1>
+            </h2>
+            <h2>
+              Descripción: {{descripcionOrilla}}
+            </h2>
+            <h2>
+              Tamaño: {{tamanioPizza}}
+            </h2>
+            <h2>
+              Sucursal: {{claveSucursal}}
+            </h2>
+
+
             <form [formGroup]="formularioROS" (ngSubmit)="editaROS()">
               <ion-item>
                 <ion-input label="Precio" label-placement="floating" formControlName="precio"
