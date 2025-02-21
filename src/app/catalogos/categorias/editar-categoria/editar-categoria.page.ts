@@ -75,7 +75,7 @@ export class EditarCategoriaPage implements OnInit {
    }
 
    saltaACategorias() {
-     this.router.navigateByUrl('/categorias-ppal');
+     this.router.navigateByUrl('/ppal-categoria');
    }
 
 }
