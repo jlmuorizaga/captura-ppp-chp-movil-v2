@@ -54,6 +54,6 @@ export class InsertarCategoriaPage{
     }
   }
   saltaACategorias() {
-    this.router.navigateByUrl('/categorias-ppal');
+    this.router.navigateByUrl('/ppal-categoria');
   }
 }
