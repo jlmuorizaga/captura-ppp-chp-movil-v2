@@ -25,20 +25,20 @@ import { RelacionPromocionEspecialSucursalService } from 'src/app/services/relac
   templateUrl: './insertar-relacion-promocion-especial-sucursal.page.html',
   styleUrls: ['./insertar-relacion-promocion-especial-sucursal.page.scss'],
   standalone: true,
-  imports: [IonList, IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput, IonSelect, IonSelectOption,
-    ReactiveFormsModule, IonButton, IonGrid, IonRow, IonCol, IonBackButton,
+  imports: [IonList, IonItem, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonSelect, IonSelectOption,
+    ReactiveFormsModule, IonButton, IonBackButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
 export class InsertarRelacionPromocionEspecialSucursalPage {
   formularioPromocionEspecial: FormGroup;
-  navigationSubscription: Subscription;    
+  navigationSubscription: Subscription;
   promocionesEspecial!: PromocionEspecial[];
   idSucursal: string;
 
 
   constructor(private fb: FormBuilder, private promocionesEspecialesSvc: PromocionEspecialService, private router: Router,
     private globalService: GlobalService, private cdr: ChangeDetectorRef, private relacionPESSvc: RelacionPromocionEspecialSucursalService)
-  //private sucursalesSvc:SucursalService,  
+  //private sucursalesSvc:SucursalService,
   {
     this.idSucursal = this.globalService.idSucursalGlobal;
     console.log('Mu==idSucursal==>>', this.idSucursal)
@@ -50,7 +50,7 @@ export class InsertarRelacionPromocionEspecialSucursalPage {
       //   tipo: ['', Validators.required],
       //   definicion: ['', Validators.required],
       //   precio: ['', Validators.required],
-      activa: ['', Validators.required],
+      activa: ['S'],
     })
     this.leerPromocionesEspecialesNo();
     this.navigationSubscription = this.router.events
@@ -82,7 +82,7 @@ export class InsertarRelacionPromocionEspecialSucursalPage {
     if (this.formularioPromocionEspecial.valid) {
       console.log(this.formularioPromocionEspecial.value)
       let registroRPES: RelacionPES = new RelacionPES();
-      
+
       registroRPES.idPromocion = this.formularioPromocionEspecial.value.idPromocion;
       registroRPES.idSucursal = this.idSucursal;
       registroRPES.activa = this.formularioPromocionEspecial.value.activa;

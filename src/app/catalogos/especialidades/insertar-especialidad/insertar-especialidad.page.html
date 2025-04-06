@@ -24,11 +24,23 @@
                 <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"></ion-input>
               </ion-item>
 
+
               <ion-item>
-                <ion-input label="Img Url" label-placement="floating" formControlName="img_url"></ion-input>
+                <ion-label position="stacked">Selecciona una imagen</ion-label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  style="padding: 10px; border: none; background: transparent;"
+                />
               </ion-item>
 
-              
+              <!--ion-item>
+                <ion-input label="Img Url" label-placement="floating" formControlName="img_url"></ion-input>
+              </!--ion-item-->
+
+
+
               <ion-item>
                 <ion-input label="Orden" label-placement="floating" formControlName="orden"></ion-input>
               </ion-item>
@@ -36,7 +48,13 @@
                 <ion-input label="Cantidad de Ingredientes" label-placement="floating" formControlName="cantidad_ingredientes"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input label="Es de un Ingrediente" label-placement="floating" formControlName="es_de_un_ingrediente"></ion-input>
+                <!--ion-input label="Es de un Ingrediente" label-placement="floating" formControlName="es_de_un_ingrediente"></!--ion-input-->
+
+                <ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="es_de_un_ingrediente">
+                  <ion-select-option value="S">Sí</ion-select-option>
+                  <ion-select-option value="N">No</ion-select-option>
+                </ion-select>
+
               </ion-item>
               <div class="button-container">
                 <ion-button type="submit" class="centered-button" [disabled]="!formularioEspecialidad.valid"
