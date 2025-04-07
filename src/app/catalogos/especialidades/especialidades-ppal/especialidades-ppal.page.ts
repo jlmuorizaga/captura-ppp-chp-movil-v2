@@ -16,7 +16,7 @@ import { GlobalService } from 'src/app/services/global.service';
   templateUrl: './especialidades-ppal.page.html',
   styleUrls: ['./especialidades-ppal.page.scss'],
   standalone: true,
-  imports: [IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle, IonCard, IonCol, IonRow, IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
+  imports: [IonCardHeader, IonCardSubtitle, IonCardContent, IonCardTitle, IonCard, IonCol, IonRow, IonGrid, SharedModule, IonBackButton, IonButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class EspecialidadesPpalPage implements OnInit, OnDestroy {
