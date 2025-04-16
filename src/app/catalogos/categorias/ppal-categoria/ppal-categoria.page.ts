@@ -9,7 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonBu
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
-
+import { GlobalService } from 'src/app/services/global.service';
 @Component({
   selector: 'app-ppal-categoria',
   templateUrl: './ppal-categoria.page.html',
@@ -22,8 +22,10 @@ export class CategoriasPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   categorias!:Categoria[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private categoriasSvc:CategoriaService,
+    private globalService: GlobalService,
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
@@ -37,6 +39,7 @@ export class CategoriasPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a categorias en OnInit');
   }
   ngOnDestroy(): void {

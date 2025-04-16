@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalService {
   public idSucursalGlobal:string='';
+  cveSucursalGlobal: string = ''; // 👈 Agrega esta línea
  // public cveSucursalGlobal: string = '';
  // public nombreSucursalGlobal:string='';
 

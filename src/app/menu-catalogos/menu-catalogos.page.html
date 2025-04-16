@@ -1,5 +1,6 @@
 <div class="ion-page" id="main-content">
-  <ion-header [translucent]="true">
+
+  <!--ion-header [translucent]="true">
     <ion-toolbar style="background-color: #d32f2f; color: #000000;">
       <ion-grid>
         <ion-row class="header-row">
@@ -10,12 +11,35 @@
             Sistema de Captura de Precios, Productos y Promociones CheesePizza
           </ion-col>
           <ion-col size="12" size-lg="4" sizeMd="4" sizeSm="4" class="right-text">
-            <div>Usuario: paco.oliva</div>
+            <div>Usuario: admin</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </!--ion-header-->
+
+  <ion-header [translucent]="true">
+    <ion-toolbar style="background-color: #d32f2f; color: #000000;">
+      <ion-grid>
+        <ion-row class="header-row" align-items-center>
+          <!-- Columna izquierda (vacía solo para empujar el centro y derecha) -->
+          <ion-col size="12" size-lg="3" sizeMd="3" sizeSm="3">
+          </ion-col>
+
+          <!-- Columna central: Título -->
+          <ion-col size="12" size-lg="6" sizeMd="6" sizeSm="6" class="center-text" style="text-align: center;">
+            Sistema de Captura de Precios, Productos y Promociones CheesePizza
+          </ion-col>
+
+          <!-- Columna derecha: Sucursal -->
+          <ion-col size="12" size-lg="3" sizeMd="3" sizeSm="3" class="right-text" style="text-align: right;">
+            <div>Sucursal: {{cveSucursal}}</div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-toolbar>
   </ion-header>
+
 
 
   <ion-content class="ion-padding">

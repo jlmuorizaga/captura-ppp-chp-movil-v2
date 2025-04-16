@@ -1,9 +1,20 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar color="custom">
-    <ion-title class="ion-text-center">Catalogo Categorias</ion-title>
+    <!-- Botón de regreso (izquierda) -->
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center">
+      Catálogo Categorías
+    </ion-title>
+
+    <!-- Sucursal a la derecha -->
+    <div slot="end" style="padding-right: 10px; color: white;">
+      Sucursal: {{cveSucursal}}
+    </div>
   </ion-toolbar>
 </ion-header>
 

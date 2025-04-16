@@ -33,8 +33,17 @@
         <ion-input label="Activa" label-placement="floating" formControlName="activa"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Img URL" label-placement="floating" formControlName="imgURL"></ion-input>
+        <ion-label position="stacked">Selecciona una imagen</ion-label>
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          style="padding: 10px; border: none; background: transparent;"
+        />
       </ion-item>
+      <!--ion-item>
+        <ion-input label="Img URL" label-placement="floating" formControlName="imgURL"></ion-input>
+      </!--ion-item-->
       <div class="button-container">
         <ion-button type="submit" class="centered-button" [disabled]="!formularioPromocionEspecial.valid" color="success">
           Inserta Promoción Especial

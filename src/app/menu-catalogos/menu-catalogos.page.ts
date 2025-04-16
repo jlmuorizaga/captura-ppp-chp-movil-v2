@@ -149,6 +149,7 @@ export class MenuCatalogosPage {
         console.log(this.sucursal);
         this.cveSucursal = this.sucursal.claveSucursal;
         console.log('this.sucursal==>>',this.cveSucursal);
+        this.globalService.cveSucursalGlobal = this.cveSucursal;
         this.cdr.detectChanges();
       },
       error: (error: any) => {

@@ -8,6 +8,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
 import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-insertar-promocion-especial',
   templateUrl: './insertar-promocion-especial.page.html',
@@ -27,10 +28,15 @@ export class InsertarPromocionEspecialPage{
   definicion!:string;
   precio!:number;
   activa!:string;
-  imgURL!:string;
+  //imgURL!:string;
   //Mu Se crearon estas variables el 23 dic 2024
 
-  constructor(private fb: FormBuilder,private promocionesEspecialesSvc:PromocionEspecialService,private router: Router) {
+  selectedFile: File | null = null;
+  uploadResponse: string = '';
+  imgURL:string='';
+  fileName: string = '';
+
+  constructor(private fb: FormBuilder,private promocionesEspecialesSvc:PromocionEspecialService,private router: Router,private http: HttpClient) {
     this.formularioPromocionEspecial = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -38,9 +44,31 @@ export class InsertarPromocionEspecialPage{
       definicion: ['', Validators.required],
       precio: ['', Validators.required],
       activa: ['', Validators.required],
-      imgURL: ['', Validators.required],
+      //imgURL: ['', Validators.required],
+      imgURL: [''],
     })
   }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.fileName = file.name;
+      //this.img_url=file;
+    }
+  }
+  uploadImage() {
+    if (!this.selectedFile) return;
+
+    const formData = new FormData();
+    formData.append('image', this.selectedFile);
+
+    this.http.post<{ message: string }>('http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload', formData).subscribe({
+      next: res => this.uploadResponse = res.message,
+      error: err => this.uploadResponse = 'Error al subir la imagen',
+    });
+  }
+
+
   insertaPromocionEspecial() {
     if (this.formularioPromocionEspecial.valid) {
       console.log(this.formularioPromocionEspecial.value)
