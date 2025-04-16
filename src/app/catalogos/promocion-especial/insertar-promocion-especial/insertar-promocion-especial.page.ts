@@ -62,7 +62,7 @@ export class InsertarPromocionEspecialPage{
     const formData = new FormData();
     formData.append('image', this.selectedFile);
 
-    this.http.post<{ message: string }>('http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload', formData).subscribe({
+    this.http.post<{ message: string }>('http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/uploadPromo', formData).subscribe({
       next: res => this.uploadResponse = res.message,
       error: err => this.uploadResponse = 'Error al subir la imagen',
     });
@@ -71,6 +71,7 @@ export class InsertarPromocionEspecialPage{
 
   insertaPromocionEspecial() {
     if (this.formularioPromocionEspecial.valid) {
+      this.uploadImage(); //Carga la imagen al servidor
       console.log(this.formularioPromocionEspecial.value)
 
       //Mu Se crearon estas variables el 23 dic 2024
@@ -91,7 +92,8 @@ export class InsertarPromocionEspecialPage{
       promocionEspecial.definicion=this.formularioPromocionEspecial.value.definicion;
       promocionEspecial.precio=this.formularioPromocionEspecial.value.precio;
       promocionEspecial.activa=this.formularioPromocionEspecial.value.activa;
-      promocionEspecial.imgURL=this.formularioPromocionEspecial.value.imgURL;
+      promocionEspecial.imgURL='/img/promociones/'+this.fileName;
+      //promocionEspecial.imgURL=this.formularioPromocionEspecial.value.imgURL;
       this.promocionesEspecialesSvc.insertaPromocionEspecial(promocionEspecial).subscribe({
         next:(res:any)=>{
           console.log('Promoción Especial insertada de forma exitosa')
