@@ -55,7 +55,7 @@ export class InsertarEspecialidadPage{
     const formData = new FormData();
     formData.append('image', this.selectedFile);
 
-    this.http.post<{ message: string }>('http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/uploadPromo', formData).subscribe({
+    this.http.post<{ message: string }>('http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload', formData).subscribe({
       next: res => this.uploadResponse = res.message,
       error: err => this.uploadResponse = 'Error al subir la imagen',
     });
