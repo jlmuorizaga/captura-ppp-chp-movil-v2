@@ -18,29 +18,37 @@
     </ion-toolbar>
   </!--ion-header-->
 
-  <ion-header [translucent]="true">
+  <!--ion-header [translucent]>
     <ion-toolbar style="background-color: #d32f2f; color: #000000;">
       <ion-grid>
         <ion-row class="header-row" align-items-center>
-          <!-- Columna izquierda (vacía solo para empujar el centro y derecha) -->
           <ion-col size="12" size-lg="3" sizeMd="3" sizeSm="3">
           </ion-col>
 
-          <!-- Columna central: Título -->
           <ion-col size="12" size-lg="6" sizeMd="6" sizeSm="6" class="center-text" style="text-align: center;">
             Sistema de Captura de Precios, Productos y Promociones CheesePizza
           </ion-col>
 
-          <!-- Columna derecha: Sucursal -->
           <ion-col size="12" size-lg="3" sizeMd="3" sizeSm="3" class="right-text" style="text-align: right;">
             <div>Sucursal: {{cveSucursal}}</div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-toolbar>
+  </ion-header-->
+
+
+
+  <ion-header>
+    <ion-toolbar color="custom">
+      <ion-title class="ion-text-center" style="font-size: 24px;">
+        Sistema de Captura de Precios, Productos y Promociones CheesePizza
+      </ion-title>
+      <div slot="end" style="padding-right: 10px; color: white;" style="font-size: 18px; margin-right: 20px; display: flex; align-items: center;">
+        Sucursal: {{cveSucursal}}
+      </div>
+    </ion-toolbar>
   </ion-header>
-
-
 
   <ion-content class="ion-padding">
       <div style="display: flex; justify-content: center; gap: 10px">

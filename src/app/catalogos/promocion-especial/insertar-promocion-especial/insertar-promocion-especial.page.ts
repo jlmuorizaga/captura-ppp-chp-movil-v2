@@ -15,7 +15,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrls: ['./insertar-promocion-especial.page.scss'],
   standalone: true,
   imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
-    ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
+    ReactiveFormsModule,IonButton,IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
 export class InsertarPromocionEspecialPage{

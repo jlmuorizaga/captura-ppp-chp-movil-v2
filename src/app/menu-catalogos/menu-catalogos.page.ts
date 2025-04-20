@@ -8,7 +8,7 @@ import {
   IonButton,
   IonGrid,
   IonCol,
-  IonRow, IonIcon, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+  IonRow, IonIcon, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCardContent, IonTitle } from '@ionic/angular/standalone';
 import { GlobalService } from '../services/global.service';
 import { SucursalService } from '../services/sucursal.service';
 import { Sucursal } from '../model/dto/sucursal';
@@ -19,7 +19,7 @@ import { NgFor } from '@angular/common';
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonIcon,NgFor,
+  imports: [IonTitle, IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonIcon,NgFor,
     IonRow,
     IonCol,
     IonGrid,
