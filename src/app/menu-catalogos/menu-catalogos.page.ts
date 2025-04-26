@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/shared/shared/shared.module';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   IonHeader,
@@ -30,7 +30,7 @@ import { NgFor } from '@angular/common';
     IonContent,
   ],
 })
-export class MenuCatalogosPage {
+export class MenuCatalogosPage{
   mensaje: string;
   idSucursal: string;
   sucursal!: Sucursal;
@@ -158,4 +158,5 @@ export class MenuCatalogosPage {
       },
     });
   }
+
 }

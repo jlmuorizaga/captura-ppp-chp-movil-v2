@@ -49,6 +49,7 @@ export class HomePage implements OnInit,OnDestroy {
     console.log('Entré a sucursales en OnInit()');
   }
   ngOnDestroy(): void {
+    debugger;
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
