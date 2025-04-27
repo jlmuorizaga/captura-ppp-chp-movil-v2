@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
 import { CargarImagenComponent } from 'src/app/componentes/cargar-imagen/cargar-imagen.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-especialidad',
@@ -20,14 +21,18 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton, IonSelectOption,IonSelect,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule,IonLabel]
 })
-export class InsertarEspecialidadPage{
+export class InsertarEspecialidadPage implements OnInit{
   formularioEspecialidad: FormGroup;
   selectedFile: File | null = null;
   uploadResponse: string = '';
   img_url:string='';
   fileName: string = '';
+  cveSucursal: string = '';
 
-  constructor(private fb: FormBuilder,private especialidadesSvc:EspecialidadService,private router: Router,private http: HttpClient) {
+  constructor(private fb: FormBuilder,private especialidadesSvc:EspecialidadService,
+    private router: Router,
+    private globalService: GlobalService,
+    private http: HttpClient) {
     this.formularioEspecialidad = this.fb.group({
       //id: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -38,6 +43,11 @@ export class InsertarEspecialidadPage{
       //es_de_un_ingrediente: ['', Validators.required],
       es_de_un_ingrediente: ['S'], // Valor por defecto,
     })
+  }
+
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar-especialidad en OnInit=',this.cveSucursal);
   }
 
   onFileSelected(event: any) {

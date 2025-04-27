@@ -8,13 +8,14 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute,Route } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-categoria',
   templateUrl: './editar-categoria.page.html',
   styleUrls: ['./editar-categoria.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
+  imports: [IonItem, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
     ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule,
   ]
@@ -25,7 +26,10 @@ export class EditarCategoriaPage implements OnInit {
   datos!:Categoria;
   codigo!:string;
   nombre!:string;
+  cveSucursal: string = '';
+  
   constructor(private fb: FormBuilder,private categoriasSvc:CategoriaService,
+    private globalService: GlobalService,
     private router: Router) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -46,6 +50,7 @@ export class EditarCategoriaPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-categoria en OnInit');
   }
 

@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
+import { GlobalService } from 'src/app/services/global.service';
 
 
 @Component({
@@ -16,20 +17,26 @@ import { Utilerias } from 'src/app/utilerias/utilerias';
   templateUrl: './insertar-categoria.page.html',
   styleUrls: ['./insertar-categoria.page.scss'],
   standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
+  imports: [IonItem, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
     ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
-export class InsertarCategoriaPage{
+export class InsertarCategoriaPage implements OnInit{
   formularioCategoria: FormGroup;
+  cveSucursal: string = '';
 
-  constructor(private fb: FormBuilder,private categoriasSvc:CategoriaService,private router: Router) {
+  constructor(private fb: FormBuilder,private categoriasSvc:CategoriaService,
+    private globalService: GlobalService,
+    private router: Router) {
     this.formularioCategoria = this.fb.group({
       codigo: ['', Validators.required],
       nombre: ['', Validators.required]
     })
   }
-
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar-categoria en OnInit=',this.cveSucursal);
+  }
 
   insertaCategoria() {
     if (this.formularioCategoria.valid) {

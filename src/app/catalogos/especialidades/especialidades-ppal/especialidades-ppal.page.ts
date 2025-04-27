@@ -23,6 +23,7 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   especialidades!:Especialidad[];
   mensaje:string;
+  cveSucursal: string = '';
 
 
   constructor(private especialidadesSvc:EspecialidadService,
@@ -41,6 +42,7 @@ export class EspecialidadesPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a especialidades en OnInit');
   }
 

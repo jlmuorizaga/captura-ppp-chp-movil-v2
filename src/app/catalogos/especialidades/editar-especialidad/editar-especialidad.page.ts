@@ -32,6 +32,7 @@ import { EspecialidadService } from 'src/app/services/especialidad.service';
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute, Route } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-especialidad',
@@ -40,7 +41,6 @@ import { ActivatedRoute, Route } from '@angular/router';
   standalone: true,
   imports: [
     IonItem,
-    IonLabel,
     IonCardContent,
     IonCardTitle,
     IonCardHeader,
@@ -73,10 +73,12 @@ export class EditarEspecialidadPage implements OnInit {
   orden!: string;
   cantidad_ingredientes!:string;
   es_de_un_ingrediente!:string;
+  cveSucursal: string = '';
 
   constructor(
     private fb: FormBuilder,
     private especialidadesSvc: EspecialidadService,
+    private globalService: GlobalService,
     private router: Router
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -106,6 +108,7 @@ export class EditarEspecialidadPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-especialidad en OnInit');
   }
 
