@@ -10,6 +10,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonBu
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-ingredientes-ppal',
@@ -23,10 +24,13 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   ingredientes!:Ingrediente[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private ingredientesSvc:IngredienteService,
     private alertController:AlertController,
-    private router: Router,private cdr: ChangeDetectorRef
+    private router: Router,
+    private globalService: GlobalService,
+    private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
     this.navigationSubscription = this.router.events
@@ -38,6 +42,7 @@ export class IngredientesPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a ingredientes en OnInit');
   }
   ngOnDestroy(): void {

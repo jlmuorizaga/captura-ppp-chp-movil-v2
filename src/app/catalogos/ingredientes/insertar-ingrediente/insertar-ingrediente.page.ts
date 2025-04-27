@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
+import { GlobalService } from 'src/app/services/global.service';
 
 
 @Component({
@@ -20,13 +21,21 @@ import { Utilerias } from 'src/app/utilerias/utilerias';
     ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
-export class InsertarIngredientePage{
+export class InsertarIngredientePage implements OnInit{
   formularioIngrediente:FormGroup;
+  cveSucursal: string = '';
 
-  constructor(private fb: FormBuilder,private ingredientesSvc:IngredienteService,private router: Router) {
+  constructor(private fb: FormBuilder,private ingredientesSvc:IngredienteService,
+    private globalService: GlobalService,
+    private router: Router) {
     this.formularioIngrediente = this.fb.group({
       nombre: ['', Validators.required]
     })
+  }
+
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar ingredientsen OnInit');
   }
 
   insertaIngrediente() {

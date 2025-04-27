@@ -17,6 +17,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-producto',
@@ -28,14 +29,16 @@ import { ChangeDetectorRef } from '@angular/core';
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
 
-export class InsertarProductoPage {
+export class InsertarProductoPage implements OnInit{
   formularioProducto: FormGroup;
   navigationSubscription: Subscription;
   tipoProductos!: TipoProducto[];
   mensaje: string;
+  cveSucursal: string = '';
 
   constructor(private tipoProductosSvc: TipoProductoService, private fb: FormBuilder,
     private productosSvc: ProductoService,
+    private globalService: GlobalService,
     private router: Router, private cdr: ChangeDetectorRef) {
 
     this.formularioProducto = this.fb.group({
@@ -57,6 +60,10 @@ export class InsertarProductoPage {
       });
   }
 
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar-producto.page.ts en OnInit');
+  }
 
   leerTipoProductos() {
     this.tipoProductosSvc.dameListaTipoProductos().subscribe({

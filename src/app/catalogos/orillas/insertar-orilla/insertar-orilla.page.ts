@@ -17,6 +17,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-orilla',
@@ -28,15 +29,17 @@ import { ChangeDetectorRef } from '@angular/core';
     IonBackButton,IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
     SharedModule]
 })
-export class InsertarOrillaPage{
+export class InsertarOrillaPage implements OnInit{
   formularioOrilla:FormGroup;
   navigationSubscription: Subscription;
   tamaniosPizza!: TamanioPizza[];
   mensaje:string;
+  cveSucursal: string = '';
 
 
   constructor(private tamaniosPizzaSvc: TamanioPizzaService, private fb: FormBuilder,
     private orillasSvc: OrillaService,
+    private globalService: GlobalService,
     private router: Router, private cdr: ChangeDetectorRef) {
 
     this.formularioOrilla = this.fb.group({
@@ -51,6 +54,11 @@ export class InsertarOrillaPage{
         this.leerTamanioPizzas();
       });
 
+}
+
+ngOnInit() {
+  this.cveSucursal = this.globalService.cveSucursalGlobal;
+  console.log('Entré a insertar-orilla.ts en OnInit');
 }
 
 leerTamanioPizzas() {

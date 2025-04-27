@@ -41,6 +41,7 @@ import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import { Subscription } from 'rxjs';
 import { TipoProducto } from 'src/app/model/dto/tipo-producto';
 import { filter } from 'rxjs/operators';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-producto',
@@ -93,6 +94,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
   tipoProductos!: TipoProducto[];
   id_tipo_producto_seleccionado!: string;
   categorias!: Categoria[];
+  cveSucursal: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -100,6 +102,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
     private router: Router,
     private tipoProductosSvc: TipoProductoService,
     private categoriasSvc:CategoriaService,
+    private globalService: GlobalService,
     private cdr: ChangeDetectorRef
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -144,6 +147,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-producto en OnInit');
   }
   ngOnDestroy(): void {

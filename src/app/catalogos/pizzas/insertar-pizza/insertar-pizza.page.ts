@@ -19,6 +19,7 @@ import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 import { PizzaService } from 'src/app/services/pizza.service';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-pizza',
@@ -30,16 +31,18 @@ import { PizzaService } from 'src/app/services/pizza.service';
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
 
-export class InsertarPizzaPage{
+export class InsertarPizzaPage implements OnInit{
   formularioPizza:FormGroup;
   navigationSubscription: Subscription;
   especialidad!: Especialidad[];
   tamanioPizza!:TamanioPizza[];
   mensaje: string;
+  cveSucursal: string = '';
 
   constructor(private especialidadSvc: EspecialidadService, private fb: FormBuilder,
     private tamanioPizzaSvc: TamanioPizzaService,private pizzaSvc:PizzaService,
-    private router: Router, private cdr: ChangeDetectorRef)  { 
+    private globalService: GlobalService,
+    private router: Router, private cdr: ChangeDetectorRef)  {
       this.formularioPizza = this.fb.group({
 
         idEspecialidad: ['', Validators.required],
@@ -60,8 +63,13 @@ export class InsertarPizzaPage{
         .pipe(filter(event => event instanceof NavigationEnd))
         .subscribe(() => {
           this.leerTamanioPizzas();
-        });        
+        });
 
+    }
+
+    ngOnInit() {
+      this.cveSucursal = this.globalService.cveSucursalGlobal;
+      console.log('Entré a insertar-pizza.page.ts en OnInit');
     }
 
     leerEspecialidades() {
@@ -70,11 +78,11 @@ export class InsertarPizzaPage{
           console.log('Servicio leido de forma exitosa')
           console.log(res);
           this.especialidad = res;
-  
+
           console.log(this.especialidad);
           this.especialidad
           this.cdr.detectChanges();
-  
+
         },
         error: (error: any) => {
           console.log('Error en la lectura del servicio')
@@ -90,11 +98,11 @@ export class InsertarPizzaPage{
           console.log('Servicio leido de forma exitosa')
           console.log(res);
           this.tamanioPizza = res;
-  
+
           console.log(this.tamanioPizza);
           this.tamanioPizza
           this.cdr.detectChanges();
-  
+
         },
         error: (error: any) => {
           console.log('Error en la lectura del servicio')
@@ -102,7 +110,7 @@ export class InsertarPizzaPage{
 
         }
       })
-    }    
+    }
 
     insertaPizza() {
       if (this.formularioPizza.valid) {
@@ -120,19 +128,19 @@ export class InsertarPizzaPage{
             console.log('Pizza insertada de forma exitosa')
             console.log(res);
             this.saltaAPizzas();
-  
+
           },
           error: (error: any) => {
             console.log('Error en la inserción de la pizza')
             console.log(error)
-  
+
           }
         })
-  
+
       }
     }
     saltaAPizzas() {
       this.router.navigateByUrl('/pizzas-ppal');
-    }    
+    }
 
 }

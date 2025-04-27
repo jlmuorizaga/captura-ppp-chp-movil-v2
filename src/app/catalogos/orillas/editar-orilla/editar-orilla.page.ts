@@ -33,7 +33,8 @@ import { ActivatedRoute, Route } from '@angular/router';
 import { TamanioPizza } from 'src/app/model/dto/tamanio-pizza';
 import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { GlobalService } from 'src/app/services/global.service';
 
 
 
@@ -79,11 +80,13 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
   navigationSubscription: Subscription;
   tamaniosPizza!:TamanioPizza[];
   idTamanioSeleccionado!:string;
+  cveSucursal: string = '';
 
   constructor(
     private fb:FormBuilder,
     private orillasSvc:OrillaService,
     private router:Router,
+    private globalService: GlobalService,
     private tamaniosPizzaSvc:TamanioPizzaService,
     private cdr:ChangeDetectorRef
   ) {
@@ -113,6 +116,7 @@ export class EditarOrillaPage implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-orilla en OnInit');
 
   }

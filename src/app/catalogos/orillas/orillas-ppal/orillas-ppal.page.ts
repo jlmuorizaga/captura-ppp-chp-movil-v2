@@ -9,22 +9,26 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonBu
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-orillas-ppal',
   templateUrl: './orillas-ppal.page.html',
   styleUrls: ['./orillas-ppal.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCard, IonRow, IonCol, IonGrid, SharedModule,IonLabel, IonItem, IonList, IonBackButton, IonButton, IonIcon,
+  imports: [IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader, IonCard, IonRow, IonCol, IonGrid, SharedModule,
+    IonBackButton, IonButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class OrillasPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   orillas!:Orilla[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private orillasSvc:OrillaService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
@@ -37,6 +41,7 @@ export class OrillasPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a orillas-ppal.page.ts en OnInit');
   }
   ngOnDestroy(): void {

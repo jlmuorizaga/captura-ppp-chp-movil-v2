@@ -39,6 +39,7 @@ import { TamanioPizzaService } from 'src/app/services/tamanio-pizza.service';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs';
 import { PizzaService } from 'src/app/services/pizza.service';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-pizza',
@@ -85,6 +86,7 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
   navigationSubscription: Subscription;
   especialidad!:Especialidad[];
   tamanioPizza!:TamanioPizza[];
+  cveSucursal: string = '';
 
 
   constructor(
@@ -93,6 +95,7 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
     private especialidadesSvc: EspecialidadService,
     private tamaniosPizzaSvc: TamanioPizzaService,
     private router: Router,
+    private globalService: GlobalService,
     private cdr: ChangeDetectorRef
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -134,6 +137,7 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
    }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-pizza en OnInit');
   }
   ngOnDestroy(): void {

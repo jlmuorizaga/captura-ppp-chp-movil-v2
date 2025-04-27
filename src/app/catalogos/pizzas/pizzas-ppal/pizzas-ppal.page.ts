@@ -9,6 +9,7 @@ import { PizzaService } from 'src/app/services/pizza.service';
 import { Pizza } from 'src/app/model/dto/pizza';
 import { filter } from 'rxjs';
 import { NavigationEnd,Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-pizzas-ppal',
@@ -22,9 +23,11 @@ export class PizzasPpalPage implements OnInit,OnDestroy {
   navigationSubscription:Subscription;
   pizzas!:Pizza[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private pizzasSvc:PizzaService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
@@ -36,6 +39,7 @@ export class PizzasPpalPage implements OnInit,OnDestroy {
    }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a products en OnInit');
   }
 

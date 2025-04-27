@@ -9,6 +9,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 import { Producto } from 'src/app/model/dto/producto';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-productos-ppal',
@@ -22,9 +23,11 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   productos!:Producto[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private productosSvc:ProductoService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
@@ -37,6 +40,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a products en OnInit');
   }
 
