@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute,Route } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-tipo-producto',
@@ -29,9 +30,11 @@ export class EditarTipoProductoPage implements OnInit {
   imgURL!:string;
   nombre!:string;
   orden!:string;
+  cveSucursal: string = '';
 
   constructor(private fb: FormBuilder,private tipoProductoService:TipoProductoService,
-    private router: Router) {
+    private router: Router,
+    private globalService: GlobalService,) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       const data = navigation.extras.state['data'];
@@ -57,6 +60,7 @@ export class EditarTipoProductoPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-tipo-producto en OnInit');
   }
   editaTipoProducto() {

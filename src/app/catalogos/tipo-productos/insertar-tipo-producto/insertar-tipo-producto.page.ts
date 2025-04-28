@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-tipo-producto',
@@ -19,10 +20,13 @@ import { Utilerias } from 'src/app/utilerias/utilerias';
     ReactiveFormsModule,IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
-export class InsertarTipoProductoPage{
+export class InsertarTipoProductoPage implements OnInit{
   formularioTipoProducto: FormGroup;
+  cveSucursal: string = '';
 
-  constructor(private fb: FormBuilder,private tipoProductoSvc:TipoProductoService,private router: Router) {
+  constructor(private fb: FormBuilder,private tipoProductoSvc:TipoProductoService,
+    private router: Router,
+    private globalService: GlobalService,) {
     this.formularioTipoProducto = this.fb.group({
       descripcion: ['', Validators.required],
       imgURL: ['', Validators.required],
@@ -30,6 +34,12 @@ export class InsertarTipoProductoPage{
       orden: ['', Validators.required]
     })
   }
+
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar-tipo-producto.page.ts en OnInit');
+  }
+
   insertaTipoProducto() {
     if (this.formularioTipoProducto.valid) {
       console.log(this.formularioTipoProducto.value)

@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-tipo-producto-ppal',
@@ -24,9 +25,11 @@ export class TipoProductoPpalPage implements OnInit, OnDestroy{
   navigationSubscription:Subscription;
   tipoProductos!:TipoProducto[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private tipoProductosSvc:TipoProductoService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
@@ -39,6 +42,7 @@ export class TipoProductoPpalPage implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a tipoProductos en OnInit');
   }
 
