@@ -8,18 +8,20 @@ import {
   IonButton,
   IonGrid,
   IonCol,
-  IonRow, IonIcon, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCardContent, IonTitle } from '@ionic/angular/standalone';
+  IonRow, IonIcon, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle, IonCardContent, IonTitle, IonButtons } from '@ionic/angular/standalone';
 import { GlobalService } from '../services/global.service';
 import { SucursalService } from '../services/sucursal.service';
 import { Sucursal } from '../model/dto/sucursal';
 import { NgFor } from '@angular/common';
+import { SessionTimerComponent } from '../components/session-timer/session-timer.component';
 
 @Component({
   selector: 'app-menu-catalogos',
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonTitle, IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCard, IonIcon,NgFor,
+  imports: [IonButtons, IonTitle, IonCardContent, IonCardTitle, IonCardHeader, 
+    SessionTimerComponent,IonCardSubtitle, IonCard, IonIcon,NgFor,
     IonRow,
     IonCol,
     IonGrid,
