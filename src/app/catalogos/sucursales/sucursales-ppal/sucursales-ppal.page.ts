@@ -9,6 +9,7 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { SucursalService } from 'src/app/services/sucursal.service';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-sucursales-ppal',
@@ -22,9 +23,11 @@ export class SucursalesPpalPage implements OnInit,OnDestroy {
   navigationSubscription:Subscription;
   sucursales!:Sucursal[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private sucursalesSvc:SucursalService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
@@ -37,6 +40,7 @@ export class SucursalesPpalPage implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a sucursales en OnInit()');
   }
 

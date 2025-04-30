@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute,Route } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-promocion-especial',
@@ -33,8 +34,10 @@ export class EditarPromocionEspecialPage implements OnInit {
   precio!:number;
   activa!:string;
   imgURL!:string;
+  cveSucursal: string = '';
 
   constructor(private fb: FormBuilder,private promocionEspecialSvc:PromocionEspecialService,
+    private globalService: GlobalService,
     private router: Router) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -67,6 +70,7 @@ export class EditarPromocionEspecialPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-promocion-especial en OnInit');
   }
 
@@ -85,7 +89,7 @@ export class EditarPromocionEspecialPage implements OnInit {
         this.activa,
         this.imgURL);
         //Mu Se crearon estas variables el 23 dic 2024
-        
+
        promocionEspecial.idPromocion=this.idPromocion;
        promocionEspecial.nombre=this.formularioPromocionEspecial.value.nombre;
        promocionEspecial.descripcion=this.formularioPromocionEspecial.value.descripcion;

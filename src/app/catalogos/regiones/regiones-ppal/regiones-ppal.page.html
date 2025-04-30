@@ -1,18 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="custom">
-    <ion-title class="ion-text-center">Catalogo Regiones</ion-title>
+    <!-- Botón de regreso (izquierda) -->
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center">
+      Catálogo Regiones
+    </ion-title>
+
+    <!-- Sucursal a la derecha -->
+    <div slot="end" style="padding-right: 10px; color: white;">
+      Sucursal: {{cveSucursal}}
+    </div>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <p style="text-align: center">
     <ion-button (click)="saltaAInsertarRegion()" color="success">Insertar Región</ion-button>
   </p>
 
-  
+
   <div class="table-container">
     @if (regiones){
       <ion-grid fixed>

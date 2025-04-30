@@ -8,6 +8,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute,Route } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-salsa',
@@ -25,8 +26,10 @@ export class EditarSalsaPage implements OnInit {
   datos!:Salsa;
   id!:string;
   descripcion!:string;
-  
+  cveSucursal: string = '';
+
   constructor(private fb: FormBuilder,private salsasSvc:SalsaService,
+    private globalService: GlobalService,
     private router: Router) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -47,6 +50,7 @@ export class EditarSalsaPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-salsa en OnInit');
   }
 

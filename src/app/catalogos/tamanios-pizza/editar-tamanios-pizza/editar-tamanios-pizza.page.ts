@@ -8,7 +8,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute,Route } from '@angular/router';
-
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-tamanios-pizza',
@@ -26,8 +26,11 @@ export class EditarTamaniosPizzaPage implements OnInit {
   datos!:TamanioPizza;
   id!:string;
   nombre!:string;
+  cveSucursal: string = '';
 
-  constructor(private fb: FormBuilder,private tamaniosPizzaSvc:TamanioPizzaService,
+  constructor(private fb: FormBuilder,
+    private globalService: GlobalService,
+    private tamaniosPizzaSvc:TamanioPizzaService,
     private router: Router) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -49,6 +52,7 @@ export class EditarTamaniosPizzaPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-tamanio-pizza en OnInit');
   }
 

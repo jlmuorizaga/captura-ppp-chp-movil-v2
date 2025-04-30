@@ -9,6 +9,7 @@ import { RegionService } from 'src/app/services/region.service';
 import { Region } from 'src/app/model/dto/region';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-regiones-ppal',
@@ -22,9 +23,11 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   regiones!:Region[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private regionesSvc:RegionService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
@@ -37,6 +40,7 @@ export class RegionesPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a regiones en OnInit');
   }
 

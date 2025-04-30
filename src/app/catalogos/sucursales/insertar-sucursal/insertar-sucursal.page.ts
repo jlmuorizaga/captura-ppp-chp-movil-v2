@@ -17,6 +17,7 @@ import { NavigationEnd,Router } from '@angular/router';
 import { RegionService } from 'src/app/services/region.service';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-sucursal',
@@ -27,14 +28,17 @@ import { ChangeDetectorRef } from '@angular/core';
     ReactiveFormsModule, IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
-export class InsertarSucursalPage{
+export class InsertarSucursalPage implements OnInit{
   formularioSucursal: FormGroup;
   navigationSubscription:Subscription;
   regiones!:Region[];
+  cveSucursal: string = '';
 
 
 
-  constructor(private regionesSvc:RegionService,private fb:FormBuilder,private sucursalesSvc: SucursalService,
+  constructor(private regionesSvc:RegionService,private fb:FormBuilder,
+    private globalService: GlobalService,
+    private sucursalesSvc: SucursalService,
     private router: Router,private cdr:ChangeDetectorRef) {
       this.formularioSucursal=this.fb.group({
         clave: ['', Validators.required],
@@ -60,6 +64,10 @@ export class InsertarSucursalPage{
         this.leerRegiones();
       });
      }
+     ngOnInit() {
+      this.cveSucursal = this.globalService.cveSucursalGlobal;
+      console.log('Entré a insertar-sucursal.page.ts en OnInit');
+    }
 
      leerRegiones() {
       this.regionesSvc.dameListaRegiones().subscribe({

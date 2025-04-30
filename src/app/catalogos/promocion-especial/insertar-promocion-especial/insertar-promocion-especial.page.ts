@@ -9,6 +9,8 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
 import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { GlobalService } from 'src/app/services/global.service';
+
 @Component({
   selector: 'app-insertar-promocion-especial',
   templateUrl: './insertar-promocion-especial.page.html',
@@ -18,7 +20,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,IonButton,IonBackButton,
     IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
 })
-export class InsertarPromocionEspecialPage{
+export class InsertarPromocionEspecialPage implements OnInit{
   formularioPromocionEspecial:FormGroup;
   //Mu Se crearon estas variables el 23 dic 2024
   idPromocion!: string;
@@ -28,6 +30,7 @@ export class InsertarPromocionEspecialPage{
   definicion!:string;
   precio!:number;
   activa!:string;
+  cveSucursal: string = '';
   //imgURL!:string;
   //Mu Se crearon estas variables el 23 dic 2024
 
@@ -36,7 +39,10 @@ export class InsertarPromocionEspecialPage{
   imgURL:string='';
   fileName: string = '';
 
-  constructor(private fb: FormBuilder,private promocionesEspecialesSvc:PromocionEspecialService,private router: Router,private http: HttpClient) {
+  constructor(private fb: FormBuilder,private promocionesEspecialesSvc:PromocionEspecialService,
+    private router: Router,
+    private globalService: GlobalService,
+    private http: HttpClient) {
     this.formularioPromocionEspecial = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -48,6 +54,12 @@ export class InsertarPromocionEspecialPage{
       imgURL: [''],
     })
   }
+
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar-promocion-especial.page.ts en OnInit');
+  }
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {

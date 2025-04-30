@@ -10,6 +10,7 @@ import { RegionService } from 'src/app/services/region.service';
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-region',
@@ -20,10 +21,13 @@ import { Utilerias } from 'src/app/utilerias/utilerias';
     ReactiveFormsModule, IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
-export class InsertarRegionPage {
+export class InsertarRegionPage implements OnInit{
   formularioRegion: FormGroup;
+  cveSucursal: string = '';
 
-  constructor(private fb: FormBuilder, private regionesSvc: RegionService, private router: Router) {
+  constructor(private fb: FormBuilder, private regionesSvc: RegionService,
+    private globalService: GlobalService,
+    private router: Router) {
     this.formularioRegion = this.fb.group({
       //idRegion: ['', Validators.required],
       nombreRegion: ['', Validators.required],
@@ -33,6 +37,10 @@ export class InsertarRegionPage {
     })
   }
 
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a inserta-region.page.ts en OnInit');
+  }
 
   insertaRegion() {
     if (this.formularioRegion.valid) {

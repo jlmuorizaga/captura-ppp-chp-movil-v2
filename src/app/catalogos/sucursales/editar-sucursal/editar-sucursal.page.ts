@@ -31,6 +31,7 @@ import {
   IonSelect,
   IonSelectOption,
 } from '@ionic/angular/standalone';
+import { GlobalService } from 'src/app/services/global.service';
 
 
 import { Sucursal } from 'src/app/model/dto/sucursal';
@@ -93,6 +94,7 @@ montoMinimoEntregaDomicilio!: number;
 navigationSubscription: Subscription;
 regiones!:Region[];
 idRegionSeleccionada!:string;
+cveSucursal: string = '';
 
 
   constructor(
@@ -100,6 +102,7 @@ idRegionSeleccionada!:string;
     private sucursalesSvc: SucursalService,
     private router: Router,
     private regionesSvc: RegionService,
+    private globalService: GlobalService,
     private cdr: ChangeDetectorRef
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -152,6 +155,7 @@ idRegionSeleccionada!:string;
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-sucursal en OnInit');
   }
   ngOnDestroy(): void {

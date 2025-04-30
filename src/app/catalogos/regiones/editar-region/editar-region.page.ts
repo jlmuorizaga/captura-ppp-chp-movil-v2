@@ -8,6 +8,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton,
   import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute,Route } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-editar-region',
@@ -28,8 +29,10 @@ export class EditarRegionPage  implements OnInit {
   poligono!:string;
   latitud!:string;
   longitud!:string;
+  cveSucursal: string = '';
 
 constructor(private fb: FormBuilder,private regionesSvc:RegionService,
+  private globalService: GlobalService,
   private router: Router) {
   const navigation = this.router.getCurrentNavigation();
   if (navigation?.extras.state) {
@@ -56,6 +59,7 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
   })
 }
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-region en OnInit');
   }
   editaRegion() {

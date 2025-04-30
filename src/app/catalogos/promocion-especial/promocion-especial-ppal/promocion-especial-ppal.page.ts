@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonBu
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-promocion-especial-ppal',
@@ -21,9 +22,11 @@ import { NavigationEnd, Router } from '@angular/router';
 export class PromocionEspecialPpalPage implements OnInit,OnDestroy {
   navigationSubscription:Subscription;
   promocionesEspeciales!:PromocionEspecial[];
+  cveSucursal: string = '';
 
   constructor(private promocionesEspecialesSvc:PromocionEspecialService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef)
     {
       this.navigationSubscription = this.router.events
@@ -35,6 +38,7 @@ export class PromocionEspecialPpalPage implements OnInit,OnDestroy {
      }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a regiones en OnInit');
   }
   ngOnDestroy(): void {

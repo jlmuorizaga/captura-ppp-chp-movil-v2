@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonBu
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-salsas-ppal',
@@ -22,9 +23,11 @@ export class SalsasPpalPage implements OnInit, OnDestroy {
   navigationSubscription:Subscription;
   salsas!:Salsa[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private salsasSvc:SalsaService,
     private alertController:AlertController,
+    private globalService: GlobalService,
     private router: Router,private cdr: ChangeDetectorRef
   ) {
     this.mensaje = 'Estoy en el constructor';
@@ -37,6 +40,7 @@ export class SalsasPpalPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a regiones en OnInit');
   }
   ngOnDestroy(): void {

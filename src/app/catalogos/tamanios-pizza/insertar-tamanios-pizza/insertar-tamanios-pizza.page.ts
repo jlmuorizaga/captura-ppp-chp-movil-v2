@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-insertar-tamanios-pizza',
@@ -20,16 +21,24 @@ import { Utilerias } from 'src/app/utilerias/utilerias';
     ReactiveFormsModule, IonButton, IonGrid, IonRow, IonCol, IonBackButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
-export class InsertarTamaniosPizzaPage{
+export class InsertarTamaniosPizzaPage implements OnInit{
   formularioTamanioPizza: FormGroup;
+  cveSucursal: string = '';
 
-  constructor(private fb: FormBuilder, private tamanioPizzaSvc: TamanioPizzaService, private router: Router) {
+  constructor(private fb: FormBuilder, private tamanioPizzaSvc: TamanioPizzaService,
+    private globalService: GlobalService,
+    private router: Router) {
     this.formularioTamanioPizza = this.fb.group({
 
      // id: ['', Validators.required],
       nombre: ['', Validators.required]
     })
   }
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar-tamanio-pizza.page.ts en OnInit');
+  }
+
   insertaTamanioPizza() {
     if (this.formularioTamanioPizza.valid) {
       console.log(this.formularioTamanioPizza.value)

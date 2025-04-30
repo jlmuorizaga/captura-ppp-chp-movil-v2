@@ -9,6 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonIcon, IonBu
 import { Subscription } from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-tamanios-pizza-ppal',
@@ -22,10 +23,13 @@ export class TamaniosPizzaPpalPage implements OnInit, OnDestroy  {
   navigationSubscription:Subscription;
   tamaniosPizza!:TamanioPizza[];
   mensaje:string;
+  cveSucursal: string = '';
 
   constructor(private tamaniosPizzaSvc:TamanioPizzaService,
     private alertController:AlertController,
-    private router: Router,private cdr: ChangeDetectorRef) {
+    private router: Router,
+    private globalService: GlobalService,
+    private cdr: ChangeDetectorRef) {
       this.mensaje = 'Estoy en el constructor';
       this.navigationSubscription = this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
@@ -35,6 +39,7 @@ export class TamaniosPizzaPpalPage implements OnInit, OnDestroy  {
     }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a TamaniosPizza en OnInit');
   }
 
