@@ -29,14 +29,16 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
     IonBackButton,IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
     SharedModule]
 })
-export class InsertarRelacionOrillaSucursalPage{
+export class InsertarRelacionOrillaSucursalPage implements OnInit{
     formularioROS:FormGroup;
     navigationSubscription: Subscription;
     mensaje:string;
     idSucursal:string;
     relacionOrillaSucursalNoEstaEnOrilla!: RelacionOrillaSucursalNoEstaEnOrilla[];
+    cveSucursal: string = '';
 
-  constructor(private relacionOrillaSucursalSvc: RelacionOrillaSucursalService, private fb:FormBuilder,
+  constructor(private relacionOrillaSucursalSvc: RelacionOrillaSucursalService, 
+    private fb:FormBuilder,
     private router: Router,
     private globalService: GlobalService,
     private sucursalesSvc: SucursalService,private cdr: ChangeDetectorRef) {
@@ -52,7 +54,10 @@ export class InsertarRelacionOrillaSucursalPage{
           this.dameListadoOrillasNoEstanEnROS(this.idSucursal);
         });
     }
-
+    ngOnInit() {
+      this.cveSucursal = this.globalService.cveSucursalGlobal;
+      console.log('Entré a insertar-relacion-orilla-sucursal en OnInit');
+    }
     dameListadoOrillasNoEstanEnROS(idSucursal:string) {
       this.relacionOrillaSucursalSvc.dameListadoOrillasNoEstanEnROS(idSucursal).subscribe({
         next: (res: any) => {
