@@ -27,7 +27,7 @@ export class HomePage implements OnInit,OnDestroy {
   navigationSubscription:Subscription;
   sucursales!:Sucursal[];
   mensaje:string;
-  tiempoSesionEnMinutos=1;
+  tiempoSesionEnMinutos=60;
   totalSeconds = this.tiempoSesionEnMinutos * 60; // duración de sesión: 5 minutos (puedes ajustar)
   intervalId: any;
   warned = false;
@@ -88,7 +88,7 @@ export class HomePage implements OnInit,OnDestroy {
           buttons: ['Aceptar'],
         });
         await alert.present();
-        this.router.navigate(['/login']); // Cambia esta ruta si es otra
+        this.router.navigate(['/home']); // Cambia esta ruta si es otra
       }
     }, 1000);
   }

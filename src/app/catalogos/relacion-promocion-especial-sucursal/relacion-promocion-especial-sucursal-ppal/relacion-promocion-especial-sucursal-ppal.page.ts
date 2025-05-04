@@ -61,6 +61,7 @@ export class RelacionPromocionEspecialSucursalPpalPage
   claveSucursal!: string;
   nombreSucursal!: string;
   activa!: string;
+  cveSucursal: string = '';
 
   constructor(
     private registrosRelacionPESSvc: RelacionPromocionEspecialSucursalService,
@@ -82,6 +83,7 @@ export class RelacionPromocionEspecialSucursalPpalPage
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a relacion-pes-ppal en OnInit');
   }
 

@@ -29,11 +29,12 @@ import { RelacionPromocionEspecialSucursalService } from 'src/app/services/relac
     ReactiveFormsModule, IonButton, IonBackButton,
     IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, SharedModule]
 })
-export class InsertarRelacionPromocionEspecialSucursalPage {
+export class InsertarRelacionPromocionEspecialSucursalPage implements OnInit{
   formularioPromocionEspecial: FormGroup;
   navigationSubscription: Subscription;
   promocionesEspecial!: PromocionEspecial[];
   idSucursal: string;
+  cveSucursal: string = '';
 
 
   constructor(private fb: FormBuilder, private promocionesEspecialesSvc: PromocionEspecialService, private router: Router,
@@ -59,6 +60,12 @@ export class InsertarRelacionPromocionEspecialSucursalPage {
         this.leerPromocionesEspecialesNo();
       });
   }
+
+  ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
+    console.log('Entré a insertar-relacion-promocion-especial-sucursal.page.ts en OnInit');
+  }
+
   leerPromocionesEspecialesNo() {
     console.log('Entré a leerPromocionesEspecialesNo()')
     this.promocionesEspecialesSvc.dameListaPromocionesEspecialesQueNoEstanEnRPES(this.idSucursal).subscribe({

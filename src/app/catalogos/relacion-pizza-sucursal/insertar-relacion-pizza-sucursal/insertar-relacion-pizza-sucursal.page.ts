@@ -29,12 +29,13 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
     IonBackButton,IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
     SharedModule]
 })
-export class InsertarRelacionPizzaSucursalPage{
+export class InsertarRelacionPizzaSucursalPage implements OnInit{
   formularioRPS:FormGroup;
   navigationSubscription: Subscription;
   mensaje:string;
   idSucursal:string;
   relacionPizzaSucursalNoEstaEnPizza!: RelacionPizzaSucursalNoEstaEnPizza[];
+  cveSucursal: string = '';
 
   constructor(private relacionPizzaSucursalSvc: RelacionPizzaSucursalService, private fb:FormBuilder,
     private router: Router,
@@ -52,6 +53,11 @@ export class InsertarRelacionPizzaSucursalPage{
         .subscribe(() => {
           this.dameListadoPizzasNoEstanEnRPS(this.idSucursal);
         });
+    }
+
+    ngOnInit() {
+      this.cveSucursal = this.globalService.cveSucursalGlobal;
+      console.log('Entré a insertar-relacion-pizza-sucursal.page.ts en OnInit');
     }
 
     dameListadoPizzasNoEstanEnRPS(idSucursal:string) {
@@ -98,7 +104,7 @@ export class InsertarRelacionPizzaSucursalPage{
 
       }
     }
-    
+
     saltaARPS() {
       this.router.navigateByUrl('/relacion-pizza-sucursal-ppal');
     }

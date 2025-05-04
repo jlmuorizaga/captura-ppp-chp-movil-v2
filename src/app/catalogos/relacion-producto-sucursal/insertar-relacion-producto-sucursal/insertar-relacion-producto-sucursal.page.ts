@@ -28,11 +28,12 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
     IonBackButton,IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
     SharedModule]
 })
-export class InsertarRelacionProductoSucursalPage{
+export class InsertarRelacionProductoSucursalPage implements OnInit{
   formularioRPS:FormGroup;
   navigationSubscription: Subscription;
   mensaje:string;
   idSucursal:string;
+  cveSucursal: string = '';
 relacionProductoSucursalNoEstaEnProducto!: RelacionProductoSucursalNoEstaEnProducto[];
 
    constructor(private relacionProductoSucursalSvc: RelacionProductoSucursalService, private fb:FormBuilder,
@@ -51,7 +52,10 @@ relacionProductoSucursalNoEstaEnProducto!: RelacionProductoSucursalNoEstaEnProdu
            this.dameListadoProductosNoEstanEnRPS(this.idSucursal);
          });
      }
-
+     ngOnInit() {
+      this.cveSucursal = this.globalService.cveSucursalGlobal;
+      console.log('Entré a insertar-relacion-producto-sucrusal.page.ts en OnInit');
+    }
      dameListadoProductosNoEstanEnRPS(idSucursal:string) {
       this.relacionProductoSucursalSvc.dameListadoProductosNoEstanEnRPS(idSucursal).subscribe({
         next: (res: any) => {

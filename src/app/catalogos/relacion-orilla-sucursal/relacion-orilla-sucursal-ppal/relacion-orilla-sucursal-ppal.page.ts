@@ -29,6 +29,7 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
   idSucursal:string;
   cveSucursal!: string;
   sucursal!: Sucursal;
+
   constructor(
     private relacionOrillaSucursalSvc:RelacionOrillaSucursalService,
     private alertController:AlertController,
@@ -51,6 +52,7 @@ export class RelacionOrillaSucursalPpalPage implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a orillas-ppal.page.ts en OnInit');
   }
   ngOnDestroy(): void {

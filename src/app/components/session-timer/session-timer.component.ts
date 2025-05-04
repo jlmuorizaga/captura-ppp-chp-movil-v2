@@ -11,7 +11,8 @@ import { IonLabel } from "@ionic/angular/standalone";
     imports: [IonLabel]
 })
 export class SessionTimerComponent implements OnInit, OnDestroy {
-  totalSeconds = 5 * 60;
+  tiempoSesionEnMinutos=60;
+  totalSeconds = this.tiempoSesionEnMinutos * 60;
   intervalId: any;
   warned = false;
 
@@ -30,7 +31,7 @@ export class SessionTimerComponent implements OnInit, OnDestroy {
   }
 
   restartTimer() {
-    this.totalSeconds = 5 * 60;
+    this.totalSeconds = this.tiempoSesionEnMinutos * 60;
     this.warned = false;
 
     if (this.intervalId) {
@@ -58,7 +59,7 @@ export class SessionTimerComponent implements OnInit, OnDestroy {
           buttons: ['Aceptar'],
         });
         await alert.present();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       }
     }, 1000);
   }

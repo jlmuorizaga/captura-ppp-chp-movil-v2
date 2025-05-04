@@ -57,6 +57,7 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a pizza-ppal.page.ts en OnInit');
   }
 

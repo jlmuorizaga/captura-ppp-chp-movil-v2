@@ -28,11 +28,12 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
     IonBackButton,IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,
     SharedModule]
 })
-export class InsertarRelacionSalsaSucursalPage{
+export class InsertarRelacionSalsaSucursalPage implements OnInit{
   formularioRSS:FormGroup;
   navigationSubscription: Subscription;
   idSucursal:string;
   relacionSalsaSucursalNoEstaEnSalsa!: RelacionSalsaSucursalNoEstaEnSalsa[];
+  cveSucursal: string = '';
 
   constructor(private relacionSalsaSucursalSvc: RelacionSalsaSucursalService, private fb:FormBuilder,
     private router: Router,
@@ -48,6 +49,11 @@ export class InsertarRelacionSalsaSucursalPage{
           this.dameListadoSalsasNoEstanEnRSS(this.idSucursal);
         });
      }
+     ngOnInit() {
+      this.cveSucursal = this.globalService.cveSucursalGlobal;
+      console.log('Entré a insertar-relacion-salsa-sucursal.page.ts en OnInit');
+    }
+
      dameListadoSalsasNoEstanEnRSS(idSucursal:string) {
       this.relacionSalsaSucursalSvc.dameListadoSalsasNoEstanEnRSS(idSucursal).subscribe({
         next: (res: any) => {

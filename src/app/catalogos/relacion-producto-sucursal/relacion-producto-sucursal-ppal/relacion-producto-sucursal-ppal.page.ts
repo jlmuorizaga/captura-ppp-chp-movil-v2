@@ -54,6 +54,7 @@ export class RelacionProductoSucursalPpalPage implements OnInit,OnDestroy {
    }
 
   ngOnInit() {
+    this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a producto-ppal.page.ts en OnInit');
   }
 
