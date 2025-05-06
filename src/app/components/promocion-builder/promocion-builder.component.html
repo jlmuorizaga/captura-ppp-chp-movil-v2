@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Promoción</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Tipo</ion-label>
+    <ion-select [(ngModel)]="tipo" placeholder="Selecciona tipo" (ionChange)="onTipoChange()">
+      <ion-select-option value="CB">Combo (CB)</ion-select-option>
+      <ion-select-option value="PE">Precio Especial (PE)</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>Producto</ion-label>
+    <ion-select [(ngModel)]="productoSeleccionado" placeholder="Selecciona producto">
+      <ion-select-option *ngFor="let prod of productosDisponibles" [value]="prod">
+        {{ prod }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button style="text-transform: none;" (click)="agregarProducto()">Agregar Producto</ion-button>
+  <ion-button style="text-transform: none;" *ngIf="tipo === 'PE'"  color="medium" (click)="agregarSeparador()">Agregar '='</ion-button>
+
+
+  <ion-button style="text-transform: none;" color="danger" (click)="limpiar()">Limpiar Cadena</ion-button>
+
+  <ion-item>
+    <ion-label position="stacked">Definición generada:</ion-label>
+    <ion-textarea [value]="definicion" readonly></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" color="success" (click)="guardarYSalir()">
+    Guardar y regresar
+  </ion-button>
+
+</ion-content>

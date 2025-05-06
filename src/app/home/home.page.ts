@@ -12,15 +12,18 @@ import { NavigationEnd, Router } from '@angular/router';
 import { SucursalService } from 'src/app/services/sucursal.service';
 import { GlobalService } from '../services/global.service';
 import { SessionTimerComponent } from '../components/session-timer/session-timer.component';
+import { PromocionBuilderComponent } from '../components/promocion-builder/promocion-builder.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonItem, IonList, IonButton, SharedModule, IonContent,
+  imports: [IonItem, IonList, IonButton, SharedModule, IonContent,
     IonHeader, IonTitle, IonToolbar,IonSelect,IonSelectOption,
-    CommonModule, FormsModule,ReactiveFormsModule,SessionTimerComponent,IonButtons]
+    CommonModule, FormsModule,ReactiveFormsModule,PromocionBuilderComponent,IonButtons],
+    providers: [ModalController]  // <-- ESTA LÍNEA SOLUCIONA EL ERROR
 })
 export class HomePage implements OnInit,OnDestroy {
   formulario:FormGroup;
@@ -31,6 +34,20 @@ export class HomePage implements OnInit,OnDestroy {
   totalSeconds = this.tiempoSesionEnMinutos * 60; // duración de sesión: 5 minutos (puedes ajustar)
   intervalId: any;
   warned = false;
+  resultado: string = '';
+
+  async abrirModal() {
+    const modal = await this.modalCtrl.create({
+      component: PromocionBuilderComponent,
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+      this.resultado = `Tipo: ${data.tipo}, Definición: ${data.definicion}`;
+    }
+  }
 
   get minutes() {
     return Math.floor(this.totalSeconds / 60);
@@ -44,7 +61,8 @@ export class HomePage implements OnInit,OnDestroy {
     private alertController:AlertController,
     private router: Router,private cdr: ChangeDetectorRef,
     private globalService: GlobalService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private modalCtrl: ModalController
   ) {
     this.mensaje = 'Estoy en el constructor';
 
