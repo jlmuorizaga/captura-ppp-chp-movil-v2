@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+//import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { inject } from '@angular/core';
+import { IonContent, IonHeader, IonTitle, IonToolbar,
+  IonButtons, IonBackButton, IonButton,AlertController, IonList, IonItem,IonSelect,
+  IonSelectOption, IonLabel,IonTextarea } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-promocion-builder',
   standalone: true,
-  imports: [CommonModule, IonicModule, FormsModule],
+  imports: [IonHeader,IonToolbar, IonTitle, IonContent, IonItem, 
+    IonLabel, IonSelectOption,CommonModule, FormsModule, IonButton,IonTextarea], 
   templateUrl: './promocion-builder.component.html',
 })
 export class PromocionBuilderComponent {

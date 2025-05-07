@@ -1,29 +1,32 @@
-import { PromocionEspecialService } from './../../../services/promocion-especial.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup,FormBuilder,Validators,ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
-  IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonLabel, IonItem } from '@ionic/angular/standalone';
-  import { Router } from '@angular/router';
+import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+// Módulo completo de Ionic con todos los componentes
+import { IonicModule, ModalController } from '@ionic/angular';
+
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
 import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { GlobalService } from 'src/app/services/global.service';
+import { PromocionEspecialService } from './../../../services/promocion-especial.service';
 import { PromocionBuilderComponent } from 'src/app/components/promocion-builder/promocion-builder.component';
-import { ModalController } from '@ionic/angular';
 
 
 @Component({
   selector: 'app-insertar-promocion-especial',
+  standalone: true,
   templateUrl: './insertar-promocion-especial.page.html',
   styleUrls: ['./insertar-promocion-especial.page.scss'],
-  standalone: true,
-  imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
-    ReactiveFormsModule,IonButton,IonBackButton,
-    IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule,
-],
-    providers: [ModalController]  // <-- ESTA LÍNEA SOLUCIONA EL ERROR
+  imports: [
+    IonicModule,           // ✅ importa todos los componentes de Ionic de forma limpia
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
+  ]
 })
 export class InsertarPromocionEspecialPage implements OnInit{
   formularioPromocionEspecial:FormGroup;
@@ -73,6 +76,7 @@ export class InsertarPromocionEspecialPage implements OnInit{
     const { data } = await modal.onDidDismiss();
     if (data) {
       this.resultado = `Tipo: ${data.tipo}, Definición: ${data.definicion}`;
+      //this.definicion = `${data.definicion}`;
     }
   }
   ngOnInit() {
