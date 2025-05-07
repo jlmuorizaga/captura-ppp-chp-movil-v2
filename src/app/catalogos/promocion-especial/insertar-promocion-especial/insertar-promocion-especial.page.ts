@@ -10,6 +10,9 @@ import { Utilerias } from 'src/app/utilerias/utilerias';
 import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { GlobalService } from 'src/app/services/global.service';
+import { PromocionBuilderComponent } from 'src/app/components/promocion-builder/promocion-builder.component';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-insertar-promocion-especial',
@@ -18,7 +21,9 @@ import { GlobalService } from 'src/app/services/global.service';
   standalone: true,
   imports: [IonItem, IonLabel, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonInput,
     ReactiveFormsModule,IonButton,IonBackButton,
-    IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule]
+    IonButtons, IonContent,IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,SharedModule,
+],
+    providers: [ModalController]  // <-- ESTA LÍNEA SOLUCIONA EL ERROR
 })
 export class InsertarPromocionEspecialPage implements OnInit{
   formularioPromocionEspecial:FormGroup;
@@ -38,11 +43,14 @@ export class InsertarPromocionEspecialPage implements OnInit{
   uploadResponse: string = '';
   imgURL:string='';
   fileName: string = '';
+  resultado: string = '';
 
   constructor(private fb: FormBuilder,private promocionesEspecialesSvc:PromocionEspecialService,
     private router: Router,
     private globalService: GlobalService,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private modalCtrl: ModalController // <-- Esta línea es necesaria
+  ) {
     this.formularioPromocionEspecial = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -55,6 +63,18 @@ export class InsertarPromocionEspecialPage implements OnInit{
     })
   }
 
+  async abrirModal() {
+    const modal = await this.modalCtrl.create({
+      component: PromocionBuilderComponent,
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+      this.resultado = `Tipo: ${data.tipo}, Definición: ${data.definicion}`;
+    }
+  }
   ngOnInit() {
     this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a insertar-promocion-especial.page.ts en OnInit');

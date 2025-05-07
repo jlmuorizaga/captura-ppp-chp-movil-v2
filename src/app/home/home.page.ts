@@ -22,7 +22,7 @@ import { ModalController } from '@ionic/angular';
   standalone: true,
   imports: [IonItem, IonList, IonButton, SharedModule, IonContent,
     IonHeader, IonTitle, IonToolbar,IonSelect,IonSelectOption,
-    CommonModule, FormsModule,ReactiveFormsModule,PromocionBuilderComponent,IonButtons],
+    CommonModule, FormsModule,ReactiveFormsModule],
     providers: [ModalController]  // <-- ESTA LÍNEA SOLUCIONA EL ERROR
 })
 export class HomePage implements OnInit,OnDestroy {
