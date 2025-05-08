@@ -20,6 +20,7 @@ import { PromocionBuilderComponent } from 'src/app/components/promocion-builder/
   standalone: true,
   templateUrl: './insertar-promocion-especial.page.html',
   styleUrls: ['./insertar-promocion-especial.page.scss'],
+  
   imports: [
     IonicModule,           // ✅ importa todos los componentes de Ionic de forma limpia
     CommonModule,
