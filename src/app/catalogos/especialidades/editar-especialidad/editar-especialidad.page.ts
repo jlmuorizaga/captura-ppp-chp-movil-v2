@@ -25,6 +25,7 @@ import {
   IonCardContent,
   IonLabel,
   IonItem,
+  IonSelectOption,
 } from '@ionic/angular/standalone';
 
 import { Especialidad } from 'src/app/model/dto/especialidad';
@@ -60,6 +61,7 @@ import { GlobalService } from 'src/app/services/global.service';
     CommonModule,
     FormsModule,
     SharedModule,
+    IonSelectOption,
   ],
 })
 export class EditarEspecialidadPage implements OnInit {
