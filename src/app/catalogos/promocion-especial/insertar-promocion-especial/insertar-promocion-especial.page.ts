@@ -64,7 +64,8 @@ export class InsertarPromocionEspecialPage implements OnInit {
       tipo: ['', Validators.required],
       definicion: ['', Validators.required],
       precio: ['', Validators.required],
-      activa: ['', Validators.required],
+      //activa: ['', Validators.required],
+      activa: ['S'], // Valor por defecto
       imgURL: [''],
     });
   }

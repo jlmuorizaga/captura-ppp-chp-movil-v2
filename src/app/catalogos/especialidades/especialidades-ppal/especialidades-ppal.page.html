@@ -35,10 +35,10 @@
             </ion-card-header>
             <ion-card-content>
               <b>Ingredientes:</b> {{especialidad.ingredientes}}<br>
-              <b>Imagen:</b> {{especialidad.img_url}}<br>
+              <b>Imagen:</b> {{especialidad.imgURL}}<br>
               <b>Orden:</b> {{especialidad.orden}}<br>
-              <b>Cantidad de Ingredientes:</b> {{especialidad.cantidad_ingredientes}}<br>
-              <b>Es de un Ingrediente:</b> {{especialidad.es_de_un_ingrediente}}<br><br>
+              <b>Cantidad de Ingredientes:</b> {{especialidad.cantidadIngredientes}}<br>
+              <b>Es de un Ingrediente:</b> {{especialidad.esDeUnIngrediente}}<br><br>
               <ion-button (click)="confirmaBorrar(especialidad)" color="danger">Borrar</ion-button>
               <ion-button (click)="saltaAEditarEspecialidad(especialidad.id)">Editar</ion-button>
             </ion-card-content>

@@ -71,10 +71,10 @@ export class EditarEspecialidadPage implements OnInit {
   id!: string;
   nombre!: string;
   ingredientes!: string;
-  img_url!: string;
+  imgURL!: string;
   orden!: string;
-  cantidad_ingredientes!:string;
-  es_de_un_ingrediente!:string;
+  cantidadIngredientes!:string;
+  esDeUnIngrediente!:string;
   cveSucursal: string = '';
 
   constructor(
@@ -92,20 +92,20 @@ export class EditarEspecialidadPage implements OnInit {
       this.id = data.id;
       this.nombre = data.nombre;
       this.ingredientes = data.ingredientes;
-      this.img_url = data.img_url;
+      this.imgURL = data.imgURL;
       this.orden = data.orden;
-      this.cantidad_ingredientes = data.cantidad_ingredientes;
-      this.es_de_un_ingrediente = data.es_de_un_ingrediente;
+      this.cantidadIngredientes = data.cantidadIngredientes;
+      this.esDeUnIngrediente = data.esDeUnIngrediente;
 
     }
     this.formularioEspecialidad = this.fb.group({
       //id: ['', Validators.required],
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
-      img_url: ['', Validators.required],
+      imgURL: ['', Validators.required],
       orden: ['', Validators.required],
-      cantidad_ingredientes:['',Validators.required],
-      es_de_un_ingrediente:['',Validators.required],
+      cantidadIngredientes:['',Validators.required],
+      esDeUnIngrediente:['',Validators.required],
     });
   }
 
@@ -117,15 +117,22 @@ export class EditarEspecialidadPage implements OnInit {
   editaEspecialidad() {
     if (this.formularioEspecialidad.valid) {
       console.log(this.formularioEspecialidad.value);
-      let especialidad: Especialidad = new Especialidad();
-      //especialidad.id=this.formularioEspecialidad.value.id;
+      let especialidad: Especialidad = new Especialidad(
+        this.id,
+        this.nombre,
+        this.ingredientes,
+        this.imgURL,
+        this.orden,
+        this.cantidadIngredientes,
+        this.esDeUnIngrediente);
+
       especialidad.id = this.id;
       especialidad.nombre = this.formularioEspecialidad.value.nombre;
       especialidad.ingredientes = this.formularioEspecialidad.value.ingredientes;
-      especialidad.img_url = this.formularioEspecialidad.value.img_url;
+      especialidad.imgURL = this.formularioEspecialidad.value.imgURL;
       especialidad.orden = this.formularioEspecialidad.value.orden;
-      especialidad.cantidad_ingredientes = this.formularioEspecialidad.value.cantidad_ingredientes;
-      especialidad.es_de_un_ingrediente = this.formularioEspecialidad.value.es_de_un_ingrediente;
+      especialidad.cantidadIngredientes = this.formularioEspecialidad.value.cantidadIngredientes;
+      especialidad.esDeUnIngrediente = this.formularioEspecialidad.value.esDeUnIngrediente;
 
       this.especialidadesSvc.editaEspecialidad(especialidad).subscribe({
         next: (res: any) => {
