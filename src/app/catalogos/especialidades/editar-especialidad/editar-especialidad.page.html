@@ -1,18 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="custom">
-    <!-- Botón de regreso (izquierda) -->
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <!-- Título centrado -->
-    <ion-title class="ion-text-center">
-      Editar Especialidad
-    </ion-title>
+    <ion-title class="ion-text-center">Editar Especialidad</ion-title>
 
-    <!-- Sucursal a la derecha -->
     <div slot="end" style="padding-right: 10px; color: white;">
-      Sucursal: {{cveSucursal}}
+      Sucursal: {{ cveSucursal }}
     </div>
   </ion-toolbar>
 </ion-header>
@@ -26,43 +21,37 @@
             <ion-card-title>Editar Especialidad</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <h1>ID: {{id}}</h1>
+            <h1>ID: {{ id }}</h1>
             <form [formGroup]="formularioEspecialidad" (ngSubmit)="editaEspecialidad()">
               <ion-item>
-                <ion-input label="Nombre" label-placement="floating" formControlName="nombre"
-                  [ngModel]="nombre"></ion-input>
+                <ion-input label="Nombre" label-placement="floating" formControlName="nombre"></ion-input>
               </ion-item>
 
               <ion-item>
-                <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"
-                  [ngModel]="ingredientes"></ion-input>
+                <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"></ion-input>
               </ion-item>
-              <ion-item>
-                <ion-input label="Img Url" label-placement="floating" formControlName="imgURL"
-                  [ngModel]="imgURL"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input label="Orden" label-placement="floating" formControlName="orden"
-                  [ngModel]="orden"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-input label="Cantidad de Ingredientes" label-placement="floating" formControlName="cantidadIngredientes"
-                  [ngModel]="cantidadIngredientes"></ion-input>
-              </ion-item>
-              <!--ion-item>
-                <ion-input label="Es de un Ingrediente" label-placement="floating" formControlName="es_de_un_ingrediente"
-                  [ngModel]="es_de_un_ingrediente"></ion-input>
-              </ion-item-->
 
               <ion-item>
-          <ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente" [ngModel]="esDeUnIngrediente">
-            <ion-select-option value="S">Sí</ion-select-option>
-            <ion-select-option value="N">No</ion-select-option>
-          </ion-select>
+                <ion-input label="Img Url" label-placement="floating" formControlName="imgURL"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input label="Orden" label-placement="floating" formControlName="orden"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input label="Cantidad de Ingredientes" label-placement="floating" formControlName="cantidadIngredientes"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <!--ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente"-->
+                <ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente" [ngModel]="esDeUnIngrediente">
+                  <ion-select-option value="S">Sí</ion-select-option>
+                  <ion-select-option value="N">No</ion-select-option>
+                </ion-select>
               </ion-item>
 
               <div class="button-container">
-                <!--ion-button type="submit" class="centered-button" [disabled]="!formularioRegion.valid" color="success"-->
                 <ion-button type="submit" class="centered-button" [disabled]="!formularioEspecialidad.valid">
                   Edita Especialidad
                 </ion-button>

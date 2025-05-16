@@ -34,7 +34,7 @@ import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { Utilerias } from 'src/app/utilerias/utilerias';
 import { CargarImagenComponent } from 'src/app/componentes/cargar-imagen/cargar-imagen.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
@@ -155,9 +155,9 @@ export class InsertarEspecialidadPage implements OnInit {
       especialidad.imgURL = '/img/especialidades/' + this.fileName;
       especialidad.orden = this.formularioEspecialidad.value.orden;
       especialidad.cantidadIngredientes =
-        this.formularioEspecialidad.value.cantidad_ingredientes;
+        this.formularioEspecialidad.value.cantidadIngredientes;
       especialidad.esDeUnIngrediente =
-        this.formularioEspecialidad.value.es_de_un_ingrediente;
+        this.formularioEspecialidad.value.esDeUnIngrediente;
 
       this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
         next: (res: any) => {

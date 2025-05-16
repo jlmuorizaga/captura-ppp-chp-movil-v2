@@ -25,7 +25,7 @@ export class Especialidad{
     this.cantidadIngredientes=cantidadIngredientes;
     this.esDeUnIngrediente=esDeUnIngrediente;
   }
-    public get esDeUnIngredientesCompleto():string{
+    public get esDeUnIngredienteCompleto():string{
 
     if (this.esDeUnIngrediente==='S'){
       return 'Sí';
