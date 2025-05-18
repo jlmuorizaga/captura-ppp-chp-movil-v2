@@ -116,62 +116,60 @@ export class InsertarEspecialidadPage implements OnInit {
     }
   }
 
-  uploadImage() {
-    if (!this.selectedFile) return;
-
-    const formData = new FormData();
-    formData.append('image', this.selectedFile);
-
-    this.http
-      .post<{ message: string }>(
-        'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload',
-        formData
-      )
-      .subscribe({
-        next: (res) => (this.uploadResponse = res.message),
-        error: (err) => (this.uploadResponse = 'Error al subir la imagen'),
-      });
+  uploadImage(subcarpeta: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if (!this.selectedFile) return 'No se seleccionó archivo';
+      const formData = new FormData();
+      formData.append('image', this.selectedFile);
+      formData.append('subcarpeta', subcarpeta); // enviamos la succarpeta
+      this.http
+        .post<{ message: string; url: string }>(
+          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload',
+          formData
+        )
+        .subscribe({
+          next: (res) => {
+            this.uploadResponse = res.message;
+            this.imgURL = res.url;
+            resolve(res.url);
+          },
+          error: (err) => {
+            this.uploadResponse = 'Error al subir la imagen';
+            reject(err);
+          },
+        });
+    });
   }
 
-  insertaEspecialidad() {
+  async insertaEspecialidad() {
     if (this.formularioEspecialidad.valid) {
-      this.uploadImage(); //Carga la imagen al servidor
-      console.log(this.formularioEspecialidad.value);
-      let especialidad: Especialidad = new Especialidad(
-        this.id,
-        this.nombre,
-        this.ingredientes,
-        this.imgURL,
-        this.orden,
-        this.cantidadIngredientes,
-        this.esDeUnIngrediente
+      try{
+  const imageUrl = await this.uploadImage('especialidades'); // 🆕 especificas la subcarpeta
+      const especialidad: Especialidad = new Especialidad(
+        Utilerias.generaId(),
+        this.formularioEspecialidad.value.nombre,
+        this.formularioEspecialidad.value.ingredientes,
+        imageUrl,
+        this.formularioEspecialidad.value.orden,
+        this.formularioEspecialidad.value.cantidadIngredientes,
+        this.formularioEspecialidad.value.esDeUnIngrediente
       );
-      //especialidad.id=this.formularioEspecialidad.value.id;
-      especialidad.id = Utilerias.generaId();
-      especialidad.nombre = this.formularioEspecialidad.value.nombre;
-      especialidad.ingredientes =
-        this.formularioEspecialidad.value.ingredientes;
-      //especialidad.img_url=this.formularioEspecialidad.value.img_url;
-      especialidad.imgURL = '/img/especialidades/' + this.fileName;
-      especialidad.orden = this.formularioEspecialidad.value.orden;
-      especialidad.cantidadIngredientes =
-        this.formularioEspecialidad.value.cantidadIngredientes;
-      especialidad.esDeUnIngrediente =
-        this.formularioEspecialidad.value.esDeUnIngrediente;
 
-      this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
-        next: (res: any) => {
-          console.log('Especialidad insertada de forma exitosa');
-          console.log(res);
+     this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
+        next: () => {
+          console.log('✅ Especialidad insertada');
           this.saltaAEspecialidades();
         },
-        error: (error: any) => {
-          console.log('Error en la inserción de la especialidad');
-          console.log(error);
+        error: (error) => {
+          console.error('❌ Error al insertar especialidad', error);
         },
       });
+    } catch (err) {
+      console.error('❌ Error al subir imagen:', err);
     }
   }
+}
+
   saltaAEspecialidades() {
     this.router.navigateByUrl('/especialidades-ppal');
   }
