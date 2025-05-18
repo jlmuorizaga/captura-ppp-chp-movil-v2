@@ -138,6 +138,7 @@ export class InsertarEspecialidadPage implements OnInit {
             reject(err);
           },
         });
+        return; // ✅ Esto soluciona el error TS7030
     });
   }
 
