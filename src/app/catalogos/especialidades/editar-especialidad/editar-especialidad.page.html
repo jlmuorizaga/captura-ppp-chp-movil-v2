@@ -4,48 +4,49 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
 
-    <ion-title class="ion-text-center">Editar Especialidad</ion-title>
+    <ion-title class="ion-text-center"> Editar Especialidad</ion-title>
 
-    <div slot="end" style="padding-right: 10px; color: white;">
+    <div slot="end" style="padding-right: 10px; color: white">
       Sucursal: {{ cveSucursal }}
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="12">
         <ion-card>
           <ion-card-header>
             <ion-card-title>Editar Especialidad</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <h1>ID: {{ id }}</h1>
+            <h1>
+              ID: {{ id }}
+            </h1>
             <form [formGroup]="formularioEspecialidad" (ngSubmit)="editaEspecialidad()">
               <ion-item>
-                <ion-input label="Nombre" label-placement="floating" formControlName="nombre"></ion-input>
+                <ion-input label="Nombre" label-placement="floating" formControlName="nombre" [ngModel]="nombre"></ion-input>
               </ion-item>
 
               <ion-item>
-                <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"></ion-input>
+                <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes" [ngModel]="ingredientes"></ion-input>
               </ion-item>
 
               <ion-item>
-                <ion-input label="Img Url" label-placement="floating" formControlName="imgURL"></ion-input>
+                <ion-input label="Img Url" label-placement="floating" formControlName="imgURL" [ngModel]="imgURL"></ion-input>
               </ion-item>
 
               <ion-item>
-                <ion-input label="Orden" label-placement="floating" formControlName="orden"></ion-input>
+                <ion-input label="Orden" label-placement="floating" formControlName="orden" [ngModel]="orden"></ion-input>
               </ion-item>
 
               <ion-item>
-                <ion-input label="Cantidad de Ingredientes" label-placement="floating" formControlName="cantidadIngredientes"></ion-input>
+                <ion-input label="Cantidad de Ingredientes" label-placement="floating"
+                  formControlName="cantidadIngredientes" [ngModel]="cantidadIngredientes"></ion-input>
               </ion-item>
 
               <ion-item>
                 <!--ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente"-->
-                <ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente" [ngModel]="esDeUnIngrediente">
+                <ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente"
+                  [ngModel]="esDeUnIngrediente">
                   <ion-select-option value="S">Sí</ion-select-option>
                   <ion-select-option value="N">No</ion-select-option>
                 </ion-select>
@@ -59,7 +60,4 @@
             </form>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </ion-content>

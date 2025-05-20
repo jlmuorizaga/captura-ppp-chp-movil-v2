@@ -24,8 +24,8 @@ import { GlobalService } from 'src/app/services/global.service';
 
 export class EditarPromocionEspecialPage implements OnInit {
   formularioPromocionEspecial:FormGroup;
-  promocionesEspeciales!:PromocionEspecial[];
-  datos!:PromocionEspecial;
+  //promocionesEspeciales!:PromocionEspecial[];
+  //datos!:PromocionEspecial;
   idPromocion!:string;
   nombre!: string;
   descripcion!: string;
