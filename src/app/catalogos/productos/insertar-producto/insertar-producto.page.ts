@@ -42,11 +42,11 @@ export class InsertarProductoPage implements OnInit{
     private router: Router, private cdr: ChangeDetectorRef) {
 
     this.formularioProducto = this.fb.group({
-      descripcion_p: ['', Validators.required],
+      descripcionP: ['', Validators.required],
       tamanio: ['', Validators.required],
-      usa_salsa: ['', Validators.required],
-      id_tipo_producto: ['', Validators.required],
-      ruta_imagen: ['', Validators.required],
+      usaSalsa: ['', Validators.required],
+      idTipoProducto: ['', Validators.required],
+      rutaImagen: ['', Validators.required],
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
@@ -88,16 +88,18 @@ export class InsertarProductoPage implements OnInit{
   insertaProducto() {
     if (this.formularioProducto.valid) {
       console.log(this.formularioProducto.value)
-      let producto: Producto = new Producto();
-      producto.id = Utilerias.generaId();
-      producto.descripcion_p = this.formularioProducto.value.descripcion_p;
-      producto.tamanio = this.formularioProducto.value.tamanio;
-      producto.usa_salsa = this.formularioProducto.value.usa_salsa;
-      producto.id_tipo_producto = this.formularioProducto.value.id_tipo_producto;
-      producto.ruta_imagen = this.formularioProducto.value.ruta_imagen;
-      producto.categoria1 = this.formularioProducto.value.categoria1;
-      producto.categoria2 = this.formularioProducto.value.categoria2;
-      producto.categoria3 = this.formularioProducto.value.categoria3;
+      let producto: Producto = new Producto(
+      Utilerias.generaId(),
+      this.formularioProducto.value.descripcionP,
+      this.formularioProducto.value.tamanio,
+      this.formularioProducto.value.usaSalsa,
+      this.formularioProducto.value.idTipoProducto,
+      this.formularioProducto.value.nombreTP,
+      this.formularioProducto.value.rutaImagen,
+      this.formularioProducto.value.categoria1,
+      this.formularioProducto.value.categoria2,
+      this.formularioProducto.value.categoria
+      );
       this.productosSvc.insertaProducto(producto).subscribe({
         next: (res: any) => {
           console.log('Producto insertado de forma exitosa')

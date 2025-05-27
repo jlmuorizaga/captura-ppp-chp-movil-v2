@@ -159,17 +159,17 @@ export class EditarProductoPage implements OnInit, OnDestroy {
   editaProducto() {
     if (this.formularioProducto.valid) {
       console.log(this.formularioProducto.value);
-      let producto: Producto = new Producto();
-      producto.id = this.id;
-      producto.descripcion_p = this.formularioProducto.value.descripcion_p;
-      producto.tamanio = this.formularioProducto.value.tamanio;
-      producto.usa_salsa = this.formularioProducto.value.usa_salsa;
-      producto.id_tipo_producto = this.formularioProducto.value.id_tipo_producto2;
-      producto.nombre_tp = this.formularioProducto.value.nombre_tp;
-      producto.ruta_imagen = this.formularioProducto.value.ruta_imagen;
-      producto.categoria1 = this.formularioProducto.value.categoria1;
-      producto.categoria2 = this.formularioProducto.value.categoria2;
-      producto.categoria3 = this.formularioProducto.value.categoria3;
+      let producto: Producto = new Producto(
+      this.id,
+      this.formularioProducto.value.descripcionP,
+      this.formularioProducto.value.tamanio,
+      this.formularioProducto.value.usaSalsa,
+      this.formularioProducto.value.id_tipo_producto2,
+      this.formularioProducto.value.nombreTP,
+      this.formularioProducto.value.rutaImagen,
+      this.formularioProducto.value.categoria1,
+      this.formularioProducto.value.categoria2,
+      this.formularioProducto.value.categoria3);
 
       this.productosSvc.editaProducto(producto).subscribe({
         next: (res: any) => {

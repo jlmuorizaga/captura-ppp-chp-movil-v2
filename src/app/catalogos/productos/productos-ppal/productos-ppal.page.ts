@@ -50,6 +50,8 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
     }
   }
 
+
+
   leerProductos(){
     this.productosSvc.dameListaProductos2().subscribe({
       next:(res:any)=>{
@@ -69,6 +71,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
       }
     })
   }
+
   borraProducto(id:string){
     console.log('Voy a borrar este producto='+id);
 
