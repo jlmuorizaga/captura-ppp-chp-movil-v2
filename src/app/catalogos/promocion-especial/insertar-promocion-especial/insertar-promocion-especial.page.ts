@@ -105,6 +105,7 @@ export class InsertarPromocionEspecialPage implements OnInit {
 
     const formData = new FormData();
     formData.append('image', this.selectedFile);
+    formData.append('subcarpeta', 'promociones');
 
     this.http.post<{ message: string }>('http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload', formData).subscribe({
       next: res => this.uploadResponse = res.message,
