@@ -40,6 +40,8 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs';
 import { PizzaService } from 'src/app/services/pizza.service';
 import { GlobalService } from 'src/app/services/global.service';
+import { Categoria } from 'src/app/model/dto/categoria';
+import { CategoriaService } from 'src/app/services/categoria.service';
 
 @Component({
   selector: 'app-editar-pizza',
@@ -87,6 +89,10 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
   especialidad!:Especialidad[];
   tamanioPizza!:TamanioPizza[];
   cveSucursal: string = '';
+  categorias!: Categoria[];
+  categoria1_seleccionado!: string;
+  categoria2_seleccionado!: string;
+  categoria3_seleccionado!: string;
 
 
   constructor(
@@ -96,7 +102,8 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
     private tamaniosPizzaSvc: TamanioPizzaService,
     private router: Router,
     private globalService: GlobalService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private categoriasSvc:CategoriaService,
   ) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -108,9 +115,9 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
       this.idEspecialidad = data.idEspecialidad;
       this.idTamanioPizza = data.idTamanioPizza;
       this.aplica2x1 = data.aplica2x1;
-      this.categoria1 = data.categoria1;
-      this.categoria2 = data.categoria2;
-      this.categoria3 = data.categoria3;
+      this.categoria1_seleccionado = data.categoria1;
+      this.categoria2_seleccionado = data.categoria2;
+      this.categoria3_seleccionado = data.categoria3;
       this.idEspecialidadSeleccionada = data.idEspecialidad;
       this.idTamanioPizzaSeleccionado = data.idTamanioPizza;
     }
@@ -133,6 +140,12 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
       .subscribe(() => {
         this.leerTamanioPizzas();
       });
+
+      this.navigationSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerCategorias();
+      });      
 
    }
 
@@ -202,6 +215,23 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
 
         console.log(this.tamanioPizza);
         this.tamanioPizza;
+        this.cdr.detectChanges();
+      },
+      error: (error: any) => {
+        console.log('Error en la lectura del servicio');
+        console.log(error);
+      },
+    });
+  }
+
+    leerCategorias() {
+    this.categoriasSvc.dameListaCategorias().subscribe({
+      next: (res: any) => {
+        console.log('Servicio leido de forma exitosa');
+        console.log(res);
+        this.categorias = res;
+
+        console.log(this.categorias);
         this.cdr.detectChanges();
       },
       error: (error: any) => {
