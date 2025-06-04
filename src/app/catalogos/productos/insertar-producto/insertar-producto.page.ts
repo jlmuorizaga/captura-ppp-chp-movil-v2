@@ -18,6 +18,8 @@ import { TipoProductoService } from 'src/app/services/tipo-producto.service';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 import { GlobalService } from 'src/app/services/global.service';
+import { Categoria } from 'src/app/model/dto/categoria';
+import { CategoriaService } from 'src/app/services/categoria.service';
 
 @Component({
   selector: 'app-insertar-producto',
@@ -35,11 +37,13 @@ export class InsertarProductoPage implements OnInit{
   tipoProductos!: TipoProducto[];
   mensaje: string;
   cveSucursal: string = '';
+  categorias!: Categoria[];
 
   constructor(private tipoProductosSvc: TipoProductoService, private fb: FormBuilder,
     private productosSvc: ProductoService,
     private globalService: GlobalService,
-    private router: Router, private cdr: ChangeDetectorRef) {
+    private router: Router, private cdr: ChangeDetectorRef,
+  private categoriasSvc:CategoriaService,) {
 
     this.formularioProducto = this.fb.group({
       descripcionP: ['', Validators.required],
@@ -57,6 +61,11 @@ export class InsertarProductoPage implements OnInit{
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerTipoProductos();
+      });
+            this.navigationSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerCategorias();
       });
   }
 
@@ -83,6 +92,23 @@ export class InsertarProductoPage implements OnInit{
 
       }
     })
+  }
+
+    leerCategorias() {
+    this.categoriasSvc.dameListaCategorias().subscribe({
+      next: (res: any) => {
+        console.log('Servicio leido de forma exitosa');
+        console.log(res);
+        this.categorias = res;
+
+        console.log(this.categorias);
+        this.cdr.detectChanges();
+      },
+      error: (error: any) => {
+        console.log('Error en la lectura del servicio');
+        console.log(error);
+      },
+    });
   }
 
   insertaProducto() {
