@@ -42,7 +42,7 @@ export class ProductoService {
             item.nombreTP,
             item.rutaImagen,
             item.categoria1,
-            item.categora2,
+            item.categoria2,
             item.categoria3
           )
       ))

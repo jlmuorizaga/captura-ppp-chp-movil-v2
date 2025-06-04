@@ -29,8 +29,8 @@
             <h1>ID: {{id}}</h1>
             <form [formGroup]="formularioProducto" (ngSubmit)="editaProducto()">
               <ion-item>
-                <ion-input label="Descripción" label-placement="floating" formControlName="descripcion_p"
-                  [ngModel]="descripcion_p"></ion-input>
+                <ion-input label="Descripción" label-placement="floating" formControlName="descripcionP"
+                  [ngModel]="descripcionP"></ion-input>
               </ion-item>
 
               <ion-item>
@@ -38,12 +38,15 @@
                   [ngModel]="tamanio"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input label="Usa salsa" label-placement="floating" formControlName="usa_salsa"
-                  [ngModel]="usa_salsa"></ion-input>
+                <ion-select label="Usa Salsa" label-placement="floating" formControlName="usaSalsa" [ngModel]="usaSalsa">
+                  <ion-select-option value="S">Sí</ion-select-option>
+                  <ion-select-option value="N">No</ion-select-option>
+                </ion-select>
               </ion-item>
 
               <ion-item>
-                <ion-select label="Selecciona Nombre Tipo de Producto" label-placement="floating" formControlName="id_tipo_producto2" [(ngModel)]="id_tipo_producto_seleccionado">
+                <ion-select label="Selecciona Nombre Tipo de Producto" label-placement="floating"
+                  formControlName="id_tipo_producto2" [(ngModel)]="id_tipo_producto_seleccionado">
                   <ion-select-option *ngFor="let tipoproducto of tipoProductos" [value]="tipoproducto.id">
                     {{ tipoproducto.nombre}}
                   </ion-select-option>
@@ -51,25 +54,28 @@
               </ion-item>
 
               <ion-item>
-                <ion-input label="Ruta imagen" label-placement="floating" formControlName="ruta_imagen"
-                  [ngModel]="ruta_imagen"></ion-input>
+                <ion-input label="Ruta imagen" label-placement="floating" formControlName="rutaImagen"
+                  [ngModel]="rutaImagen"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-select label="Selecciona Categoria 1" label-placement="floating" formControlName="categoria1" [(ngModel)]="categoria1_seleccionado">
+                <ion-select label="Selecciona Categoria 1" label-placement="floating" formControlName="categoria1"
+                  [(ngModel)]="categoria1_seleccionado">
                   <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.codigo">
                     {{ categoria.codigo}} - {{categoria.nombre}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
-                <ion-select label="Selecciona Categoria 2" label-placement="floating" formControlName="categoria2" [(ngModel)]="categoria2_seleccionado">
+                <ion-select label="Selecciona Categoria 2" label-placement="floating" formControlName="categoria2"
+                  [(ngModel)]="categoria2_seleccionado">
                   <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.codigo">
                     {{ categoria.codigo}} - {{categoria.nombre}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
-                <ion-select label="Selecciona Categoria 3" label-placement="floating" formControlName="categoria3" [(ngModel)]="categoria3_seleccionado">
+                <ion-select label="Selecciona Categoria 3" label-placement="floating" formControlName="categoria3"
+                  [(ngModel)]="categoria3_seleccionado">
                   <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.codigo">
                     {{ categoria.codigo}} - {{categoria.nombre}}
                   </ion-select-option>

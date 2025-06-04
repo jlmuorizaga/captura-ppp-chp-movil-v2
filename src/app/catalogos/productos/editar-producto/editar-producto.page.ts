@@ -73,16 +73,16 @@ import { GlobalService } from 'src/app/services/global.service';
     SharedModule,
   ],
 })
-export class EditarProductoPage implements OnInit, OnDestroy {
+export class EditarProductoPage implements OnInit,OnDestroy {
   formularioProducto: FormGroup;
   datos!: Producto;
   id!: string;
-  descripcion_p!: string;
+  descripcionP!: string;
   tamanio!: string;
-  usa_salsa!: string;
-  id_tipo_producto!: string;
-  nombre_tp!: string;
-  ruta_imagen!: string;
+  usaSalsa!: string;
+  idTipoProducto!: string;
+  nombreTP!: string;
+  rutaImagen!: string;
   categoria1!: string;
   categoria2!: string;
   categoria3!: string;
@@ -112,23 +112,23 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       console.log(data); // Aquí tienes tus datos
 
       this.id = data.id;
-      this.descripcion_p = data.descripcion;
+      this.descripcionP = data.descripcionP;
       this.tamanio = data.tamanio;
-      this.usa_salsa = data.usa_salsa;
-      this.id_tipo_producto = data.id_tipo_producto;
-      this.nombre_tp = data.nombre_tp;
-      this.ruta_imagen = data.ruta_imagen;
+      this.usaSalsa = data.usaSalsa;
+      this.idTipoProducto = data.idTipoProducto;
+      this.nombreTP = data.nombreTP;
+      this.rutaImagen = data.rutaImagen;
       this.categoria1_seleccionado = data.categoria1;
       this.categoria2_seleccionado = data.categoria2;
       this.categoria3_seleccionado = data.categoria3;
-      this.id_tipo_producto_seleccionado = data.id_tipo_producto;
+      this.id_tipo_producto_seleccionado = data.idTipoProducto;
     }
     this.formularioProducto = this.fb.group({
-      descripcion_p: ['', Validators.required],
+      descripcionP: ['', Validators.required],
       tamanio: ['', Validators.required],
-      usa_salsa: ['', Validators.required],
+      usaSalsa: ['', Validators.required],
       id_tipo_producto2: ['', Validators.required],
-      ruta_imagen: ['', Validators.required],
+      rutaImagen: ['', Validators.required],
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
@@ -161,15 +161,26 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       console.log(this.formularioProducto.value);
       let producto: Producto = new Producto(
       this.id,
-      this.formularioProducto.value.descripcionP,
-      this.formularioProducto.value.tamanio,
-      this.formularioProducto.value.usaSalsa,
-      this.formularioProducto.value.id_tipo_producto2,
-      this.formularioProducto.value.nombreTP,
-      this.formularioProducto.value.rutaImagen,
-      this.formularioProducto.value.categoria1,
-      this.formularioProducto.value.categoria2,
-      this.formularioProducto.value.categoria3);
+      this.descripcionP,
+      this.tamanio,
+      this.usaSalsa,
+      this.idTipoProducto,
+      this.nombreTP,
+      this.rutaImagen,
+      this.categoria1,
+      this.categoria2,
+      this.categoria3);
+
+      producto.id=this.id;
+      producto.descripcionP=this.formularioProducto.value.descripcionP;
+      producto.tamanio=this.formularioProducto.value.tamanio;
+      producto.usaSalsa=this.formularioProducto.value.usaSalsa;
+      producto.idTipoProducto=this.formularioProducto.value.id_tipo_producto2;
+      producto.nombreTP=this.formularioProducto.value.nombreTP;
+      producto.rutaImagen=this.formularioProducto.value.rutaImagen;
+      producto.categoria1=this.formularioProducto.value.categoria1;
+      producto.categoria2=this.formularioProducto.value.categoria2;
+      producto.categoria3=this.formularioProducto.value.categoria3;
 
       this.productosSvc.editaProducto(producto).subscribe({
         next: (res: any) => {
