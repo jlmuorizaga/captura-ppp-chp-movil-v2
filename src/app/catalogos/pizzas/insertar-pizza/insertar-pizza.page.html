@@ -31,8 +31,8 @@
                 @if (especialidad){
                 <ion-select label="Especialidad" label-placement="floating"
                   formControlName="idEspecialidad">
-                  @for (espe of especialidad; track $index) {
-                  <ion-select-option value="{{espe.id}}">{{espe.nombre}}</ion-select-option>
+                  @for (espe of especialidadesNoCombinanTodosTamanios; track $index) {
+                  <ion-select-option value="{{espe.idEspecialidad}}">{{espe.nombreEspecialidad}}</ion-select-option>
                   }
                 </ion-select>
                 }

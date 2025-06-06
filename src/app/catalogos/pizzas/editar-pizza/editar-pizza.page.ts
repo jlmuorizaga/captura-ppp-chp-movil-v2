@@ -73,27 +73,26 @@ import { CategoriaService } from 'src/app/services/categoria.service';
     SharedModule,
   ],
 })
-export class EditarPizzaPage implements OnInit,OnDestroy{
+export class EditarPizzaPage implements OnInit, OnDestroy {
   formularioPizza: FormGroup;
-  datos!:Pizza;
-  idPizza!:string;
-  idEspecialidad!:string;
-  idTamanioPizza!:string;
-  aplica2x1!:string;
-  categoria1!:string;
-  categoria2!:string;
-  categoria3!:string;
-  idEspecialidadSeleccionada!:string;
-  idTamanioPizzaSeleccionado!:string;
+  datos!: Pizza;
+  idPizza!: string;
+  idEspecialidad!: string;
+  idTamanioPizza!: string;
+  aplica2x1!: string;
+  categoria1!: string;
+  categoria2!: string;
+  categoria3!: string;
+  idEspecialidadSeleccionada!: string;
+  idTamanioPizzaSeleccionado!: string;
   navigationSubscription: Subscription;
-  especialidad!:Especialidad[];
-  tamanioPizza!:TamanioPizza[];
+  especialidad!: Especialidad[];
+  tamanioPizza!: TamanioPizza[];
   cveSucursal: string = '';
   categorias!: Categoria[];
   categoria1_seleccionado!: string;
   categoria2_seleccionado!: string;
   categoria3_seleccionado!: string;
-
 
   constructor(
     private fb: FormBuilder,
@@ -103,7 +102,7 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
     private router: Router,
     private globalService: GlobalService,
     private cdr: ChangeDetectorRef,
-    private categoriasSvc:CategoriaService,
+    private categoriasSvc: CategoriaService
   ) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -122,8 +121,18 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
       this.idTamanioPizzaSeleccionado = data.idTamanioPizza;
     }
     this.formularioPizza = this.fb.group({
-      idEspecialidadFormulario: ['', Validators.required],
-      idTamanioFormulario: ['', Validators.required],
+      // Mayo 2025
+      // En estas dos variables, deshabilita el combo en el html y aparecen como etiquetas en el html, además de que en el html, se agregó
+      // en el ion-select, [disabled]="true"
+      idEspecialidadFormulario: [
+        { value: this.idEspecialidadSeleccionada, disabled: true },
+        Validators.required,
+      ],
+      idTamanioFormulario: [
+        { value: this.idTamanioPizzaSeleccionado, disabled: true },
+        Validators.required,
+      ],
+
       aplica2x1: ['', Validators.required],
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
@@ -135,19 +144,18 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
         this.leerEspecialidades();
       });
 
-      this.navigationSubscription = this.router.events
+    this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerTamanioPizzas();
       });
 
-      this.navigationSubscription = this.router.events
+    this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerCategorias();
-      });      
-
-   }
+      });
+  }
 
   ngOnInit() {
     this.cveSucursal = this.globalService.cveSucursalGlobal;
@@ -161,14 +169,19 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
   editaPizza() {
     if (this.formularioPizza.valid) {
       console.log(this.formularioPizza.value);
+
+
+      // Se agrega el método getRawValue() para que las variables deshabilitadas en el html idEspecialidad e idTamanioPizza, regresen su valor y se
+      // pueda grabar en la edición
+      const datos = this.formularioPizza.getRawValue(); // incluye todo, deshabilitado o no
       let pizza: Pizza = new Pizza();
       pizza.idPizza = this.idPizza;
-      pizza.idEspecialidad = this.formularioPizza.value.idEspecialidadFormulario;
-      pizza.idTamanioPizza = this.formularioPizza.value.idTamanioFormulario;
-      pizza.aplica2x1 = this.formularioPizza.value.aplica2x1;
-      pizza.categoria1 = this.formularioPizza.value.categoria1;
-      pizza.categoria2 = this.formularioPizza.value.categoria2;
-      pizza.categoria3 = this.formularioPizza.value.categoria3;
+      pizza.idEspecialidad = datos.idEspecialidadFormulario;
+      pizza.idTamanioPizza = datos.idTamanioFormulario;
+      pizza.aplica2x1 = datos.aplica2x1;
+      pizza.categoria1 = datos.categoria1;
+      pizza.categoria2 = datos.categoria2;
+      pizza.categoria3 = datos.categoria3;
 
       this.pizzasSvc.editaPizza(pizza).subscribe({
         next: (res: any) => {
@@ -224,7 +237,7 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
     });
   }
 
-    leerCategorias() {
+  leerCategorias() {
     this.categoriasSvc.dameListaCategorias().subscribe({
       next: (res: any) => {
         console.log('Servicio leido de forma exitosa');
@@ -240,5 +253,4 @@ export class EditarPizzaPage implements OnInit,OnDestroy{
       },
     });
   }
-
 }

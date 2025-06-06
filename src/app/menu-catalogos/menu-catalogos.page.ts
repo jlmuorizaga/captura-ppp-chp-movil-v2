@@ -20,7 +20,7 @@ import { SessionTimerComponent } from '../components/session-timer/session-timer
   templateUrl: './menu-catalogos.page.html',
   styleUrls: ['./menu-catalogos.page.scss'],
   standalone: true,
-  imports: [IonButtons, IonTitle, IonCardContent, IonCardTitle, IonCardHeader, 
+  imports: [IonButtons, IonTitle, IonCardContent, IonCardTitle, IonCardHeader,
     SessionTimerComponent,IonCardSubtitle, IonCard, IonIcon,NgFor,
     IonRow,
     IonCol,
@@ -51,26 +51,26 @@ export class MenuCatalogosPage{
     console.log('Sucursal==>', this.globalService.idSucursalGlobal);
   }
   catalogosPrincipales = [
-    { nombre: 'Catálogo Categorías', accion: () => this.saltaACategorias() },
-    { nombre: 'Catálogo Especialidades', accion: () => this.saltaAEspecialidades() },
-    { nombre: 'Catálogo Ingredientes', accion: () => this.saltaAIngredientes() },
-    { nombre: 'Catálogo Orillas', accion: () => this.saltaAOrillas() },
-    { nombre: 'Catálogo Pizzas', accion: () => this.saltaAPizzas() },
-    { nombre: 'Catálogo Productos', accion: () => this.saltaAProductos() },
-    { nombre: 'Catálogo Tipos de Producto', accion: () => this.saltaATipoProductos() },
-    { nombre: 'Catálogo Promoción Especial', accion: () => this.saltaAPromocionEspecial() },
-    { nombre: 'Catálogo Regiones', accion: () => this.saltaARegiones() },
-    { nombre: 'Catálogo Salsas', accion: () => this.saltaASalsas() },
-    { nombre: 'Catálogo Sucursales', accion: () => this.saltaASucursales() },
-    { nombre: 'Catálogo Tamaños Pizza', accion: () => this.saltaATamaniosPizza() }
+    { nombre: '01. Catálogo Categorías', accion: () => this.saltaACategorias() },
+    { nombre: '02. Catálogo Especialidades', accion: () => this.saltaAEspecialidades() },
+    { nombre: '03. Catálogo Ingredientes', accion: () => this.saltaAIngredientes() },
+    { nombre: '04. Catálogo Orillas', accion: () => this.saltaAOrillas() },
+    { nombre: '05. Catálogo Pizzas', accion: () => this.saltaAPizzas() },
+    { nombre: '06. Catálogo Productos', accion: () => this.saltaAProductos() },
+    { nombre: '07. Catálogo Tipos de Producto', accion: () => this.saltaATipoProductos() },
+    { nombre: '08. Catálogo Promoción Especial', accion: () => this.saltaAPromocionEspecial() },
+    { nombre: '09. Catálogo Regiones', accion: () => this.saltaARegiones() },
+    { nombre: '10. Catálogo Salsas', accion: () => this.saltaASalsas() },
+    { nombre: '11. Catálogo Sucursales', accion: () => this.saltaASucursales() },
+    { nombre: '12. Catálogo Tamaños Pizza', accion: () => this.saltaATamaniosPizza() }
   ];
 
   catalogosRelacionados = [
-    { nombre: 'Relación Orilla Sucursal', accion: () => this.saltaARelacionOrillaSucursal() },
-    { nombre: 'Relación Pizza Sucursal', accion: () => this.saltaARelacionPizzaSucursal() },
-    { nombre: 'Relación Producto Sucursal', accion: () => this.saltaARelacionProductoSucursal() },
-    { nombre: 'Relación Promoción Especial Sucursal', accion: () => this.saltaARelacionPES() },
-    { nombre: 'Relación Salsa Sucursal', accion: () => this.saltaARelacionSS() }
+    { nombre: '13. Relación Orilla Sucursal', accion: () => this.saltaARelacionOrillaSucursal() },
+    { nombre: '14. Relación Pizza Sucursal', accion: () => this.saltaARelacionPizzaSucursal() },
+    { nombre: '15. Relación Producto Sucursal', accion: () => this.saltaARelacionProductoSucursal() },
+    { nombre: '16. Relación Promoción Especial Sucursal', accion: () => this.saltaARelacionPES() },
+    { nombre: '17. Relación Salsa Sucursal', accion: () => this.saltaARelacionSS() }
   ];
   saltaACategorias() {
     this.router.navigateByUrl('/ppal-categoria');

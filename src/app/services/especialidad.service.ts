@@ -17,6 +17,10 @@ export class EspecialidadService {
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.especialidades + '/' + id);
   }
 
+   dameListaEspecialidadesNoCombinanTodosTamanios() {
+    return this.http.get(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.dameListadoEspecialidadesNoCombinanTodosLosTamanios)
+   }
+
   dameListaEspecialidades():Observable<Especialidad[]> {
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades');
     //

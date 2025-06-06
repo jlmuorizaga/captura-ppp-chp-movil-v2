@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { EspecialidadIDNombre } from 'src/app/model/dto/especialidad-id-nombre';
 import {
   FormGroup,
   FormBuilder,
@@ -82,6 +83,7 @@ export class InsertarPizzaPage implements OnInit {
   formularioPizza: FormGroup;
   navigationSubscription: Subscription;
   especialidad!: Especialidad[];
+  especialidadesNoCombinanTodosTamanios!: EspecialidadIDNombre[];
   tamanioPizza!: TamanioPizza[];
   mensaje: string;
   cveSucursal: string = '';
@@ -113,6 +115,12 @@ export class InsertarPizzaPage implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerEspecialidades();
+      });
+
+          this.navigationSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.leerEspecialidadesNoCombinanTodosTamanios();
       });
 
     this.navigationSubscription = this.router.events
@@ -150,6 +158,25 @@ export class InsertarPizzaPage implements OnInit {
       },
     });
   }
+
+    leerEspecialidadesNoCombinanTodosTamanios() {
+    this.especialidadSvc.dameListaEspecialidadesNoCombinanTodosTamanios().subscribe({
+      next: (res: any) => {
+        console.log('Servicio leido de forma exitosa');
+        console.log(res);
+        this.especialidadesNoCombinanTodosTamanios = res;
+
+        console.log(this.especialidadesNoCombinanTodosTamanios);
+        this.especialidadesNoCombinanTodosTamanios;
+        this.cdr.detectChanges();
+      },
+      error: (error: any) => {
+        console.log('Error en la lectura del servicio');
+        console.log(error);
+      },
+    });
+  }
+
 
   leerTamanioPizzas() {
     this.tamanioPizzaSvc.dameListaTamanioPizza().subscribe({

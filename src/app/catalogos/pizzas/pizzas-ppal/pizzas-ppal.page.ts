@@ -130,4 +130,7 @@ export class PizzasPpalPage implements OnInit,OnDestroy {
     })
 
   }
+    mostrarSiNo(valor: string): string {
+    return valor === 'S' ? 'Sí' : 'No';
+  }
 }

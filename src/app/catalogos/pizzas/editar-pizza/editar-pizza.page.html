@@ -29,7 +29,8 @@
             <h1>ID: {{idPizza}}</h1>
             <form [formGroup]="formularioPizza" (ngSubmit)="editaPizza()">
               <ion-item>
-                <ion-select label="Selecciona Especialidad Pizza" label-placement="floating" formControlName="idEspecialidadFormulario" [(ngModel)]="idEspecialidadSeleccionada">
+                <ion-select label="Selecciona Especialidad Pizza" label-placement="floating" formControlName="idEspecialidadFormulario" [(ngModel)]="idEspecialidadSeleccionada"
+                [disabled]="true">
                   <ion-select-option *ngFor="let esp of especialidad" [value]="esp.id">
                     {{ esp.nombre}}
                   </ion-select-option>
@@ -37,7 +38,8 @@
               </ion-item>
 
               <ion-item>
-                <ion-select label="Selecciona Tamaño Pizza" label-placement="floating" formControlName="idTamanioFormulario" [(ngModel)]="idTamanioPizzaSeleccionado">
+                <ion-select label="Selecciona Tamaño Pizza" label-placement="floating" formControlName="idTamanioFormulario" [(ngModel)]="idTamanioPizzaSeleccionado"
+                [disabled]="true">
                   <ion-select-option *ngFor="let tp of tamanioPizza" [value]="tp.id">
                     {{ tp.nombre}}
                   </ion-select-option>

@@ -5,6 +5,7 @@ export const environment = {
   puertoApiAdmonCatalogos:'3005',
   regiones:'/regiones',
   especialidades:'/especialidades',
+  dameListadoEspecialidadesNoCombinanTodosLosTamanios:'/especialidadesNoCombinanTodosTamanios',
   sucursales:'/sucursales',
   productos:'/productos',
   productos2:'/productos2',
