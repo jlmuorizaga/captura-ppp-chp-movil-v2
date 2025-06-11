@@ -94,7 +94,7 @@ export class InsertarEspecialidadPage implements OnInit {
       //id: ['', Validators.required],
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
-      imgURL: [''],
+      // imgURL: [''],
       orden: ['', Validators.required],
       cantidadIngredientes: ['', Validators.required],
       //es_de_un_ingrediente: ['', Validators.required],
@@ -116,15 +116,19 @@ export class InsertarEspecialidadPage implements OnInit {
     }
   }
 
-  uploadImage(subcarpeta: string): Promise<string> {
+  uploadImage(): Promise<string> {
     return new Promise((resolve, reject) => {
-      if (!this.selectedFile) return 'No se seleccionó archivo';
+      if (!this.selectedFile) {
+        reject('No se seleccionó archivo');
+        return;
+      }
+
       const formData = new FormData();
       formData.append('image', this.selectedFile);
-      formData.append('subcarpeta', subcarpeta); // enviamos la succarpeta
+
       this.http
         .post<{ message: string; url: string }>(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload',
+          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/especialidad',
           formData
         )
         .subscribe({
@@ -138,14 +142,24 @@ export class InsertarEspecialidadPage implements OnInit {
             reject(err);
           },
         });
-        return; // ✅ Esto soluciona el error TS7030
+      return; // ✅ Esto soluciona el error TS7030
     });
   }
 
   async insertaEspecialidad() {
-    if (this.formularioEspecialidad.valid) {
-      try{
-  const imageUrl = await this.uploadImage('especialidades'); // 🆕 especificas la subcarpeta
+    if (!this.formularioEspecialidad.valid) {
+      alert('Por favor completa todos los campos.');
+      return;
+    }
+
+    if (!this.selectedFile) {
+      alert('Por favor selecciona una imagen antes de enviar.');
+      return;
+    }
+
+    try {
+      const imageUrl = await this.uploadImage();
+
       const especialidad: Especialidad = new Especialidad(
         Utilerias.generaId(),
         this.formularioEspecialidad.value.nombre,
@@ -156,9 +170,12 @@ export class InsertarEspecialidadPage implements OnInit {
         this.formularioEspecialidad.value.esDeUnIngrediente
       );
 
-     this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
+      this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({
         next: () => {
           console.log('✅ Especialidad insertada');
+          this.formularioEspecialidad.reset();
+          this.selectedFile = null;
+          this.fileName = '';
           this.saltaAEspecialidades();
         },
         error: (error) => {
@@ -167,9 +184,9 @@ export class InsertarEspecialidadPage implements OnInit {
       });
     } catch (err) {
       console.error('❌ Error al subir imagen:', err);
+      alert('Error al subir la imagen');
     }
   }
-}
 
   saltaAEspecialidades() {
     this.router.navigateByUrl('/especialidades-ppal');
