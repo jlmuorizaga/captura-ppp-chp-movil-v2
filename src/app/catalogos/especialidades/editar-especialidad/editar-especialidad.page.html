@@ -30,9 +30,20 @@
                 <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes" [ngModel]="ingredientes"></ion-input>
               </ion-item>
 
+
               <ion-item>
-                <ion-input label="Img Url" label-placement="floating" formControlName="imgURL" [ngModel]="imgURL"></ion-input>
+                <ion-label position="stacked">Selecciona una imagen</ion-label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  style="padding: 10px; border: none; background: transparent;"
+                />
               </ion-item>
+                            
+              <!--ion-item>
+                <ion-input label="Img Url" label-placement="floating" formControlName="imgURL" [ngModel]="imgURL"></ion-input>
+              </ion-item-->
 
               <ion-item>
                 <ion-input label="Orden" label-placement="floating" formControlName="orden" [ngModel]="orden"></ion-input>

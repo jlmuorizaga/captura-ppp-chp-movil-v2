@@ -33,7 +33,7 @@ import {
 import { Router } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute, Route } from '@angular/router';
-//import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { GlobalService } from 'src/app/services/global.service';
 //import { from } from 'rxjs';
 
@@ -75,6 +75,9 @@ export class EditarEspecialidadPage implements OnInit {
   // Valores iniciales simulados
   nombre!: string;
   ingredientes!: string;
+  selectedFile: File | null = null;
+  fileName: string = '';
+  uploadResponse: string = '';
   imgURL!: string;
   orden!: string;
   cantidadIngredientes!: string;
@@ -84,7 +87,8 @@ export class EditarEspecialidadPage implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private globalService: GlobalService,
-    private especialidadSvc: EspecialidadService
+    private especialidadSvc: EspecialidadService,
+    private http: HttpClient
   ) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -106,7 +110,6 @@ export class EditarEspecialidadPage implements OnInit {
     this.formularioEspecialidad = this.fb.group({
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
-      imgURL: ['',Validators.required],
       orden: ['', Validators.required],
       cantidadIngredientes: ['', Validators.required],
       esDeUnIngrediente: ['', Validators.required],
@@ -117,15 +120,65 @@ export class EditarEspecialidadPage implements OnInit {
     this.cveSucursal = this.globalService.cveSucursalGlobal;
   }
 
-  editaEspecialidad() {
-    if (this.formularioEspecialidad.valid) {
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.fileName = file.name;
+      //this.img_url=file;
+    }
+  }
+
+
+  uploadImage(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if (!this.selectedFile) {
+        reject('No se seleccionó archivo');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('image', this.selectedFile);
+
+      this.http
+        .post<{ message: string; url: string }>(
+          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/especialidad',
+          formData
+        )
+        .subscribe({
+          next: (res) => {
+            this.uploadResponse = res.message;
+            this.imgURL = res.url;
+            resolve(res.url);
+          },
+          error: (err) => {
+            this.uploadResponse = 'Error al subir la imagen';
+            reject(err);
+          },
+        });
+      return; // ✅ Esto soluciona el error TS7030
+    });
+  }
+
+  async editaEspecialidad() {
+    if (!this.formularioEspecialidad.valid) {
+      this.formularioEspecialidad.markAllAsTouched(); // 🔍 fuerza el chequeo visual
+      alert('Por favor completa todos los campos.');
+      return;
+    }
+    if (!this.selectedFile) {
+      alert('Por favor selecciona una imagen antes de enviar.');
+      return;
+    }
+    try {
       console.log('FormularioEspecialidad=');
       console.log(this.formularioEspecialidad.value);
+      const imageUrl = await this.uploadImage();
       let especialidad: Especialidad = new Especialidad(
         this.id,
         this.nombre,
         this.ingredientes,
-        this.imgURL,
+        imageUrl,
         this.orden,
         this.cantidadIngredientes,
         this.esDeUnIngrediente);
@@ -133,7 +186,7 @@ export class EditarEspecialidadPage implements OnInit {
       especialidad.id = this.id;
       especialidad.nombre = this.formularioEspecialidad.value.nombre;
       especialidad.ingredientes = this.formularioEspecialidad.value.ingredientes;
-      especialidad.imgURL = this.formularioEspecialidad.value.imgURL;
+      especialidad.imgURL = imageUrl,
       especialidad.orden = this.formularioEspecialidad.value.orden;
       especialidad.cantidadIngredientes = this.formularioEspecialidad.value.cantidadIngredientes;
       especialidad.esDeUnIngrediente = this.formularioEspecialidad.value.esDeUnIngrediente;
@@ -149,6 +202,10 @@ export class EditarEspecialidadPage implements OnInit {
           console.log(error);
         },
       });
+    }
+    catch (err) {
+      console.error('❌ Error al subir imagen:', err);
+      alert('Error al subir la imagen');
     }
   }
   saltaAEspecialidades() {
