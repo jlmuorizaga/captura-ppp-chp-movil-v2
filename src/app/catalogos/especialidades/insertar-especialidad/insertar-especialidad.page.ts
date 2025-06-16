@@ -94,6 +94,7 @@ export class InsertarEspecialidadPage implements OnInit {
       //id: ['', Validators.required],
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
+      rutaImagen: ['', Validators.required],
       // imgURL: [''],
       orden: ['', Validators.required],
       cantidadIngredientes: ['', Validators.required],

@@ -130,7 +130,7 @@ export class ProductosPpalPage implements OnInit, OnDestroy {
     const alert = await this.alertController.create({
       header: 'Confirmación',
       message:
-        '¿Estás seguro de que deseas borrar el producto ' + producto.id + ' ?',
+        '¿Estás seguro de que deseas borrar el producto ' + producto.descripcionP + ', '+producto.tamanio+ ' ?',
       buttons: [
         {
           text: 'Cancelar',
