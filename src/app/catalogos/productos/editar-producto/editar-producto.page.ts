@@ -42,6 +42,7 @@ import { Subscription } from 'rxjs';
 import { TipoProducto } from 'src/app/model/dto/tipo-producto';
 import { filter } from 'rxjs/operators';
 import { GlobalService } from 'src/app/services/global.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-editar-producto',
@@ -71,9 +72,10 @@ import { GlobalService } from 'src/app/services/global.service';
     CommonModule,
     FormsModule,
     SharedModule,
+    IonLabel
   ],
 })
-export class EditarProductoPage implements OnInit,OnDestroy {
+export class EditarProductoPage implements OnInit, OnDestroy {
   formularioProducto: FormGroup;
   datos!: Producto;
   id!: string;
@@ -82,6 +84,9 @@ export class EditarProductoPage implements OnInit,OnDestroy {
   usaSalsa!: string;
   idTipoProducto!: string;
   nombreTP!: string;
+  selectedFile: File | null = null;
+  fileName: string = '';
+  uploadResponse: string = '';
   rutaImagen!: string;
   categoria1!: string;
   categoria2!: string;
@@ -101,9 +106,10 @@ export class EditarProductoPage implements OnInit,OnDestroy {
     private productosSvc: ProductoService,
     private router: Router,
     private tipoProductosSvc: TipoProductoService,
-    private categoriasSvc:CategoriaService,
+    private categoriasSvc: CategoriaService,
     private globalService: GlobalService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private http: HttpClient
   ) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
@@ -128,7 +134,7 @@ export class EditarProductoPage implements OnInit,OnDestroy {
       tamanio: ['', Validators.required],
       usaSalsa: ['', Validators.required],
       id_tipo_producto2: ['', Validators.required],
-      rutaImagen: ['', Validators.required],
+      //rutaImagen: ['', Validators.required],
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
@@ -139,7 +145,7 @@ export class EditarProductoPage implements OnInit,OnDestroy {
         this.leerTipoProductos();
       });
 
-      this.navigationSubscription = this.router.events
+    this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerCategorias();
@@ -156,31 +162,81 @@ export class EditarProductoPage implements OnInit,OnDestroy {
     }
   }
 
-  editaProducto() {
-    if (this.formularioProducto.valid) {
-      console.log(this.formularioProducto.value);
-      let producto: Producto = new Producto(
-      this.id,
-      this.descripcionP,
-      this.tamanio,
-      this.usaSalsa,
-      this.idTipoProducto,
-      this.nombreTP,
-      this.rutaImagen,
-      this.categoria1,
-      this.categoria2,
-      this.categoria3);
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.fileName = file.name;
+      //this.img_url=file;
+    }
+  }
 
-      producto.id=this.id;
-      producto.descripcionP=this.formularioProducto.value.descripcionP;
-      producto.tamanio=this.formularioProducto.value.tamanio;
-      producto.usaSalsa=this.formularioProducto.value.usaSalsa;
-      producto.idTipoProducto=this.formularioProducto.value.id_tipo_producto2;
-      producto.nombreTP=this.formularioProducto.value.nombreTP;
-      producto.rutaImagen=this.formularioProducto.value.rutaImagen;
-      producto.categoria1=this.formularioProducto.value.categoria1;
-      producto.categoria2=this.formularioProducto.value.categoria2;
-      producto.categoria3=this.formularioProducto.value.categoria3;
+
+  uploadImage(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if (!this.selectedFile) {
+        reject('No se seleccionó archivo');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('image', this.selectedFile);
+
+      this.http
+        .post<{ message: string; url: string }>(
+          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/producto',
+          formData
+        )
+        .subscribe({
+          next: (res) => {
+            this.uploadResponse = res.message;
+            this.rutaImagen = res.url;
+            resolve(res.url);
+          },
+          error: (err) => {
+            this.uploadResponse = 'Error al subir la imagen';
+            reject(err);
+          },
+        });
+      return; // ✅ Esto soluciona el error TS7030
+    });
+  }
+
+  async editaProducto() {
+    if (!this.formularioProducto.valid) {
+      this.formularioProducto.markAllAsTouched();
+      alert('Por favor completa todos los campos.');
+      return;
+    }
+    if (!this.selectedFile) {
+      alert('Por favor selecciona una imagen antes de enviar.');
+      return;
+    }
+    try {
+      console.log(this.formularioProducto.value);
+      const imageUrl = await this.uploadImage();
+      let producto: Producto = new Producto(
+        this.id,
+        this.descripcionP,
+        this.tamanio,
+        this.usaSalsa,
+        this.idTipoProducto,
+        this.nombreTP,
+        this.rutaImagen,
+        this.categoria1,
+        this.categoria2,
+        this.categoria3);
+
+      producto.id = this.id;
+      producto.descripcionP = this.formularioProducto.value.descripcionP;
+      producto.tamanio = this.formularioProducto.value.tamanio;
+      producto.usaSalsa = this.formularioProducto.value.usaSalsa;
+      producto.idTipoProducto = this.formularioProducto.value.id_tipo_producto2;
+      producto.nombreTP = this.formularioProducto.value.nombreTP;
+      producto.rutaImagen = imageUrl;
+      producto.categoria1 = this.formularioProducto.value.categoria1;
+      producto.categoria2 = this.formularioProducto.value.categoria2;
+      producto.categoria3 = this.formularioProducto.value.categoria3;
 
       this.productosSvc.editaProducto(producto).subscribe({
         next: (res: any) => {
@@ -194,6 +250,12 @@ export class EditarProductoPage implements OnInit,OnDestroy {
         },
       });
     }
+    catch (err) {
+      console.error('❌ Error al subir imagen:', err);
+      alert('Error al subir la imagen');
+
+    }
+
   }
 
   saltaAProductos() {

@@ -54,8 +54,13 @@
               </ion-item>
 
               <ion-item>
-                <ion-input label="Ruta imagen" label-placement="floating" formControlName="rutaImagen"
-                  [ngModel]="rutaImagen"></ion-input>
+                <ion-label position="stacked">Selecciona una imagen</ion-label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  style="padding: 10px; border: none; background: transparent;"
+                />
               </ion-item>
               <ion-item>
                 <ion-select label="Selecciona Categoria 1" label-placement="floating" formControlName="categoria1"
