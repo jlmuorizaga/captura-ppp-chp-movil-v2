@@ -17,8 +17,8 @@
   <ion-item>
     <ion-label>Producto</ion-label>
     <ion-select [(ngModel)]="productoSeleccionado" placeholder="Selecciona producto">
-      <ion-select-option *ngFor="let prod of productosDisponibles" [value]="prod">
-        {{ prod }}
+      <ion-select-option *ngFor="let prod of categorias" [value]="prod.codigo">
+        {{ prod.codigo}} - {{prod.nombre}}
       </ion-select-option>
     </ion-select>
   </ion-item>
