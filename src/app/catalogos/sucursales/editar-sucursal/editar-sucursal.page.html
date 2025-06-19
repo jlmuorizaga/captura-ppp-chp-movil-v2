@@ -77,8 +77,12 @@
               </ion-item>
 
               <ion-item>
-                <ion-input label="Venta Activa" label-placement="floating" formControlName="ventaActiva"
-                  [ngModel]="ventaActiva"></ion-input>
+                <!--ion-input label="" label-placement="floating" formControlName="ventaActiva"
+                  [ngModel]="ventaActiva"></ion-input-->
+                  <ion-select label="Venta Activa" label-placement="floating" formControlName="ventaActiva" [ngModel]="ventaActiva">
+                    <ion-select-option value="S">Sí</ion-select-option>
+                    <ion-select-option value="N">No</ion-select-option>
+                  </ion-select>                  
               </ion-item>
               <ion-item>
                 <ion-input label="PK" label-placement="floating" formControlName="pk"

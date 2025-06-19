@@ -151,4 +151,23 @@ export class RelacionPizzaSucursalPpalPage implements OnInit,OnDestroy {
     await alert.present();
   }
 
+    async saltaAEditarRegistroPizzaSucursal(idPizza:string, idSucursal:string){
+    console.log('Estoy en editar registro pizza sucursal id='+idPizza+' idSucursal='+idSucursal)
+    this.relacionPizzaSucursalSvc.dameRegistroRelacionPizzaSucursal(idPizza,idSucursal).subscribe({
+      next:(res:any)=>{
+        console.log('Registro Relacion Pizza Sucursal regresada de forma exitosa')
+        console.log(res);
+        this.router.navigate(['/editar-relacion-pizza-sucursal'],{state:{data:res}});
+
+
+      },
+      error:(error:any)=>{
+        console.log('Error en la solicitud del registro relacion pizza sucursal')
+        console.log(error)
+
+      }
+    })
+
+  }
+
 }
