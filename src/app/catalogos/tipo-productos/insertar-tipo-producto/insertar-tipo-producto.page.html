@@ -33,9 +33,18 @@
               <ion-item>
                 <ion-input label="Descripción" label-placement="floating" formControlName="descripcion"></ion-input>
               </ion-item>
-              <ion-item>
-                <ion-input label="Img URL" label-placement="floating" formControlName="imgURL"></ion-input>
+                 <ion-item>
+                <ion-label position="stacked">Selecciona una imagen</ion-label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  style="padding: 10px; border: none; background: transparent;"
+                />
               </ion-item>
+              <!--ion-item>
+                <ion-input label="Img URL" label-placement="floating" formControlName="imgURL"></ion-input>
+              </!--ion-item-->
               <ion-item>
                 <ion-input label="Orden" label-placement="floating" formControlName="orden"></ion-input>
               </ion-item>
