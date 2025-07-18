@@ -113,6 +113,7 @@ export class EditarEspecialidadPage implements OnInit {
       orden: ['', Validators.required],
       cantidadIngredientes: ['', Validators.required],
       esDeUnIngrediente: ['', Validators.required],
+      //imgURL:['',Validators.required],
     });
   }
 
@@ -178,7 +179,7 @@ export class EditarEspecialidadPage implements OnInit {
         this.id,
         this.nombre,
         this.ingredientes,
-        imageUrl,
+        this.imgURL,
         this.orden,
         this.cantidadIngredientes,
         this.esDeUnIngrediente);

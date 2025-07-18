@@ -48,17 +48,22 @@
         <ion-item>
           <ion-input label="Precio" label-placement="floating" formControlName="precio" [ngModel]="precio"></ion-input>
         </ion-item>
-        <ion-item>
+        
 
           <ion-select label="Activa" label-placement="floating" formControlName="activa" [ngModel]="activa">
             <ion-select-option value="S">Sí</ion-select-option>
             <ion-select-option value="N">No</ion-select-option>
           </ion-select>
 
-        </ion-item>
-        <ion-item>
-          <ion-input label="Img URL" label-placement="floating" formControlName="imgURL" [ngModel]="imgURL"></ion-input>
-        </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Selecciona una imagen</ion-label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  (change)="onFileSelected($event)"
+                  style="padding: 10px; border: none; background: transparent;"
+                />
+              </ion-item>
 
 
         <div class="button-container">
