@@ -28,6 +28,8 @@ import {
   IonCardContent,
   IonLabel,
   IonItem,
+  IonSelectOption,
+  IonSelect
 } from '@ionic/angular/standalone';
 
 import { SharedModule } from 'src/app/shared/shared/shared.module';
@@ -65,6 +67,8 @@ import { ModalController } from '@ionic/angular/standalone';
     IonHeader,
     IonTitle,
     IonToolbar,
+    IonSelectOption,
+    IonSelect
   ],
 })
 export class InsertarPromocionEspecialPage implements OnInit {

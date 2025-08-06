@@ -24,14 +24,15 @@
     </ion-card-header>
     <ion-card-content>
       <h1>
-        ID:  {{idPromocion}}
+        ID: {{idPromocion}}
       </h1>
       <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="editaPromocionEspecial()">
         <ion-item>
           <ion-input label="Nombre" label-placement="floating" formControlName="nombre" [ngModel]="nombre"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Descripción" label-placement="floating" formControlName="descripcion" [ngModel]="descripcion"></ion-input>
+          <ion-input label="Descripción" label-placement="floating" formControlName="descripcion"
+            [ngModel]="descripcion"></ion-input>
         </ion-item>
         <ion-item>
           <ion-select label="Tipo" label-placement="floating" formControlName="tipo" [ngModel]="tipo">
@@ -43,27 +44,23 @@
           <ion-input label="Tipo" label-placement="floating" formControlName="tipo" [ngModel]="tipo"></ion-input>
         </!--ion-item-->
         <ion-item>
-          <ion-input label="Definición" label-placement="floating" formControlName="definicion" [ngModel]="definicion"></ion-input>
+          <ion-input label="Definición" label-placement="floating" formControlName="definicion"
+            [ngModel]="definicion"></ion-input>
         </ion-item>
         <ion-item>
           <ion-input label="Precio" label-placement="floating" formControlName="precio" [ngModel]="precio"></ion-input>
         </ion-item>
-        
-
+        <ion-item>
           <ion-select label="Activa" label-placement="floating" formControlName="activa" [ngModel]="activa">
             <ion-select-option value="S">Sí</ion-select-option>
             <ion-select-option value="N">No</ion-select-option>
           </ion-select>
-
-              <ion-item>
-                <ion-label position="stacked">Selecciona una imagen</ion-label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  (change)="onFileSelected($event)"
-                  style="padding: 10px; border: none; background: transparent;"
-                />
-              </ion-item>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Selecciona una imagen</ion-label>
+          <input type="file" accept="image/*" (change)="onFileSelected($event)"
+            style="padding: 10px; border: none; background: transparent;" />
+        </ion-item>
 
 
         <div class="button-container">
