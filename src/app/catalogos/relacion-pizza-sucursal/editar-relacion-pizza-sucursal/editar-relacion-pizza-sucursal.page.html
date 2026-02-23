@@ -1,13 +1,72 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>editar-relacion-pizza-sucursal</ion-title>
+  <ion-toolbar color="custom">
+    <!-- Botón de regreso (izquierda) -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center">
+      Edita Relación Pizza Sucursal
+    </ion-title>
+
+    <!-- Sucursal a la derecha -->
+    <div slot="end" style="padding-right: 10px; color: white;">
+      Sucursal: {{cveSucursal}}
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editar-relacion-pizza-sucursal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Editar Relación Orilla Sucursal</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>
+              ID: {{idPizza}}
+            </h2>
+            <h2>
+              Nombre Especialidad: {{nombreEspecialidad}}
+            </h2>
+            <h2>
+              Tamaño: {{tamanioPizza}}
+            </h2>
+            <h2>
+              Sucursal: {{claveSucursal}}
+            </h2>
+
+
+<form [formGroup]="formularioRPS" (ngSubmit)="editaRPS()">
+  <ion-item>
+    <ion-input
+      label="Precio X1"
+      label-placement="floating"
+      formControlName="precioX1">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      label="Precio X2"
+      label-placement="floating"
+      formControlName="precioX2">
+    </ion-input>
+  </ion-item>
+
+  <div class="button-container">
+    <ion-button type="submit" class="centered-button" [disabled]="!formularioRPS.valid">
+      Edita Relación Pizza Sucursal
+    </ion-button>
+  </div>
+</form>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

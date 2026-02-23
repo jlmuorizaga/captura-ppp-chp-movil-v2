@@ -11,9 +11,9 @@ export class RelacionPizzaSucursalService {
   constructor(private http:HttpClient) { }
 
   dameRegistroRelacionPizzaSucursal(idPizza: string,idSucursal:string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pizza_sucursal + '/' + idPizza+'/'+idSucursal);
+    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pizza_sucursal +'/'+idSucursal+ '/' + idPizza);
   }
-  
+
   dameListaRelacionPizzaSucursal(idSucursal:string) {
     return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pizza_sucursal +'/'+idSucursal);
   }
@@ -28,4 +28,20 @@ export class RelacionPizzaSucursalService {
     return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pizza_sucursal + '/' + idPizza+'/'+idSucursal);
 
   }
+
+  editaRegistroRPS(rps: RelacionPizzaSucursal) {
+  return this.http.put(
+    environment.baseUrl +
+      ':' +
+      environment.puertoApiAdmonCatalogos +
+      environment.relacion_pizza_sucursal +
+      '/' +
+      rps.idPizza,
+    {
+      idSucursal: rps.idSucursal,
+      precioX1: rps.precioX1,
+      precioX2: rps.precioX2,
+    }
+  );
+}
 }
