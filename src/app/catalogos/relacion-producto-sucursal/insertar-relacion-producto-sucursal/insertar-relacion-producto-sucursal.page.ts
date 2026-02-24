@@ -81,7 +81,7 @@ relacionProductoSucursalNoEstaEnProducto!: RelacionProductoSucursalNoEstaEnProdu
         rps.idSucursal=this.idSucursal;
         rps.precio=this.formularioRPS.value.precio;
 
-       this.relacionProductoSucursalSvc.insertaRelacionProductoSucursal(rps).subscribe({
+       this.relacionProductoSucursalSvc.insertaRegistroRelacionProductoSucursal(rps).subscribe({
           next: (res: any) => {
             console.log('Registro RPS insertada de forma exitosa')
             console.log(res);

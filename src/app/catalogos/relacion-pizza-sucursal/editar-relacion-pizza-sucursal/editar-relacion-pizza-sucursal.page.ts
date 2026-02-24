@@ -67,6 +67,7 @@ export class EditarRelacionPizzaSucursalPage implements OnInit {
   tamanioPizza!: string;
   idSucursal!: string;
   claveSucursal!: string;
+  tipoProductoNombre!:string;
 
   precioX1!: string;
   precioX2!: string;
@@ -95,6 +96,7 @@ export class EditarRelacionPizzaSucursalPage implements OnInit {
       this.claveSucursal = data.claveSucursal ?? '';
       this.precioX1 = data.precioX1 ?? '';
       this.precioX2 = data.precioX2 ?? '';
+
 
       this.formularioRPS.patchValue({
         precioX1: this.precioX1,
