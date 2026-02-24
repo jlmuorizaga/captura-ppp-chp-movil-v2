@@ -83,6 +83,7 @@ export class EditarPizzaPage implements OnInit, OnDestroy {
   categoria1!: string;
   categoria2!: string;
   categoria3!: string;
+  aplica_orilla_queso!: string;
   idEspecialidadSeleccionada!: string;
   idTamanioPizzaSeleccionado!: string;
   navigationSubscription: Subscription;
@@ -117,6 +118,7 @@ export class EditarPizzaPage implements OnInit, OnDestroy {
       this.categoria1_seleccionado = data.categoria1;
       this.categoria2_seleccionado = data.categoria2;
       this.categoria3_seleccionado = data.categoria3;
+      this.aplica_orilla_queso = data.aplica_orilla_queso;
       this.idEspecialidadSeleccionada = data.idEspecialidad;
       this.idTamanioPizzaSeleccionado = data.idTamanioPizza;
     }
@@ -137,6 +139,7 @@ export class EditarPizzaPage implements OnInit, OnDestroy {
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
+      aplica_orilla_queso: ['', Validators.required],
     });
     this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -182,6 +185,7 @@ export class EditarPizzaPage implements OnInit, OnDestroy {
       pizza.categoria1 = datos.categoria1;
       pizza.categoria2 = datos.categoria2;
       pizza.categoria3 = datos.categoria3;
+      pizza.aplica_orilla_queso = datos.aplica_orilla_queso;
 
       this.pizzasSvc.editaPizza(pizza).subscribe({
         next: (res: any) => {

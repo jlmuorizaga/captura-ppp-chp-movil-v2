@@ -3,6 +3,7 @@ import { PromocionEspecialService } from 'src/app/services/promocion-especial.se
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 import {
   IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonCol,
   IonRow, IonGrid, IonButton, IonInput, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
@@ -98,23 +99,22 @@ export class EditarPromocionEspecialPage implements OnInit {
 
       const formData = new FormData();
       formData.append('image', this.selectedFile);
+      //const uploadUrl = `${environment.baseUrl}/upload/promocion`;
+      const uploadUrl = `http://admin.cheesepizza.com.mx/upload/promocion`;
 
-      this.http
-        .post<{ message: string; url: string }>(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/promocion',
-          formData
-        )
-        .subscribe({
-          next: (res) => {
-            this.uploadResponse = res.message;
-            this.imgURL = res.url;
-            resolve(res.url);
-          },
-          error: (err) => {
-            this.uploadResponse = 'Error al subir la imagen';
-            reject(err);
-          },
-        });
+this.http
+  .post<{ message: string; url: string }>(uploadUrl, formData)
+  .subscribe({
+    next: (res) => {
+      this.uploadResponse = res.message;
+      this.imgURL = res.url;
+      resolve(res.url);
+    },
+    error: (err) => {
+      this.uploadResponse = 'Error al subir la imagen';
+      reject(err);
+    },
+  });
       return; // ✅ Esto soluciona el error TS7030
     });
   }
@@ -173,7 +173,7 @@ export class EditarPromocionEspecialPage implements OnInit {
        catch (err) {
       console.error('❌ Error al subir imagen:', err);
       alert('Error al subir la imagen');
-    } 
+    }
   }
 
   saltaAPromocionEspecial() {

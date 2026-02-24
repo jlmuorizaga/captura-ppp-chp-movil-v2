@@ -11,8 +11,8 @@ export class RelacionEtpsService {
   constructor(private http: HttpClient) { }
 
   dameListaRelacionEspecialidadTamanioPrecioSucursal(id:string){
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_etps+'/'+id);
+    return this.http.get(environment.baseApiCatalogos + environment.relacion_etps+'/'+id);
   }
-  
+
 }
 

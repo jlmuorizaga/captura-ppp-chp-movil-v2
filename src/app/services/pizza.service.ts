@@ -10,19 +10,19 @@ export class PizzaService {
 
   constructor(private http: HttpClient) { }
   damePizza(idPizza: string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.pizzas + '/' + idPizza);
+    return this.http.get(environment.baseApiCatalogos + environment.pizzas + '/' + idPizza);
   }
   dameListaPizzas() {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.pizzas);
+    return this.http.get(environment.baseApiCatalogos + environment.pizzas);
   }
   borraPizza(idPizza: string) {
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.pizzas + '/' + idPizza);
+    return this.http.delete(environment.baseApiCatalogos + environment.pizzas + '/' + idPizza);
   }
   insertaPizza(pizza:Pizza) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.pizzas,pizza);
+    return this.http.post(environment.baseApiCatalogos + environment.pizzas,pizza);
   }
   editaPizza(pizza: Pizza) {
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.pizzas + '/' + pizza.idPizza,pizza);
+    return this.http.put(environment.baseApiCatalogos + environment.pizzas + '/' + pizza.idPizza,pizza);
   }
 
 }

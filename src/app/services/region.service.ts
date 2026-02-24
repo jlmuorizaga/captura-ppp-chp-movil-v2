@@ -14,23 +14,23 @@ export class RegionService {
 
   dameRegion(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones + '/' + id);
+    return this.http.get(environment.baseApiCatalogos + environment.regiones + '/' + id);
   }
 
   dameListaRegiones() {
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones');
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones);
+    return this.http.get(environment.baseApiCatalogos + environment.regiones);
   }
   borraRegion(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones + '/' + id);
+    return this.http.delete(environment.baseApiCatalogos + environment.regiones + '/' + id);
   }
   insertaRegion(region:Region) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones,region);
+    return this.http.post(environment.baseApiCatalogos + environment.regiones,region);
   }
 
   editaRegion(region: Region) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.regiones + '/' + region.idRegion,region);
+    return this.http.put(environment.baseApiCatalogos + environment.regiones + '/' + region.idRegion,region);
   }
 }

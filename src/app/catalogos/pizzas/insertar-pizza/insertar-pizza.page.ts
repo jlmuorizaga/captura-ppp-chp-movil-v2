@@ -109,6 +109,7 @@ export class InsertarPizzaPage implements OnInit {
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
+      aplica_orilla_queso: ['S', Validators.required],
     });
     this.mensaje = 'Estoy en el constructor';
     this.navigationSubscription = this.router.events

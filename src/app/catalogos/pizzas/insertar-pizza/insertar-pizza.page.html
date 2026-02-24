@@ -29,8 +29,7 @@
             <form [formGroup]="formularioPizza" (ngSubmit)="insertaPizza()">
               <ion-item>
                 @if (especialidad){
-                <ion-select label="Especialidad" label-placement="floating"
-                  formControlName="idEspecialidad">
+                <ion-select label="Especialidad" label-placement="floating" formControlName="idEspecialidad">
                   @for (espe of especialidadesNoCombinanTodosTamanios; track $index) {
                   <ion-select-option value="{{espe.idEspecialidad}}">{{espe.nombreEspecialidad}}</ion-select-option>
                   }
@@ -39,8 +38,7 @@
               </ion-item>
               <ion-item>
                 @if (tamanioPizza){
-                <ion-select label="Tamaño Pizza" label-placement="floating"
-                  formControlName="idTamanioPizza">
+                <ion-select label="Tamaño Pizza" label-placement="floating" formControlName="idTamanioPizza">
                   @for (tp of tamanioPizza; track $index) {
                   <ion-select-option value="{{tp.id}}">{{tp.nombre}}</ion-select-option>
                   }
@@ -52,8 +50,6 @@
                   <ion-select-option value="S">Sí</ion-select-option>
                   <ion-select-option value="N">No</ion-select-option>
                 </ion-select>
-
-                <!--ion-input label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1"></!--ion-input-->
               </ion-item>
               <ion-item>
                 <ion-select label="Selecciona Categoria 1" label-placement="floating" formControlName="categoria1">
@@ -76,9 +72,14 @@
                   </ion-select-option>
                 </ion-select>
               </ion-item>
+              <ion-item>
+                <ion-select label="Aplica Orilla de Queso" label-placement="floating" formControlName="aplica_orilla_queso">
+                  <ion-select-option value="S">Sí</ion-select-option>
+                  <ion-select-option value="N">No</ion-select-option>
+                </ion-select>
+              </ion-item>
               <div class="button-container">
-                <ion-button type="submit" class="centered-button" [disabled]="!formularioPizza.valid"
-                  color="success">
+                <ion-button type="submit" class="centered-button" [disabled]="!formularioPizza.valid" color="success">
                   Inserta Pizza
                 </ion-button>
               </div>

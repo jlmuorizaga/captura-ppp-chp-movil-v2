@@ -139,11 +139,15 @@ export class EditarEspecialidadPage implements OnInit {
       }
 
       const formData = new FormData();
-      formData.append('image', this.selectedFile);
+      //formData.append('file', this.selectedFile, this.selectedFile.name);
+      //formData.append('file', this.selectedFile, this.selectedFile.name);
+      //formData.append('image', this.selectedFile, this.selectedFile.name);
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+      const uploadUrl = `http://admin.cheesepizza.com.mx/upload/especialidad`;
 
       this.http
         .post<{ message: string; url: string }>(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/especialidad',
+          uploadUrl,
           formData
         )
         .subscribe({

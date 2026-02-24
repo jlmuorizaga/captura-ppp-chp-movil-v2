@@ -11,21 +11,21 @@ export class CategoriaService {
   constructor(private http: HttpClient) { }
 
   dameCategoria(codigo: string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.categorias + '/' + codigo);
+    return this.http.get(environment.baseApiCatalogos + environment.categorias + '/' + codigo);
   }
 
   dameListaCategorias() {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.categorias);
+    return this.http.get(environment.baseApiCatalogos + environment.categorias);
   }
   borraCategoria(codigo: string) {
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.categorias + '/' + codigo);
+    return this.http.delete(environment.baseApiCatalogos + environment.categorias + '/' + codigo);
 
   }
   insertaCategoria(categoria:Categoria) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.categorias,categoria);
+    return this.http.post(environment.baseApiCatalogos + environment.categorias,categoria);
   }
 
   editaCategoria(categoria: Categoria) {
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.categorias + '/' + categoria.codigo,categoria);
+    return this.http.put(environment.baseApiCatalogos + environment.categorias + '/' + categoria.codigo,categoria);
   }
 }

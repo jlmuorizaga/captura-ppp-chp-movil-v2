@@ -12,8 +12,7 @@ export class RelacionProductoSucursalService {
 
   dameRegistroRelacionProductoSucursal(idProducto: string, idSucursal: string) {
     return this.http.get(
-      environment.baseUrl + ':' +
-      environment.puertoApiAdmonCatalogos +
+      environment.baseApiCatalogos +
       environment.relacion_producto_sucursal +
       '/' + idProducto + '/' + idSucursal
     );
@@ -21,8 +20,7 @@ export class RelacionProductoSucursalService {
 
   dameListaRelacionProductoSucursal(idSucursal: string) {
     return this.http.get(
-      environment.baseUrl + ':' +
-      environment.puertoApiAdmonCatalogos +
+      environment.baseApiCatalogos +
       environment.relacion_producto_sucursal +
       '/' + idSucursal
     );
@@ -30,8 +28,7 @@ export class RelacionProductoSucursalService {
 
   dameListadoProductosNoEstanEnRPS(idSucursal: string) {
     return this.http.get(
-      environment.baseUrl + ':' +
-      environment.puertoApiAdmonCatalogos +
+      environment.baseApiCatalogos +
       environment.dameListadoProductosNoEstanEnRPS +
       '/' + idSucursal
     );
@@ -39,16 +36,14 @@ export class RelacionProductoSucursalService {
 
   dameListaProductos() {
     return this.http.get(
-      environment.baseUrl + ':' +
-      environment.puertoApiAdmonCatalogos +
+      environment.baseApiCatalogos +
       environment.productos
     );
   }
 
   borraRegistroRelacionProductoSucursal(idProducto: string, idSucursal: string) {
     return this.http.delete(
-      environment.baseUrl + ':' +
-      environment.puertoApiAdmonCatalogos +
+      environment.baseApiCatalogos +
       environment.relacion_producto_sucursal +
       '/' + idProducto + '/' + idSucursal
     );
@@ -58,8 +53,7 @@ export class RelacionProductoSucursalService {
     registroRelacionProductoSucursal: RelacionProductoSucursal
   ) {
     return this.http.post(
-      environment.baseUrl + ':' +
-      environment.puertoApiAdmonCatalogos +
+      environment.baseApiCatalogos +
       environment.relacion_producto_sucursal,
       registroRelacionProductoSucursal
     );

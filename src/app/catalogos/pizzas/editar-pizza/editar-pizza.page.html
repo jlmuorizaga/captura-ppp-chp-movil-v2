@@ -29,8 +29,8 @@
             <h1>ID: {{idPizza}}</h1>
             <form [formGroup]="formularioPizza" (ngSubmit)="editaPizza()">
               <ion-item>
-                <ion-select label="Selecciona Especialidad Pizza" label-placement="floating" formControlName="idEspecialidadFormulario" [(ngModel)]="idEspecialidadSeleccionada"
-                [disabled]="true">
+                <ion-select label="Selecciona Especialidad Pizza" label-placement="floating"
+                  formControlName="idEspecialidadFormulario" [(ngModel)]="idEspecialidadSeleccionada" [disabled]="true">
                   <ion-select-option *ngFor="let esp of especialidad" [value]="esp.id">
                     {{ esp.nombre}}
                   </ion-select-option>
@@ -38,42 +38,49 @@
               </ion-item>
 
               <ion-item>
-                <ion-select label="Selecciona Tamaño Pizza" label-placement="floating" formControlName="idTamanioFormulario" [(ngModel)]="idTamanioPizzaSeleccionado"
-                [disabled]="true">
+                <ion-select label="Selecciona Tamaño Pizza" label-placement="floating"
+                  formControlName="idTamanioFormulario" [(ngModel)]="idTamanioPizzaSeleccionado" [disabled]="true">
                   <ion-select-option *ngFor="let tp of tamanioPizza" [value]="tp.id">
                     {{ tp.nombre}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
-                <!--ion-input label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1"
-                  [ngModel]="aplica2x1"></!--ion-input-->
-
-                  <ion-select label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1" [ngModel]="aplica2x1">
-                    <ion-select-option value="S">Sí</ion-select-option>
-                    <ion-select-option value="N">No</ion-select-option>
-                  </ion-select>
-
+                <ion-select label="Aplica 2x1" label-placement="floating" formControlName="aplica2x1"
+                  [ngModel]="aplica2x1">
+                  <ion-select-option value="S">Sí</ion-select-option>
+                  <ion-select-option value="N">No</ion-select-option>
+                </ion-select>
               </ion-item>
               <ion-item>
-                <ion-select label="Selecciona Categoria 1" label-placement="floating" formControlName="categoria1" [(ngModel)]="categoria1_seleccionado">
+                <ion-select label="Selecciona Categoria 1" label-placement="floating" formControlName="categoria1"
+                  [(ngModel)]="categoria1_seleccionado">
                   <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.codigo">
                     {{ categoria.codigo}} - {{categoria.nombre}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
-                <ion-select label="Selecciona Categoria 2" label-placement="floating" formControlName="categoria2" [(ngModel)]="categoria2_seleccionado">
+                <ion-select label="Selecciona Categoria 2" label-placement="floating" formControlName="categoria2"
+                  [(ngModel)]="categoria2_seleccionado">
                   <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.codigo">
                     {{ categoria.codigo}} - {{categoria.nombre}}
                   </ion-select-option>
                 </ion-select>
               </ion-item>
               <ion-item>
-                <ion-select label="Selecciona Categoria 3" label-placement="floating" formControlName="categoria3" [(ngModel)]="categoria3_seleccionado">
+                <ion-select label="Selecciona Categoria 3" label-placement="floating" formControlName="categoria3"
+                  [(ngModel)]="categoria3_seleccionado">
                   <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.codigo">
                     {{ categoria.codigo}} - {{categoria.nombre}}
                   </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-select label="Aplica Orilla de Queso" label-placement="floating" formControlName="aplica_orilla_queso"
+                  [ngModel]="aplica_orilla_queso">
+                  <ion-select-option value="S">Sí</ion-select-option>
+                  <ion-select-option value="N">No</ion-select-option>
                 </ion-select>
               </ion-item>
 
