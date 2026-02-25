@@ -152,7 +152,7 @@ export class InsertarPromocionEspecialPage implements OnInit {
     try {
       const response: any = await this.http
         .post(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/promocion',
+          'http://admin.cheesepizza.com.mx/upload/promocion',
           formData
         )
         .toPromise();

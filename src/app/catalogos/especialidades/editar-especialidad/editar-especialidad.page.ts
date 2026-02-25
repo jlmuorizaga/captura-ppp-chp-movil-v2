@@ -142,7 +142,8 @@ export class EditarEspecialidadPage implements OnInit {
       //formData.append('file', this.selectedFile, this.selectedFile.name);
       //formData.append('file', this.selectedFile, this.selectedFile.name);
       //formData.append('image', this.selectedFile, this.selectedFile.name);
-      formData.append('file', this.selectedFile, this.selectedFile.name);
+      //formData.append('file', this.selectedFile, this.selectedFile.name);
+      formData.append('image', this.selectedFile);
       const uploadUrl = `http://admin.cheesepizza.com.mx/upload/especialidad`;
 
       this.http

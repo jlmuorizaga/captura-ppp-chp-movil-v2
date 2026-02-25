@@ -184,7 +184,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
 
       this.http
         .post<{ message: string; url: string }>(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/producto',
+          'http://admin.cheesepizza.com.mx/upload/producto',
           formData
         )
         .subscribe({
