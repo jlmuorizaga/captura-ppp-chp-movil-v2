@@ -13,16 +13,16 @@ export class ProductoService {
 
   dameProducto(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos + '/' + id);
+    return this.http.get(environment.baseApiCatalogos + environment.productos + '/' + id);
   }
 
   dameListaProductos() {
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones');
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos);
+    return this.http.get(environment.baseApiCatalogos + environment.productos);
   }
  /* dameListaProductos2() {
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones');
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos2);
+    return this.http.get(environment.baseApiCatalogos + environment.productos2);
   }*/
 
   dameListaProductos2():Observable<Producto[]> {
@@ -51,15 +51,15 @@ export class ProductoService {
   }
   borraProducto(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos + '/' + id);
+    return this.http.delete(environment.baseApiCatalogos + environment.productos + '/' + id);
   }
   insertaProducto(producto:Producto) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos,producto);
+    return this.http.post(environment.baseApiCatalogos + environment.productos,producto);
   }
 
   editaProducto(producto: Producto) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/regiones/'+id);
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.productos + '/' + producto.id,producto);
+    return this.http.put(environment.baseApiCatalogos + environment.productos + '/' + producto.id,producto);
   }
 
 }

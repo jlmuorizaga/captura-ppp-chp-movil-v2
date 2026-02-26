@@ -28,6 +28,8 @@ import {
   IonCardContent,
   IonLabel,
   IonItem,
+  IonSelectOption,
+  IonSelect
 } from '@ionic/angular/standalone';
 
 import { SharedModule } from 'src/app/shared/shared/shared.module';
@@ -65,6 +67,8 @@ import { ModalController } from '@ionic/angular/standalone';
     IonHeader,
     IonTitle,
     IonToolbar,
+    IonSelectOption,
+    IonSelect
   ],
 })
 export class InsertarPromocionEspecialPage implements OnInit {
@@ -148,7 +152,7 @@ export class InsertarPromocionEspecialPage implements OnInit {
     try {
       const response: any = await this.http
         .post(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/promocion',
+          'http://admin.cheesepizza.com.mx/upload/promocion',
           formData
         )
         .toPromise();

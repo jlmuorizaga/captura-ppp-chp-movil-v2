@@ -1,0 +1,78 @@
+ion-card {
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    background: #eaebec;
+    //background: #ececed;
+  }
+
+  ion-card-header {
+    text-align: center;
+    background: #3880ff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  ion-card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  ion-item {
+    margin-bottom: 5px;
+    margin-top:15px;
+    margin-right: 10px;
+  }
+
+  ion-item ion-label {
+    color: #007bff;
+  }
+
+  ion-item ion-icon {
+    color: #007bff;
+  }
+
+  ion-button {
+    margin-top: 20px;
+    background: success;
+    border-radius: 20px;
+  }
+
+  .error-message {
+    color: #ff4d4d;
+    font-size: 0.8em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  ion-item ion-input:focus {
+    animation: focusAnimation 0.3s forwards;
+  }
+
+  @keyframes focusAnimation {
+    0% {
+      box-shadow: none;
+    }
+    100% {
+      box-shadow: 0 0 10px #007bff;
+    }
+  }
+/* ✅ YA NO usamos position absolute para centrar */
+.centered-button {
+  margin: 0;
+  /* si quieres mayúsculas o no, lo controlas aquí */
+  /* text-transform: capitalize; */
+}
+
+/* ✅ Contenedor centrado con flex + safe area abajo */
+.button-container {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 25px;
+
+  /* separación inferior segura en dispositivos físicos */
+  padding-bottom: calc(24px + env(safe-area-inset-bottom));
+}
+
+

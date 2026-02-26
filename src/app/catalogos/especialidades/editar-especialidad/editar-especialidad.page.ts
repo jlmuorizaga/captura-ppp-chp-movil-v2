@@ -113,6 +113,7 @@ export class EditarEspecialidadPage implements OnInit {
       orden: ['', Validators.required],
       cantidadIngredientes: ['', Validators.required],
       esDeUnIngrediente: ['', Validators.required],
+      //imgURL:['',Validators.required],
     });
   }
 
@@ -138,11 +139,16 @@ export class EditarEspecialidadPage implements OnInit {
       }
 
       const formData = new FormData();
+      //formData.append('file', this.selectedFile, this.selectedFile.name);
+      //formData.append('file', this.selectedFile, this.selectedFile.name);
+      //formData.append('image', this.selectedFile, this.selectedFile.name);
+      //formData.append('file', this.selectedFile, this.selectedFile.name);
       formData.append('image', this.selectedFile);
+      const uploadUrl = `http://admin.cheesepizza.com.mx/upload/especialidad`;
 
       this.http
         .post<{ message: string; url: string }>(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/especialidad',
+          uploadUrl,
           formData
         )
         .subscribe({
@@ -178,7 +184,7 @@ export class EditarEspecialidadPage implements OnInit {
         this.id,
         this.nombre,
         this.ingredientes,
-        imageUrl,
+        this.imgURL,
         this.orden,
         this.cantidadIngredientes,
         this.esDeUnIngrediente);

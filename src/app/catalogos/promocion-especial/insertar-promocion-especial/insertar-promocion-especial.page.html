@@ -18,64 +18,59 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Insertar Promoción Especial</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="insertaPromocionEspecial()">
-      <ion-item>
-        <ion-input label="Nombre" label-placement="floating" formControlName="nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Descripcion" label-placement="floating" formControlName="descripcion"></ion-input>
-      </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Insertar Promoción Especial</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formularioPromocionEspecial" (ngSubmit)="insertaPromocionEspecial()">
+        <ion-item>
+          <ion-input label="Nombre" label-placement="floating" formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Descripcion" label-placement="floating" formControlName="descripcion"></ion-input>
+        </ion-item>
 
-      <ion-button expand="block" (click)="abrirModal()">
-        Crear promoción
-      </ion-button>
-      <ion-item>
-        <ion-input
-         label="Tipo"
-         label-placement="floating"
-         formControlName="tipo">
-        </ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          label="Definición"
-          label-placement="floating"
-          formControlName="definicion">
-        </ion-input>
-      </ion-item>
-      <!--ion-item>
+        <ion-button expand="block" (click)="abrirModal()">
+          Crear promoción
+        </ion-button>
+        <ion-item>
+          <ion-input label="Tipo" label-placement="floating" formControlName="tipo">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Definición" label-placement="floating" formControlName="definicion">
+          </ion-input>
+        </ion-item>
+        <!--ion-item>
         <h2>Resultado recibido:</h2>
         <p>{{ resultado }}</p>
       </!--ion-item-->
-      <ion-item>
-        <ion-input label="Precio" label-placement="floating" formControlName="precio"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Activa" label-placement="floating" formControlName="activa"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Selecciona una imagen</ion-label>
-        <input
-          type="file"
-          accept="image/*"
-          (change)="onFileSelected($event)"
-          style="padding: 10px; border: none; background: transparent;"
-        />
-      </ion-item>
-      <!--ion-item>
+        <ion-item>
+          <ion-input label="Precio" label-placement="floating" formControlName="precio"></ion-input>
+        </ion-item>
+        <ion-item>
+          <!--ion-input label="Activa" label-placement="floating" formControlName="activa"></ion-input-->
+          <ion-select label="Activa" label-placement="floating" formControlName="activa">
+            <ion-select-option value="S">Sí</ion-select-option>
+            <ion-select-option value="N">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Selecciona una imagen</ion-label>
+          <input type="file" accept="image/*" (change)="onFileSelected($event)"
+            style="padding: 10px; border: none; background: transparent;" />
+        </ion-item>
+        <!--ion-item>
         <ion-input label="Img URL" label-placement="floating" formControlName="imgURL"></ion-input>
       </!--ion-item-->
-      <div class="button-container">
-        <ion-button type="submit" class="centered-button" [disabled]="!formularioPromocionEspecial.valid" color="success">
-          Inserta Promoción Especial
-        </ion-button>
-      </div>
-    </form>
-  </ion-card-content>
-</ion-card>
+        <div class="button-container">
+          <ion-button type="submit" class="centered-button" [disabled]="!formularioPromocionEspecial.valid"
+            color="success">
+            Inserta Promoción Especial
+          </ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

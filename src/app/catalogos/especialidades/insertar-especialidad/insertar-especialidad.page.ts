@@ -88,18 +88,14 @@ export class InsertarEspecialidadPage implements OnInit {
     private especialidadesSvc: EspecialidadService,
     private router: Router,
     private globalService: GlobalService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     this.formularioEspecialidad = this.fb.group({
-      //id: ['', Validators.required],
       nombre: ['', Validators.required],
       ingredientes: ['', Validators.required],
-      rutaImagen: ['', Validators.required],
-      // imgURL: [''],
       orden: ['', Validators.required],
       cantidadIngredientes: ['', Validators.required],
-      //es_de_un_ingrediente: ['', Validators.required],
-      esDeUnIngrediente: ['S'], // Valor por defecto,
+      esDeUnIngrediente: ['S', Validators.required],
     });
   }
 
@@ -128,10 +124,10 @@ export class InsertarEspecialidadPage implements OnInit {
       formData.append('image', this.selectedFile);
 
       this.http
-        .post<{ message: string; url: string }>(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/especialidad',
-          formData
-        )
+        .post<{
+          message: string;
+          url: string;
+        }>('http://admin.cheesepizza.com.mx/upload/especialidad', formData)
         .subscribe({
           next: (res) => {
             this.uploadResponse = res.message;
@@ -165,10 +161,11 @@ export class InsertarEspecialidadPage implements OnInit {
         Utilerias.generaId(),
         this.formularioEspecialidad.value.nombre,
         this.formularioEspecialidad.value.ingredientes,
-        imageUrl,
+        //imageUrl,
+        this.imgURL,
         this.formularioEspecialidad.value.orden,
         this.formularioEspecialidad.value.cantidadIngredientes,
-        this.formularioEspecialidad.value.esDeUnIngrediente
+        this.formularioEspecialidad.value.esDeUnIngrediente,
       );
 
       this.especialidadesSvc.insertaEspecialidad(especialidad).subscribe({

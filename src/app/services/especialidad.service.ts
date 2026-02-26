@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map,Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Especialidad } from '../model/dto/especialidad';
 
 @Injectable({
@@ -14,17 +14,19 @@ export class EspecialidadService {
 
   dameEspecialidad(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.especialidades + '/' + id);
+    return this.http.get(environment.baseApiCatalogos + environment.especialidades + '/' + id);
   }
 
-   dameListaEspecialidadesNoCombinanTodosTamanios() {
-    return this.http.get(environment.baseUrl+':'+environment.puertoApiAdmonCatalogos+environment.dameListadoEspecialidadesNoCombinanTodosLosTamanios)
-   }
+dameListaEspecialidadesNoCombinanTodosTamanios() {
+  return this.http.get(
+    environment.baseApiCatalogos + environment.dameListadoEspecialidadesNoCombinanTodosLosTamanios
+  );
+}
 
   dameListaEspecialidades():Observable<Especialidad[]> {
     //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades');
     //
-        const apiURL = environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos+environment.especialidades;
+        const apiURL = environment.baseApiCatalogos+environment.especialidades;
         return this.http
           .get<any[]>(apiURL)
           .pipe(
@@ -46,16 +48,16 @@ export class EspecialidadService {
   }
   borraEspecialidad(id: string) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.especialidades + '/' + id);
+    return this.http.delete(environment.baseApiCatalogos + environment.especialidades + '/' + id);
 
   }
   insertaEspecialidad(especialidad:Especialidad) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.especialidades,especialidad);
+    return this.http.post(environment.baseApiCatalogos + environment.especialidades,especialidad);
   }
 
   editaEspecialidad(especialidad: Especialidad) {
     //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.especialidades + '/' + especialidad.id,especialidad);
+    return this.http.put(environment.baseApiCatalogos + environment.especialidades + '/' + especialidad.id,especialidad);
   }
 
 }

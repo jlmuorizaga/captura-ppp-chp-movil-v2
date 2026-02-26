@@ -12,21 +12,21 @@ export class OrillaService {
   constructor(private http: HttpClient) { }
 
   dameOrilla(id: string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.orillas + '/' + id);
+    return this.http.get(environment.baseApiCatalogos + environment.orillas + '/' + id);
   }
 
   dameListaOrillas() {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.orillas);
+    return this.http.get(environment.baseApiCatalogos + environment.orillas);
   }
   borraOrilla(id: string) {
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.orillas + '/' + id);
+    return this.http.delete(environment.baseApiCatalogos + environment.orillas + '/' + id);
 
   }
   insertaOrilla(orilla:Orilla) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.orillas,orilla);
+    return this.http.post(environment.baseApiCatalogos + environment.orillas,orilla);
   }
 
   editaOrilla(orilla: Orilla) {
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.orillas + '/' + orilla.id,orilla);
+    return this.http.put(environment.baseApiCatalogos + environment.orillas + '/' + orilla.id,orilla);
   }
 }

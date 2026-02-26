@@ -1,6 +1,6 @@
-import { RelacionProductoSucursal } from './../model/dto/relacion-producto-sucursal';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { RelacionProductoSucursal } from './../model/dto/relacion-producto-sucursal';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -8,17 +8,64 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class RelacionProductoSucursalService {
 
-  constructor(private http:HttpClient) { }
-  dameListaRelacionProductoSucursal(idSucursal:string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_producto_sucursal +'/'+idSucursal);
+  constructor(private http: HttpClient) { }
+
+  dameRegistroRelacionProductoSucursal(idProducto: string, idSucursal: string) {
+    return this.http.get(
+      environment.baseApiCatalogos +
+      environment.relacion_producto_sucursal +
+      '/' + idProducto + '/' + idSucursal
+    );
   }
-  dameListadoProductosNoEstanEnRPS(idSucursal:string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.dameListadoProductosNoEstanEnRPS +'/'+idSucursal);
+
+  dameListaRelacionProductoSucursal(idSucursal: string) {
+    return this.http.get(
+      environment.baseApiCatalogos +
+      environment.relacion_producto_sucursal +
+      '/' + idSucursal
+    );
   }
-  insertaRelacionProductoSucursal(registroRPS:RelacionProductoSucursal) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_producto_sucursal,registroRPS);
+
+  dameListadoProductosNoEstanEnRPS(idSucursal: string) {
+    return this.http.get(
+      environment.baseApiCatalogos +
+      environment.dameListadoProductosNoEstanEnRPS +
+      '/' + idSucursal
+    );
   }
-  borraRelacionProductoSucursal(idProducto:string,idSucursal:string) {
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_producto_sucursal + '/' + idProducto+'/'+idSucursal);
+
+  dameListaProductos() {
+    return this.http.get(
+      environment.baseApiCatalogos +
+      environment.productos
+    );
   }
+
+  borraRegistroRelacionProductoSucursal(idProducto: string, idSucursal: string) {
+    return this.http.delete(
+      environment.baseApiCatalogos +
+      environment.relacion_producto_sucursal +
+      '/' + idProducto + '/' + idSucursal
+    );
+  }
+
+  insertaRegistroRelacionProductoSucursal(
+    registroRelacionProductoSucursal: RelacionProductoSucursal
+  ) {
+    return this.http.post(
+      environment.baseApiCatalogos +
+      environment.relacion_producto_sucursal,
+      registroRelacionProductoSucursal
+    );
+  }
+
+editaRegistroRelacionProductoSucursal(relacion: RelacionProductoSucursal) {
+  return this.http.put(
+    environment.baseUrl + ':' +
+    environment.puertoApiAdmonCatalogos +
+    environment.relacion_producto_sucursal +
+    '/' + relacion.idProducto + '/' + relacion.idSucursal,
+    relacion
+  );
+}
 }

@@ -14,20 +14,20 @@ export class RelacionPromocionEspecialSucursalService {
 
 
   dameRegistroRelacionPromocionEspecialSucursal(idPromocion:string,idSucursal:string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes + '/' + idPromocion+'/'+idSucursal);
+    return this.http.get(environment.baseApiCatalogos + environment.relacion_pes + '/' + idPromocion+'/'+idSucursal);
   }
   dameListaRelacionPromocionEspecialSucursal(id:string){
     console.log('id====>>',id)
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes+'/'+id);
+    return this.http.get(environment.baseApiCatalogos + environment.relacion_pes+'/'+id);
   }
   insertaRelacionPromocionEspecialSucursal(registroRPES:RelacionPES) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes,registroRPES);
+    return this.http.post(environment.baseApiCatalogos + environment.relacion_pes,registroRPES);
   }
   borraRelacionPromocionEspecialSucursal(idPromocion:string,idSucursal:string) {
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes + '/' + idPromocion+'/'+idSucursal);
+    return this.http.delete(environment.baseApiCatalogos + environment.relacion_pes + '/' + idPromocion+'/'+idSucursal);
   }
   editaRelacionPromocionEspecialSucursal(registroRPES:RelacionPES) {
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.relacion_pes + '/' +
+    return this.http.put(environment.baseApiCatalogos + environment.relacion_pes + '/' +
       registroRPES.idPromocion+'/'+registroRPES.idSucursal,registroRPES);
   }
 }
