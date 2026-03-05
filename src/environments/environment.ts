@@ -1,13 +1,14 @@
 export const environment = {
-  production: true,
+  production: false,
    //Servidor AWS_AppixSoftware 30Nov2025
   //baseUrl:'http://ec2-54-144-58-67.compute-1.amazonaws.com',
   //Servidor AWS_AppixSoftware 30Nov2025
   //baseUrl:'http://ec2-3-148-103-201.us-east-2.compute.amazonaws.com',
-  baseUrl:'https://api.cheesepizza.com.mx',
+  baseUrl: 'https://admin.cheesepizza.com.mx/api/catalogos',
+puertoApiAdmonCatalogos: '',
   baseApiCatalogos: 'https://admin.cheesepizza.com.mx',
   //baseUrl:'http://localhost',
-  puertoApiAdmonCatalogos:'',
+  //puertoApiAdmonCatalogos:'3005',
   regiones:'/regiones',
   especialidades:'/especialidades',
   dameListadoEspecialidadesNoCombinanTodosLosTamanios:'/especialidadesNoCombinanTodosTamanios',

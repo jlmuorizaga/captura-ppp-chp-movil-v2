@@ -12,21 +12,21 @@ export class SalsaService {
   constructor(private http: HttpClient) { }
 
   dameSalsa(id: string) {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.salsas + '/' + id);
+    return this.http.get(environment.baseUrl +  environment.puertoApiAdmonCatalogos + environment.salsas + '/' + id);
   }
 
   dameListaSalsas() {
-    return this.http.get(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.salsas);
+    return this.http.get(environment.baseUrl + environment.puertoApiAdmonCatalogos + environment.salsas);
   }
   borraSalsa(id: string) {
-    return this.http.delete(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.salsas + '/' + id);
+    return this.http.delete(environment.baseUrl +  environment.puertoApiAdmonCatalogos + environment.salsas + '/' + id);
 
   }
   insertaSalsa(salsa:Salsa) {
-    return this.http.post(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.salsas,salsa);
+    return this.http.post(environment.baseUrl +  environment.puertoApiAdmonCatalogos + environment.salsas,salsa);
   }
 
   editaSalsa(salsa: Salsa) {
-    return this.http.put(environment.baseUrl + ':' + environment.puertoApiAdmonCatalogos + environment.salsas + '/' + salsa.id,salsa);
+    return this.http.put(environment.baseUrl +  environment.puertoApiAdmonCatalogos + environment.salsas + '/' + salsa.id,salsa);
   }
 }
