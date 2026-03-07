@@ -100,7 +100,7 @@ export class EditarPromocionEspecialPage implements OnInit {
       const formData = new FormData();
       formData.append('image', this.selectedFile);
       //const uploadUrl = `${environment.baseUrl}/upload/promocion`;
-      const uploadUrl = `http://admin.cheesepizza.com.mx/upload/promocion`;
+      const uploadUrl = `https://admin.cheesepizza.com.mx/upload/promocion`;
 
 this.http
   .post<{ message: string; url: string }>(uploadUrl, formData)

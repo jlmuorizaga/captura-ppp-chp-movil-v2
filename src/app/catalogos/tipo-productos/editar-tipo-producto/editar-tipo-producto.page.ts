@@ -133,7 +133,7 @@ export class EditarTipoProductoPage implements OnInit {
 
       this.http
         .post<{ message: string; url: string }>(
-          'http://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/tipo-producto',
+          'https://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/tipo-producto',
           formData
         )
         .subscribe({

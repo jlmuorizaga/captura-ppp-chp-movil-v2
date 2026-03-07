@@ -13,7 +13,7 @@ export class EspecialidadService {
   constructor(private http: HttpClient) { }
 
   dameEspecialidad(id: string) {
-    //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
+    //return this.http.delete('https://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
     return this.http.get(environment.baseApiCatalogos + environment.especialidades + '/' + id);
   }
 
@@ -24,7 +24,7 @@ dameListaEspecialidadesNoCombinanTodosTamanios() {
 }
 
   dameListaEspecialidades():Observable<Especialidad[]> {
-    //return this.http.get('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades');
+    //return this.http.get('https://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades');
     //
         const apiURL = environment.baseApiCatalogos+environment.especialidades;
         return this.http
@@ -47,7 +47,7 @@ dameListaEspecialidadesNoCombinanTodosTamanios() {
           );
   }
   borraEspecialidad(id: string) {
-    //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
+    //return this.http.delete('https://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
     return this.http.delete(environment.baseApiCatalogos + environment.especialidades + '/' + id);
 
   }
@@ -56,7 +56,7 @@ dameListaEspecialidadesNoCombinanTodosTamanios() {
   }
 
   editaEspecialidad(especialidad: Especialidad) {
-    //return this.http.delete('http://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
+    //return this.http.delete('https://ec2-54-153-58-93.us-west-1.compute.amazonaws.com:3005/especialidades/'+id);
     return this.http.put(environment.baseApiCatalogos + environment.especialidades + '/' + especialidad.id,especialidad);
   }
 

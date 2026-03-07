@@ -127,7 +127,7 @@ export class InsertarEspecialidadPage implements OnInit {
         .post<{
           message: string;
           url: string;
-        }>('http://admin.cheesepizza.com.mx/upload/especialidad', formData)
+        }>('https://admin.cheesepizza.com.mx/upload/especialidad', formData)
         .subscribe({
           next: (res) => {
             this.uploadResponse = res.message;
