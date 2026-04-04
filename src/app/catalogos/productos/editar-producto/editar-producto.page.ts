@@ -92,6 +92,14 @@ export class EditarProductoPage implements OnInit, OnDestroy {
   categoria2!: string;
   categoria3!: string;
 
+  get fullImgUrl(): string {
+    if (!this.rutaImagen) return '';
+    if (this.rutaImagen.startsWith('http')) {
+      return this.rutaImagen;
+    }
+    return `https://api.cheesepizza.com.mx/${this.rutaImagen}`;
+  }
+
   categoria1_seleccionado!: string;
   categoria2_seleccionado!: string;
   categoria3_seleccionado!: string;
@@ -123,7 +131,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       this.usaSalsa = data.usaSalsa;
       this.idTipoProducto = data.idTipoProducto;
       this.nombreTP = data.nombreTP;
-      this.rutaImagen = data.rutaImagen;
+      this.rutaImagen = data.rutaImagen || data.ruta_imagen || data.img_url;
       this.categoria1_seleccionado = data.categoria1;
       this.categoria2_seleccionado = data.categoria2;
       this.categoria3_seleccionado = data.categoria3;
@@ -208,13 +216,16 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       alert('Por favor completa todos los campos.');
       return;
     }
-    if (!this.selectedFile) {
+    if (!this.selectedFile && !this.rutaImagen) {
       alert('Por favor selecciona una imagen antes de enviar.');
       return;
     }
     try {
       console.log(this.formularioProducto.value);
-      const imageUrl = await this.uploadImage();
+      let imageUrl = this.rutaImagen;
+      if (this.selectedFile) {
+        imageUrl = await this.uploadImage();
+      }
       let producto: Producto = new Producto(
         this.id,
         this.descripcionP,

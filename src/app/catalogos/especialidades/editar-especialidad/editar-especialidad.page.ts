@@ -83,6 +83,14 @@ export class EditarEspecialidadPage implements OnInit {
   cantidadIngredientes!: string;
   esDeUnIngrediente!: string;
 
+  get fullImgUrl(): string {
+    if (!this.imgURL) return '';
+    if (this.imgURL.startsWith('http')) {
+      return this.imgURL;
+    }
+    return `https://api.cheesepizza.com.mx/${this.imgURL}`;
+  }
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -99,7 +107,7 @@ export class EditarEspecialidadPage implements OnInit {
       this.id = data.id;
       this.nombre = data.nombre;
       this.ingredientes = data.ingredientes;
-      this.imgURL = data.imgURL;
+      this.imgURL = data.imgURL || data.img_url;
       this.orden = data.orden;
       this.cantidadIngredientes = data.cantidadIngredientes;
       this.esDeUnIngrediente = data.esDeUnIngrediente;
@@ -172,14 +180,17 @@ export class EditarEspecialidadPage implements OnInit {
       alert('Por favor completa todos los campos.');
       return;
     }
-    if (!this.selectedFile) {
+    if (!this.selectedFile && !this.imgURL) {
       alert('Por favor selecciona una imagen antes de enviar.');
       return;
     }
     try {
       console.log('FormularioEspecialidad=');
       console.log(this.formularioEspecialidad.value);
-      const imageUrl = await this.uploadImage();
+      let imageUrl = this.imgURL;
+      if (this.selectedFile) {
+        imageUrl = await this.uploadImage();
+      }
       let especialidad: Especialidad = new Especialidad(
         this.id,
         this.nombre,
@@ -193,7 +204,7 @@ export class EditarEspecialidadPage implements OnInit {
       especialidad.nombre = this.formularioEspecialidad.value.nombre;
       especialidad.ingredientes = this.formularioEspecialidad.value.ingredientes;
       especialidad.imgURL = imageUrl,
-      especialidad.orden = this.formularioEspecialidad.value.orden;
+        especialidad.orden = this.formularioEspecialidad.value.orden;
       especialidad.cantidadIngredientes = this.formularioEspecialidad.value.cantidadIngredientes;
       especialidad.esDeUnIngrediente = this.formularioEspecialidad.value.esDeUnIngrediente;
 

@@ -13,62 +13,68 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Editar Especialidad</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h1>
-              ID: {{ id }}
-            </h1>
-            <form [formGroup]="formularioEspecialidad" (ngSubmit)="editaEspecialidad()">
-              <ion-item>
-                <ion-input label="Nombre" label-placement="floating" formControlName="nombre" [ngModel]="nombre"></ion-input>
-              </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Editar Especialidad</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h1>
+        ID: {{ id }}
+      </h1>
+      <form [formGroup]="formularioEspecialidad" (ngSubmit)="editaEspecialidad()">
+        <ion-item>
+          <ion-input label="Nombre" label-placement="floating" formControlName="nombre" [ngModel]="nombre"></ion-input>
+        </ion-item>
 
-              <ion-item>
-                <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes" [ngModel]="ingredientes"></ion-input>
-              </ion-item>
+        <ion-item>
+          <ion-input label="Ingredientes" label-placement="floating" formControlName="ingredientes"
+            [ngModel]="ingredientes"></ion-input>
+        </ion-item>
 
 
-              <ion-item>
-                <ion-label position="stacked">Selecciona una imagen</ion-label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  (change)="onFileSelected($event)"
-                  style="padding: 10px; border: none; background: transparent;"
-                />
-              </ion-item>
-                            
-              <!--ion-item>
-                <ion-input label="Img Url" label-placement="floating" formControlName="imgURL" [ngModel]="imgURL"></ion-input>
-              </ion-item-->
+        <ion-item>
+          <ion-label position="stacked">Selecciona una imagen</ion-label>
+          <input type="file" accept="image/*" (change)="onFileSelected($event)"
+            style="padding: 10px; border: none; background: transparent;" />
+        </ion-item>
 
-              <ion-item>
-                <ion-input label="Orden" label-placement="floating" formControlName="orden" [ngModel]="orden"></ion-input>
-              </ion-item>
+        <!--ion-item>
+          <ion-input label="Img Url" label-placement="floating" formControlName="imgURL" [ngModel]="imgURL"></ion-input>
+        </ion-item-->
 
-              <ion-item>
-                <ion-input label="Cantidad de Ingredientes" label-placement="floating"
-                  formControlName="cantidadIngredientes" [ngModel]="cantidadIngredientes"></ion-input>
-              </ion-item>
+        <ion-item *ngIf="imgURL">
+          <ion-label position="stacked">Imagen Actual</ion-label>
+          <div style="margin-top: 10px; margin-bottom: 10px;">
+            <img [src]="fullImgUrl" style="max-width: 200px; max-height: 200px; border-radius: 8px;"
+              alt="Imagen Especialidad" />
+          </div>
+        </ion-item>
 
-              <ion-item>
-                <!--ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente"-->
-                <ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente"
-                  [ngModel]="esDeUnIngrediente">
-                  <ion-select-option value="S">Sí</ion-select-option>
-                  <ion-select-option value="N">No</ion-select-option>
-                </ion-select>
-              </ion-item>
 
-              <div class="button-container">
-                <ion-button type="submit" class="centered-button" [disabled]="!formularioEspecialidad.valid">
-                  Edita Especialidad
-                </ion-button>
-              </div>
-            </form>
-          </ion-card-content>
-        </ion-card>
+        <ion-item>
+          <ion-input label="Orden" label-placement="floating" formControlName="orden" [ngModel]="orden"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Cantidad de Ingredientes" label-placement="floating" formControlName="cantidadIngredientes"
+            [ngModel]="cantidadIngredientes"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <!--ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente"-->
+          <ion-select label="Es de un Ingrediente" label-placement="floating" formControlName="esDeUnIngrediente"
+            [ngModel]="esDeUnIngrediente">
+            <ion-select-option value="S">Sí</ion-select-option>
+            <ion-select-option value="N">No</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="button-container">
+          <ion-button type="submit" class="centered-button" [disabled]="!formularioEspecialidad.valid">
+            Edita Especialidad
+          </ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

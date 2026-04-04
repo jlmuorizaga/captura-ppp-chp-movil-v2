@@ -38,7 +38,8 @@
                   [ngModel]="tamanio"></ion-input>
               </ion-item>
               <ion-item>
-                <ion-select label="Usa Salsa" label-placement="floating" formControlName="usaSalsa" [ngModel]="usaSalsa">
+                <ion-select label="Usa Salsa" label-placement="floating" formControlName="usaSalsa"
+                  [ngModel]="usaSalsa">
                   <ion-select-option value="S">Sí</ion-select-option>
                   <ion-select-option value="N">No</ion-select-option>
                 </ion-select>
@@ -55,12 +56,16 @@
 
               <ion-item>
                 <ion-label position="stacked">Selecciona una imagen</ion-label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  (change)="onFileSelected($event)"
-                  style="padding: 10px; border: none; background: transparent;"
-                />
+                <input type="file" accept="image/*" (change)="onFileSelected($event)"
+                  style="padding: 10px; border: none; background: transparent;" />
+              </ion-item>
+
+              <ion-item *ngIf="rutaImagen">
+                <ion-label position="stacked">Imagen Actual</ion-label>
+                <div style="margin-top: 10px; margin-bottom: 10px;">
+                  <img [src]="fullImgUrl" style="max-width: 200px; max-height: 200px; border-radius: 8px;"
+                    alt="Imagen Producto" />
+                </div>
               </ion-item>
               <ion-item>
                 <ion-select label="Selecciona Categoria 1" label-placement="floating" formControlName="categoria1"
