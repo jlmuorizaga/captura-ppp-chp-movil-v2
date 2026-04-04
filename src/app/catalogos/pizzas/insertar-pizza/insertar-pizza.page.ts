@@ -118,7 +118,7 @@ export class InsertarPizzaPage implements OnInit {
         this.leerEspecialidades();
       });
 
-          this.navigationSubscription = this.router.events
+    this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.leerEspecialidadesNoCombinanTodosTamanios();
@@ -160,7 +160,7 @@ export class InsertarPizzaPage implements OnInit {
     });
   }
 
-    leerEspecialidadesNoCombinanTodosTamanios() {
+  leerEspecialidadesNoCombinanTodosTamanios() {
     this.especialidadSvc.dameListaEspecialidadesNoCombinanTodosTamanios().subscribe({
       next: (res: any) => {
         console.log('Servicio leido de forma exitosa');
@@ -225,6 +225,7 @@ export class InsertarPizzaPage implements OnInit {
       pizza.categoria1 = this.formularioPizza.value.categoria1;
       pizza.categoria2 = this.formularioPizza.value.categoria2;
       pizza.categoria3 = this.formularioPizza.value.categoria3;
+      pizza.aplica_orilla_queso = this.formularioPizza.value.aplica_orilla_queso;
       this.pizzaSvc.insertaPizza(pizza).subscribe({
         next: (res: any) => {
           console.log('Pizza insertada de forma exitosa');
