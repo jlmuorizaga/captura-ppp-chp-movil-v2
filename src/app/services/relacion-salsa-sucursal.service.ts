@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import { RelacionSalsaSucursal } from '../model/dto/relacion-salsa-sucursal';
 import { environment } from 'src/environments/environment.prod';
 
@@ -7,20 +8,31 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class RelacionSalsaSucursalService {
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  dameListaRelacionSalsaSucursal(idSucursal:string) {
-    return this.http.get(environment.baseApiCatalogos + environment.relacion_salsa_sucursal +'/'+idSucursal);
-  }
-  dameListadoSalsasNoEstanEnRSS(idSucursal:string) {
-    return this.http.get(environment.baseApiCatalogos + environment.dameListadoSalsasNoEstanEnRSS +'/'+idSucursal);
-  }
-  insertaRegistroRSS(rss:RelacionSalsaSucursal) {
-    return this.http.post(environment.baseApiCatalogos + environment.relacion_salsa_sucursal,rss);
+  dameRegistroRSS(idSalsa: string, idSucursal: string) {
+    return this.http.get(environment.baseApiCatalogos + environment.relacion_salsa_sucursal + '/' + idSalsa + '/' + idSucursal);
   }
 
-  borraRegistroRSS(idSalsa: string,idSucursal:string) {
-    return this.http.delete(environment.baseApiCatalogos + environment.relacion_salsa_sucursal + '/' + idSalsa+'/'+idSucursal);
+  dameListaRelacionSalsaSucursal(idSucursal: string) {
+    return this.http.get(environment.baseApiCatalogos + environment.relacion_salsa_sucursal + '/' + idSucursal);
+  }
 
+  dameListadoSalsasNoEstanEnRSS(idSucursal: string) {
+    return this.http.get(environment.baseApiCatalogos + environment.dameListadoSalsasNoEstanEnRSS + '/' + idSucursal);
+  }
+
+  insertaRegistroRSS(rss: RelacionSalsaSucursal) {
+    return this.http.post(environment.baseApiCatalogos + environment.relacion_salsa_sucursal, rss);
+  }
+
+  borraRegistroRSS(idSalsa: string, idSucursal: string) {
+    return this.http.delete(environment.baseApiCatalogos + environment.relacion_salsa_sucursal + '/' + idSalsa + '/' + idSucursal);
+  }
+
+  editaRegistroRSS(rss: RelacionSalsaSucursal) {
+    return this.borraRegistroRSS(rss.idSalsa, rss.idSucursal).pipe(
+      switchMap(() => this.insertaRegistroRSS(rss))
+    );
   }
 }

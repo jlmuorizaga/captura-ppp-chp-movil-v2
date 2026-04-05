@@ -1,6 +1,6 @@
 import { PromocionEspecial } from 'src/app/model/dto/promocion-especial';
 import { PromocionEspecialService } from 'src/app/services/promocion-especial.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
@@ -14,6 +14,8 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { ActivatedRoute, Route } from '@angular/router';
 import { GlobalService } from 'src/app/services/global.service';
 import { HttpClient } from '@angular/common/http';
+import { PromocionBuilderComponent } from 'src/app/components/promocion-builder/promocion-builder.component';
+import { ModalController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-editar-promocion-especial',
@@ -42,6 +44,20 @@ export class EditarPromocionEspecialPage implements OnInit {
   selectedFile: File | null = null;
   fileName: string = '';
   uploadResponse: string = '';
+  resultado: string = '';
+
+  private modalCtrl = inject(ModalController);
+
+  // 🛡️ Fuerza a Angular a incluir el componente en producción
+  private readonly forceInclude = PromocionBuilderComponent;
+
+  get fullImgUrl(): string {
+    if (!this.imgURL) return '';
+    if (this.imgURL.startsWith('http')) {
+      return this.imgURL;
+    }
+    return `https://api.cheesepizza.com.mx/${this.imgURL}`;
+  }
 
   constructor(private fb: FormBuilder, private promocionEspecialSvc: PromocionEspecialService,
     private globalService: GlobalService,
@@ -60,7 +76,7 @@ export class EditarPromocionEspecialPage implements OnInit {
       this.definicion = data.definicion;
       this.precio = data.precio;
       this.activa = data.activa;
-      this.imgURL = data.imgURL;
+      this.imgURL = data.imgURL || data.img_url;
 
       console.log('id===>>' + this.idPromocion);
       console.log('descripcion===>' + this.descripcion);
@@ -73,13 +89,38 @@ export class EditarPromocionEspecialPage implements OnInit {
       definicion: ['', Validators.required],
       precio: ['', Validators.required],
       activa: ['', Validators.required],
-     // imgURL: ['', Validators.required],
+      // imgURL: ['', Validators.required],
     })
   }
 
   ngOnInit() {
     this.cveSucursal = this.globalService.cveSucursalGlobal;
     console.log('Entré a editar-promocion-especial en OnInit');
+  }
+
+  async abrirModal() {
+    try {
+      const modal = await this.modalCtrl.create({
+        component: PromocionBuilderComponent,
+        componentProps: {
+          title: 'Modificar Promoción',
+          definicion: this.formularioPromocionEspecial.value.definicion || '',
+          tipo: this.formularioPromocionEspecial.value.tipo || ''
+        }
+      });
+      await modal.present();
+
+      const { data } = await modal.onDidDismiss();
+      if (data) {
+        this.resultado = `Tipo: ${data.tipo}, Definición: ${data.definicion}`;
+        this.formularioPromocionEspecial
+          .get('definicion')
+          ?.setValue(data.definicion);
+        this.formularioPromocionEspecial.get('tipo')?.setValue(data.tipo);
+      }
+    } catch (error) {
+      console.error('Error al abrir modal:', error);
+    }
   }
 
   onFileSelected(event: any) {
@@ -102,19 +143,19 @@ export class EditarPromocionEspecialPage implements OnInit {
       //const uploadUrl = `${environment.baseUrl}/upload/promocion`;
       const uploadUrl = `https://admin.cheesepizza.com.mx/upload/promocion`;
 
-this.http
-  .post<{ message: string; url: string }>(uploadUrl, formData)
-  .subscribe({
-    next: (res) => {
-      this.uploadResponse = res.message;
-      this.imgURL = res.url;
-      resolve(res.url);
-    },
-    error: (err) => {
-      this.uploadResponse = 'Error al subir la imagen';
-      reject(err);
-    },
-  });
+      this.http
+        .post<{ message: string; url: string }>(uploadUrl, formData)
+        .subscribe({
+          next: (res) => {
+            this.uploadResponse = res.message;
+            this.imgURL = res.url;
+            resolve(res.url);
+          },
+          error: (err) => {
+            this.uploadResponse = 'Error al subir la imagen';
+            reject(err);
+          },
+        });
       return; // ✅ Esto soluciona el error TS7030
     });
   }
@@ -125,15 +166,18 @@ this.http
       alert('Por favor completa todos los campos.');
       return;
     }
-    if (!this.selectedFile) {
+    if (!this.selectedFile && !this.imgURL) {
       alert('Por favor selecciona una imagen antes de enviar.');
       return;
     }
 
-    try
-    {
+    try {
       console.log(this.formularioPromocionEspecial.value)
-      const imageUrl = await this.uploadImage();
+
+      let imageUrl = this.imgURL;
+      if (this.selectedFile) {
+        imageUrl = await this.uploadImage();
+      }
 
       //Mu Se crearon estas variables el 23 dic 2024
       let promocionEspecial: PromocionEspecial = new PromocionEspecial(
@@ -170,7 +214,7 @@ this.http
       })
 
     }
-       catch (err) {
+    catch (err) {
       console.error('❌ Error al subir imagen:', err);
       alert('Error al subir la imagen');
     }

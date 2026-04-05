@@ -81,7 +81,7 @@ export class InsertarTipoProductoPage implements OnInit {
   ) {
     this.formularioTipoProducto = this.fb.group({
       descripcion: ['', Validators.required],
-     // imgURL: ['', Validators.required],
+      // imgURL: ['', Validators.required],
       nombre: ['', Validators.required],
       orden: ['', Validators.required],
     });
@@ -97,7 +97,7 @@ export class InsertarTipoProductoPage implements OnInit {
     if (file) {
       this.selectedFile = file;
       this.fileName = file.name;
-      console.log('fileName==>>',this.fileName);
+      console.log('fileName==>>', this.fileName);
       //this.img_url=file;
     }
   }
@@ -114,7 +114,7 @@ export class InsertarTipoProductoPage implements OnInit {
 
       this.http
         .post<{ message: string; url: string }>(
-          'https://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/tipo-producto',
+          'https://admin.cheesepizza.com.mx/upload/tipo-producto',
           formData
         )
         .subscribe({
@@ -158,8 +158,8 @@ export class InsertarTipoProductoPage implements OnInit {
         next: (res: any) => {
           console.log('Tipo de producto insertado de forma exitosa');
           this.formularioTipoProducto.reset();
-          this.selectedFile=null;
-          this.fileName='';
+          this.selectedFile = null;
+          this.fileName = '';
           console.log(res);
           this.saltaATipoProducto();
         },
@@ -168,7 +168,7 @@ export class InsertarTipoProductoPage implements OnInit {
           console.log(error);
         },
       });
-    }catch (err) {
+    } catch (err) {
       console.error('❌ Error al subir imagen:', err);
       alert('Error al subir la imagen');
     }

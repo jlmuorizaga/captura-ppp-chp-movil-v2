@@ -25,6 +25,8 @@ import {
   IonCardContent,
   IonLabel,
   IonItem,
+  IonSelect,
+  IonSelectOption,
 } from '@ionic/angular/standalone';
 
 import { Especialidad } from 'src/app/model/dto/especialidad';
@@ -43,6 +45,8 @@ import { RelacionPES } from './../../../model/dto/relacion-promocion-especial-su
   styleUrls: ['./editar-relacion-promocion-especial-sucursal.page.scss'],
   standalone: true,
   imports: [
+    IonSelect,
+    IonSelectOption,
     IonItem,
     IonLabel,
     IonCardContent,
@@ -105,16 +109,23 @@ export class EditarRelacionPromocionEspecialSucursalPage implements OnInit {
 
   ngOnInit() {
     console.log('Entré a editar-relacion-promocion-especial-sucursal en OnInit');
+    if (this.activa !== undefined && this.activa !== null) {
+      this.formularioRelacionPES.patchValue({ activa: this.activa });
+    }
   }
 
   editaRelacionPES() {
     if (this.formularioRelacionPES.valid) {
       console.log(this.formularioRelacionPES.value);
-      let relacionPES: RelacionPES= new RelacionPES();
-      //especialidad.id=this.formularioEspecialidad.value.id;
-      relacionPES.idPromocion=this.idPromocion;
-      relacionPES.idSucursal=this.idSucursal;
-      relacionPES.activa=this.formularioRelacionPES.value.activa;
+      const relacionPES: RelacionPES = new RelacionPES();
+
+      // Mapeo completo del DTO
+      relacionPES.idPromocion = this.idPromocion;
+      relacionPES.nombrePromocion = this.nombre;
+      relacionPES.descripcionPromocion = this.descripcion;
+      relacionPES.idSucursal = this.idSucursal;
+      relacionPES.claveSucursal = this.claveSucursal;
+      relacionPES.activa = this.formularioRelacionPES.get('activa')?.value;
 
       this.relacionPESSvc.editaRelacionPromocionEspecialSucursal(relacionPES).subscribe({
         next: (res: any) => {
@@ -123,7 +134,7 @@ export class EditarRelacionPromocionEspecialSucursalPage implements OnInit {
           this.saltaARelacionPES();
         },
         error: (error: any) => {
-          console.log('Error en la edición de la especialidad');
+          console.log('Error en la edición de la relación');
           console.log(error);
         },
       });

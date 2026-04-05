@@ -34,15 +34,12 @@
           <ion-input label="Descripción" label-placement="floating" formControlName="descripcion"
             [ngModel]="descripcion"></ion-input>
         </ion-item>
+        <ion-button expand="block" (click)="abrirModal()">
+          MODIFICAR PROMOCIÓN
+        </ion-button>
         <ion-item>
-          <ion-select label="Tipo" label-placement="floating" formControlName="tipo" [ngModel]="tipo">
-            <ion-select-option value="CB">CB (Combo)</ion-select-option>
-            <ion-select-option value="PE">PE (Precio Especial)</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <!--ion-item>
           <ion-input label="Tipo" label-placement="floating" formControlName="tipo" [ngModel]="tipo"></ion-input>
-        </!--ion-item-->
+        </ion-item>
         <ion-item>
           <ion-input label="Definición" label-placement="floating" formControlName="definicion"
             [ngModel]="definicion"></ion-input>
@@ -60,6 +57,14 @@
           <ion-label position="stacked">Selecciona una imagen</ion-label>
           <input type="file" accept="image/*" (change)="onFileSelected($event)"
             style="padding: 10px; border: none; background: transparent;" />
+        </ion-item>
+
+        <ion-item *ngIf="imgURL">
+          <ion-label position="stacked">Imagen Actual</ion-label>
+          <div style="margin-top: 10px; margin-bottom: 10px;">
+            <img [src]="fullImgUrl" style="max-width: 200px; max-height: 200px; border-radius: 8px;"
+              alt="Imagen Promoción Especial" />
+          </div>
         </ion-item>
 
 

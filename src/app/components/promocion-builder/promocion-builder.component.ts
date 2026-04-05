@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Categoria } from 'src/app/model/dto/categoria';
@@ -52,10 +52,11 @@ import { ModalController } from '@ionic/angular'; // ✅ Import clásico, compat
   providers: [ModalController, CategoriaService], // ✅ Válido y necesario para producción si usas inject()
 })
 export class PromocionBuilderComponent implements OnInit {
-  tipo: string = '';
+  @Input() title: string = 'Crear Promoción';
+  @Input() tipo: string = '';
   tipoSeleccionado: string = '';
   productoSeleccionado: string = '';
-  definicion: string = '';
+  @Input() definicion: string = '';
   //navigationSubscription: Subscription;
   categorias!: Categoria[];
 
@@ -84,8 +85,7 @@ export class PromocionBuilderComponent implements OnInit {
     private categoriasSvc: CategoriaService,
     private router: Router,
     private cdr: ChangeDetectorRef
-  )
-  {
+  ) {
 
   }
   /*{
@@ -95,9 +95,9 @@ export class PromocionBuilderComponent implements OnInit {
         this.leerCategorias();
       });
   }*/
-ngOnInit(): void {
-  this.leerCategorias();
-}
+  ngOnInit(): void {
+    this.leerCategorias();
+  }
   leerCategorias() {
     this.categoriasSvc.dameListaCategorias().subscribe({
       next: (res: any) => {
@@ -114,17 +114,17 @@ ngOnInit(): void {
       },
     });
   }
-agregarProducto() {
-  if (!this.productoSeleccionado) return;
+  agregarProducto() {
+    if (!this.productoSeleccionado) return;
 
-  const ultimaLetra = this.definicion.slice(-1);
+    const ultimaLetra = this.definicion.slice(-1);
 
-  if (this.definicion === '' || ultimaLetra === '+' || ultimaLetra === '=') {
-    this.definicion += this.productoSeleccionado;
-  } else {
-    this.definicion += '+' + this.productoSeleccionado;
+    if (this.definicion === '' || ultimaLetra === '+' || ultimaLetra === '=') {
+      this.definicion += this.productoSeleccionado;
+    } else {
+      this.definicion += '+' + this.productoSeleccionado;
+    }
   }
-}
 
 
   agregarSeparador() {

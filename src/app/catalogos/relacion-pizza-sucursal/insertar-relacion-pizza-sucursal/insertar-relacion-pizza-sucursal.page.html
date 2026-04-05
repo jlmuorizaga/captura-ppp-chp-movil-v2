@@ -1,4 +1,3 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar color="custom">
     <!-- Botón de regreso (izquierda) -->
@@ -30,23 +29,22 @@
             <form [formGroup]="formularioRPS" (ngSubmit)="insertaRPS()">
               <ion-item>
                 @if (relacionPizzaSucursalNoEstaEnPizza){
-                <ion-select label="Elige Pizza" label-placement="floating"
-                  formControlName="idPizza">
+                <ion-select label="Elige Pizza" label-placement="floating" formControlName="idPizza">
                   @for (rps of relacionPizzaSucursalNoEstaEnPizza; track $index) {
-                  <ion-select-option value="{{rps.idPizza}}">{{rps.nombreEspecialidad}} {{rps.nombreTamanio}}</ion-select-option>
+                  <ion-select-option value="{{rps.idPizza}}">{{rps.nombreEspecialidad}}
+                    {{rps.nombreTamanio}}</ion-select-option>
                   }
                 </ion-select>
                 }
               </ion-item>
               <ion-item>
-                <ion-input label="Precio X2" label-placement="floating" formControlName="precioX2"></ion-input>
-              </ion-item>
-              <ion-item>
                 <ion-input label="Precio X1" label-placement="floating" formControlName="precioX1"></ion-input>
               </ion-item>
+              <ion-item>
+                <ion-input label="Precio X2" label-placement="floating" formControlName="precioX2"></ion-input>
+              </ion-item>
               <div class="button-container">
-                <ion-button type="submit" class="centered-button" [disabled]="!formularioRPS.valid"
-                  color="success">
+                <ion-button type="submit" class="centered-button" [disabled]="!formularioRPS.valid" color="success">
                   Inserta Relación Pizza Sucursal
                 </ion-button>
               </div>

@@ -38,10 +38,10 @@
             <ion-card-content>
               Clave de la sucursal: {{rpes.claveSucursal}}
               Descripción: {{rpes.descripcionPromocion}} <br>
-              Activa: {{rpes.activa}}<br>
+              Activa: {{rpes.activa === 'S' ? 'Si' : 'No'}}<br>
 
               <ion-button (click)="confirmaBorrar(rpes)" color="danger">Borrar</ion-button>
-              <ion-button>Editar</ion-button>
+              <ion-button (click)="saltaAEditarRegistroPromocionEspecialSucursal(rpes)" color="primary">Editar</ion-button>
             </ion-card-content>
           </ion-card>
           </ion-col>

@@ -17,7 +17,8 @@ import {
   IonItem,
   IonLabel,
   AlertController,
-  IonGrid, IonCardHeader, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardContent, IonCardTitle } from '@ionic/angular/standalone';
+  IonGrid, IonCardHeader, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardContent, IonCardTitle
+} from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';

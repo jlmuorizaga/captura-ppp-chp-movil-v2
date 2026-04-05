@@ -77,6 +77,15 @@ export class EditarTipoProductoPage implements OnInit {
   orden!: string;
   cveSucursal: string = '';
 
+  get fullImgUrl(): string {
+    if (!this.imgURL) return '';
+    if (this.imgURL.startsWith('http')) {
+      return this.imgURL;
+    }
+    return `https://api.cheesepizza.com.mx/${this.imgURL}`;
+  }
+
+
   constructor(
     private fb: FormBuilder,
     private tipoProductoService: TipoProductoService,
@@ -92,7 +101,7 @@ export class EditarTipoProductoPage implements OnInit {
 
       this.id = data.id;
       this.descripcion = data.descripcion;
-      this.imgURL = data.imgURL;
+      this.imgURL = data.imgURL || data.img_url;
       this.nombre = data.nombre;
       this.orden = data.orden;
 
@@ -130,10 +139,11 @@ export class EditarTipoProductoPage implements OnInit {
 
       const formData = new FormData();
       formData.append('image', this.selectedFile);
+      const uploadUrl = `https://admin.cheesepizza.com.mx/upload/tipo-producto`;
 
       this.http
         .post<{ message: string; url: string }>(
-          'https://ec2-54-144-58-67.compute-1.amazonaws.com:3005/upload/tipo-producto',
+          uploadUrl,
           formData
         )
         .subscribe({
@@ -157,7 +167,7 @@ export class EditarTipoProductoPage implements OnInit {
       alert('Por favor completa todos los campos');
       return;
     }
-    if (!this.selectedFile) {
+    if (!this.selectedFile && !this.imgURL) {
       alert('Por favor selecciona una imagen antes de enviar.');
       return;
     }
@@ -165,7 +175,10 @@ export class EditarTipoProductoPage implements OnInit {
     try {
       console.log(this.formularioTipoProducto.value);
       let tipoProducto: TipoProducto = new TipoProducto();
-      const imageUrl = await this.uploadImage();
+      let imageUrl = this.imgURL;
+      if (this.selectedFile) {
+        imageUrl = await this.uploadImage();
+      }
       tipoProducto.id = this.id;
       tipoProducto.descripcion = this.formularioTipoProducto.value.descripcion;
       tipoProducto.imgURL = imageUrl;

@@ -25,7 +25,7 @@ import { Sucursal } from 'src/app/model/dto/sucursal';
   standalone: true,
   imports: [IonContent,IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader,
     IonCard, IonRow, IonCol, IonGrid, SharedModule,IonLabel, IonItem, IonList,
-    IonBackButton, IonButton, IonIcon, IonButtons, IonContent, IonHeader,
+    IonBackButton, IonButton, IonIcon, IonButtons, IonHeader,
     IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
@@ -123,30 +123,43 @@ export class RelacionSalsaSucursalPpalPage implements OnInit,OnDestroy {
       })
     }
 
-    async confirmaBorrar(rss:RelacionSalsaSucursal){
-      const alert = await this.alertController.create({
-        header: 'Confirmación',
-        message: '¿Estás seguro de que deseas borrar el registro \"'+rss.descripcionSalsa+'?',
-        buttons: [
-          {
-            text: 'Cancelar',
-            role: 'cancel',
-            handler: () => {
-              console.log('Operación cancelada');
-            }
-          },
-          {
-            text: 'Aceptar',
-            handler: () => {
-              console.log('Operación confirmada');
-              this.borraRPS(rss.idSalsa,rss.idSucursal);
-              // Aquí puedes agregar la lógica para la operación a realizar
-            }
+  async confirmaBorrar(rss: RelacionSalsaSucursal) {
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Estás seguro de que deseas borrar el registro \"' + rss.descripcionSalsa + '?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
           }
-        ]
-      });
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Operación confirmada');
+            this.borraRPS(rss.idSalsa, rss.idSucursal);
+            // Aquí puedes agregar la lógica para la operación a realizar
+          }
+        }
+      ]
+    });
 
-      await alert.present();
-    }
+    await alert.present();
+  }
+
+  saltaAEditarRelacionSalsaSucursal(rss: RelacionSalsaSucursal) {
+    this.relacionSalsaSucursalSvc.dameRegistroRSS(rss.idSalsa, rss.idSucursal).subscribe({
+      next: (res: any) => {
+        console.log('Registro RSS recuperado para edición');
+        this.router.navigate(['/editar-relacion-salsa-sucursal'], { state: { data: res } });
+      },
+      error: (error: any) => {
+        console.log('Error al recuperar el registro RSS');
+        console.log(error);
+      }
+    });
+  }
 
 }

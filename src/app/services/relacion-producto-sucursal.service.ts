@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import { RelacionProductoSucursal } from './../model/dto/relacion-producto-sucursal';
 import { environment } from 'src/environments/environment.prod';
 
@@ -59,13 +60,9 @@ export class RelacionProductoSucursalService {
     );
   }
 
-editaRegistroRelacionProductoSucursal(relacion: RelacionProductoSucursal) {
-  return this.http.put(
-    environment.baseUrl + ':' +
-    environment.puertoApiAdmonCatalogos +
-    environment.relacion_producto_sucursal +
-    '/' + relacion.idProducto + '/' + relacion.idSucursal,
-    relacion
-  );
-}
+  editaRegistroRelacionProductoSucursal(relacion: RelacionProductoSucursal) {
+    return this.borraRegistroRelacionProductoSucursal(relacion.idProducto, relacion.idSucursal).pipe(
+      switchMap(() => this.insertaRegistroRelacionProductoSucursal(relacion))
+    );
+  }
 }

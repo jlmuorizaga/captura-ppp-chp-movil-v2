@@ -25,30 +25,30 @@
 
   <div class="table-container">
     @if (pizzas){
-      <ion-grid fixed>
-        <ion-row>
-          @for (pizza of pizzas; track $index) {
-            <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-subtitle class="subtitle">{{pizza.idPizza}}</ion-card-subtitle>
-                  <ion-card-title>{{pizza.nombreEspecialidad}}</ion-card-title>
-                  <ion-card-title>{{pizza.tamanioPizza}}</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                  Aplica 2x1: {{ mostrarSiNo(pizza.aplica2x1) }}<br>
-                  Categoria 1: {{pizza.categoria1}}<br>
-                  Categoria 2: {{pizza.categoria2}}<br>
-                  Categoria 3: {{pizza.categoria3}}<br>
-                  Aplica orilla queso: {{pizza.aplica_orilla_queso}}<br><br>
-                  <ion-button (click)="confirmaBorrar(pizza)" color="danger">Borrar</ion-button>
-                  <ion-button (click)="saltaAEditarPizza(pizza.idPizza)">Editar</ion-button>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-            }
-          </ion-row>
-        </ion-grid>
-      }
-    </div>
-  </ion-content>
+    <ion-grid fixed>
+      <ion-row>
+        @for (pizza of pizzas; track $index) {
+        <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-xl="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle class="subtitle">{{pizza.idPizza}}</ion-card-subtitle>
+              <ion-card-title>{{pizza.nombreEspecialidad}}</ion-card-title>
+              <ion-card-title>{{pizza.tamanioPizza}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Aplica 2x1: {{ mostrarSiNo(pizza.aplica2x1) }}<br>
+              Categoria 1: {{pizza.categoria1}}<br>
+              Categoria 2: {{pizza.categoria2}}<br>
+              Categoria 3: {{pizza.categoria3}}<br>
+              Aplica orilla queso: {{ mostrarSiNo(pizza.aplica_orilla_queso) }}<br><br>
+              <ion-button (click)="confirmaBorrar(pizza)" color="danger">Borrar</ion-button>
+              <ion-button (click)="saltaAEditarPizza(pizza.idPizza)">Editar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+    }
+  </div>
+</ion-content>
