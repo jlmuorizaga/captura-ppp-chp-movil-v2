@@ -31,9 +31,9 @@ export class InsertarRegionPage implements OnInit{
     this.formularioRegion = this.fb.group({
       //idRegion: ['', Validators.required],
       nombreRegion: ['', Validators.required],
-      poligono: ['', Validators.required],
-      latitud: ['', Validators.required],
-      longitud: ['', Validators.required],
+      poligono: ['0', Validators.required],
+      latitud: ['0', Validators.required],
+      longitud: ['0', Validators.required],
     })
   }
 
