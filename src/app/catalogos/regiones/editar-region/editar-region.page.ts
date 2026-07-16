@@ -53,9 +53,9 @@ constructor(private fb: FormBuilder,private regionesSvc:RegionService,
   this.formularioRegion = this.fb.group({
     //idRegion: ['', Validators.required],
     nombreRegion: ['', Validators.required],
-    poligono: ['', Validators.required],
-    latitud: ['', Validators.required],
-    longitud: ['', Validators.required],
+    poligono: [null],
+    latitud: [null],
+    longitud: [null],
   })
 }
   ngOnInit() {
