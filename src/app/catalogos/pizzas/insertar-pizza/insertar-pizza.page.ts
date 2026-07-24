@@ -110,6 +110,7 @@ export class InsertarPizzaPage implements OnInit {
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
       aplica_orilla_queso: ['S', Validators.required],
+      aplicaBebidaGratis: ['S', Validators.required],
     });
     this.mensaje = 'Estoy en el constructor';
     this.navigationSubscription = this.router.events
@@ -226,6 +227,7 @@ export class InsertarPizzaPage implements OnInit {
       pizza.categoria2 = this.formularioPizza.value.categoria2;
       pizza.categoria3 = this.formularioPizza.value.categoria3;
       pizza.aplica_orilla_queso = this.formularioPizza.value.aplica_orilla_queso;
+      pizza.aplicaBebidaGratis = this.formularioPizza.value.aplicaBebidaGratis;
       this.pizzaSvc.insertaPizza(pizza).subscribe({
         next: (res: any) => {
           console.log('Pizza insertada de forma exitosa');

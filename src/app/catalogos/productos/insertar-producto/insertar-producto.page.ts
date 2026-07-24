@@ -111,6 +111,7 @@ export class InsertarProductoPage implements OnInit {
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
       usaSalsa: ['S'], // Valor por defecto,
+      aplicaBebidaGratis: ['S', Validators.required],
       imgURL: [''],
     });
 
@@ -250,7 +251,8 @@ uploadImage(): Promise<string> {
         imgURL,
         this.formularioProducto.value.categoria1,
         this.formularioProducto.value.categoria2,
-        this.formularioProducto.value.categoria3
+        this.formularioProducto.value.categoria3,
+        this.formularioProducto.value.aplicaBebidaGratis
       );
       this.productosSvc.insertaProducto(producto).subscribe({
         next: (res: any) => {

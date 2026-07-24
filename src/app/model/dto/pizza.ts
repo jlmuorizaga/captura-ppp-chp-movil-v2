@@ -9,5 +9,6 @@ export class Pizza{
   categoria2!:string;
   categoria3!:string;
   aplica_orilla_queso!:string;
+  aplicaBebidaGratis!:string;
 }
 

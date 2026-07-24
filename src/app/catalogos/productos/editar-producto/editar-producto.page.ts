@@ -91,6 +91,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
   categoria1!: string;
   categoria2!: string;
   categoria3!: string;
+  aplicaBebidaGratis!: string;
 
   get fullImgUrl(): string {
     if (!this.rutaImagen) return '';
@@ -136,6 +137,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       this.categoria2_seleccionado = data.categoria2;
       this.categoria3_seleccionado = data.categoria3;
       this.id_tipo_producto_seleccionado = data.idTipoProducto;
+      this.aplicaBebidaGratis = data.aplicaBebidaGratis || data.aplica_bebida_gratis;
     }
     this.formularioProducto = this.fb.group({
       descripcionP: ['', Validators.required],
@@ -146,6 +148,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       categoria1: ['', Validators.required],
       categoria2: ['', Validators.required],
       categoria3: ['', Validators.required],
+      aplicaBebidaGratis: ['', Validators.required],
     });
     this.navigationSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -236,7 +239,9 @@ export class EditarProductoPage implements OnInit, OnDestroy {
         this.rutaImagen,
         this.categoria1,
         this.categoria2,
-        this.categoria3);
+        this.categoria3,
+        this.aplicaBebidaGratis
+      );
 
       producto.id = this.id;
       producto.descripcionP = this.formularioProducto.value.descripcionP;
@@ -248,6 +253,7 @@ export class EditarProductoPage implements OnInit, OnDestroy {
       producto.categoria1 = this.formularioProducto.value.categoria1;
       producto.categoria2 = this.formularioProducto.value.categoria2;
       producto.categoria3 = this.formularioProducto.value.categoria3;
+      producto.aplicaBebidaGratis = this.formularioProducto.value.aplicaBebidaGratis;
 
       this.productosSvc.editaProducto(producto).subscribe({
         next: (res: any) => {

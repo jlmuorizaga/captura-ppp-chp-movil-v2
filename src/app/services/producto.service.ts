@@ -37,7 +37,8 @@ export class ProductoService {
               item.rutaImagen,
               item.categoria1,
               item.categoria2,
-              item.categoria3
+              item.categoria3,
+              item.aplicaBebidaGratis
             )
         )
       )
